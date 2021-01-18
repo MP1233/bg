@@ -1669,9 +1669,24 @@ ret = ret + '<input type="checkbox" id="male" name="transport" value="'+item+'" 
 	if (PAGE_NUMBER == 4) {
 ///console.log(SELECTED_INTERESTS_LVL2)
 	for (var interest_item in SELECTED_INTERESTS_LVL2) {
+	if (SELECTED_INTERESTS_LVL2[interest_item] > 0) {
+
 		for (var attraction_item in ATTRACTIONS) {
 			for (var tag_item in ATTRACTIONS[attraction_item].tags) {
-				if (ATTRACTIONS[attraction_item].tags[tag_item] == interest_item) {
+///console.log("fff",parseInt(ATTRACTIONS[attraction_item].tags[tag_item]))
+				tag_query = ATTRACTIONS[attraction_item].tags[tag_item]
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 899) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1000)) {tag_query = "10century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 999) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1100)) {tag_query = "11century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 1099) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1200)) {tag_query = "12century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 1199) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1300)) {tag_query = "13century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 1299) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1400)) {tag_query = "14century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 1399) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1500)) {tag_query = "15century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 1499) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1600)) {tag_query = "16century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 1599) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1700)) {tag_query = "17century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 1699) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1800)) {tag_query = "18century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 1799) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 1900)) {tag_query = "19century"}
+				if ((parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) > 1899) && (parseInt(ATTRACTIONS[attraction_item].tags[tag_item]) < 2000)) {tag_query = "20century"}
+				if (tag_query == interest_item) {
 					///console.log(interest_item, ATTRACTIONS[attraction_item].tags, ATTRACTIONS[attraction_item].tags[tag_item])
 					//SELECTED_ATTRACTIONS.push(ATTRACTIONS[attraction_item])
 					//SELECTED_ATTRACTIONS.push(1)
@@ -1681,7 +1696,7 @@ ret = ret + '<input type="checkbox" id="male" name="transport" value="'+item+'" 
 				}
 			}
 		}
-	}
+	}}
 ///console.log(SELECTED_ATTRACTIONS)
 
 
