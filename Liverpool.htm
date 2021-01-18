@@ -113,75 +113,575 @@ Shopping:[ 'food', 'restaurant', 'shop', 'shopping', 'souvenirs', 'tapestries']
 
 
 var ATTRACTIONS = [
-{name:"Albert Dock",rating:"4",accessibility:" ",time:"2min",tags:["dock","navy","industry","landmark","panoramic"],descr:"",full_text:"",coordxy:[-2.99260005630742,53.4002276045906]},
 
-{name:"Liverpool Castle site",rating:"4",accessibility:" ",time:"2min",tags:["1200","history","panoramic"],descr:"",full_text:"",coordxy:[-2.990069538256777,53.40490821703924]},
 
-{name:"first dock window",rating:"3",accessibility:" ",time:"2min",tags:["architecture","history","mechanics","navy"],descr:"",full_text:"",coordxy:[-2.987479136367815,53.40299904783541]},
 
-{name:"VICTORIA BUILDING – UNIVERSITY OF LIVERPOOL/VICTORIA ART GALLERY MUSEUM",rating:"4",accessibility:" ",time:"30min",tags:["history","museum","art"],descr:"",full_text:"",coordxy:[-2.966785766833886,53.40617620349179]},
 
-{name:"INDIA BUILDINGS",rating:"2",accessibility:" ",time:"2min",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.992616634799339,53.40606089792383]},
+{name:"Albert Dock",rating:"4",accessibility:" ",time:"2",tags:["dock","navy","industry","landmark","panoramic"],descr:"",full_text:"",coordxy:[-2.99260005630742,53.4002276045906]},
 
-{name:"Adelphi Hotel / Titanic Hall",rating:"4",accessibility:" ",time:"2min",tags:["architecture","titanic"],descr:"",full_text:"",coordxy:[-2.977562674103889,53.40547273190785]},
+{name:"Liverpool Castle site",rating:"4",accessibility:" ",time:"2",tags:["1200","history","panoramic"],descr:"",full_text:"",coordxy:[-2.990069538256777,53.40490821703924]},
 
-{name:"Williamson Tunnels Heritage Centre",rating:"4",accessibility:" ",time:"30min",tags:["architecture","history","tunnel","massmadness"],descr:"",full_text:"",coordxy:[-2.958755935355176,53.40388470929689]},
+{name:"first dock window",rating:"3",accessibility:" ",time:"2",tags:["architecture","history","mechanics","navy"],descr:"",full_text:"",coordxy:[-2.987479136367815,53.40299904783541]},
 
-{name:"Stanley Dock Tobacco Warehouse biggest brick building in the world",rating:"2",accessibility:" ",time:"2min",tags:["architecture","industry"],descr:"",full_text:"",coordxy:[-2.998879703784284,53.42108249410566]},
+{name:"VICTORIA BUILDING – UNIVERSITY OF LIVERPOOL/VICTORIA ART GALLERY MUSEUM",rating:"4",accessibility:" ",time:"30",tags:["history","museum","art"],descr:"",full_text:"",coordxy:[-2.966785766833886,53.40617620349179]},
 
-{name:"clock tower",rating:"2",accessibility:" ",time:"2min",tags:["architecture","navy","industry"],descr:"",full_text:"",coordxy:[-3.004967254121334,53.42154854443599]},
+{name:"INDIA BUILDINGS",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.992616634799339,53.40606089792383]},
 
-{name:"Liverpool Medical Institution",rating:"2",accessibility:" ",time:"2min",tags:["architecture","1837","greekrevival"],descr:"",full_text:"",coordxy:[-2.969213230785794,53.40333974906219]},
+{name:"Adelphi Hotel / Titanic Hall",rating:"4",accessibility:" ",time:"2",tags:["architecture","titanic"],descr:"",full_text:"",coordxy:[-2.977562674103889,53.40547273190785]},
 
-{name:"Casartelli Building",rating:"2",accessibility:" ",time:"2min",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.985730503599802,53.40278840111787]},
+{name:"Williamson Tunnels Heritage Centre",rating:"4",accessibility:" ",time:"30",tags:["architecture","history","tunnel","massmadness"],descr:"",full_text:"",coordxy:[-2.958755935355176,53.40388470929689]},
 
-{name:"Liverpool Central Library William Brown Library and Museum",rating:"4",accessibility:" ",time:"2min",tags:["architecture","1857","WW2"],descr:"",full_text:"",coordxy:[-2.980740319400461,53.40997085484099]},
+{name:"Stanley Dock Tobacco Warehouse biggest brick building in the world",rating:"2",accessibility:" ",time:"2",tags:["architecture","industry"],descr:"",full_text:"",coordxy:[-2.998879703784284,53.42108249410566]},
 
-{name:"Church of St James, Liverpool",rating:"2",accessibility:" ",time:"2min",tags:["architecture","1774"],descr:"",full_text:"",coordxy:[-2.974633534169864,53.39433048185424]},
+{name:"clock tower",rating:"2",accessibility:" ",time:"2",tags:["architecture","navy","industry"],descr:"",full_text:"",coordxy:[-3.004967254121334,53.42154854443599]},
 
-{name:"Allerton Hall",rating:"2",accessibility:" ",time:"2min",tags:["architecture","1736","sandstone","palladian"],descr:"",full_text:"",coordxy:[-2.879180282326364,53.36342898927245]},
+{name:"Liverpool Medical Institution",rating:"2",accessibility:" ",time:"2",tags:["architecture","1837","greekrevival"],descr:"",full_text:"",coordxy:[-2.969213230785794,53.40333974906219]},
 
-{name:"Gwalia",rating:"2",accessibility:" ",time:"2min",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.914298731904029,53.42383380990002]},
+{name:"Casartelli Building",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.985730503599802,53.40278840111787]},
 
-{name:"Prudential Assurance Building",rating:"2",accessibility:" ",time:"2min",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.988659263005907,53.40783754440428]},
+{name:"Liverpool Central Library William Brown Library and Museum",rating:"4",accessibility:" ",time:"2",tags:["architecture","1857","WW2"],descr:"",full_text:"",coordxy:[-2.980740319400461,53.40997085484099]},
 
-{name:"62 Mount Pleasant",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.974232300085486,53.40379290054646]},
+{name:"Church of St James, Liverpool",rating:"2",accessibility:" ",time:"2",tags:["architecture","1774"],descr:"",full_text:"",coordxy:[-2.974633534169864,53.39433048185424]},
 
-{name:"Rodney Street - Georgian houses",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.973110698702826,53.40237552853674]},
+{name:"Allerton Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1736","sandstone","palladian"],descr:"",full_text:"",coordxy:[-2.879180282326364,53.36342898927245]},
 
-{name:"62 Rodney Street",rating:"2",accessibility:" ",time:"2min",tags:["georgian","1792"],descr:"",full_text:"",coordxy:[-2.973695332099851,53.40061872479979]},
+{name:"Gwalia",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.914298731904029,53.42383380990002]},
 
-{name:"66 Mount Pleasant",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.973726121952348,53.40380362715434]},
+{name:"Prudential Assurance Building",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.988659263005907,53.40783754440428]},
 
-{name:"1 Trueman Street",rating:"2",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.984296635137968,53.40982440823899]},
+{name:"62 Mount Pleasant",rating:"3",accessibility:" ",time:"2",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.974232300085486,53.40379290054646]},
 
-{name:"Liverpool Royal Institution",rating:"2",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.977756432546079,53.40127028466256]},
+{name:"Rodney Street - georgian houses",rating:"3",accessibility:" ",time:"2",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.973110698702826,53.40237552853674]},
 
-{name:"Clarke&apos's Basin cottages, Old Hall Street",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.99611993870582,53.41073646896962]},
+{name:"62 Rodney Street",rating:"2",accessibility:" ",time:"2",tags:["georgian","1792"],descr:"",full_text:"",coordxy:[-2.973695332099851,53.40061872479979]},
 
-{name:"Union News Room",rating:"2",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.980691057063082,53.40159660865558]},
+{name:"66 Mount Pleasant",rating:"3",accessibility:" ",time:"2",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.973726121952348,53.40380362715434]},
 
-{name:"Heywood's Bank",rating:"2",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.991338879776041,53.4058966307856]},
+{name:"1 Trueman Street",rating:"2",accessibility:" ",time:"2",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.984296635137968,53.40982440823899]},
 
-{name:"Abercromby Square",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.9649578422237,53.40285482519624]},
+{name:"Liverpool Royal Institution",rating:"2",accessibility:" ",time:"2",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.977756432546079,53.40127028466256]},
 
-{name:"Percy Street",rating:"4",accessibility:" ",time:"2min",tags:["georgian","panoramic"],descr:"",full_text:"",coordxy:[-2.969425984359723,53.39693368491243]},
+{name:"Clarke' Basin cottages, Old Hall Street",rating:"3",accessibility:" ",time:"2",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.99611993870582,53.41073646896962]},
 
-{name:"Huskisson Street",rating:"3",accessibility:" ",time:"2min",tags:["georgian","panoramic"],descr:"",full_text:"",coordxy:[-2.968241919111153,53.39709224221252]},
+{name:"Union News Room",rating:"2",accessibility:" ",time:"2",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.980691057063082,53.40159660865558]},
 
-{name:"Wellington Rooms",rating:"2",accessibility:" ",time:"2min",tags:["neoclassical","1815"],descr:"",full_text:"",coordxy:[-2.970669685988956,53.40383003145091]},
+{name:"Heywood' Bank",rating:"2",accessibility:" ",time:"2",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.991338879776041,53.4058966307856]},
 
-{name:"The Lyceum",rating:"3",accessibility:" ",time:"2min",tags:["neoclassical","1802","history"],descr:"",full_text:"",coordxy:[-2.980652787250813,53.40437780075602]},
+{name:"Abercromby Square",rating:"3",accessibility:" ",time:"2",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.9649578422237,53.40285482519624]},
 
-{name:"Monument to William Huskisson",rating:"2",accessibility:" ",time:"2min",tags:["neoclassical"],descr:"",full_text:"",coordxy:[-2.971894355715166,53.39706761545549]},
+{name:"Percy Street",rating:"4",accessibility:" ",time:"2",tags:["georgian","panoramic"],descr:"",full_text:"",coordxy:[-2.969425984359723,53.39693368491243]},
 
-{name:"St. Bride's Church",rating:"4",accessibility:" ",time:"2min",tags:["neoclassical","1829"],descr:"",full_text:"",coordxy:[-2.968884513319168,53.39729009385408]},
+{name:"Huskisson Street",rating:"3",accessibility:" ",time:"2",tags:["georgian","panoramic"],descr:"",full_text:"",coordxy:[-2.968241919111153,53.39709224221252]},
 
-{name:"Great George Street Congregational Chapel",rating:"2",accessibility:" ",time:"2min",tags:["neoclassical"],descr:"",full_text:"",coordxy:[-2.976718363265975,53.39927725921806]},
+{name:"Wellington Rooms",rating:"2",accessibility:" ",time:"2",tags:["neoclassical","1815"],descr:"",full_text:"",coordxy:[-2.970669685988956,53.40383003145091]},
 
-{name:"Greek Orthodox Church of St Nicholas",rating:"2",accessibility:" ",time:"2min",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.967227539430061,53.39546709366571]},
+{name:"The Lyceum",rating:"3",accessibility:" ",time:"2",tags:["neoclassical","1802","history"],descr:"",full_text:"",coordxy:[-2.980652787250813,53.40437780075602]},
 
-{name:"Gambier Terrace",rating:"4",accessibility:" ",time:"2min",tags:["georgian","panoramic","1836","beatles"],descr:"",full_text:"",coordxy:[-2.970815185610597,53.39771069381421]},
+{name:"Monument to William Huskisson",rating:"2",accessibility:" ",time:"2",tags:["neoclassical"],descr:"",full_text:"",coordxy:[-2.971894355715166,53.39706761545549]},
+
+{name:"St. Bride' Church",rating:"4",accessibility:" ",time:"2",tags:["neoclassical","1829"],descr:"",full_text:"",coordxy:[-2.968884513319168,53.39729009385408]},
+
+{name:"Great George Street Congregational Chapel",rating:"2",accessibility:" ",time:"2",tags:["neoclassical"],descr:"",full_text:"",coordxy:[-2.976718363265975,53.39927725921806]},
+
+{name:"Greek Orthodox Church of St Nicholas",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.967227539430061,53.39546709366571]},
+
+{name:"Gambier Terrace",rating:"4",accessibility:" ",time:"2",tags:["georgian","panoramic","1836","beatles"],descr:"",full_text:"",coordxy:[-2.970815185610597,53.39771069381421]},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{name:"St Mary' Church",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1853","sandstone","geometric"],descr:"",full_text:"",coordxy:[-2.908696494707814,53.43345811791822]},
+
+{name:"London and Globe Building",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.990909491359578,53.40730535922939]},
+
+{name:"16 Cook Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1866"],descr:"",full_text:"",coordxy:[-2.989059847524553,53.40632048029352]},
+
+{name:"The National Westminster Bank",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1899"],descr:"",full_text:"",coordxy:[-2.991193089765117,53.40642361244278]},
+
+{name:"Philharmonic Dining Rooms",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","beatles","toilet","1898"],descr:"",full_text:"",coordxy:[-2.970551302510166,53.40171727799743]},
+
+{name:"Royal Bank Building",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.990731685038291,53.40689230334654]},
+
+{name:"Albion House/30 James Street",rating:"3",accessibility:" ",time:"2",tags:["architecture","victorian","1896","titanic","hotel"],descr:" titanic office now titanic-styled hotel",full_text:"",coordxy:[-2.992383007885055,53.40466116275505]},
+
+{name:"Welsh Presbyterian Church",rating:"3",accessibility:" ",time:"2",tags:["architecture","victorian","ghetto","ruin"],descr:"",full_text:"",coordxy:[-2.963894834701794,53.39388118503823]},
+
+{name:"Glass Palm House",rating:"3",accessibility:" ",time:"20",tags:["architecture","botanicalgarden","victorian","1896"],descr:"",full_text:"",coordxy:[-2.935258173820196,53.38134563896068]},
+
+{name:"Queen Insurance Building",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.990419611151729,53.40719859765574]},
+
+{name:"Great North Western Hotel",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.978687594138262,53.40820809681816]},
+
+{name:"Municipal Buildings",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1860"],descr:"",full_text:"",coordxy:[-2.986256990813188,53.4085927238223]},
+
+{name:"North and South Wales Bank",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.990793529349544,53.40529993114219]},
+
+{name:"Liverpool Playhouse",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","theater","1865"],descr:"",full_text:"",coordxy:[-2.982508072317259,53.4064175784358]},
+
+{name:"Alliance Bank",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.990515287406957,53.40537295129575]},
+
+{name:"The Albany",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1856"],descr:"",full_text:"",coordxy:[-2.993143595877972,53.40865482780179]},
+
+{name:"Union Marine Building",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.990268191583125,53.40756750340989]},
+
+{name:"Chatham Building",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.963967306640623,53.4016808637853]},
+
+{name:"Fowler' Building",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1865","renaissance"],descr:"",full_text:"",coordxy:[-2.988348732236269,53.40681436527648]},
+
+{name:"Conservative Club",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.987185473428649,53.4083525026513]},
+
+{name:"Gustav Adolf Church",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1883"],descr:"",full_text:"",coordxy:[-2.984459127473924,53.39962877520724]},
+
+{name:"Adelphi Bank",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","sandstone"],descr:"",full_text:"",coordxy:[-2.990899400594504,53.40600852630875]},
+
+{name:"Church of Saint Francis Xavier, Liverpool",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1845"],descr:"",full_text:"",coordxy:[-2.96977434202123,53.41336924726241]},
+
+{name:"Church of St Margaret of Antioch",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1868"],descr:"",full_text:"",coordxy:[-2.965796026290763,53.39547088616762]},
+
+{name:"Church of St Matthew and St James, Mossley Hill",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian","1870","WW2","sandstone"],descr:"",full_text:"",coordxy:[-2.920556652739518,53.37629521643582]},
+
+{name:"St Oswald' Church, Old Swan",rating:"2",accessibility:" ",time:"2",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.914046773749899,53.41198636788447]},
+
+{name:"The Vines public house",rating:"2",accessibility:" ",time:"2",tags:["architecture","1907"],descr:"",full_text:"",coordxy:[-2.978197208528892,53.40575818754698]},
+
+{name:"George' Dock Ventilation and Control Station",rating:"3",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.993977038444173,53.40463738711524]},
+
+{name:"Greenbank Drive Synagogue",rating:"2",accessibility:" ",time:"2",tags:["architecture","1936"],descr:"",full_text:"",coordxy:[-2.929029110426563,53.38929972387131]},
+
+{name:"Tower Building",rating:"2",accessibility:" ",time:"2",tags:["architecture","1906"],descr:"",full_text:"",coordxy:[-2.994535340143894,53.40633188086013]},
+
+{name:"City Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.992290359392107,53.40788670108487]},
+
+{name:"Martins Bank",rating:"2",accessibility:" ",time:"2",tags:["architecture","1927"],descr:"",full_text:"",coordxy:[-2.992271049295625,53.40683924814324]},
+
+{name:"ancient liverpool port sandstone mansion and tower of Liverpool was here",rating:"4",accessibility:" ",time:"2",tags:["panoramic","1256"],descr:"",full_text:"",coordxy:[-2.994694270426369,53.40619320804439]},
+
+{name:"Church of St Mary",rating:"2",accessibility:" ",time:"2",tags:["architecture","1843 sandstone"],descr:"",full_text:"",coordxy:[-2.852687553738912,53.45619395156257]},
+
+{name:"Knowsley Hall",rating:"3",accessibility:" ",time:"2",tags:["architecture","1400","georgian","sandstone"],descr:"",full_text:"",coordxy:[-2.837168184217084,53.43836909453576]},
+
+{name:"Church of St Chad",rating:"2",accessibility:" ",time:"2",tags:["architecture","1869","sandstone","gothic"],descr:"",full_text:"",coordxy:[-2.892936385584033,53.48430755223981]},
+
+{name:"Church of St Michael",rating:"3",accessibility:" ",time:"2",tags:["architecture","1300"],descr:"",full_text:"",coordxy:[-2.839976690578727,53.41406922079956]},
+
+{name:"Allerton Priory",rating:"2",accessibility:" ",time:"5",tags:["architecture","1800"],descr:"",full_text:"",coordxy:[-2.882771812781452,53.36979357077165]},
+
+{name:"Bishop Eton Monastery",rating:"2",accessibility:" ",time:"2",tags:["architecture","1851"],descr:"",full_text:"",coordxy:[-2.895341670790611,53.38905269571966]},
+
+{name:"Bluecoat School",rating:"2",accessibility:" ",time:"2",tags:["architecture","1903"],descr:"",full_text:"",coordxy:[-2.915614090159365,53.3929634812391]},
+
+{name:"Broughton Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1856"],descr:"",full_text:"",coordxy:[-2.886214338433204,53.4246884909922]},
+
+{name:"Carfax",rating:"2",accessibility:" ",time:"2",tags:["architecture","1815"],descr:"",full_text:"",coordxy:[-2.950428827624502,53.37659052584868]},
+
+{name:"Cedarwood",rating:"2",accessibility:" ",time:"2",tags:["architecture","1960","modern"],descr:"",full_text:"",coordxy:[-2.877470808290636,53.38163204659583]},
+
+{name:"Chapel of Bluecoat School",rating:"2",accessibility:" ",time:"2",tags:["architecture","1903"],descr:"",full_text:"",coordxy:[-2.915406924327796,53.39246892140101]},
+
+{name:"Chapel of Saint Patrick",rating:"2",accessibility:" ",time:"2",tags:["architecture","1821","neoclassical"],descr:"",full_text:"",coordxy:[-2.971679099146845,53.39219414191665]},
+
+{name:"Church of Holy Trinity",rating:"2",accessibility:" ",time:"2",tags:["architecture","1794","georgian"],descr:"",full_text:"",coordxy:[-2.915763049940865,53.39449488118424]},
+
+{name:"The Church of Saint Andrew",rating:"3",accessibility:" ",time:"2",tags:["architecture","ruin","1823"],descr:"",full_text:"",coordxy:[-2.972615955690079,53.40295728759714]},
+
+{name:"Church of St Anne",rating:"2",accessibility:" ",time:"2",tags:["architecture","1836",""],descr:"",full_text:"",coordxy:[-2.930550157013176,53.36929748175126]},
+
+{name:"Church of St Bridget",rating:"2",accessibility:" ",time:"2",tags:["architecture","1872"],descr:"",full_text:"",coordxy:[-2.933974287381732,53.39663672818074]},
+
+{name:"Church of St Christopher",rating:"2",accessibility:" ",time:"2",tags:["architecture","1930"],descr:"",full_text:"",coordxy:[-2.924970857299315,53.4408088549823]},
+
+{name:"Church of St Clement",rating:"2",accessibility:" ",time:"2",tags:["architecture","1840"],descr:"",full_text:"",coordxy:[-2.952533643701603,53.39699407089237]},
+
+{name:"Church of St Dunstan",rating:"2",accessibility:" ",time:"2",tags:["architecture","1886"],descr:"",full_text:"",coordxy:[-2.943541536729625,53.39896448318701]},
+
+{name:"Church of St Luke Bombed out church",rating:"4",accessibility:" ",time:"2",tags:["architecture","ruin","WW2","history","1811","sandstone","perpendicular"],descr:"",full_text:"",coordxy:[-2.975147501950729,53.40166493249873]},
+
+{name:"Church of St Paul",rating:"2",accessibility:" ",time:"2",tags:["architecture","1913"],descr:"",full_text:"",coordxy:[-2.915204897197441,53.41904292674973]},
+
+{name:"St Peter’s Church, Woolton",rating:"3",accessibility:" ",time:"10",tags:["architecture","beatles","1886","sandstone","neoclassical"],descr:"",full_text:"",coordxy:[-2.86926855254829,53.37601259784506]},
+
+{name:"Church of St Philip Neri (RC)",rating:"2",accessibility:" ",time:"2",tags:["architecture","1914"],descr:"",full_text:"",coordxy:[-2.968804363528323,53.39930376586718]},
+
+{name:"College of Technology and Museum Extension",rating:"2",accessibility:" ",time:"2",tags:["architecture","1896"],descr:"",full_text:"",coordxy:[-2.982404086574943,53.41000317707614]},
+
+{name:"Croxteth Hall",rating:"2",accessibility:" ",time:"20",tags:["architecture","1575","history"],descr:"",full_text:"",coordxy:[-2.891918414072687,53.44272922656318]},
+
+{name:"Cunard Building",rating:"5",accessibility:" ",time:"2",tags:["architecture","landmark","1913","renaissance","history"],descr:"",full_text:"",coordxy:[-2.995296977580364,53.40522528624351]},
+
+{name:"Dairy",rating:"2",accessibility:" ",time:"2",tags:["architecture","1861"],descr:"",full_text:"",coordxy:[-2.891907147822395,53.44113411026473]},
+
+{name:"Engine House to North of North Range of Edge Hill Station",rating:"2",accessibility:" ",time:"2",tags:["architecture","rail","mechanics","1849"],descr:"",full_text:"",coordxy:[-2.946376981854978,53.40265297992423]},
+
+{name:"Former Liverpool Airport Control Tower and Terminal",rating:"2",accessibility:" ",time:"2",tags:["architecture","1937"],descr:"",full_text:"",coordxy:[-2.880731615185447,53.34758315176633]},
+
+{name:"Picton Reading Room and Hornby Library",rating:"3",accessibility:" ",time:"10",tags:["architecture","1906"],descr:"",full_text:"",coordxy:[-2.980229605857405,53.40989114026375]},
+
+{name:"Laundry and Laundry Cottage",rating:"2",accessibility:" ",time:"2",tags:["architecture","1864"],descr:"",full_text:"",coordxy:[-2.889755568163657,53.44004876765264]},
+
+{name:"Liverpool Airport Hangar No. 2",rating:"2",accessibility:" ",time:"2",tags:["architecture","1941"],descr:"",full_text:"",coordxy:[-2.878090093890278,53.34771634900839]},
+
+{name:"Liverpool Airport Hangar 1",rating:"2",accessibility:" ",time:"2",tags:["architecture","1937"],descr:"",full_text:"",coordxy:[-2.883012445169857,53.34822356998782]},
+
+{name:"Liverpool Collegiate School",rating:"2",accessibility:" ",time:"2",tags:["architecture","1840"],descr:"",full_text:"",coordxy:[-2.967887965011383,53.41308147996787]},
+
+{name:"Lodge to Bishop Eton Monastery, and adjoining Gateway",rating:"2",accessibility:" ",time:"2",tags:["architecture","1840"],descr:"",full_text:"",coordxy:[-2.895407428021652,53.38943854520141]},
+
+{name:"Lodge to Saint Joseph' Home",rating:"2",accessibility:" ",time:"2",tags:["architecture","1840"],descr:"",full_text:"",coordxy:[-2.897288366045336,53.38992386344557]},
+
+{name:"Main Bridewell",rating:"2",accessibility:" ",time:"2",tags:["architecture","1857","prison"],descr:"",full_text:"",coordxy:[-2.987163816353127,53.40919250337121]},
+
+{name:"Memorial to the Engine Room Heroes of the Titanic",rating:"2",accessibility:" ",time:"2",tags:["architecture","1916","titanic"],descr:"",full_text:"",coordxy:[-2.998075352253183,53.40613643429779]},
+
+{name:"Much Woolton Old School",rating:"2",accessibility:" ",time:"2",tags:["architecture","1610"],descr:"",full_text:"",coordxy:[-2.866559609215558,53.37018459157848]},
+
+{name:"Nelson Monument",rating:"2",accessibility:" ",time:"2",tags:["architecture","1813"],descr:"",full_text:"",coordxy:[-2.991972325908519,53.40756612136722]},
+
+{name:"Olympia Social Club",rating:"2",accessibility:" ",time:"2",tags:["architecture","1903"],descr:"",full_text:"",coordxy:[-2.957588025216457,53.41549292075444]},
+
+{name:"Orleans House",rating:"3",accessibility:" ",time:"2",tags:["architecture","1907"],descr:"",full_text:"",coordxy:[-2.993198993284294,53.40989638863938]},
+
+{name:"Philarmonia",rating:"2",accessibility:" ",time:"2",tags:["architecture","1937"],descr:"",full_text:"",coordxy:[-2.970064778049607,53.40126366311223]},
+
+{name:"Port of Liverpool Building and Stone Balustrade, Iron Gates and Piers",rating:"5",accessibility:" ",time:"2",tags:["architecture","landmark","1904","edwardianbaroque","palace"],descr:"",full_text:"",coordxy:[-2.994968851189256,53.40429584582856]},
+
+{name:"Railings, Plinth Walls, Gates, Piers and Steps at Church of St Luke",rating:"2",accessibility:" ",time:"2",tags:["architecture","1829","sandstone"],descr:"",full_text:"",coordxy:[-2.975503410640779,53.4018855057522]},
+
+{name:"Range on North Side of Edge Hill Station",rating:"2",accessibility:" ",time:"2",tags:["architecture","1836"],descr:"",full_text:"",coordxy:[-2.946748329155508,53.40267093182774]},
+
+{name:"Range on South Side of Edge Hill Station",rating:"2",accessibility:" ",time:"2",tags:["architecture","1836"],descr:"",full_text:"",coordxy:[-2.946820213091431,53.40246684687731]},
+
+{name:"LIVERPOOL METROPOLITAN CATHEDRAL / Paddys Wigwam",rating:"4",accessibility:" ",time:"20",tags:["architecture","art","1967","modern"],descr:"",full_text:"",coordxy:[-2.96845909781938,53.40477512846937]},
+
+{name:"Roman Catholic Church of Saint Vincent De Paul",rating:"2",accessibility:" ",time:"2",tags:["architecture","1856"],descr:"",full_text:"",coordxy:[-2.979037814003291,53.39695092919506]},
+
+{name:"Royal Insurance Building, North John Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1903"],descr:"",full_text:"",coordxy:[-2.989340179580762,53.4075552694643]},
+
+{name:"Royal Insurance Building, Queen Avenue",rating:"2",accessibility:" ",time:"2",tags:["architecture","1837"],descr:"",full_text:"",coordxy:[-2.990214039279095,53.40678334583097]},
+
+{name:"Saint Agnes' Vicarage",rating:"2",accessibility:" ",time:"2",tags:["architecture","1887"],descr:"",full_text:"",coordxy:[-2.939693006066811,53.38997048127155]},
+
+{name:"Saint Joseph' Home",rating:"2",accessibility:" ",time:"2",tags:["architecture","1845"],descr:"",full_text:"",coordxy:[-2.897200963272038,53.38962990852834]},
+
+{name:"County Sessions House",rating:"3",accessibility:" ",time:"2",tags:["architecture","1882","neoclassical","victorian"],descr:"",full_text:"",coordxy:[-2.978928988042038,53.41021597489547]},
+
+{name:"Stable Block to North and West of Stable Yard",rating:"2",accessibility:" ",time:"2",tags:["architecture","1676"],descr:"",full_text:"",coordxy:[-2.892110779292241,53.44164314918703]},
+
+{name:"Stanlawe Grange, the Granary",rating:"2",accessibility:" ",time:"2",tags:["architecture","1291"],descr:"",full_text:"",coordxy:[-2.918200878517032,53.3653513202355]},
+
+{name:"Steble Fountain",rating:"2",accessibility:" ",time:"2",tags:["architecture","1879"],descr:"",full_text:"",coordxy:[-2.979225331952758,53.40958392715618]},
+
+{name:"Tate & Lyle Sugar Silo",rating:"2",accessibility:" ",time:"2",tags:["architecture","1955","modern "],descr:"",full_text:"",coordxy:[-2.996594678013166,53.4339278676185]},
+
+{name:"The Carriage House, and Gate Piers to Garden",rating:"2",accessibility:" ",time:"2",tags:["architecture","1815"],descr:"",full_text:"",coordxy:[-2.949647913209748,53.37717967459056]},
+
+{name:"The Cloisters",rating:"2",accessibility:" ",time:"2",tags:["architecture","1815"],descr:"",full_text:"",coordxy:[-2.951064040582535,53.37596193921581]},
+
+{name:"The Friary or the Glebelands",rating:"2",accessibility:" ",time:"2",tags:["architecture","1815"],descr:"",full_text:"",coordxy:[-2.949671163192738,53.37621931845083]},
+
+{name:"The Hermitage",rating:"2",accessibility:" ",time:"2",tags:["architecture","1815"],descr:"",full_text:"",coordxy:[-2.950223014799909,53.37613668834795]},
+
+{name:"The Old Court House",rating:"2",accessibility:" ",time:"2",tags:["architecture","1662","sandstone"],descr:"",full_text:"",coordxy:[-2.909991821345166,53.43265125239487]},
+
+{name:"Tue Brook House",rating:"2",accessibility:" ",time:"2",tags:["architecture","1615"],descr:"",full_text:"",coordxy:[-2.925898019456914,53.42649614635759]},
+
+{name:"University Hostel and Greenbank House",rating:"2",accessibility:" ",time:"2",tags:["architecture","1787 sandstone"],descr:"",full_text:"",coordxy:[-2.926922871314623,53.38513677828453]},
+
+{name:"Village Cross",rating:"2",accessibility:" ",time:"2",tags:["architecture","1861"],descr:"",full_text:"",coordxy:[-2.909874626315785,53.43282459111788]},
+
+{name:"Walker art gallery",rating:"3",accessibility:" ",time:"40",tags:["museum","toilet","art","1874"],descr:"",full_text:"",coordxy:[-2.979574994160836,53.40997647205685]},
+
+{name:"War Memorial at Holy Trinity Church Yard",rating:"2",accessibility:" ",time:"2",tags:["architecture","1920"],descr:"",full_text:"",coordxy:[-2.91563467534693,53.3948281839443]},
+
+{name:"Warehouse at Wapping Dock",rating:"2",accessibility:" ",time:"2",tags:["architecture","1855"],descr:"",full_text:"",coordxy:[-2.986784101222498,53.39765961865145]},
+
+{name:"Warehouse on North Side of Dock",rating:"2",accessibility:" ",time:"2",tags:["architecture","1848"],descr:"",full_text:"",coordxy:[-2.998888888980078,53.42194444486574]},
+
+{name:"Wellington' Column",rating:"2",accessibility:" ",time:"2",tags:["architecture","monument","1865"],descr:"",full_text:"",coordxy:[-2.978824548544018,53.40962055899271]},
+
+{name:"8 Brougham Terrace",rating:"2",accessibility:" ",time:"2",tags:["architecture","1830","mosque"],descr:"",full_text:"",coordxy:[-2.960507691824938,53.41436043225021]},
+
+{name:"3–17 Percy Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1830","georgian"],descr:"",full_text:"",coordxy:[-2.969449834655321,53.39767105109278]},
+
+{name:"8–18 Percy Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1830","georgian"],descr:"",full_text:"",coordxy:[-2.969904948307346,53.39756827307349]},
+
+{name:"20–32 Percy Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1830","georgian"],descr:"",full_text:"",coordxy:[-2.969658078382244,53.39703912384402]},
+
+{name:"1 and 3 Duke Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1849"],descr:"",full_text:"",coordxy:[-2.985237754506913,53.40266674253206]},
+
+{name:"98-102, 102a High Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1750"],descr:"",full_text:"",coordxy:[-2.916905645887402,53.39824037256583]},
+
+{name:"159–163 Duke Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1765"],descr:"",full_text:"",coordxy:[-2.977770087123808,53.40063519877581]},
+
+{name:"169 and 171 Duke Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1765"],descr:"",full_text:"",coordxy:[-2.977601633279654,53.40060143006778]},
+
+{name:"173 and 175 Duke Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1765"],descr:"",full_text:"",coordxy:[-2.977194530039925,53.4006631069567]},
+
+{name:"24 Hanover Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1800"],descr:"",full_text:"",coordxy:[-2.985006995613919,53.40281094251728]},
+
+{name:"26–30 Hanover Street",rating:"2",accessibility:" ",time:"2",tags:["architecture","1800"],descr:"",full_text:"",coordxy:[-2.9849366446932,53.40287229266967]},
+
+{name:"West Derby War Memorial",rating:"2",accessibility:" ",time:"2",tags:["architecture","1922","monument"],descr:"",full_text:"",coordxy:[-2.793600732149877,53.43397728064771]},
+
+{name:"Bootle War Memorial, including flight of steps and flanking stone tablets",rating:"2",accessibility:" ",time:"2",tags:["architecture","1922","monument"],descr:"",full_text:"",coordxy:[-2.988319363636907,53.44455272698549]},
+
+{name:"Dovecote and adjoining Wall about 57m to north of Formby Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1700"],descr:"",full_text:"",coordxy:[-3.041818774484291,53.58193936926809]},
+
+{name:"Formby Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1620"],descr:"",full_text:"",coordxy:[-3.041473967650096,53.58129651099782]},
+
+{name:"Church of the Holy Family adjoining Service Wing of Ince Blundell Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1858"],descr:"",full_text:"",coordxy:[-3.016824876319704,53.51950131362451]},
+
+{name:"Garden Temple to South West of Ince Blundell Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1775"],descr:"",full_text:"",coordxy:[-3.01713444833061,53.51891418234099]},
+
+{name:"Ince Blundell Hall",rating:"3",accessibility:" ",time:"2",tags:["architecture","1720 georgian","sandstone"],descr:"",full_text:"",coordxy:[-3.0165692579905,53.51936817544377]},
+
+{name:"Ince Blundell Old Hall to South West of New Hall",rating:"3",accessibility:" ",time:"2",tags:["architecture","1590"],descr:"",full_text:"",coordxy:[-3.017465700023235,53.51827041994358]},
+
+{name:"Pantheon adjoining Ince Blundell Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1802","art","museum"],descr:"",full_text:"",coordxy:[-3.015990636900199,53.51929323879021]},
+
+{name:"St Catherine' Chapel, Lydiate",rating:"2",accessibility:" ",time:"2",tags:["architecture","1500","ruin"],descr:"",full_text:"",coordxy:[-2.961221429620223,53.53683187718167]},
+
+{name:"Scotch Piper Inn",rating:"2",accessibility:" ",time:"2",tags:["architecture","1320","pub"],descr:"",full_text:"",coordxy:[-2.960027141521428,53.53645157678893]},
+
+{name:"Maghull Chapel",rating:"2",accessibility:" ",time:"2",tags:["architecture","1250"],descr:"",full_text:"",coordxy:[-2.943396487726726,53.51034222877537]},
+
+{name:"Barnes Farmhouse",rating:"2",accessibility:" ",time:"2",tags:["architecture","1654"],descr:"",full_text:"",coordxy:[-2.910271857566408,53.4967522662642]},
+
+{name:"Christ Church",rating:"2",accessibility:" ",time:"2",tags:["architecture","1891","sandstone","perpendicular"],descr:"",full_text:"",coordxy:[-3.023724825019325,53.47093909160919]},
+
+{name:"Church of Holy Trinity",rating:"2",accessibility:" ",time:"2",tags:["architecture","1904"],descr:"",full_text:"",coordxy:[-2.996547065533587,53.6501475150808]},
+
+{name:"Church of St Benet and Chapel House",rating:"2",accessibility:" ",time:"2",tags:["architecture","1793"],descr:"",full_text:"",coordxy:[-2.96764528029628,53.49451980591518]},
+
+{name:"Crosby Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1784"],descr:"",full_text:"",coordxy:[-3.022901794644183,53.50570354741202]},
+
+{name:"Meols Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1100"],descr:"",full_text:"",coordxy:[-2.960926155283782,53.65763527377536]},
+
+{name:"Merchant Taylors School (Girls). That portion which was the original foundation.",rating:"2",accessibility:" ",time:"2",tags:["architecture","1620"],descr:"",full_text:"",coordxy:[-3.025054015568901,53.48976519267294]},
+
+{name:"HSBC Bank",rating:"2",accessibility:" ",time:"2",tags:["architecture","1888"],descr:"",full_text:"",coordxy:[-3.005620816409672,53.64852496838424]},
+
+{name:"War Memorial Obelisk, North-east Colonnade, South-west Colonnade, Pools of Remembrance and Memorial Garden Walls, and Cast-iron Lamp Standards",rating:"3",accessibility:" ",time:"2",tags:["architecture","1923"],descr:"",full_text:"",coordxy:[-3.00432691715832,53.64869090769648]},
+
+{name:"74 Liverpool Road",rating:"2",accessibility:" ",time:"2",tags:["architecture","1600"],descr:"",full_text:"",coordxy:[-3.011681091930965,53.6311125745992]},
+
+{name:"Birchley Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1594","history"],descr:"",full_text:"",coordxy:[-2.718586258115794,53.49289058992153]},
+
+{name:"Church of St Aidan",rating:"2",accessibility:" ",time:"2",tags:["architecture","1718"],descr:"",full_text:"",coordxy:[-2.705151636593967,53.50089180061612]},
+
+{name:"Adjacent Ruins at Scholes House",rating:"2",accessibility:" ",time:"2",tags:["architecture","1681 ruin","sandstone"],descr:"",full_text:"",coordxy:[-2.769357623041685,53.43496840284319]},
+
+{name:"Effigy Pedestal in Garden of Scholes House",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.76972452895063,53.43474919493118]},
+
+{name:"Scholes House",rating:"2",accessibility:" ",time:"2",tags:["architecture","1500"],descr:"",full_text:"",coordxy:[-2.769524096367429,53.43485975952078]},
+
+{name:"Guildhall Farmhouse",rating:"2",accessibility:" ",time:"2",tags:["architecture","1629"],descr:"",full_text:"",coordxy:[-2.737985953566215,53.49631168903429]},
+
+{name:"Manor Farmhouse",rating:"2",accessibility:" ",time:"2",tags:["architecture","1300"],descr:"",full_text:"",coordxy:[-2.753834359165138,53.40553148402191]},
+
+{name:"Old Hall Farmhouse",rating:"2",accessibility:" ",time:"2",tags:["architecture","1300"],descr:"",full_text:"",coordxy:[-2.7689384247455,53.40669694208233]},
+
+{name:"Entrance Archway to Randall' Nursery",rating:"2",accessibility:" ",time:"2",tags:["architecture","1800"],descr:"",full_text:"",coordxy:[-2.621718402737193,53.45820022734988]},
+
+{name:"Ruins of Windleshaw Abbey in Roman Catholic Cemetery (chapel of Saint Thomas of Canterbury)",rating:"2",accessibility:" ",time:"2",tags:["architecture","1453","ruin"],descr:"",full_text:"",coordxy:[-2.75521272966085,53.46699035144496]},
+
+{name:"Statue of Queen Victoria",rating:"2",accessibility:" ",time:"2",tags:["architecture","1906","monument","sandstone"],descr:"",full_text:"",coordxy:[-2.736308393786426,53.45418730374013]},
+
+{name:"Tank House, Beside Canal at Crown Glass Works",rating:"2",accessibility:" ",time:"2",tags:["architecture","1883"],descr:"",full_text:"",coordxy:[-2.735685734227253,53.44969013082848]},
+
+{name:"159, 161 and 163 Crow Lane East",rating:"2",accessibility:" ",time:"2",tags:["architecture","1500"],descr:"",full_text:"",coordxy:[-2.631061333412599,53.45624610042239]},
+
+{name:"Bidston Hall",rating:"3",accessibility:" ",time:"2",tags:["architecture","1550"],descr:"",full_text:"",coordxy:[-3.07621083607091,53.40384619757543]},
+
+{name:"Bidston Windmill",rating:"2",accessibility:" ",time:"2",tags:["architecture","1800","windmill"],descr:"",full_text:"",coordxy:[-3.073326430840676,53.39631180965821]},
+
+{name:"Chapter House Chapel at Birkenhead Priory",rating:"4",accessibility:" ",time:"2",tags:["architecture","1150","ruin"],descr:"",full_text:"",coordxy:[-3.01146924269736,53.38958502595548]},
+
+{name:"Christ Church",rating:"2",accessibility:" ",time:"2",tags:["architecture","1904","sandstone","gothic"],descr:"",full_text:"",coordxy:[-2.995274554987042,53.35345225344283]},
+
+{name:"Church of St Bartholomew",rating:"2",accessibility:" ",time:"2",tags:["architecture","1824","sandstone"],descr:"",full_text:"",coordxy:[-3.132067236634345,53.34860619120791]},
+
+{name:"Church of St George (United Reformed)",rating:"2",accessibility:" ",time:"2",tags:["architecture","1906","sandstone"],descr:"",full_text:"",coordxy:[-3.045442061577668,53.32113657861495]},
+
+{name:"Church of St Peter",rating:"2",accessibility:" ",time:"2",tags:["architecture","1306","sandstone"],descr:"",full_text:"",coordxy:[-3.103624273678656,53.3227758106984]},
+
+{name:"Church of St Saviour",rating:"2",accessibility:" ",time:"2",tags:["architecture","1889","sandstone","decorated"],descr:"",full_text:"",coordxy:[-3.051628588226834,53.38233154599403]},
+
+{name:"Church of St Barnabas",rating:"2",accessibility:" ",time:"2",tags:["architecture","912","1862","sandstone"],descr:"",full_text:"",coordxy:[-2.978869883423348,53.33290495095153]},
+
+{name:"Church of the Holy Cross",rating:"3",accessibility:" ",time:"2",tags:["architecture","1100"],descr:"",full_text:"",coordxy:[-3.090098940238631,53.37346453371764]},
+
+{name:"Dovecote to north of Gayton Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1663"],descr:"",full_text:"",coordxy:[-3.092149007586472,53.31609995855322]},
+
+{name:"Enclosing Wall and Gateway to Forecourt of Bidston Hall",rating:"3",accessibility:" ",time:"2",tags:["architecture","1550"],descr:"",full_text:"",coordxy:[-3.0767173649881,53.4038322936633]},
+
+{name:"Fort Perch Rock",rating:"4",accessibility:" ",time:"2",tags:["architecture","fort","1826","museum","navy"],descr:"",full_text:"",coordxy:[-3.040937056128883,53.44268492905251]},
+
+{name:"Gatehouse to Thornton Manor and Attached Courtyard Walls",rating:"2",accessibility:" ",time:"2",tags:["architecture","1910","sandstone"],descr:"",full_text:"",coordxy:[-3.050913919175136,53.32732449880251]},
+
+{name:"Gayton Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1650"],descr:"",full_text:"",coordxy:[-3.092204301785342,53.31565299221156]},
+
+{name:"Grand Entrance Gateway to Birkenhead Park with North and South Lodges",rating:"3",accessibility:" ",time:"2",tags:["architecture","1847"],descr:"",full_text:"",coordxy:[-3.033130779174865,53.39443979922736]},
+
+{name:"Hill Bark",rating:"2",accessibility:" ",time:"2",tags:["architecture","1929"],descr:"",full_text:"",coordxy:[-3.137956529790502,53.36318028177485]},
+
+{name:"Hoylake and West Kirby War Memorial",rating:"2",accessibility:" ",time:"2",tags:["architecture","overview","1919"],descr:"",full_text:"",coordxy:[-3.175413778855316,53.3753591759351]},
+
+{name:"Leasowe Castle",rating:"3",accessibility:" ",time:"2",tags:["architecture","1593"],descr:"",full_text:"",coordxy:[-3.108058380083635,53.41840745997561]},
+
+{name:"Market Cross at Junction of Allport Lane",rating:"2",accessibility:" ",time:"2",tags:["architecture","1278"],descr:"",full_text:"",coordxy:[-2.977676824433387,53.33214644635309]},
+
+{name:"Memorial Chapel",rating:"2",accessibility:" ",time:"2",tags:["architecture","1898"],descr:"",full_text:"",coordxy:[-3.041015408281958,53.42172625355872]},
+
+{name:"Former Midland Bank",rating:"2",accessibility:" ",time:"2",tags:["architecture","1880","sandstone","gothic"],descr:"",full_text:"",coordxy:[-3.016273434194261,53.39181959685875]},
+
+{name:"Number 4 Dry Dock",rating:"2",accessibility:" ",time:"2",tags:["architecture","1857","sandstone","navy mechanics"],descr:"",full_text:"",coordxy:[-3.008119203491249,53.38948686877604]},
+
+{name:"Nos 1 to 6 (consecutive), Mortimer St, with Area Railings attached",rating:"2",accessibility:" ",time:"2",tags:["architecture","1825"],descr:"",full_text:"",coordxy:[-3.014102883944545,53.39342132673004]},
+
+{name:"Perch Rock Lighthouse",rating:"3",accessibility:" ",time:"2",tags:["architecture","1827","lighthouse"],descr:"",full_text:"",coordxy:[-3.04231690869623,53.44430803615664]},
+
+{name:"Roman Catholic Church of English Martyrs",rating:"2",accessibility:" ",time:"2",tags:["architecture","1952"],descr:"",full_text:"",coordxy:[-3.063407868014585,53.42435266151654]},
+
+{name:"Storeton Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1360","sandstone"],descr:"",full_text:"",coordxy:[-3.045452483847015,53.35225548898956]},
+
+{name:"Thornton Manor",rating:"3",accessibility:" ",time:"2",tags:["architecture","1840"],descr:"",full_text:"",coordxy:[-3.051709309168165,53.32763944890376]},
+
+{name:"Thurstaston Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture","1400"],descr:"",full_text:"",coordxy:[-3.132727403754425,53.34823617687449]},
+
+{name:"Town Hall",rating:"3",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-3.014367513477951,53.39321291864184]},
+
+{name:"Wallasey Town Hall",rating:"3",accessibility:" ",time:"2",tags:["architecture","1883"],descr:"",full_text:"",coordxy:[-3.022862163571359,53.41592031466709]},
+
+{name:"The Hardmans' House, 59 Rodney Street",rating:"1",accessibility:" ",time:"5",tags:["museum","photography","history"],descr:"",full_text:"",coordxy:[-2.973678500571669,53.39978762663701]},
+
+{name:"Alexandra Tower",rating:"2",accessibility:" ",time:"2",tags:["architecture","modern"],descr:"",full_text:"",coordxy:[-3.001454740747943,53.41119492145977]},
+
+{name:"Beetham Tower, Liverpool",rating:"2",accessibility:" ",time:"2",tags:["architecture","modern"],descr:"",full_text:"",coordxy:[-2.996612262644817,53.41113197484458]},
+
+{name:"West Tower tallest building",rating:"3",accessibility:" ",time:"2",tags:["architecture","modern"],descr:"",full_text:"",coordxy:[-2.996615261160522,53.40994431965523]},
+
+{name:"New Hall Place",rating:"2",accessibility:" ",time:"2",tags:["architecture","modern"],descr:"",full_text:"",coordxy:[-2.995584832650434,53.40881588982749]},
+
+{name:"One Park West",rating:"2",accessibility:" ",time:"2",tags:["architecture","modern"],descr:"",full_text:"",coordxy:[-2.989566075872634,53.4033464120117]},
+
+{name:"Queen Elizabeth II Law Courts",rating:"2",accessibility:" ",time:"2",tags:["architecture","modern"],descr:"",full_text:"",coordxy:[-2.989725136872675,53.40404024802338]},
+
+{name:"Unity Buildings",rating:"2",accessibility:" ",time:"2",tags:["architecture","modern"],descr:"",full_text:"",coordxy:[-2.994861643276509,53.40802473629514]},
+
+{name:"Church of All Hallows, Allerton",rating:"3",accessibility:" ",time:"2",tags:["architecture","1872","gothic","sandstone"],descr:"",full_text:"",coordxy:[-2.903762869132648,53.38072929782742]},
+
+{name:"Oriel Chambers Empire state building prototype",rating:"4",accessibility:" ",time:"2",tags:["architecture","1864","skyscraper"],descr:"",full_text:"",coordxy:[-2.993240424321175,53.40655304283763]},
+
+{name:"Woolton Hall",rating:"3",accessibility:" ",time:"2",tags:["architecture","1704","history"],descr:"",full_text:"",coordxy:[-2.864062080794743,53.3714164624235]},
+
+{name:"Princes Road Synagogue",rating:"3",accessibility:" ",time:"2",tags:["architecture","1860"],descr:"",full_text:"",coordxy:[-2.965166640380344,53.39508407697013]},
+
+{name:"Church of St Agnes and St Pancras, Toxteth Park",rating:"3",accessibility:" ",time:"2",tags:["architecture","1883","victorian","sandstone"],descr:"",full_text:"",coordxy:[-2.939841812098468,53.38961093443531]},
+
+{name:"ST. GEORGE’S HALL",rating:"5",accessibility:" ",time:"2",tags:["architecture","1841","neoclassical","landmark","history"],descr:"",full_text:"",coordxy:[-2.980052044478685,53.40869233382711]},
+
+{name:"Toxteth Unitarian Chapel",rating:"3",accessibility:" ",time:"2",tags:["architecture","1618"],descr:"",full_text:"",coordxy:[-2.957898668275683,53.38134468528556]},
+
+{name:"Albert Dock Traffic Office",rating:"3",accessibility:" ",time:"2",tags:["architecture","1846"],descr:"",full_text:"",coordxy:[-2.992085807443758,53.40151146386831]},
+
+{name:"BLUECOAT CHAMBERS",rating:"4",accessibility:" ",time:"30",tags:["museum","history","art","architecture","1716"],descr:"",full_text:"",coordxy:[-2.983838104658052,53.4041619761183]},
+
+{name:"LIVERPOOL CATHEDRAL",rating:"5",accessibility:" ",time:"2",tags:["architecture","landmark","1904"],descr:"",full_text:"",coordxy:[-2.973002823388995,53.39752596243397]},
+
+{name:"Bank of England",rating:"3",accessibility:" ",time:"2",tags:["architecture","neoclassical","1845"],descr:"",full_text:"",coordxy:[-2.990464619988237,53.40619725797079]},
+
+{name:"St Clare' Church",rating:"3",accessibility:" ",time:"2",tags:["architecture","1888","gothic"],descr:"",full_text:"",coordxy:[-2.936639187328066,53.39102352149224]},
+
+{name:"LIVERPOOL TOWN HALL",rating:"4",accessibility:" ",time:"2",tags:["architecture","1754","beatles"],descr:"",full_text:"",coordxy:[-2.991591816441154,53.40710093593473]},
+
+{name:"St James Cemetery",rating:"3",accessibility:" ",time:"10",tags:["panoramic"],descr:"",full_text:"",coordxy:[-2.972154397677119,53.39832091319433]},
+
+{name:"Royal Liver Building",rating:"5",accessibility:" ",time:"2",tags:["architecture","landmark","1911","liverbird","clock"],descr:"",full_text:"",coordxy:[-2.99594261590094,53.40582710999275]},
+
+{name:"Church of Saint John the Baptist",rating:"3",accessibility:" ",time:"2",tags:["architecture","1867"],descr:"",full_text:"",coordxy:[-2.929972363944606,53.42481014207746]},
+
+{name:"The Oratory",rating:"3",accessibility:" ",time:"2",tags:["architecture","1829","museum"],descr:"",full_text:"",coordxy:[-2.973187759879177,53.39877191641651]},
+
+{name:"Church of St Mary",rating:"4",accessibility:" ",time:"2",tags:["architecture","1400","sandstone"],descr:"",full_text:"",coordxy:[-2.806092280269963,53.42843427477103]},
+
+{name:"SPEKE HALL",rating:"4",accessibility:" ",time:"2",tags:["architecture","1530","tudor","wood","history"],descr:"",full_text:"",coordxy:[-2.874136322483125,53.33694934601503]},
+
+{name:"All Saints' Church, Childwall",rating:"3",accessibility:" ",time:"2",tags:["architecture","1716","sandstone"],descr:"",full_text:"",coordxy:[-2.881607096199971,53.39531131135187]},
+
+{name:"Church of St George",rating:"3",accessibility:" ",time:"2",tags:["architecture","1813","perpendicular"],descr:"",full_text:"",coordxy:[-2.971463029920025,53.42523698704926]},
+
+{name:"St Michael' Church, Aigburth",rating:"3",accessibility:" ",time:"2",tags:["architecture","1813 gothic","sandstone"],descr:"",full_text:"",coordxy:[-2.949854569378706,53.37658557608782]},
+
+{name:"Railings Gates and Gate Piers Old Bluecoat School",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.983770291460624,53.40438845431604]},
+
+{name:"Unitarian Chapel",rating:"3",accessibility:" ",time:"2",tags:["architecture","1899 gothic","sandstone"],descr:"",full_text:"",coordxy:[-2.938063126330086,53.38984369988492]},
+
+{name:"Sankey Viaduct",rating:"3",accessibility:" ",time:"2",tags:["architecture","1828","transportation","mechanics","first rail","rail"],descr:"",full_text:"",coordxy:[-2.650757058162194,53.44744399175344]},
+
+{name:"Unitarian Church Hall",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.937537957177451,53.38976742451693]},
+
+{name:"Warehouse A",rating:"5",accessibility:" ",time:"2",tags:["architecture","landmark","1841"],descr:"",full_text:"",coordxy:[-2.991086937671652,53.40006579521251]},
+
+{name:"Warehouses B and C",rating:"5",accessibility:" ",time:"2",tags:["architecture","landmark","1841"],descr:"",full_text:"",coordxy:[-2.993178371711625,53.39910960556087]},
+
+{name:"Warehouse D",rating:"5",accessibility:" ",time:"2",tags:["architecture","landmark","1841"],descr:"",full_text:"",coordxy:[-2.992826387860789,53.40126292418977]},
+
+{name:"Warehouse E",rating:"5",accessibility:" ",time:"2",tags:["architecture","landmark","1841"],descr:"",full_text:"",coordxy:[-2.991789999836758,53.40104118594144]},
+
+{name:"Church of St Helen",rating:"4",accessibility:" ",time:"2",tags:["architecture","1320","history"],descr:"",full_text:"",coordxy:[-2.971177737329284,53.50442388858634]},
+
+{name:"Church of St Monica",rating:"3",accessibility:" ",time:"2",tags:["architecture","1930"],descr:"",full_text:"",coordxy:[-2.979806664479955,53.45389394751388]},
+
+{name:"Brimstage Hall and Tower",rating:"3",accessibility:" ",time:"2",tags:["architecture","1398"],descr:"",full_text:"",coordxy:[-3.046350916867485,53.33662347038267]},
+
+{name:"Church of St. Andrew",rating:"3",accessibility:" ",time:"2",tags:["architecture","1300","sandstone"],descr:"",full_text:"",coordxy:[-3.003392837596561,53.34797268162903]},
+
+{name:"Numbers 1 to 18 (consecutive), Hamilton Square - with Railings to Front",rating:"4",accessibility:" ",time:"2",tags:["architecture","1825","georgian"],descr:"",full_text:"",coordxy:[-3.01535601164754,53.39429836259884]},
+
+{name:"Numbers 19 to 34 (consecutive), Hamilton Square - with Railings to Front",rating:"4",accessibility:" ",time:"2",tags:["architecture","1839","georgian"],descr:"",full_text:"",coordxy:[-3.017226903497532,53.3939383550477]},
+
+{name:"Numbers 35 to 51 (consecutive), Hamilton Square - with Railings to Front",rating:"4",accessibility:" ",time:"2",tags:["architecture","1839","georgian"],descr:"",full_text:"",coordxy:[-3.016420423512358,53.39281270138394]},
+
+{name:"Numbers 52 to 57 (consecutive), Hamilton Square - with Railings to Front",rating:"4",accessibility:" ",time:"2",tags:["architecture","1844","georgian"],descr:"",full_text:"",coordxy:[-3.014923161816902,53.39287765688212]},
+
+{name:"Numbers 58 to 63 (consecutive), Hamilton Square - with Railings to Front, Flanking Wall and Gatepiers to East",rating:"4",accessibility:" ",time:"2",tags:["architecture","1825","georgian"],descr:"",full_text:"",coordxy:[-3.014296635742641,53.39369406561097]},
+
+{name:"Remains of Birkenhead Priory",rating:"4",accessibility:" ",time:"2",tags:["architecture","1821"],descr:"",full_text:"",coordxy:[-3.011323566337195,53.38956356914977]},
+
+{name:"Port Sunlight War Memorial",rating:"3",accessibility:" ",time:"2",tags:["architecture","1919","history","WW1"],descr:"",full_text:"",coordxy:[-2.997911800772565,53.35305672225898]},
+
+{name:"Blackburne House",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.970421640840945,53.39992552620208]},
+
+{name:"Calderstones House",rating:"2",accessibility:" ",time:"2",tags:["architecture","georgian"],descr:"",full_text:"",coordxy:[-2.894166798062396,53.38146812340655]},
+
+{name:"Church of Our Lady and Saint Nicholas, Liverpool",rating:"4",accessibility:" ",time:"10",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.994793194648293,53.40706432204787]},
+
+{name:"Chinese arch",rating:"4",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.976835257105912,53.39953315640951]},
+
+{name:"tunnel",rating:"2",accessibility:" ",time:"2",tags:["architecture","transportation","modern","tunnel"],descr:"",full_text:"",coordxy:[-2.984429030604308,53.40930582605702]},
+
+{name:"old station",rating:"2",accessibility:" ",time:"2",tags:["architecture","rail"],descr:"",full_text:"",coordxy:[-2.990544270950772,53.4092863906379]},
+
+{name:"Pump House",rating:"3",accessibility:" ",time:"2",tags:["architecture","navy","1878","mechanics"],descr:"",full_text:"",coordxy:[-2.992085807236603,53.40183797373308]},
+
+{name:"mosque",rating:"2",accessibility:" ",time:"2",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.96066424181332,53.39431073511297]},
+
+
+
+
+
+
 
 
 ]
@@ -283,7 +783,7 @@ for (i = 0; i < inputlen; i++) {
 	min_ind = 0
 	for (each in MY_SELECTED_ATTRACTIONS) {
 		console.log(MY_SELECTED_ATTRACTIONS[each].info.coordxy)
-		curr_dist = (MY_SELECTED_ATTRACTIONS[each].info.coordxy[0]-MY_START_POINT[0])*(MY_SELECTED_ATTRACTIONS[each].info.coordxy[0]-MY_START_POINT[0])+(MY_SELECTED_ATTRACTIONS[each].info.coordxy[1]-MY_START_POINT[1])*(MY_SELECTED_ATTRACTIONS[each].info.coordxy[1]-MY_START_POINT[1])
+		curr_dist = ((MY_SELECTED_ATTRACTIONS[each].info.coordxy[0]-MY_START_POINT[0])*(MY_SELECTED_ATTRACTIONS[each].info.coordxy[0]-MY_START_POINT[0]))+((MY_SELECTED_ATTRACTIONS[each].info.coordxy[1]-MY_START_POINT[1])*(MY_SELECTED_ATTRACTIONS[each].info.coordxy[1]-MY_START_POINT[1]))
 		if (curr_dist  < min_dist) {
 			min_dist = curr_dist
 			min_ind = each
@@ -302,17 +802,38 @@ for (i = 0; i < inputlen; i++) {
 }
 
 
+
+function HrMin(curr_time) {
+Hours = Math.floor(curr_time/3600)
+curr_time = curr_time - (Hours*3600)
+Mins = Math.floor(curr_time/60)
+curr_time = curr_time - (Mins*60)
+return String(Hours)+':'+String(Mins)+':'+String(curr_time)
+}
+
+
 function AddTimes(MY_ATTRACTIONS_AGENDA)
 {
 	var journey_starting_time = 36000 ; 
+	var curr_time = journey_starting_time ; 
+	var curr_location = START_POINT
+	var prev_location = START_POINT
+	var i = 0
 
 	for (each in MY_ATTRACTIONS_AGENDA) {
+		i = i + 1
+		curr_location = MY_ATTRACTIONS_AGENDA[each].info.coordxy
+		var time_add = Math.floor(100000*Math.sqrt(((curr_location[0]-prev_location[0])*(curr_location[0]-prev_location[0]))+((curr_location[1]-prev_location[1])*(curr_location[1]-prev_location[1]))))
+		curr_time = curr_time + time_add
+		time_in = HrMin(curr_time)
+		curr_time = curr_time + 100
+		time_out = HrMin(curr_time)
+		///if (i > 1) {
 
-		time_in = "10:00:00"
-		time_out = "10:05:00"
-
+		///}
 		MY_ATTRACTIONS_AGENDA[each].info.time_in = time_in
 		MY_ATTRACTIONS_AGENDA[each].info.time_out = time_out
+		prev_location = MY_ATTRACTIONS_AGENDA[each].info.coordxy
 	}
 	return MY_ATTRACTIONS_AGENDA ; 
 }
@@ -474,7 +995,7 @@ L.marker(target).addTo(osmmap);
 
 
 
-	var ret = ''//'<div id="osm-map"></div>'
+	var ret = '<div style="height:100px; color:red; font-size:35px">CHECK THE MAP AND PRESS BUTTON TO START YOUR TOUR</div>'//'<div id="osm-map"></div>'
 	return ret
 	}
 
