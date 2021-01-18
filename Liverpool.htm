@@ -1618,7 +1618,10 @@ function AddTimes(MY_ATTRACTIONS_AGENDA)
 		var time_add = Math.floor(100000*Math.sqrt(((curr_location[0]-prev_location[0])*(curr_location[0]-prev_location[0]))+((curr_location[1]-prev_location[1])*(curr_location[1]-prev_location[1]))))
 		curr_time = curr_time + time_add
 		time_in = HrMin(curr_time)
-		curr_time = curr_time + 100
+		var stay_time = 100 ; 
+aaa = parseInt(MY_ATTRACTIONS_AGENDA[each].info.time)
+if (aaa > 0) {stay_time = aaa*60}
+		curr_time = curr_time + stay_time ; 
 		time_out = HrMin(curr_time)
 		///if (i > 1) {
 
@@ -1629,6 +1632,74 @@ function AddTimes(MY_ATTRACTIONS_AGENDA)
 	}
 	return MY_ATTRACTIONS_AGENDA ; 
 }
+
+
+
+
+
+function getnewword_update(_item,_action) {
+
+var _agenda_temp = []
+console.log(_item) ; 
+if (_action == 0) {
+//for (i = 0; i < _item; i++) {
+//_agenda_temp.push(ATTRACTIONS_AGENDA[i])
+//}
+///ATTRACTIONS_AGENDA = _agenda_temp
+	//delete ATTRACTIONS_AGENDA[item]
+ATTRACTIONS_AGENDA.splice(_item, 1);
+console.log(ATTRACTIONS_AGENDA) ; 
+}
+
+
+
+if (_action == -1) {
+for (i = 0; i < _item-1; i++) {
+_agenda_temp.push(ATTRACTIONS_AGENDA[i])
+}
+_agenda_temp.push(ATTRACTIONS_AGENDA[_item])
+_agenda_temp.push(ATTRACTIONS_AGENDA[_item - 1])
+for (i = _item+1; i < ATTRACTIONS_AGENDA.length; i++) {
+_agenda_temp.push(ATTRACTIONS_AGENDA[i])
+}
+ATTRACTIONS_AGENDA = _agenda_temp
+	//delete ATTRACTIONS_AGENDA[item]
+//ATTRACTIONS_AGENDA.splice(_item, 1);
+console.log(ATTRACTIONS_AGENDA) ; 
+}
+
+
+if (_action == 1) {
+for (i = 0; i < _item; i++) {
+_agenda_temp.push(ATTRACTIONS_AGENDA[i])
+}
+_agenda_temp.push(ATTRACTIONS_AGENDA[_item + 1])
+_agenda_temp.push(ATTRACTIONS_AGENDA[_item])
+for (i = _item+2; i < ATTRACTIONS_AGENDA.length; i++) {
+_agenda_temp.push(ATTRACTIONS_AGENDA[i])
+}
+ATTRACTIONS_AGENDA = _agenda_temp
+	//delete ATTRACTIONS_AGENDA[item]
+//ATTRACTIONS_AGENDA.splice(_item, 1);
+console.log(ATTRACTIONS_AGENDA) ; 
+}
+
+
+
+		ATTRACTIONS_AGENDA = AddTimes(ATTRACTIONS_AGENDA)
+		var ret = '<div style="height:100px; color:lime; font-size:35px">ORGANIZE AGENDA</div><div style="height:70px; color:black; font-size:20px"><br><br><br><br><br><br>'
+var myspan_ = "'myspan'"
+for(var item in ATTRACTIONS_AGENDA) {
+//console.log(ATTRACTIONS_AGENDA[item])
+ret = ret + '<br><button id="Upbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',-1)">^</button><button id="Delbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',0)">X</button><button id="Downbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',1)">v</button><a style="height:100px; color:red; font-size:25px">'+ATTRACTIONS_AGENDA[item].info.time_in+' - '+ATTRACTIONS_AGENDA[item].info.time_out+'</a><label for="male">'+ATTRACTIONS_AGENDA[item].info.name+'</label>' ; 
+}
+return ret
+}
+
+
+
+
+
 
 function getnewword () {
 //console.log(TRANSPORT_MODE)
