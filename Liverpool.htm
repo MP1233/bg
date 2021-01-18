@@ -1,0 +1,508 @@
+<div id="myspan"> hereismytext </div>
+<link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+
+
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTSeQoi0X_SR25XoTZlCKPZ2nJCGD9g74&callback=initMap&libraries=&v=weekly"
+      defer
+    ></script>
+    <style type="text/css">
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 800;
+	top: 500;
+      }
+
+
+    </style>
+
+
+<script>
+var PAGE_NUMBER = 0
+var TRANSPORT_MODE = 0
+var LANGUAGE_MODE = "EN"
+var START_POINT = [-2.9667,53.4061]
+var SELECTED_INTERESTS_LVL1 = []
+var SELECTED_INTERESTS_LVL2 = {panoramic:0,landmark:1}
+var SELECTED_ATTRACTIONS = []
+//var SELECTED_ATTRACTIONS_IND = []
+var ATTRACTIONS_AGENDA = []
+
+
+
+
+
+
+
+
+
+
+
+
+      let map;
+
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat: 53.4061, lng: -2.9667 },
+          zoom: 12,
+        });
+
+
+
+
+        new google.maps.Marker({
+          position: { lat: 53.4061, lng: -2.9667 },
+          map,
+          title: "Hello World!",
+        });
+
+
+
+
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var Interests_Lvl2 = {
+Architecture:['11century', '12century', '13century', '14century', '15century', '16century', '17century', '18century', '19century', '20century', '10century', 'ancient', 'archeology', 'architecture', 'edwardianbaroque', 'fort', 'geometric', 'georgian', 'gothic', 'greekrevival', 'japanese', 'lighthouse', 'lever', 'ruin', 'sandstone', 'perpendicular', 'victorian', 'windmill', 'wood', 'tudor', 'skyscraper', 'sculpture', 'renaissance', 'palace', 'palladian', 'neolit', 'neoclassical', 'monument', 'modern'], 
+Football:['LFC', 'football', 'sports', 'liverbird'], 
+History:['WW1', 'WW2', 'druids', 'fort', 'history', 'hitler', 'immigration', 'lever', 'neolit'], 
+Amusements:['amusements', 'aquarium', 'kids'], 
+Arts:['art', 'culture', 'education', 'etnics', 'japanese', 'lambanana', 'museum', 'sculpture', 'photography', 'monument', 'liverbird', 'theater'], 
+Music:['beatles','david bowie','Goldie', 'music', 'theater'], 
+Botanics:['botanical', 'botanicalgarden', 'dogging', 'dunes', 'promenade', 'park', 'zoo', 'zoology'],
+Navy:[ 'canal', 'dock', 'navy', 'lighthouse', 'titanic', 'submarine', 'sluice', 'sea'],
+Pubs:[ 'casino', 'clock', 'club', 'comedy', 'pub'],
+Adventure:[ 'cruise', 'decorated', 'dinosaurs', 'safari', 'leisure'],
+Industry:[ 'lever', 'tram', 'transportation', 'tunnel', 'technology', 'soap', 'sluice', 'skyscraper', 'rail', 'industry', 'mechanics'],
+Shopping:[ 'food', 'restaurant', 'shop', 'shopping', 'souvenirs', 'tapestries']
+ /*'first', 'ghetto', 'hotel', 'landmark', 'massmadness', 'mosque', 'overview', 'panoramic', 'prison', 'space', 'toilet', 'trash'*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var ATTRACTIONS = [
+{name:"Albert Dock",rating:"4",accessibility:" ",time:"2min",tags:["dock","navy","industry","landmark","panoramic"],descr:"",full_text:"",coordxy:[-2.99260005630742,53.4002276045906]},
+
+{name:"Liverpool Castle site",rating:"4",accessibility:" ",time:"2min",tags:["1200","history","panoramic"],descr:"",full_text:"",coordxy:[-2.990069538256777,53.40490821703924]},
+
+{name:"first dock window",rating:"3",accessibility:" ",time:"2min",tags:["architecture","history","mechanics","navy"],descr:"",full_text:"",coordxy:[-2.987479136367815,53.40299904783541]},
+
+{name:"VICTORIA BUILDING – UNIVERSITY OF LIVERPOOL/VICTORIA ART GALLERY MUSEUM",rating:"4",accessibility:" ",time:"30min",tags:["history","museum","art"],descr:"",full_text:"",coordxy:[-2.966785766833886,53.40617620349179]},
+
+{name:"INDIA BUILDINGS",rating:"2",accessibility:" ",time:"2min",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.992616634799339,53.40606089792383]},
+
+{name:"Adelphi Hotel / Titanic Hall",rating:"4",accessibility:" ",time:"2min",tags:["architecture","titanic"],descr:"",full_text:"",coordxy:[-2.977562674103889,53.40547273190785]},
+
+{name:"Williamson Tunnels Heritage Centre",rating:"4",accessibility:" ",time:"30min",tags:["architecture","history","tunnel","massmadness"],descr:"",full_text:"",coordxy:[-2.958755935355176,53.40388470929689]},
+
+{name:"Stanley Dock Tobacco Warehouse biggest brick building in the world",rating:"2",accessibility:" ",time:"2min",tags:["architecture","industry"],descr:"",full_text:"",coordxy:[-2.998879703784284,53.42108249410566]},
+
+{name:"clock tower",rating:"2",accessibility:" ",time:"2min",tags:["architecture","navy","industry"],descr:"",full_text:"",coordxy:[-3.004967254121334,53.42154854443599]},
+
+{name:"Liverpool Medical Institution",rating:"2",accessibility:" ",time:"2min",tags:["architecture","1837","greekrevival"],descr:"",full_text:"",coordxy:[-2.969213230785794,53.40333974906219]},
+
+{name:"Casartelli Building",rating:"2",accessibility:" ",time:"2min",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.985730503599802,53.40278840111787]},
+
+{name:"Liverpool Central Library William Brown Library and Museum",rating:"4",accessibility:" ",time:"2min",tags:["architecture","1857","WW2"],descr:"",full_text:"",coordxy:[-2.980740319400461,53.40997085484099]},
+
+{name:"Church of St James, Liverpool",rating:"2",accessibility:" ",time:"2min",tags:["architecture","1774"],descr:"",full_text:"",coordxy:[-2.974633534169864,53.39433048185424]},
+
+{name:"Allerton Hall",rating:"2",accessibility:" ",time:"2min",tags:["architecture","1736","sandstone","palladian"],descr:"",full_text:"",coordxy:[-2.879180282326364,53.36342898927245]},
+
+{name:"Gwalia",rating:"2",accessibility:" ",time:"2min",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.914298731904029,53.42383380990002]},
+
+{name:"Prudential Assurance Building",rating:"2",accessibility:" ",time:"2min",tags:["architecture"],descr:"",full_text:"",coordxy:[-2.988659263005907,53.40783754440428]},
+
+{name:"62 Mount Pleasant",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.974232300085486,53.40379290054646]},
+
+{name:"Rodney Street - Georgian houses",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.973110698702826,53.40237552853674]},
+
+{name:"62 Rodney Street",rating:"2",accessibility:" ",time:"2min",tags:["georgian","1792"],descr:"",full_text:"",coordxy:[-2.973695332099851,53.40061872479979]},
+
+{name:"66 Mount Pleasant",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.973726121952348,53.40380362715434]},
+
+{name:"1 Trueman Street",rating:"2",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.984296635137968,53.40982440823899]},
+
+{name:"Liverpool Royal Institution",rating:"2",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.977756432546079,53.40127028466256]},
+
+{name:"Clarke&apos's Basin cottages, Old Hall Street",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.99611993870582,53.41073646896962]},
+
+{name:"Union News Room",rating:"2",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.980691057063082,53.40159660865558]},
+
+{name:"Heywood's Bank",rating:"2",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.991338879776041,53.4058966307856]},
+
+{name:"Abercromby Square",rating:"3",accessibility:" ",time:"2min",tags:["georgian"],descr:"",full_text:"",coordxy:[-2.9649578422237,53.40285482519624]},
+
+{name:"Percy Street",rating:"4",accessibility:" ",time:"2min",tags:["georgian","panoramic"],descr:"",full_text:"",coordxy:[-2.969425984359723,53.39693368491243]},
+
+{name:"Huskisson Street",rating:"3",accessibility:" ",time:"2min",tags:["georgian","panoramic"],descr:"",full_text:"",coordxy:[-2.968241919111153,53.39709224221252]},
+
+{name:"Wellington Rooms",rating:"2",accessibility:" ",time:"2min",tags:["neoclassical","1815"],descr:"",full_text:"",coordxy:[-2.970669685988956,53.40383003145091]},
+
+{name:"The Lyceum",rating:"3",accessibility:" ",time:"2min",tags:["neoclassical","1802","history"],descr:"",full_text:"",coordxy:[-2.980652787250813,53.40437780075602]},
+
+{name:"Monument to William Huskisson",rating:"2",accessibility:" ",time:"2min",tags:["neoclassical"],descr:"",full_text:"",coordxy:[-2.971894355715166,53.39706761545549]},
+
+{name:"St. Bride's Church",rating:"4",accessibility:" ",time:"2min",tags:["neoclassical","1829"],descr:"",full_text:"",coordxy:[-2.968884513319168,53.39729009385408]},
+
+{name:"Great George Street Congregational Chapel",rating:"2",accessibility:" ",time:"2min",tags:["neoclassical"],descr:"",full_text:"",coordxy:[-2.976718363265975,53.39927725921806]},
+
+{name:"Greek Orthodox Church of St Nicholas",rating:"2",accessibility:" ",time:"2min",tags:["architecture","victorian"],descr:"",full_text:"",coordxy:[-2.967227539430061,53.39546709366571]},
+
+{name:"Gambier Terrace",rating:"4",accessibility:" ",time:"2min",tags:["georgian","panoramic","1836","beatles"],descr:"",full_text:"",coordxy:[-2.970815185610597,53.39771069381421]},
+
+
+]
+
+i = 0
+for (var attraction_item in ATTRACTIONS) {
+i = i+1
+console.log(ATTRACTIONS[attraction_item].id = i)
+}
+console.log(ATTRACTIONS)
+
+
+
+
+
+
+
+
+
+/*
+
+Architecture
+History
+Music
+Football
+ShoppingAmusements
+Arts & Museums
+Botanics
+Adventure
+Navy
+Clubs Pubs Casinos
+Transport & Industry
+more
+
+
+
+
+var Interests_Lvl2 = ['11century', '12century', '13century', '14century', '15century', '16century', '17century', '18century', '19century', '20century', '10century', 'LFC', 'WW1', 'WW2', 'amusements', 'ancient', 'aquarium', 'archeology', 'architecture', 'art', 'beatles', 'botanical', 'botanicalgarden', 'canal', 'casino', 'clock', 'club', 'comedy', 'cruise', 'culture', 'decorated', 'dinosaurs', 'dock', 'dogging', 'druids', 'dunes', 'education', 'edwardianbaroque', 'etnics', 'first', 'food', 'football', 'fort', 'geometric', 'georgian', 'ghetto', 'gothic', 'greekrevival', 'history', 'hitler', 'hotel', 'immigration', 'industry', 'japanese', 'kids', 'lambanana', 'landmark', 'leisure', 'lever', 'lighthouse', 'liverbird', 'massmadness', 'mechanics', 'modern', 'monument', 'mosque', 'museum', 'music', 'navy', 'neoclassical', 'neolit', 'overview', 'palace', 'palladian', 'panoramic', 'park', 'perpendicular', 'photography', 'prison', 'promenade', 'pub', 'rail', 'renaissance', 'restaurant', 'ruin', 'safari', 'sandstone', 'sculpture', 'sea', 'shop', 'shopping', 'skyscraper', 'sluice', 'soap', 'souvenirs', 'space', 'sports', 'submarine', 'tapestries', 'technology', 'theater', 'titanic', 'toilet', 'tram', 'transportation', 'trash', 'tudor', 'tunnel', 'victorian', 'windmill', 'wood', 'zoo', 'zoology']
+*/
+
+
+function SelectInterestsLvl1(myinterest) {
+//console.log(myinterest)
+	if (myinterest in SELECTED_INTERESTS_LVL1) {
+//console.log(SELECTED_INTERESTS_LVL1[myinterest])
+		if (SELECTED_INTERESTS_LVL1[myinterest] == 1) {SELECTED_INTERESTS_LVL1[myinterest] = 0}
+		else if (SELECTED_INTERESTS_LVL1[myinterest] == 0) {SELECTED_INTERESTS_LVL1[myinterest] = 1}
+
+	}
+	else { SELECTED_INTERESTS_LVL1[myinterest] = 1 }
+//console.log(SELECTED_INTERESTS_LVL1)
+}
+
+
+function SelectInterestsLvl2(myinterest) {
+	if (myinterest in SELECTED_INTERESTS_LVL2) {
+		if (SELECTED_INTERESTS_LVL2[myinterest] == 1) {SELECTED_INTERESTS_LVL2[myinterest] = 0}
+		else if (SELECTED_INTERESTS_LVL2[myinterest] == 0) {SELECTED_INTERESTS_LVL2[myinterest] = 1}
+
+	}
+	else { SELECTED_INTERESTS_LVL2[myinterest] = 1 }
+//console.log(SELECTED_INTERESTS_LVL2)
+}
+
+function SelectAttraction(myinterest) {
+	if (myinterest in SELECTED_ATTRACTIONS) {
+		if (SELECTED_ATTRACTIONS[myinterest].selected == 1) {SELECTED_ATTRACTIONS[myinterest].selected = 0}
+		else if (SELECTED_ATTRACTIONS[myinterest].selected == 0) {SELECTED_ATTRACTIONS[myinterest].selected = 1}
+
+	}
+	else { SELECTED_ATTRACTIONS[myinterest].selected = 1 }
+//console.log(SELECTED_ATTRACTIONS)
+}
+
+
+function SortAttractions(MY_SELECTED_ATTRACTIONS_, MY_START_POINT_)
+{
+	var MY_START_POINT = [MY_START_POINT_[0], MY_START_POINT_[1]]
+	var MY_SELECTED_ATTRACTIONS = []
+	var inputlen = 0
+	for (each in MY_SELECTED_ATTRACTIONS_) { 
+		MY_SELECTED_ATTRACTIONS[each] = MY_SELECTED_ATTRACTIONS_[each]
+		inputlen =  inputlen + 1
+	}
+	ret = []
+
+
+
+
+
+
+
+
+
+for (i = 0; i < inputlen; i++) {
+
+
+	min_dist = 99999999
+	min_ind = 0
+	for (each in MY_SELECTED_ATTRACTIONS) {
+		console.log(MY_SELECTED_ATTRACTIONS[each].info.coordxy)
+		curr_dist = (MY_SELECTED_ATTRACTIONS[each].info.coordxy[0]-MY_START_POINT[0])*(MY_SELECTED_ATTRACTIONS[each].info.coordxy[0]-MY_START_POINT[0])+(MY_SELECTED_ATTRACTIONS[each].info.coordxy[1]-MY_START_POINT[1])*(MY_SELECTED_ATTRACTIONS[each].info.coordxy[1]-MY_START_POINT[1])
+		if (curr_dist  < min_dist) {
+			min_dist = curr_dist
+			min_ind = each
+		}
+	}
+	ret.push(MY_SELECTED_ATTRACTIONS[min_ind])
+	MY_START_POINT_ = [MY_SELECTED_ATTRACTIONS[min_ind].info.coordxy[0], MY_SELECTED_ATTRACTIONS[min_ind].info.coordxy[1]]
+	delete MY_SELECTED_ATTRACTIONS[min_ind]
+
+
+
+}
+
+
+	return ret
+}
+
+
+function AddTimes(MY_ATTRACTIONS_AGENDA)
+{
+	var journey_starting_time = 36000 ; 
+
+	for (each in MY_ATTRACTIONS_AGENDA) {
+
+		time_in = "10:00:00"
+		time_out = "10:05:00"
+
+		MY_ATTRACTIONS_AGENDA[each].info.time_in = time_in
+		MY_ATTRACTIONS_AGENDA[each].info.time_out = time_out
+	}
+	return MY_ATTRACTIONS_AGENDA ; 
+}
+
+function getnewword () {
+//console.log(TRANSPORT_MODE)
+	PAGE_NUMBER = PAGE_NUMBER + 1 ; 
+/////////////////////////////////////////////////////
+	if (PAGE_NUMBER == 1) {
+
+		return '<div style="height:100px; color:lime; font-size:35px">SELECT TRANSPORTATION</div><div style="height:70px; color:black; font-size:20px"><input type="radio" id="male" name="transport" value="male" onclick="TRANSPORT_MODE=0"><label for="male">Foot</label><br><input type="radio" id="female" name="transport" value="female" onclick="TRANSPORT_MODE=1"><label for="female">Car</label><br><input type="radio" id="other" name="transport" value="other" onclick="TRANSPORT_MODE=2"><label for="other">Bycicle</label><br><input type="radio" id="other" name="transport" value="other" onclick="TRANSPORT_MODE=3"><label for="other">Bus</label><br><input type="radio" id="other" name="transport" value="other" onclick="TRANSPORT_MODE=4"><label for="other">Camel</label></div><div style="height:100px; color:red; font-size:25px"></div><div style="height:70px; color:black; font-size:10px">more</div><div style="height:100px; color:red; font-size:15px">SELECT LANGUAGE</div><input type="radio" id="male" name="gender" value="male"><label for="male">Scouse</label><br><input type="radio" id="female" name="gender" value="female"><label for="female">English</label><br><input type="radio" id="other" name="gender" value="other"><label for="other">American</label><br><input type="radio" id="other" name="gender" value="other"><label for="other">Australian</label><br><input type="radio" id="other" name="gender" value="other"><label for="other">Cheshire</label>' ; 
+	}
+/////////////////////////////////////////////////////
+	if (PAGE_NUMBER == 2) {
+
+		return '<div style="height:100px; color:lime; font-size:35px">SELECT INTEREST</div><div style="height:70px; color:black; font-size:20px"><input type="checkbox" id="male" name="transport" value="Architecture" onclick="SelectInterestsLvl1(value)"><label for="male">Architecture</label><br><input type="checkbox" id="female" name="transport" value="History" onclick="SelectInterestsLvl1(value)"><label for="female">History</label><br><input type="checkbox" id="other" name="transport" value="Music" onclick="SelectInterestsLvl1(value)"><label for="other">Music</label><br><input type="checkbox" id="other" name="transport" value="Football" onclick="SelectInterestsLvl1(value)"><label for="other">Football</label><br><input type="checkbox" id="other" name="transport" value="Shopping" onclick="SelectInterestsLvl1(value)"><label for="other">Shopping</label><input type="checkbox" id="male" name="transport" value="Amusements" onclick="SelectInterestsLvl1(value)"><label for="male">Amusements</label><br><input type="checkbox" id="male" name="transport" value="Arts" onclick="SelectInterestsLvl1(value)"><label for="male">Arts & Museums</label><br><input type="checkbox" id="male" name="transport" value="Botanics" onclick="SelectInterestsLvl1(value)"><label for="male">Botanics</label><br><input type="checkbox" id="male" name="transport" value="Adventure" onclick="SelectInterestsLvl1(value)"><label for="male">Adventure</label><br><input type="checkbox" id="male" name="transport" value="Navy" onclick="SelectInterestsLvl1(value)"><label for="male">Navy</label><br><input type="checkbox" id="male" name="transport" value="Pubs" onclick="SelectInterestsLvl1(value)"><label for="male">Clubs Pubs Casinos</label><br><input type="checkbox" id="male" name="transport" value="Industry" onclick="SelectInterestsLvl1(value)"><label for="male">Transport & Industry</label><br></div><div style="height:140px; color:red; font-size:25px"></div><div style="height:70px; color:black; font-size:10px">more</div><div style="height:100px; color:red; font-size:15px">STARTING POINT</div><input type="radio" id="male" name="gender" value="male"><label for="male">Lyme Street Station</label><br><input type="radio" id="female" name="gender" value="female"><label for="female">Lyme Street Station</label><br><input type="radio" id="other" name="gender" value="other"><label for="other">Lyme Street Station</label><br><input type="radio" id="other" name="gender" value="other"><label for="other">Lyme Street Station</label><br><input type="radio" id="other" name="gender" value="other"><label for="other">Lyme Street Station</label>' ; 
+	}
+/////////////////////////////////////////////////////
+	if (PAGE_NUMBER == 3) {
+//console.log(SELECTED_INTERESTS_LVL1)
+for(var item in SELECTED_INTERESTS_LVL1) {
+if (SELECTED_INTERESTS_LVL1[item] > 0) {
+///console.log(Interests_Lvl2[item])
+for (var jtem in Interests_Lvl2[item]) {
+SELECTED_INTERESTS_LVL2[Interests_Lvl2[item][jtem]] = 1 ; 
+}
+}}
+
+		var ret = '<div style="height:100px; color:lime; font-size:35px">SELECT INTEREST</div><div style="height:70px; color:black; font-size:20px">'
+		//for (i = 0; i < SELECTED_INTERESTS_LVL2.length; i++) { 
+
+
+for(var item in SELECTED_INTERESTS_LVL2) {
+  //console.log(item,SELECTED_INTERESTS_LVL2[item]);
+if (SELECTED_INTERESTS_LVL2[item] > 0) {
+ret = ret + '<input type="checkbox" id="male" name="transport" value="'+item+'" onclick="SelectInterestsLvl2(value)" checked><label for="male">'+item+'</label>' ; 
+}}
+		return ret
+	}
+/////////////////////////////////////////////////////
+	if (PAGE_NUMBER == 4) {
+///console.log(SELECTED_INTERESTS_LVL2)
+	for (var interest_item in SELECTED_INTERESTS_LVL2) {
+		for (var attraction_item in ATTRACTIONS) {
+			for (var tag_item in ATTRACTIONS[attraction_item].tags) {
+				if (ATTRACTIONS[attraction_item].tags[tag_item] == interest_item) {
+					///console.log(interest_item, ATTRACTIONS[attraction_item].tags, ATTRACTIONS[attraction_item].tags[tag_item])
+					//SELECTED_ATTRACTIONS.push(ATTRACTIONS[attraction_item])
+					//SELECTED_ATTRACTIONS.push(1)
+					//var new_item = {info:ATTRACTIONS[attraction_item],selected:1}
+					//SELECTED_ATTRACTIONS[ATTRACTIONS[attraction_item][name] = new_item]
+					SELECTED_ATTRACTIONS[ATTRACTIONS[attraction_item].id] = {info:ATTRACTIONS[attraction_item],selected:1}
+				}
+			}
+		}
+	}
+///console.log(SELECTED_ATTRACTIONS)
+
+
+
+		var ret = '<div style="height:100px; color:lime; font-size:35px">SELECT ATTRACTIONS</div><div style="height:70px; color:black; font-size:20px">'
+		//for (i = 0; i < SELECTED_INTERESTS_LVL2.length; i++) { 
+
+
+for(var item in SELECTED_ATTRACTIONS) {
+  //console.log(item,SELECTED_INTERESTS_LVL2[item]);
+///console.log(SELECTED_ATTRACTIONS[item].info.name)
+ret = ret + '<input type="checkbox" id="male" name="transport" value="'+item+'" onclick="SelectAttraction(value)" checked><label for="male">'+SELECTED_ATTRACTIONS[item].info.name+'</label>' ; 
+}
+
+
+		return ret
+	}
+/////////////////////////////////////////////////////
+	if (PAGE_NUMBER == 5) {
+//POP NON SELECTED
+		for(var item in SELECTED_ATTRACTIONS) {
+			
+console.log(SELECTED_ATTRACTIONS[item].selected)
+			if (SELECTED_ATTRACTIONS[item].selected == 0) { delete SELECTED_ATTRACTIONS[item] }
+		}
+		console.log(SELECTED_ATTRACTIONS)
+//SORT BY ROUTE + ADD TIME
+		ATTRACTIONS_AGENDA = SortAttractions(SELECTED_ATTRACTIONS, START_POINT)
+		ATTRACTIONS_AGENDA = AddTimes(ATTRACTIONS_AGENDA)
+console.log(ATTRACTIONS_AGENDA, SELECTED_ATTRACTIONS)
+//ATTRACTIONS_AGENDA = 
+//PUBLISH
+		var ret = '<div style="height:100px; color:lime; font-size:35px">ORGANIZE AGENDA</div><div style="height:70px; color:black; font-size:20px"><br><br><br><br><br><br>'
+var myspan_ = "'myspan'"
+for(var item in ATTRACTIONS_AGENDA) {
+console.log(ATTRACTIONS_AGENDA[item])
+ret = ret + '<br><button id="Upbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',-1)">^</button><button id="Delbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',0)">X</button><button id="Downbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',1)">v</button><a style="height:100px; color:red; font-size:25px">'+ATTRACTIONS_AGENDA[item].info.time_in+' - '+ATTRACTIONS_AGENDA[item].info.time_out+'</a><label for="male">'+ATTRACTIONS_AGENDA[item].info.name+'</label>' ; 
+}
+//ON EDIT RESORT AND RECALCULATE
+return ret
+	}
+
+/////////////////////////////////////////////////////
+	if (PAGE_NUMBER == 6) {
+	///var ret = 'GOOGLE MAPS    <div id="map"></div>'
+
+//ATTRACTIONS_AGENDA = ImproveAgenda(ATTRACTIONS_AGENDA) ; 
+        const flightPlanCoordinates = []
+for(var item in ATTRACTIONS_AGENDA) {
+flightPlanCoordinates.push({lat:ATTRACTIONS_AGENDA[item].info.coordxy[1], lng:ATTRACTIONS_AGENDA[item].info.coordxy[0]})
+}
+
+        const flightPath = new google.maps.Polyline({
+          path: flightPlanCoordinates,
+          geodesic: true,
+          strokeColor: "#FF0000",
+          strokeOpacity: 1.0,
+          strokeWeight: 2,
+        });
+        flightPath.setMap(map);
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+/*
+
+
+// Where you want to render the map.
+var osmelement = document.getElementById('osm-map');
+
+// Height has to be set. You can do this in CSS too.
+osmelement.style = 'height:800px;';
+
+// Create Leaflet map on map element.
+var osmmap = L.map(osmelement);
+
+// Add OSM tile leayer to the Leaflet map.
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(osmmap);
+
+// Target's GPS coordinates.
+var target = L.latLng(START_POINT[1], START_POINT[0]);
+
+// Set map's center to target with zoom 14.
+osmmap.setView(target, 14);
+
+// Place a marker on the same location.
+L.marker(target).addTo(osmmap);
+
+*/
+////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+	var ret = ''//'<div id="osm-map"></div>'
+	return ret
+	}
+
+
+return PAGE_NUMBER
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div><button id="Nextbutton" onclick="document.getElementById('myspan').innerHTML = getnewword()">START</button></div>
+<div>
+
+    <div id="map"></div>
+
+
+
+
