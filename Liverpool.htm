@@ -1648,7 +1648,7 @@ if (_action == 0) {
 ///ATTRACTIONS_AGENDA = _agenda_temp
 	//delete ATTRACTIONS_AGENDA[item]
 ATTRACTIONS_AGENDA.splice(_item, 1);
-console.log(ATTRACTIONS_AGENDA) ; 
+///console.log(ATTRACTIONS_AGENDA) ; 
 }
 
 
@@ -1665,7 +1665,7 @@ _agenda_temp.push(ATTRACTIONS_AGENDA[i])
 ATTRACTIONS_AGENDA = _agenda_temp
 	//delete ATTRACTIONS_AGENDA[item]
 //ATTRACTIONS_AGENDA.splice(_item, 1);
-console.log(ATTRACTIONS_AGENDA) ; 
+///console.log(ATTRACTIONS_AGENDA) ; 
 }
 
 
@@ -1681,7 +1681,7 @@ _agenda_temp.push(ATTRACTIONS_AGENDA[i])
 ATTRACTIONS_AGENDA = _agenda_temp
 	//delete ATTRACTIONS_AGENDA[item]
 //ATTRACTIONS_AGENDA.splice(_item, 1);
-console.log(ATTRACTIONS_AGENDA) ; 
+///console.log(ATTRACTIONS_AGENDA) ; 
 }
 
 
@@ -1696,6 +1696,66 @@ ret = ret + '<br><button id="Upbutton" onclick="document.getElementById('+myspan
 return ret
 }
 
+
+
+function AddPanoramicRoutes(_SELECTED_ATTRACTIONS) { 
+console.log(_SELECTED_ATTRACTIONS) ; 
+	var PanoramicArray = []
+	var AddedPanoramicArray = {}
+	for(var item in ATTRACTIONS) {
+
+		for(var itemtag in ATTRACTIONS[item].tags) {
+///console.log("ggg",ATTRACTIONS[item].tags[itemtag])
+			if (ATTRACTIONS[item].tags[itemtag] == "panoramic") {PanoramicArray.push(ATTRACTIONS[item])}
+		}
+	}
+	for(var item in _SELECTED_ATTRACTIONS) {
+		var currxy = _SELECTED_ATTRACTIONS[item].info.coordxy
+		for(var item2 in PanoramicArray) {
+			var currxy2 = PanoramicArray[item2].coordxy
+			if ((((currxy[0]-currxy2[0])*(currxy[0]-currxy2[0])) + ((currxy[1]-currxy2[1])*(currxy[1]-currxy2[1]))) < 0.00001) {
+				///console.log("hhh",currxy,currxy2)
+				AddedPanoramicArray[PanoramicArray[item2].id]={info:PanoramicArray[item2],selected:1}//uniqueid only once
+			}
+		}
+	}
+
+///console.log("kkk",AddedPanoramicArray,_SELECTED_ATTRACTIONS)
+
+ret = _SELECTED_ATTRACTIONS
+	for(var item in AddedPanoramicArray) {
+		///ret.push(AddedPanoramicArray[item])
+		ret[item] = AddedPanoramicArray[item]
+	}
+console.log("lll",ret)
+	return ret
+}
+
+
+
+function getnewword_panoramic() { 
+
+
+
+//SORT BY ROUTE + ADD TIME
+		SELECTED_ATTRACTIONS = AddPanoramicRoutes(SELECTED_ATTRACTIONS)
+		ATTRACTIONS_AGENDA = SortAttractions(SELECTED_ATTRACTIONS, START_POINT)
+		ATTRACTIONS_AGENDA = AddTimes(ATTRACTIONS_AGENDA)
+///console.log(ATTRACTIONS_AGENDA, SELECTED_ATTRACTIONS)
+//ATTRACTIONS_AGENDA = 
+//PUBLISH
+		var ret = '<div style="height:100px; color:lime; font-size:35px">ORGANIZE AGENDA</div><div style="height:70px; color:black; font-size:20px"><br><br><br><br><br><br><button id="Panoramicbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_panoramic()">AddPanoramicRoutes</button>'
+var myspan_ = "'myspan'"
+for(var item in ATTRACTIONS_AGENDA) {
+console.log(ATTRACTIONS_AGENDA[item])
+
+ret = ret + '<br><button id="Upbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',-1)">^</button><button id="Delbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',0)">X</button><button id="Downbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',1)">v</button><a style="height:100px; color:red; font-size:25px">'+ATTRACTIONS_AGENDA[item].info.time_in+' - '+ATTRACTIONS_AGENDA[item].info.time_out+'</a><label for="male">'+ATTRACTIONS_AGENDA[item].info.name+'</label>' ; 
+}
+
+
+///console.log("nnn",ret)
+return ret
+}
 
 
 
@@ -1800,8 +1860,9 @@ console.log(SELECTED_ATTRACTIONS[item].selected)
 console.log(ATTRACTIONS_AGENDA, SELECTED_ATTRACTIONS)
 //ATTRACTIONS_AGENDA = 
 //PUBLISH
-		var ret = '<div style="height:100px; color:lime; font-size:35px">ORGANIZE AGENDA</div><div style="height:70px; color:black; font-size:20px"><br><br><br><br><br><br>'
 var myspan_ = "'myspan'"
+		var ret = '<div style="height:100px; color:lime; font-size:35px">ORGANIZE AGENDA</div><div style="height:70px; color:black; font-size:20px"><br><br><br><br><br><br><button id="Panoramicbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_panoramic()">AddPanoramicRoutes</button>'
+
 for(var item in ATTRACTIONS_AGENDA) {
 console.log(ATTRACTIONS_AGENDA[item])
 ret = ret + '<br><button id="Upbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',-1)">^</button><button id="Delbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',0)">X</button><button id="Downbutton" onclick="document.getElementById('+myspan_+').innerHTML = getnewword_update('+item+',1)">v</button><a style="height:100px; color:red; font-size:25px">'+ATTRACTIONS_AGENDA[item].info.time_in+' - '+ATTRACTIONS_AGENDA[item].info.time_out+'</a><label for="male">'+ATTRACTIONS_AGENDA[item].info.name+'</label>' ; 
