@@ -1487,7 +1487,7 @@ var ATTRACTIONS = [
 i = 0
 for (var attraction_item in ATTRACTIONS) {
 i = i+1
-///console.log(ATTRACTIONS[attraction_item].id = i)
+	ATTRACTIONS[attraction_item].id = i
 }
 ///console.log(ATTRACTIONS)
 
@@ -1712,22 +1712,24 @@ function AddPanoramicRoutes(_SELECTED_ATTRACTIONS) {
 	for(var item in ATTRACTIONS) {
 
 		for(var itemtag in ATTRACTIONS[item].tags) {
-///console.log("ggg",ATTRACTIONS[item].tags[itemtag])
+//console.log("ggg",ATTRACTIONS[item].tags[itemtag])
 			if (ATTRACTIONS[item].tags[itemtag] == "panoramic") {PanoramicArray.push(ATTRACTIONS[item])}
 		}
 	}
+console.log(PanoramicArray) ; 
 	for(var item in _SELECTED_ATTRACTIONS) {
 		var currxy = _SELECTED_ATTRACTIONS[item].info.coordxy
 		for(var item2 in PanoramicArray) {
 			var currxy2 = PanoramicArray[item2].coordxy
-			if ((((currxy[0]-currxy2[0])*(currxy[0]-currxy2[0])) + ((currxy[1]-currxy2[1])*(currxy[1]-currxy2[1]))) < 0.00001) {
+			if ((((currxy[0]-currxy2[0])*(currxy[0]-currxy2[0])) + ((currxy[1]-currxy2[1])*(currxy[1]-currxy2[1]))) < 0.00005) {
 				///console.log("hhh",currxy,currxy2)
+console.log(PanoramicArray) ; 
 				AddedPanoramicArray[PanoramicArray[item2].id]={info:PanoramicArray[item2],selected:1}//uniqueid only once
 			}
 		}
 	}
 
-///console.log("kkk",AddedPanoramicArray,_SELECTED_ATTRACTIONS)
+console.log("kkk",AddedPanoramicArray,_SELECTED_ATTRACTIONS)
 
 ret = _SELECTED_ATTRACTIONS
 	for(var item in AddedPanoramicArray) {
