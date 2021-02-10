@@ -8,7 +8,8 @@
 
 
     <!--<script src="http://scenejs.org/api/latest/scenejs.js"></script>-->
-  <script src="http://mp1233.github.io/bg/js/scenejs.js"></script>
+  <!--<script src="http://mp1233.github.io/bg/js/scenejs.js"></script>-->
+<script src="js/scenejs.js"></script>
 
 </head>
 <body>
@@ -4638,6 +4639,8 @@ Cell_Layers = {
 
 
 Cells_Data = [
+///////////////////////////////////////////////////
+//CEREBELLUM CORTEX
 	{cell_id:"Purkinje_cells",cell_neurotransmitter:"GABA",num_of_cells:340000*100,
 		soma:{coordxy:{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]}},
 		///3D_example_url:"",
@@ -4645,19 +4648,9 @@ Cells_Data = [
 		compartments:[
 			{id:"axon",coordxy:[{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R", "Cerebellum_Nuclei_LVe_R"]}]},//efferents:["cerebellar nuclei", "vestibular nuclei"]
 ///axon:During its course through the granular layer it emits several collaterals efferents:["Purkinje","Golgi","Lugaro","basket"]
-
-
-{id:"axons",coordxy:[
-{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   
-{type:"perpendicular",coordxy:["Cerebellum_Granule_Layer"],addxyz:[{len:0,r:0}]},
-{type:"extend",coordxy:["prev"],addxyz:[{len:0.1,r:1.5},{len:0.1,r:1.5},{len:0.1,r:1.5},{len:0.1,r:1.5}]}
-///TODO extend "prevXYZ"
-]},
-	
-
-
-
-{id:"dendrites",coordxy:[{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5}]},]},
+			{id:"axon",coordxy:[{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   {type:"perpendicular",coordxy:["Cerebellum_Granule_Layer"],addxyz:[{len:0,r:0}]},{type:"extend",coordxy:["prev"],addxyz:[{len:0.1,r:1.5},{len:0.1,r:1.5},{len:0.1,r:1.5},{len:0.1,r:1.5}]}]},
+///TODO extend coordxy:["prev"] >>> "prevXYZ"
+			{id:"dendrites",coordxy:[{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5}]},]},///afferents:["climbing fiber", "parallel fibers","molecular layer interneurons"]
 		]
 	},
 
@@ -4666,12 +4659,31 @@ Cells_Data = [
 ///ParallelFibers_TRACT
 		compartments:[
 			{id:"axon",coordxy:[{type:"creep",coordxy:["ParallelFibers_TRACT"],radius:1,creeplength:30},]},
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ParallelFibers_TRACT"],radius:1,creeplength:-30},]},
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ParallelFibers_TRACT"],radius:1,creeplength:-30},]},///efferents:["Purkinje","cortical interneurons with dendrites in the molecular layer"]
 			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Granule_Layer"],addxyz:[-0.5,-0.5,-0.5]},]},
 			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Granule_Layer"],addxyz:[0.5,0.5,-0.5]},]},
+///TODO addxyz[x y z] >>> addxyz[xmin xmax ymin ymax zmin zmax]
+///TODO "macros" >>> "relative addxyz[000000]"
 		]
 /////axons=parallel fibers (surface, molecular layer) bodies in granular laye (under prkj)
 	},
+
+
+
+
+	{cell_id:"Stellate_Cerebellum_cells",cell_neurotransmitter:"GABA",num_of_cells:9999999,
+		soma:{coordxy:{type:"relative",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[0.5,0.5,0.5]}},
+		compartments:[
+
+		]
+	},
+	{cell_id:"Stellate_Basket_cells",cell_neurotransmitter:"GABA",num_of_cells:3400000,
+		soma:{coordxy:{type:"relative",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[0.5,0.5,-0.5]}},
+		compartments:[
+///The basket cell axon gives rise to multiple axonal baskets that surround the somata of a several Purkinje cells. The axons of the basket make synaptic contact with the Purkinje cell
+		]
+	},
+
 
 
 
@@ -4680,6 +4692,7 @@ Cells_Data = [
 		soma:{coordxy:{type:"macros",coordxy:["IOA","IOB","IOBE","IOK","IOVL"]}},
 		compartments:[
 			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_DarkGreen"]},{type:"extend",coordxy:["Cerebellum_Cortex_DarkGreen"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+///TODO extend coordxy:["prev"] >>> "prevXYZ"
 			/*{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_DarkGreen"]},{type:"relative",coordxy:["Cerebellum_Cortex_DarkGreen"],addxyz:[1,1,1]}]}*/
 		]
 	},
@@ -4687,6 +4700,7 @@ Cells_Data = [
 		soma:{coordxy:{type:"macros",coordxy:["IOPR-vl"]}},
 		compartments:[
 			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Lat_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Brown"]},{type:"extend",coordxy:["Cerebellum_Cortex_Brown"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+///TODO extend coordxy:["prev"] >>> "prevXYZ"
 		]
 	},
 
@@ -5560,15 +5574,57 @@ BestMatchPerpendicular = FindMatchPerpendicular(PrevXYZ,CurrCompartmentsLayer[1*
 					_TOTALSHAPE.push(CurrSomaAxonExt[0])
 					_TOTALSHAPE.push(CurrSomaAxonExt[1])
 					_TOTALSHAPE.push(CurrSomaAxonExt[2])
-					_TOTALSHAPE.push(CurrSomaAxon[0])
-					_TOTALSHAPE.push(CurrSomaAxon[1])
-					_TOTALSHAPE.push(CurrSomaAxon[2])
+					_TOTALSHAPE.push(PrevXYZ[0])
+					_TOTALSHAPE.push(PrevXYZ[1])
+					_TOTALSHAPE.push(PrevXYZ[2])
 
 
 
 				}
 PrevPrevXYZ = [PrevXYZ[0],  PrevXYZ[1], PrevXYZ[2]]
-PrevXYZ = [CurrSomaAxon[0], CurrSomaAxon[1], CurrSomaAxon[2]] ; 
+PrevXYZ = [PrevXYZ[0], PrevXYZ[1], PrevXYZ[2]] ; 
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//PERPENDICULAR END
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////
+///type:"extend",coordxy:["Cerebellum_Cortex_DarkGreen"],addxyz:[{len:1,r:0.5}
+//PARALLEL
+
+			if (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type == "parallel") {
+///console.log(PrevXYZ,CurrCompartmentsLayer,eachcompartmentxy)
+BestMatchPerpendicular = GetLayerPointAtLength(CurrCompartmentStepLayer, i*CurrAxonLayerArea*ZOOM_LEVEL/Cells_Data[eachcell].num_of_cells + Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
+				for (eachextention in Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz) {
+
+					ExtendedPoint = BestMatchPerpendicular///ExtendPoint(PrevXYZ, BestMatchPerpendicular, Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
+					CurrSomaAxonExt = [BestMatchPerpendicular[0], BestMatchPerpendicular[1], BestMatchPerpendicular[2]] ; 
+					CurrSomaAxonExt[0] = ExtendedPoint[0] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
+					CurrSomaAxonExt[1] = ExtendedPoint[1] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
+					CurrSomaAxonExt[2] = ExtendedPoint[2] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
+					_TOTALSHAPE.push(CurrSomaAxonExt[0])
+					_TOTALSHAPE.push(CurrSomaAxonExt[1])
+					_TOTALSHAPE.push(CurrSomaAxonExt[2])
+					_TOTALSHAPE.push(PrevXYZ[0])
+					_TOTALSHAPE.push(PrevXYZ[1])
+					_TOTALSHAPE.push(PrevXYZ[2])
+
+
+
+				}
+PrevPrevXYZ = [PrevXYZ[0],  PrevXYZ[1], PrevXYZ[2]]
+PrevXYZ = [PrevXYZ[0], PrevXYZ[1], PrevXYZ[2]] ; 
 			}
 
 
