@@ -8,7 +8,7 @@
 
 
     <!--<script src="http://scenejs.org/api/latest/scenejs.js"></script>-->
-  <script src="https://mp1233.github.io/bg/js/scenejs.js"></script>
+  <script src="http://mp1233.github.io/bg/js/scenejs.js"></script>
 
 </head>
 <body>
@@ -4643,8 +4643,20 @@ Cells_Data = [
 		///3D_example_url:"",
 		///3D_all_url:"",
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R", "Cerebellum_Nuclei_LVe_R"]}]},//terminals:["cerebellar nuclei", "vestibular nuclei"]
-///axon:During its course through the granular layer it emits several collaterals terminals:["Purkinje","Golgi","Lugaro","basket"]
+			{id:"axon",coordxy:[{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R", "Cerebellum_Nuclei_LVe_R"]}]},//efferents:["cerebellar nuclei", "vestibular nuclei"]
+///axon:During its course through the granular layer it emits several collaterals efferents:["Purkinje","Golgi","Lugaro","basket"]
+
+
+{id:"axons",coordxy:[
+{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   
+{type:"perpendicular",coordxy:["Cerebellum_Granule_Layer"],addxyz:[{len:0,r:0}]},
+{type:"extend",coordxy:["prev"],addxyz:[{len:0.1,r:1.5},{len:0.1,r:1.5},{len:0.1,r:1.5},{len:0.1,r:1.5}]}
+///TODO extend "prevXYZ"
+]},
+	
+
+
+
 {id:"dendrites",coordxy:[{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5}]},]},
 		]
 	},
@@ -5685,8 +5697,8 @@ console.log(TotalLinesSceneNode) ;
             {                      
 width:600,
 height: 400,
-                ///type:"cameras/trackball",
-type:"cameras/orbit",
+                type:"cameras/trackball",
+///type:"cameras/orbit",
                 eye: { x: 150.0, y: 40.0, z: -150.0 },
                 look: { x: 40.0, y: 40.0, z: 20.0 },
                 up: { y: 1.0 },
