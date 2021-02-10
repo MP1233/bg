@@ -8661,6 +8661,7 @@ SceneJS_NodeFactory.prototype._loadScript = function (url, error) {
     script.onerror = error;
 console.log(script)
 script.src = script.src.replace("http:", "https:");
+script.src = script.src.replace("scenejs.org/api/latest/", "mp1233.github.io/bg/js/");
     document.getElementsByTagName("head")[0].appendChild(script);
 };
 
