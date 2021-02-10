@@ -8659,6 +8659,7 @@ SceneJS_NodeFactory.prototype._loadScript = function (url, error) {
     script.type = "text/javascript";
     script.src = url;
     script.onerror = error;
+console.log(script)
     document.getElementsByTagName("head")[0].appendChild(script);
 };
 
