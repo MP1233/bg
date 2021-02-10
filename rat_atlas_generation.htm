@@ -4639,13 +4639,13 @@ Cell_Layers = {
 
 Cells_Data = [
 	{cell_id:"Purkinje_cells",cell_neurotransmitter:"GABA",num_of_cells:340000*100,
-		soma:{coordxy:{type:"macros",coordxy:["Cerebellum_Granule_Layer"]}},
+		soma:{coordxy:{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]}},
 		///3D_example_url:"",
 		///3D_all_url:"",
 		compartments:[
 			{id:"axon",coordxy:[{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R", "Cerebellum_Nuclei_LVe_R"]}]},//terminals:["cerebellar nuclei", "vestibular nuclei"]
 ///axon:During its course through the granular layer it emits several collaterals terminals:["Purkinje","Golgi","Lugaro","basket"]
-///{id:"dendrites",coordxy:[{type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5}]},]},
+{id:"dendrites",coordxy:[{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5}]},]},
 		]
 	},
 
@@ -5369,6 +5369,29 @@ if (_coverLegth) {
 /////////////////////////////////////////////////////////////
 
 
+function FindMatchPerpendicular(_PrevXYZ,_CurrCompartmentsLayer) {
+var bestlinedist = 999999 ; 
+var bestlinebegpoint = [0,0,0] ; 
+	for (eachline in _CurrCompartmentsLayer[0]) {
+///console.log("OOO",_prevxyz, _nextxyz)
+		lineAnalysis = GetLineAnalysis(_CurrCompartmentsLayer[0][eachline],_PrevXYZ, _PrevXYZ) /// , _coverLegth)
+///console.log("DDD5", lineAnalysis)
+		if (lineAnalysis.begenddist < bestlinedist) {
+			bestlinedist = lineAnalysis.begenddist ; 
+			//bestlineind = eachline ; 
+			bestlinebegpoint = lineAnalysis.begpoint ; 
+			//bestlineendpoint = lineAnalysis.endpoint ; 
+///console.log("DDD4")
+		}
+	}
+///console.log("AAA", bestlinebegpoint) ; 
+	return bestlinebegpoint.begxyz ;  /// _PrevXYZ ; 
+}
+
+
+
+
+
 
 Cell_Layers = RescaleLayers(Cell_Layers) ; 
 
@@ -5380,6 +5403,11 @@ Cell_Layers = RescaleLayers(Cell_Layers) ;
 			{id:"axon",coordxy:[{type:"macros",coordxy:"Cerebellum_Nuclei_Med"},{type:"macros",coordxy:"Cerebellum_Cortex_DarkGreen"}]}
 		]
 	},*/
+
+
+
+
+
 
 
 ////////////////////////////////////////////////////////////////////////
@@ -5467,22 +5495,21 @@ console.log("creep along the line here, extend parallel also here.  color axons 
 
 			if (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type == "extend") {
 ///console.log(Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy])
+
 				for (eachextention in Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz) {
 ///console.log("ggg2",PrevXYZ)
+///TODO replace ExtendedPoint = ExtendPoint(PrevPrevXYZ, PrevXYZ, Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
 					ExtendedPoint = ExtendPoint(PrevPrevXYZ, CurrSomaAxon, Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
 					CurrSomaAxonExt = [CurrSomaAxon[0], CurrSomaAxon[1], CurrSomaAxon[2]] ; 
 					CurrSomaAxonExt[0] = ExtendedPoint[0] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
 					CurrSomaAxonExt[1] = ExtendedPoint[1] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
 					CurrSomaAxonExt[2] = ExtendedPoint[2] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
-///console.log(CurrSomaAxonExt, CurrSomaAxonExt)
 					_TOTALSHAPE.push(CurrSomaAxonExt[0])
 					_TOTALSHAPE.push(CurrSomaAxonExt[1])
 					_TOTALSHAPE.push(CurrSomaAxonExt[2])
 					_TOTALSHAPE.push(CurrSomaAxon[0])
 					_TOTALSHAPE.push(CurrSomaAxon[1])
 					_TOTALSHAPE.push(CurrSomaAxon[2])
-
-///console.log(CurrSomaAxonExt, CurrSomaAxon)
 
 
 
@@ -5503,10 +5530,51 @@ PrevXYZ = [CurrSomaAxon[0], CurrSomaAxon[1], CurrSomaAxon[2]] ;
 
 
 
-//EXTEND
+//EXTEND END
+/////////////////////////////////////////////////////
+/////////////////////////////////////////////////
+///type:"extend",coordxy:["Cerebellum_Cortex_DarkGreen"],addxyz:[{len:1,r:0.5}
+//PERPENDICULAR
+
+			if (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type == "perpendicular") {
+///console.log(PrevXYZ,CurrCompartmentsLayer,eachcompartmentxy)
+BestMatchPerpendicular = FindMatchPerpendicular(PrevXYZ,CurrCompartmentsLayer[1*eachcompartmentxy+1][0])
+				for (eachextention in Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz) {
+					ExtendedPoint = ExtendPoint(PrevXYZ, BestMatchPerpendicular, Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
+					CurrSomaAxonExt = [BestMatchPerpendicular[0], BestMatchPerpendicular[1], BestMatchPerpendicular[2]] ; 
+					CurrSomaAxonExt[0] = ExtendedPoint[0] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
+					CurrSomaAxonExt[1] = ExtendedPoint[1] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
+					CurrSomaAxonExt[2] = ExtendedPoint[2] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
+					_TOTALSHAPE.push(CurrSomaAxonExt[0])
+					_TOTALSHAPE.push(CurrSomaAxonExt[1])
+					_TOTALSHAPE.push(CurrSomaAxonExt[2])
+					_TOTALSHAPE.push(CurrSomaAxon[0])
+					_TOTALSHAPE.push(CurrSomaAxon[1])
+					_TOTALSHAPE.push(CurrSomaAxon[2])
+
+
+
+				}
+PrevPrevXYZ = [PrevXYZ[0],  PrevXYZ[1], PrevXYZ[2]]
+PrevXYZ = [CurrSomaAxon[0], CurrSomaAxon[1], CurrSomaAxon[2]] ; 
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//PERPENDICULAR END
 /////////////////////////////////////////////////////
 //if not creep
-			if ((Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "creep") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "extend")) {
+			if ((Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "creep") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "extend") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "perpendicular") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "parallel") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "halfway")) {
 				_TOTALSHAPE.push(CurrSomaAxon[0])
 				_TOTALSHAPE.push(CurrSomaAxon[1])
 				_TOTALSHAPE.push(CurrSomaAxon[2])
@@ -5617,7 +5685,8 @@ console.log(TotalLinesSceneNode) ;
             {                      
 width:600,
 height: 400,
-                type:"cameras/trackball",
+                ///type:"cameras/trackball",
+type:"cameras/orbit",
                 eye: { x: 150.0, y: 40.0, z: -150.0 },
                 look: { x: 40.0, y: 40.0, z: 20.0 },
                 up: { y: 1.0 },
