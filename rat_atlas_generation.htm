@@ -8,8 +8,8 @@
 
 
     <!--<script src="http://scenejs.org/api/latest/scenejs.js"></script>-->
-  <!--<script src="http://mp1233.github.io/bg/js/scenejs.js"></script>-->
-<script src="js/scenejs.js"></script>
+ <script src="http://mp1233.github.io/bg/js/scenejs.js"></script>
+ <!--<script src="js/scenejs.js"></script>-->
 
 </head>
 <body>
@@ -4641,7 +4641,7 @@ Cell_Layers = {
 Cells_Data = [
 ///////////////////////////////////////////////////
 //CEREBELLUM CORTEX
-	{cell_id:"Purkinje_cells",cell_neurotransmitter:"GABA",num_of_cells:340000*100,
+	{cell_id:"Purkinje_cells",cell_neurotransmitter:"GABA",num_of_cells:340000,
 		soma:{coordxy:{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]}},
 		///3D_example_url:"",
 		///3D_all_url:"",
@@ -4650,7 +4650,15 @@ Cells_Data = [
 ///axon:During its course through the granular layer it emits several collaterals efferents:["Purkinje","Golgi","Lugaro","basket"]
 			{id:"axon",coordxy:[{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   {type:"perpendicular",coordxy:["Cerebellum_Granule_Layer"],addxyz:[{len:0,r:0}]},{type:"extend",coordxy:["prev"],addxyz:[{len:0.1,r:1.5},{len:0.1,r:1.5},{len:0.1,r:1.5},{len:0.1,r:1.5}]}]},
 ///TODO extend coordxy:["prev"] >>> "prevXYZ"
-			{id:"dendrites",coordxy:[{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5}]},]},///afferents:["climbing fiber", "parallel fibers","molecular layer interneurons"]
+			///{id:"dendrites",coordxy:[{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},   {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5},{len:0,r:0.5}]},]},///afferents:["climbing fiber", "parallel fibers","molecular layer interneurons"]
+
+			{id:"dendrites",coordxy:[{type:"macros",coordxy:["Cerebellum_Purkinje_Layer"]},
+
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+]},
+
 		]
 	},
 
@@ -4671,35 +4679,107 @@ Cells_Data = [
 
 
 
-	{cell_id:"Stellate_Cerebellum_cells",cell_neurotransmitter:"GABA",num_of_cells:9999999,
+	{cell_id:"Stellate_Cerebellum_cells",cell_neurotransmitter:"GABA",num_of_cells:9999999,schematic_color:{ r:1.0, g:0.0, b:0.0 },
 		soma:{coordxy:{type:"relative",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[0.5,0.5,0.5]}},
 		compartments:[
-
+			{id:"axon",coordxy:[{type:"relative",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[0.5,0.5,0.5]}, {type:"parallel",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:2.1,r:1.5},{len:2.1,r:1.5},{len:2.1,r:1.5},{len:2.1,r:1.5}]}]},
+			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[0.5,0.5,0.5]}, {type:"parallel",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:-5.1,r:1.5},{len:-5.1,r:1.5},{len:-5.1,r:1.5},{len:-5.1,r:1.5}]}]},
 		]
 	},
-	{cell_id:"Stellate_Basket_cells",cell_neurotransmitter:"GABA",num_of_cells:3400000,
+///TODO >>> "halfway" (Purk, Mol,0.5)
+	{cell_id:"Basket_Cerebellum_cells",cell_neurotransmitter:"GABA",num_of_cells:3400000,schematic_color:{ r:0.6, g:0.0, b:0.0 },
 		soma:{coordxy:{type:"relative",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[0.5,0.5,-0.5]}},
 		compartments:[
-///The basket cell axon gives rise to multiple axonal baskets that surround the somata of a several Purkinje cells. The axons of the basket make synaptic contact with the Purkinje cell
+			///{id:"axon",coordxy:[{type:"relative",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[0.5,0.5,-0.5]}, {type:"parallel",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:2.1,r:1.5},{len:2.1,r:1.5},{len:2.1,r:1.5},{len:2.1,r:1.5}]}]},///efferents:[Purkinje-soma]
+			{id:"axon",coordxy:[{type:"relative",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[0.5,0.5,-0.5]},
+
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Molecular_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Purkinje_Layer"},lookforward:{},lookback:{},addxyz:[[[0.15,0,0.9],[0.6,0,0.9],[0.55,0,0.99],[0.65,0,0.99],[0.6,0,0.9],[1.2,0.0,0.9],[1.15,0,0.99],[1.25,0,0.99],[1.2,0,0.9],[1.8,0.0,0.9],[1.75,0,0.99],[1.85,0,0.99],[1.8,0,0.9],[2.4,0.0,0.9]]]},
+
+]},
+			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[0.5,0.5,-0.5]}, {type:"parallel",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:-5.1,r:1.5},{len:-5.1,r:1.5},{len:-5.1,r:1.5},{len:-5.1,r:1.5}]}]},
+
 		]
 	},
 
 
 
+///TODO >>> "halfway" (Purk, Gran,0.2)
+	{cell_id:"Golgi_Cerebellum_cells",cell_neurotransmitter:"GABA and glycine",num_of_cells:999999,schematic_color:{ r:0.9, g:0.6, b:0.0 },
+		soma:{coordxy:{type:"relative",coordxy:["Cerebellum_Purkinje_Layer"],addxyz:[-0.2,0.0,0.0]}},
+		compartments:[
+///Their dendrites extend into the molecular layer, whereas their axon ramifies as a dense plexus in the granular layer
+			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Purkinje_Layer"],addxyz:[-0.2,0.0,0.0]}, {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},///afferents:["Purkinje","mossy fibers","parallel fibers", "climbing fibers", "basket", "Lugaro"]
+			{id:"axon",coordxy:[{type:"relative",coordxy:["Cerebellum_Purkinje_Layer"],addxyz:[-0.2,0.0,0.0]}, {type:"perpendicular",coordxy:["Cerebellum_Granule_Layer"],addxyz:[{len:0.8,r:2.5},{len:0.8,r:2.5},{len:0.8,r:2.5},{len:0.8,r:2.5}]}]},///efferents:["granule cell dendrites","unipolar brush
+		]
+	},
+
+	{cell_id:"Lugaro_Cerebellum_cells",cell_neurotransmitter:"GABA and glycine",num_of_cells:999999,schematic_color:{ r:0.9, g:0.6, b:0.0 },
+		soma:{coordxy:{type:"relative",coordxy:["Cerebellum_Granule_Layer"],addxyz:[0.5,0.5,0.5]}},
+		compartments:[
+			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Granule_Layer"],addxyz:[0.5,0.5,0.5]}, {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:2,r:0.5},{len:2,r:0.5},{len:2,r:0.5},{len:2,r:0.5}]}]},///afferents:["serotoninergic plexus"]
+			{id:"axon",coordxy:[{type:"relative",coordxy:["Cerebellum_Granule_Layer"],addxyz:[0.5,0.5,0.5]}, {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:2,r:0.5},{len:2,r:0.5},{len:2,r:0.5},{len:2,r:0.5}]}]},///efferents:["stellate", "basket", "Golgi", "Purkinje"]
+		]
+	},
+
+	{cell_id:"candelabrum_Cerebellum_cells",cell_neurotransmitter:"GABA and glycine",num_of_cells:999999,schematic_color:{ r:0.9, g:0.6, b:0.0 },
+		soma:{coordxy:{type:"relative",coordxy:["Cerebellum_Purkinje_Layer"],addxyz:[-0.1,0.0,0.0]}},
+		compartments:[
+			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Purkinje_Layer"],addxyz:[-0.3,0.6,0.6]},]},
+			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Purkinje_Layer"],addxyz:[-0.3,0.6,-0.6]},]},
+			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Purkinje_Layer"],addxyz:[-0.3,-0.6,0.6]},]},
+
+			{id:"dendrites2",coordxy:[{type:"relative",coordxy:["Cerebellum_Purkinje_Layer"],addxyz:[-0.1,0.0,0.0]}, {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:2.0,r:0.5},{len:2.0,r:0.5},{len:2.0,r:0.5},{len:2.0,r:0.5}]}]},
+
+{id:"axon",coordxy:[{type:"creep",coordxy:["Cerebellum_Granule_Layer"],radius:1,creeplength:5}, {type:"perpendicular",coordxy:["Cerebellum_Molecular_Layer"],addxyz:[{len:2.0,r:0.5}]}]},
+		]
+	},
+
+	{cell_id:"unipolarBrush_Cerebellum_cells",cell_neurotransmitter:"Glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.0 },
+		soma:{coordxy:{type:"relative",coordxy:["Cerebellum_Granule_Layer"],addxyz:[0.5,0.5,0.5]}},
+		compartments:[
+			{id:"axon",coordxy:[{type:"relative",coordxy:["Cerebellum_Granule_Layer"],addxyz:[0.5,0.5,0.5]}, {type:"parallel",coordxy:["Cerebellum_Granule_Layer"],addxyz:[{len:1.1,r:0.5}]}]},///efferents:["granule"]
+			{id:"dendrites",coordxy:[{type:"relative",coordxy:["Cerebellum_Granule_Layer"],addxyz:[0.5,0.5,0.5]}, {type:"parallel",coordxy:["Cerebellum_Granule_Layer"],addxyz:[{len:-1.1,r:0.5}]}]},///afferents:["mossy fiber"]
+			///{id:"axon",coordxy:[{type:"relative",coordxy:["Cerebellum_Granule_Layer"],addxyz:[0.5,0.5,0.5]}, {type:"parallel",coordxy:["Cerebellum_Granule_Layer"],addxyz:[{len:2.1,r:1.5}]}]},
+		]
+	},
+///synarmotic neuron granule layer
+///perivascular neuron granule layer
+
+
+
+
+//CLIMBING FIBERS
+///one olivary axon may provide between 6 and 10 Purkinje cells
 
 
 	{cell_id:"IO_Cerebellum_ClimbingFibers_DarkGreen_cells",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.0, g:0.2, b:0.0 },
 		soma:{coordxy:{type:"macros",coordxy:["IOA","IOB","IOBE","IOK","IOVL"]}},
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_DarkGreen"]},{type:"extend",coordxy:["Cerebellum_Cortex_DarkGreen"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+			///{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_DarkGreen"]},{type:"extend",coordxy:["prev"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},///efferents:["Purkinge","cerebellar nuclei","Golgi"]
 ///TODO extend coordxy:["prev"] >>> "prevXYZ"
 			/*{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_DarkGreen"]},{type:"relative",coordxy:["Cerebellum_Cortex_DarkGreen"],addxyz:[1,1,1]}]}*/
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Med_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_DarkGreen"]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:-1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+]},
 		]
 	},
 	{cell_id:"IO_Cerebellum_Projection_Brown_cells",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.9, g:0.3, b:0.0 },
 		soma:{coordxy:{type:"macros",coordxy:["IOPR-vl"]}},
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Lat_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Brown"]},{type:"extend",coordxy:["Cerebellum_Cortex_Brown"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Lat_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Brown"]},
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:-1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+]},
 ///TODO extend coordxy:["prev"] >>> "prevXYZ"
 		]
 	},
@@ -4720,19 +4800,37 @@ Cells_Data = [
 	{cell_id:"IO_Cerebellum_Projection_Yellow_cells",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.9, g:0.9, b:0.0 },
 		soma:{coordxy:{type:"macros",coordxy:["IODM"]}},
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_IntDL_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Yellow"]},{type:"extend",coordxy:["Cerebellum_Cortex_Yellow"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_IntDL_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Yellow"]},
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:-1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+]},
 		]
 	},
 	{cell_id:"IO_Cerebellum_Projection_Blue_cells",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.0, g:0.0, b:0.9 },
 		soma:{coordxy:{type:"macros",coordxy:["IOD"]}},
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_IntA_R","Cerebellum_Nuclei_IntP_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Blue"]},{type:"extend",coordxy:["Cerebellum_Cortex_Blue"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_IntA_R","Cerebellum_Nuclei_IntP_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Blue"]},
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:-1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+]},
 		]
 	},
 	{cell_id:"IO_Cerebellum_Projection_Red_cells",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.9, g:0.0, b:0.0 },
 		soma:{coordxy:{type:"macros",coordxy:["IOPR-dl"]}},
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Lat_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Red"]},{type:"extend",coordxy:["Cerebellum_Cortex_Red"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Lat_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Red"]},
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:-1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+]},
 		]
 	},
 
@@ -4740,27 +4838,93 @@ Cells_Data = [
 	{cell_id:"IO_Cerebellum_Projection_Grey_cells",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.5, g:0.5, b:0.5 },
 		soma:{coordxy:{type:"macros",coordxy:["IOM"]}},
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_IntA_R","Cerebellum_Nuclei_IntP_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Grey"]},{type:"extend",coordxy:["Cerebellum_Cortex_Grey"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_IntA_R","Cerebellum_Nuclei_IntP_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Grey"]},
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:-1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+]},
 		]
 	},
 	{cell_id:"IO_Cerebellum_Projection_Olive_cells",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.2, g:0.9, b:0.0 },
 		soma:{coordxy:{type:"macros",coordxy:["IOC"]}},
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Meddl_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Olive"]},{type:"extend",coordxy:["Cerebellum_Cortex_Olive"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_Meddl_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Olive"]},
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:-1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+]},
 		]
 	},
 	{cell_id:"IO_Cerebellum_Projection_Black_cells",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.0, g:0.0, b:0.0 },
 		soma:{coordxy:{type:"macros",coordxy:["IOD-vf"]}},
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_LVe_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Black"]},{type:"extend",coordxy:["Cerebellum_Cortex_Black"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_LVe_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Black"]},
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:-1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+]},
 		]
 	},
 	{cell_id:"IO_Cerebellum_Projection_Lime_cells",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.0, g:0.9, b:0.5 },
 		soma:{coordxy:{type:"macros",coordxy:["IODMC","IOA"]}},
 		compartments:[
-			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_IntIC_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Lime"]},{type:"extend",coordxy:["Cerebellum_Cortex_Lime"],addxyz:[{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5},{len:1,r:0.5}]}]},
+			{id:"axon",coordxy:[{type:"creep",coordxy:["ClimbingFibers_TRACT"],radius:1},{type:"macros",coordxy:["Cerebellum_Nuclei_IntIC_R"]},{type:"creep",coordxy:["Purkinje_TRACT"],radius:0.2},{type:"macros",coordxy:["Cerebellum_Cortex_Lime"]},
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:0},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:-1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+
+{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Purkinje_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0,0,0],[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[0,0,0],[0.075,0,0.1],[0.15,0,0.1],[0.2,0,0.2],[0.225,0,0.3],[0.225,0,0.9]],[[0,0,0],[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0,0,0],[-0.075,0,0.1],[-0.15,0,0.1],[-0.2,0,0.2],[-0.225,0,0.3],[-0.225,0,0.9]],[[0,0,0],[0.0,0.0,0.9]]]},
+]},
 		]
 	},
+
+
+
+
+/*
+////////////////////////////////////////////////
+//TODO MOSSY FIBERS
+efferents:["dendrites of granule cells", "Golgi"]
+
+
+
+	{cell_id:"MossyFibers",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+		soma:{coordxy:{type:"macros",coordxy:["brainstem"]}},
+		compartments:[
+
+		]
+	},
+	{cell_id:"MossyFibers",cell_neurotransmitter:"glutamate",num_of_cells:10000000,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+		soma:{coordxy:{type:"macros",coordxy:["spinal cord"]}},
+		compartments:[
+
+		]
+	},
+	{cell_id:"MossyFibers",cell_neurotransmitter:"acetylcholine",num_of_cells:10000000,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+		soma:{coordxy:{type:"macros",coordxy:["vestibular"]}},
+		compartments:[
+
+		]
+	},
+	{cell_id:"MossyFibers",cell_neurotransmitter:"GABA and glycine",num_of_cells:10000000,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+		soma:{coordxy:{type:"macros",coordxy:["cerebellar nuclei"]}},
+		compartments:[
+
+		]
+	},
+
+*/
+
+
+
+
+
 
 ]
 
@@ -4817,7 +4981,7 @@ scene = SceneJS.createScene({
             {                      
 width:600,
 height: 400,
-                ///type:"cameras/trackball",
+                type:"cameras/trackball",
                 eye: { x: 150.0, y: 40.0, z: -150.0 },
                 look: { x: 40.0, y: 40.0, z: 20.0 },
                 up: { y: 1.0 },
@@ -5413,6 +5577,46 @@ var bestlinebegpoint = [0,0,0] ;
 ///console.log("AAA", bestlinebegpoint) ; 
 	return bestlinebegpoint.begxyz ;  /// _PrevXYZ ; 
 }
+function FindMatchPerpendicular2(_PrevXYZ,_CurrCompartmentsLayer) {
+var bestlinedist = 999999 ; 
+var bestlinebegpoint = [0,0,0] ; 
+	for (eachline in _CurrCompartmentsLayer[0]) {
+///console.log("OOO",_prevxyz, _nextxyz)
+		lineAnalysis = GetLineAnalysis(_CurrCompartmentsLayer[0][eachline],_PrevXYZ, _PrevXYZ) /// , _coverLegth)
+///console.log("DDD5", lineAnalysis)
+		if (lineAnalysis.begenddist < bestlinedist) {
+			bestlinedist = lineAnalysis.begenddist ; 
+			bestlineind = eachline ; 
+			///beslinepointind = 
+			bestlinebegpoint = lineAnalysis.begpoint ; 
+			//bestlineendpoint = lineAnalysis.endpoint ; 
+///console.log("DDD4")
+		}
+	}
+retlen = 0 ; 
+	for (eachline = 0; eachline < bestlineind;  eachline++ ) {
+		///console.log("AAA2", _CurrCompartmentsLayer[0][eachline]) ; 
+		for (eachlinepoint = 0; eachlinepoint < _CurrCompartmentsLayer[0][eachline].xyz.length - 1;  eachlinepoint++ ) {
+///console.log("AAA3", _CurrCompartmentsLayer[0][eachline].xyz[eachlinepoint]) ; 
+			xyz1 = _CurrCompartmentsLayer[0][eachline].xyz[eachlinepoint]
+			xyz2 = _CurrCompartmentsLayer[0][eachline].xyz[1*eachlinepoint+1]
+			retlen = retlen + Math.sqrt(((xyz2[0]-xyz1[0])*(xyz2[0]-xyz1[0]))+((xyz2[1]-xyz1[1])*(xyz2[1]-xyz1[1]))+((xyz2[2]-xyz1[2])*(xyz2[2]-xyz1[2])))
+		}
+	}
+		for (eachlinepoint = 0; eachlinepoint < bestlinebegpoint.begind ;  eachlinepoint++ ) {
+///console.log("AAA3", _CurrCompartmentsLayer[0][eachline].xyz[eachlinepoint]) ; 
+			xyz1 = _CurrCompartmentsLayer[0][bestlineind].xyz[eachlinepoint]
+			xyz2 = _CurrCompartmentsLayer[0][bestlineind].xyz[1*eachlinepoint+1]
+			retlen = retlen + Math.sqrt(((xyz2[0]-xyz1[0])*(xyz2[0]-xyz1[0]))+((xyz2[1]-xyz1[1])*(xyz2[1]-xyz1[1]))+((xyz2[2]-xyz1[2])*(xyz2[2]-xyz1[2])))
+		}
+
+			xyz1 = _CurrCompartmentsLayer[0][bestlineind].xyz[bestlinebegpoint.begind]
+///console.log(bestlinebegpoint)
+			xyz2 = bestlinebegpoint.begxyz
+			retlen = retlen + Math.sqrt(((xyz2[0]-xyz1[0])*(xyz2[0]-xyz1[0]))+((xyz2[1]-xyz1[1])*(xyz2[1]-xyz1[1]))+((xyz2[2]-xyz1[2])*(xyz2[2]-xyz1[2])))
+///console.log("AAA", bestlineind, bestlinebegpoint, retlen, bestlinedist) ; 
+	return {xyz:bestlinebegpoint.begxyz,len:retlen} ;  /// _PrevXYZ ; 
+}
 
 
 
@@ -5472,8 +5676,13 @@ for (var i = 0 ; i< Cells_Data[eachcell].num_of_cells/ZOOM_LEVEL ; i++) {
 
 	_radius = [Math.random(),Math.random(),Math.random()]
 	CurrSomaBody_xyz = GetLayerPointAtLength(CurrSomaLayer, i*CurrLayerArea*ZOOM_LEVEL/Cells_Data[eachcell].num_of_cells) ; 
-
-
+			if (Cells_Data[eachcell].soma.coordxy.type == "relative") {
+///console.log(Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy])
+				CurrSomaBody_xyz[0] = CurrSomaBody_xyz[0] + Cells_Data[eachcell].soma.coordxy.addxyz[0] ; 
+				CurrSomaBody_xyz[1] = CurrSomaBody_xyz[1] + Cells_Data[eachcell].soma.coordxy.addxyz[1] ; 
+				CurrSomaBody_xyz[2] = CurrSomaBody_xyz[2] + Cells_Data[eachcell].soma.coordxy.addxyz[2] ; 
+			}
+///PrevXYZ = [CurrSomaBody_xyz[0], CurrSomaBody_xyz[1], CurrSomaBody_xyz[2]] ; 
 
 /////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -5507,7 +5716,7 @@ PrevPrevXYZ = [0,0,0]
 			CurrCompartmentStepLayer = CurrCompartmentsLayer[1*eachcompartmentxy + 1][0]
 			CurrAxonLayerArea = GetLayerArea(CurrCompartmentStepLayer) ; 
 			CurrSomaAxon = GetLayerPointAtLength(CurrCompartmentStepLayer, i*CurrAxonLayerArea*ZOOM_LEVEL/Cells_Data[eachcell].num_of_cells) ; 
-console.log("creep along the line here, extend parallel also here.  color axons green+darkgreen neurotransmittercolor+schematiccolor. ")
+console.log("color axons green+darkgreen neurotransmittercolor+schematiccolor. ")
 ///Macros, Relative, Creep, extend
 			if (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type == "relative") {
 ///console.log(Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy])
@@ -5525,6 +5734,7 @@ console.log("creep along the line here, extend parallel also here.  color axons 
 				for (eachextention in Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz) {
 ///console.log("ggg2",PrevXYZ)
 ///TODO replace ExtendedPoint = ExtendPoint(PrevPrevXYZ, PrevXYZ, Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
+CurrSomaAxon = PrevXYZ
 					ExtendedPoint = ExtendPoint(PrevPrevXYZ, CurrSomaAxon, Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
 					CurrSomaAxonExt = [CurrSomaAxon[0], CurrSomaAxon[1], CurrSomaAxon[2]] ; 
 					CurrSomaAxonExt[0] = ExtendedPoint[0] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
@@ -5600,19 +5810,19 @@ PrevXYZ = [PrevXYZ[0], PrevXYZ[1], PrevXYZ[2]] ;
 //PERPENDICULAR END
 /////////////////////////////////////////////////////
 /////////////////////////////////////////////////
-///type:"extend",coordxy:["Cerebellum_Cortex_DarkGreen"],addxyz:[{len:1,r:0.5}
 //PARALLEL
 
 			if (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type == "parallel") {
 ///console.log(PrevXYZ,CurrCompartmentsLayer,eachcompartmentxy)
-BestMatchPerpendicular = GetLayerPointAtLength(CurrCompartmentStepLayer, i*CurrAxonLayerArea*ZOOM_LEVEL/Cells_Data[eachcell].num_of_cells + Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
-				for (eachextention in Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz) {
 
+				for (eachextention in Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz) {
+BestMatchPerpendicular = GetLayerPointAtLength(CurrCompartmentStepLayer, i*CurrAxonLayerArea*ZOOM_LEVEL/Cells_Data[eachcell].num_of_cells + 1.0*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
 					ExtendedPoint = BestMatchPerpendicular///ExtendPoint(PrevXYZ, BestMatchPerpendicular, Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
 					CurrSomaAxonExt = [BestMatchPerpendicular[0], BestMatchPerpendicular[1], BestMatchPerpendicular[2]] ; 
 					CurrSomaAxonExt[0] = ExtendedPoint[0] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
 					CurrSomaAxonExt[1] = ExtendedPoint[1] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
 					CurrSomaAxonExt[2] = ExtendedPoint[2] + Math.random()*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].r ; 
+///console.log(CurrSomaAxonExt, PrevXYZ) ; 
 					_TOTALSHAPE.push(CurrSomaAxonExt[0])
 					_TOTALSHAPE.push(CurrSomaAxonExt[1])
 					_TOTALSHAPE.push(CurrSomaAxonExt[2])
@@ -5639,10 +5849,109 @@ PrevXYZ = [PrevXYZ[0], PrevXYZ[1], PrevXYZ[2]] ;
 
 
 
-//PERPENDICULAR END
+//PARALLEL END
 /////////////////////////////////////////////////////
+
+///{type:"3Dmesh",coordxy:["prev"],startpoint:{type:"macros",layer:"Cerebellum_Molecular_Layer",len:1},lookup:{type:"perpendicular",layer:"Cerebellum_Molecular_Layer"},lookforward:{},lookback:{},addxyz:[[[0.3,0,0.1],[0.6,0,0.1],[0.8,0,0.2],[0.9,0,0.3],[0.9,0,0.9]],[[0.15,0,0.1],[0.3,0,0.1],[0.4,0,0.2],[0.45,0,0.3],[0.45,0,0.9]],[[-0.3,0,0.1],[-0.6,0,0.1],[-0.8,0,0.2],[-0.9,0,0.3],[-0.9,0,0.9]],[[-0.15,0,0.1],[-0.3,0,0.1],[-0.4,0,0.2],[-0.45,0,0.3],[-0.45,0,0.9]],[[0.0,0.0,0.9]]]},
+
+/////////////////////////////////////////////////
+//3DMESH
+
+			if (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type == "3Dmesh") {
+///console.log(PrevXYZ,CurrCompartmentsLayer,eachcompartmentxy)
+
+_addxyz_orig = Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz
+///console.log("sss", _addxyz_orig, PrevXYZ, Cell_Layers[Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].startpoint.layer]) ; 
+///Cell_Layers[Cells_Data[eachcell].soma.coordxy.coordxy[eachcoordxynewar]]
+_addxyz_transform = [0,0,0]
+StartPointLayer = Cell_Layers[Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].startpoint.layer]
+LookUpPointLayer = Cell_Layers[Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].lookup.layer]
+
+BestMatchPerpendicular = FindMatchPerpendicular2(PrevXYZ,StartPointLayer)
+
+
+///_starting_point = BestMatchPerpendicular.xyz ; ///GetLayerPointAtLength(CurrCompartmentStepLayer, i*CurrAxonLayerArea*ZOOM_LEVEL/Cells_Data[eachcell].num_of_cells + 1.0*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
+_starting_point = GetLayerPointAtLength(StartPointLayer, BestMatchPerpendicular.len + 1*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].startpoint.len)
+//Find perpendicular at Layer (len)
+//_starting_point = GetLayerPointAtLength(foundlen+len
+
+BestMatchLookUpPerpendicular = FindMatchPerpendicular(_starting_point,LookUpPointLayer)
+XZangle = -Math.atan2(BestMatchLookUpPerpendicular[0] - _starting_point[0], BestMatchLookUpPerpendicular[2] - _starting_point[2]) ; 
+///XZangle =  Math.atan((BestMatchLookUpPerpendicular[0] - _starting_point[0])/(BestMatchLookUpPerpendicular[2] - _starting_point[2])) ; 
+///XZangle =  Math.asin((BestMatchLookUpPerpendicular[0] - _starting_point[0])/Math.sqrt(((BestMatchLookUpPerpendicular[0] - _starting_point[0])*(BestMatchLookUpPerpendicular[0] - _starting_point[0]))+((BestMatchLookUpPerpendicular[2] - _starting_point[2])*(BestMatchLookUpPerpendicular[2] - _starting_point[2])))) ;
+Zlen = Math.sqrt(((BestMatchLookUpPerpendicular[0] - _starting_point[0])*(BestMatchLookUpPerpendicular[0] - _starting_point[0]))+((BestMatchLookUpPerpendicular[1] - _starting_point[1])*(BestMatchLookUpPerpendicular[1] - _starting_point[1]))+((BestMatchLookUpPerpendicular[2] - _starting_point[2])*(BestMatchLookUpPerpendicular[2] - _starting_point[2]))) ; 
+///console.log("sss3", BestMatchPerpendicular, BestMatchLookUpPerpendicular, XZangle,Zlen) ; 
+
+//len start look
+//_addxyz_orig.z*len
+//find XZangle
+//_addxyz_transform = _addxyz_orig*XZangle
+					/*_TOTALSHAPE.push(_starting_point[0])
+					_TOTALSHAPE.push(_starting_point[1])
+					_TOTALSHAPE.push(_starting_point[2])*/
+
+				for (eachextention in _addxyz_orig) {
+///console.log("BEG")
+					for (eachextentionpoint in _addxyz_orig[eachextention]) {
+///BestMatchPerpendicular = GetLayerPointAtLength(CurrCompartmentStepLayer, i*CurrAxonLayerArea*ZOOM_LEVEL/Cells_Data[eachcell].num_of_cells + 1.0*Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
+					///ExtendedPoint = BestMatchPerpendicular///ExtendPoint(PrevXYZ, BestMatchPerpendicular, Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].addxyz[eachextention].len)
+					///CurrSomaAxonExt = [BestMatchPerpendicular[0], BestMatchPerpendicular[1], BestMatchPerpendicular[2]] ; 
+						_addxyz_transform[0] = _starting_point[0] + Math.cos(XZangle)*_addxyz_orig[eachextention][eachextentionpoint][0] - Math.sin(XZangle)*Zlen*_addxyz_orig[eachextention][eachextentionpoint][2]; 
+						_addxyz_transform[1] = 1*_starting_point[1] + 1*_addxyz_orig[eachextention][eachextentionpoint][1] ; 
+						_addxyz_transform[2] = _starting_point[2] + Math.sin(XZangle)*_addxyz_orig[eachextention][eachextentionpoint][0] + Math.cos(XZangle)*Zlen*_addxyz_orig[eachextention][eachextentionpoint][2] ; 
+///console.log(CurrSomaAxonExt, PrevXYZ) ; 
+///console.log("sss5", _addxyz_transform,Math.atan(0),Math.cos(1.57)) ; 
+						_TOTALSHAPE.push(_addxyz_transform[0])
+						_TOTALSHAPE.push(_addxyz_transform[1])
+						_TOTALSHAPE.push(_addxyz_transform[2])
+
+///console.log("FORWARD", _addxyz_transform) ; 
+
+
+					}
+
+					for (eachextentionpoint = _addxyz_orig[eachextention].length-2; eachextentionpoint > -1; eachextentionpoint = eachextentionpoint - 1) { 
+						_addxyz_transform[0] = _starting_point[0] + Math.cos(XZangle)*_addxyz_orig[eachextention][eachextentionpoint][0] - Math.sin(XZangle)*Zlen*_addxyz_orig[eachextention][eachextentionpoint][2]; 
+						_addxyz_transform[1] = 1*_starting_point[1] + 1*_addxyz_orig[eachextention][eachextentionpoint][1] ; 
+						_addxyz_transform[2] = _starting_point[2] + Math.sin(XZangle)*_addxyz_orig[eachextention][eachextentionpoint][0] + Math.cos(XZangle)*Zlen*_addxyz_orig[eachextention][eachextentionpoint][2] ; 
+///console.log(CurrSomaAxonExt, PrevXYZ) ; 
+						_TOTALSHAPE.push(_addxyz_transform[0])
+						_TOTALSHAPE.push(_addxyz_transform[1])
+						_TOTALSHAPE.push(_addxyz_transform[2])
+///console.log("BACK", _addxyz_transform) ; 
+					}
+///console.log("END") ; 
+					/*_TOTALSHAPE.push(_starting_point[0])
+					_TOTALSHAPE.push(_starting_point[1])
+					_TOTALSHAPE.push(_starting_point[2])*/
+
+				}
+///PrevPrevXYZ = [PrevXYZ[0],  PrevXYZ[1], PrevXYZ[2]]
+///PrevXYZ = [PrevXYZ[0], PrevXYZ[1], PrevXYZ[2]] ; 					
+					_TOTALSHAPE.push(PrevXYZ[0])
+					_TOTALSHAPE.push(PrevXYZ[1])
+					_TOTALSHAPE.push(PrevXYZ[2])
+			}
+
+
+///console.log("RESULT",_TOTALSHAPE)
+
+
+
+
+
+
+
+
+
+
+//3DMESH END
+/////////////////////////////////////////////////////
+
+
+
 //if not creep
-			if ((Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "creep") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "extend") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "perpendicular") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "parallel") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "halfway")) {
+			if ((Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "creep") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "extend") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "perpendicular") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "parallel") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "halfway") && (Cells_Data[eachcell].compartments[eachcompartment].coordxy[eachcompartmentxy].type != "3Dmesh")) {
 				_TOTALSHAPE.push(CurrSomaAxon[0])
 				_TOTALSHAPE.push(CurrSomaAxon[1])
 				_TOTALSHAPE.push(CurrSomaAxon[2])
