@@ -1,0 +1,335 @@
+<body>
+
+some oversimplified neuroml scheme
+link to full neuroml scheme
+<input type="button" id="Oculomotor" value="Oculomotor" onclick=CreateSpike('AxonIO_1_1')>
+<input type="button" id="MotorCortex" value="MotorCortex" onclick=CreateSpike('AxonMF_1_1')>
+<br>
+<canvas id="canvas" width=1600 height=900></canvas>
+<br>
+
+
+
+
+Some special features of this scheme:
+optic-vestibular relay
+
+gridcells.jpg
+</body>
+
+<script>
+
+var AXONS = {
+/*Axon1:{start_node:"Button1", end_node:"PurkinjeDendrite", shape:[[50,50],[150,50],[150,150]], type:"glutamate", lengthsec:20}, 
+Axon2:{start_node:"Button2", end_node:"PurkinjeDendrite", shape:[[50,250],[150,250],[150,150]], type:"glutamate", lengthsec:10}, 
+Axon3:{start_node:"PurkinjeDendrite", end_node:"PurkinjeSoma", shape:[[150,150],[250,150]], type:"glutamate", lengthsec:10,power:1}, 
+Axon4:{start_node:"Button3", end_node:"PurkinjeSoma", shape:[[50,350],[250,350],[250,150]], type:"GABA", lengthsec:10, power:-1},
+Axon5:{start_node:"PurkinjeSoma", end_node:"Out", shape:[[250,150],[350,50],[450,50]], type:"GABA", lengthsec:10},
+Axon6:{start_node:"PurkinjeSoma", end_node:"Out", shape:[[250,150],[350,250],[450,250]], type:"GABA", lengthsec:10},*/
+
+AxonMF_1_1:{start_node:"MotorCortexButton", end_node:"Parallel_Fiber_1", shape:[[0,600],[130,600],[130,360]], type:"glutamate", lengthsec:10,power:1},
+AxonMF_1_2:{start_node:"MotorCortexButton", end_node:"Golgi_Med", shape:[[0,600],[130,600],[200,320]], type:"glutamate", lengthsec:10,power:1},
+AxonMF_1_3:{start_node:"MotorCortexButton", end_node:"UniPolarBrush_Med", shape:[[0,600],[130,600],[110,380]], type:"glutamate", lengthsec:10,power:1},
+
+
+AxonIO_1_1:{start_node:"OculomotorButton", end_node:"IOVL_IOVK", shape:[[0,700],[150,700]], type:"glutamate", lengthsec:10,power:1},
+AxonIO_1_21:{start_node:"IOVL_IOVK", end_node:"CRB_NUCL_Med", shape:[[150,700],[160,690],[160,500]], type:"glutamate", lengthsec:10,power:1},
+AxonIO_1_22:{start_node:"IOVL_IOVK", end_node:"PRKJ_A", shape:[[150,700],[150,300]], type:"glutamate", lengthsec:10,power:1},
+AxonIO_1_23:{start_node:"IOVL_IOVK", end_node:"Golgi_Med", shape:[[150,700],[200,320]], type:"glutamate", lengthsec:10,power:1},
+
+AxonPRKJ_1_1:{start_node:"PRKJ_A", end_node:"CRB_NUCL_Med", shape:[[150,300],[160,310],[160,500]], type:"GABA", lengthsec:10,power:-1},
+AxonPRKJ_1_2:{start_node:"PRKJ_A", end_node:"Golgi_Med", shape:[[150,300],[200,320]], type:"GABA", lengthsec:10,power:-1},
+AxonPRKJ_1_3:{start_node:"PRKJ_A", end_node:"Lugaro_Med", shape:[[150,300],[120,340]], type:"GABA", lengthsec:10,power:-1},
+AxonPRKJ_1_4:{start_node:"PRKJ_A", end_node:"Basket_Med", shape:[[150,300],[150,220]], type:"GABA", lengthsec:10,power:-1},
+
+AxonBasket_1_1:{start_node:"Basket_Med", end_node:"PRKJ_A", shape:[[150,220],[160,230],[160,290],[150,300]], type:"GABA", lengthsec:10,power:-1},
+AxonBasket_1_2:{start_node:"Basket_Med", end_node:"Golgi_Med", shape:[[150,220],[200,320]], type:"GABA", lengthsec:10,power:-1},
+AxonStellate_1_1:{start_node:"Stellate_Med", end_node:"PRKJ_A", shape:[[130,180],[150,300]], type:"GABA", lengthsec:10,power:-1},
+AxonParallelFIB_1:{start_node:"Parallel_Fiber_1", end_node:"PRKJ_A", shape:[[130,360],[150,300]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_2:{start_node:"Parallel_Fiber_1", end_node:"Lugaro_Med", shape:[[130,360],[120,340]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_3:{start_node:"Parallel_Fiber_1", end_node:"Basket_Med", shape:[[130,360],[150,220]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_4:{start_node:"Parallel_Fiber_1", end_node:"Stellate_Med", shape:[[130,360],[130,180]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_5:{start_node:"Parallel_Fiber_1", end_node:"Candelabrum_Med", shape:[[130,360],[190,340]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_6:{start_node:"Parallel_Fiber_1", end_node:"Golgi_Med", shape:[[130,360],[200,320]], type:"glutamate", lengthsec:10,power:1},
+
+
+AxonUniPolarBrush_1_1:{start_node:"UniPolarBrush_Med", end_node:"Parallel_Fiber_1", shape:[[200,320],[110,380]], type:"glutamate", lengthsec:10,power:1},
+AxonGolgi_1_1:{start_node:"Golgi_Med", end_node:"Parallel_Fiber_1", shape:[[200,320],[130,360]], type:"GABA_glycine", lengthsec:10,power:-1},
+AxonGolgi_1_2:{start_node:"Golgi_Med", end_node:"UniPolarBrush_Med", shape:[[200,320],[110,380]], type:"GABA_glycine", lengthsec:10,power:-1},
+AxonLugaro_1_1:{start_node:"Lugaro_Med", end_node:"Golgi_Med", shape:[[120,340],[200,320]], type:"GABA_glycine", lengthsec:10,power:-1},
+AxonLugaro_1_2:{start_node:"Lugaro_Med", end_node:"Stellate_Med", shape:[[120,340],[130,180]], type:"GABA_glycine", lengthsec:10,power:-1},
+AxonLugaro_1_3:{start_node:"Lugaro_Med", end_node:"Basket_Med", shape:[[120,340],[150,220]], type:"GABA_glycine", lengthsec:10,power:-1},
+AxonLugaro_1_4:{start_node:"Lugaro_Med", end_node:"PRKJ_A", shape:[[120,340],[150,300]], type:"GABA_glycine", lengthsec:10,power:-1},
+
+AxonCRBNUK_1_1:{start_node:"CRB_NUCL_Med", end_node:"IOVL_IOVK", shape:[[160,500],[170,510],[170,680],[150,700]], type:"GABA", lengthsec:10,power:-1},
+AxonCRBNUK_1_2:{start_node:"CRB_NUCL_Med", end_node:"PRKJ_A", shape:[[160,500],[170,490],[170,320],[150,300]], type:"?", lengthsec:10,power:1},
+AxonCRBNUK_1_3:{start_node:"CRB_NUCL_Med", end_node:"Out", shape:[[160,500],[180,520],[180,800],[0,800]], type:"?", lengthsec:10,power:1},
+AxonCRBNUK_1_4:{start_node:"CRB_NUCL_Med", end_node:"Out", shape:[[160,500],[190,530],[190,800],[1200,800]], type:"?", lengthsec:10,power:1},
+
+
+}
+
+var NODES = {
+Out:{type:"Y", outputs:[]},
+/*PurkinjeDendrite:{type:"Y", outputs:["Axon3"]},
+PurkinjeSoma:{type:"SOMA", soma_value:5, outputs:["Axon5","Axon6"],coordxy:[250,150]},*/
+
+IOVL_IOVK:{type:"SOMA", soma_value:5, outputs:["AxonIO_1_21","AxonIO_1_22","AxonIO_1_23"],coordxy:[150,700]},
+CRB_NUCL_Med:{type:"SOMA", soma_value:5, outputs:["AxonCRBNUK_1_1","AxonCRBNUK_1_2","AxonCRBNUK_1_3","AxonCRBNUK_1_4"],coordxy:[160,500]},
+PRKJ_A:{type:"SOMA", soma_value:5, outputs:["AxonPRKJ_1_1","AxonPRKJ_1_2","AxonPRKJ_1_3","AxonPRKJ_1_4"],coordxy:[150,300]},//Purkinje cells
+Golgi_Med:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[200,320]},
+Lugaro_Med:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[120,340]},///from serotonine
+Basket_Med:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[150,220]},
+Stellate_Med:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[130,180]},
+UniPolarBrush_Med:{type:"SOMA", soma_value:5, outputs:["AxonUniPolarBrush_1_1"],coordxy:[110,380]},//to granule cells
+Parallel_Fiber_1:{type:"SOMA", soma_value:5, outputs:["AxonParallelFIB_1","AxonParallelFIB_2","AxonParallelFIB_3","AxonParallelFIB_4","AxonParallelFIB_5","AxonParallelFIB_6"],coordxy:[130,360]},
+Candelabrum_Med:{type:"SOMA", soma_value:5, outputs:[],coordxy:[190,340]}, 
+
+}
+
+var currspike_id = 0 ; 
+var MOVINGSPIKES = {} ; 
+var startTime = 0;
+var OnlyOnce = 0 ; 
+
+
+
+
+var x = 100;
+var y = 50;
+var r = 10;
+var duration = 1000; // in ms
+var nextX, nextY;
+
+function GetDistXYZ(currxyz1, currxyz2) {
+	return Math.sqrt(((currxyz1[0]-currxyz2[0])*(currxyz1[0]-currxyz2[0]))+((currxyz1[1]-currxyz2[1])*(currxyz1[1]-currxyz2[1]))) ; 
+}
+
+function GetLayerPointAtLength(_CurrSomaLayer, _LengthAtLayer) {
+///console.log("DDD8", _CurrSomaLayer, _LengthAtLayer)
+	CurrLengthAtLayer = 0
+	ret = [_LengthAtLayer, _LengthAtLayer]
+
+			for (var i = 0 ; i< _CurrSomaLayer.length-1 ; i++) {
+///console.log("DDD7", CurrLengthAtLayer)
+				var currxyz1 = _CurrSomaLayer[i]
+				var currxyz2 = _CurrSomaLayer[i+1]
+				CurrCutDist = GetDistXYZ(currxyz1, currxyz2)
+
+
+
+
+				if (CurrLengthAtLayer + CurrCutDist > _LengthAtLayer) {
+_currproportion = (_LengthAtLayer - CurrLengthAtLayer)/CurrCutDist
+ret = [currxyz1[0]+(_currproportion*(currxyz2[0]-currxyz1[0])), currxyz1[1]+(_currproportion*(currxyz2[1]-currxyz1[1]))] ; 
+					return ret ; /// currxyz1 ; 
+				}
+				CurrLengthAtLayer = CurrLengthAtLayer + CurrCutDist
+			}
+
+	return ret
+}
+
+function RedrawSpike(eachspike) {
+_currxy = GetLayerPointAtLength(MOVINGSPIKES[eachspike].currentaxon.shape, MOVINGSPIKES[eachspike].curraxonlength*MOVINGSPIKES[eachspike].currentposonaxon/MOVINGSPIKES[eachspike].currentaxon.lengthsec)
+circle(_currxy[0], _currxy[1], 5)
+}
+
+
+
+function RedrawNode(eachnode) {
+///console.log(eachnode)
+if (eachnode.type == "SOMA") {
+circle(eachnode.coordxy[0], eachnode.coordxy[1], eachnode.soma_value)
+}} 
+
+
+function RecalculateNode(eachnode) {
+if (eachnode.type == "SOMA") {
+if ((startTime/10 == Math.floor(startTime/10) && (OnlyOnce))) {
+///console.log(startTime, eachnode.soma_value)
+if (eachnode.soma_value > 5) {eachnode.soma_value = eachnode.soma_value - 1}
+if (eachnode.soma_value < 5) {eachnode.soma_value = 1*eachnode.soma_value + 1}
+OnlyOnce = 0 ; 
+}}} 
+ 
+function RecalculateSpike(eachspike) {
+	///console.log(MOVINGSPIKES[eachspike].currentposonaxon) ;
+	MOVINGSPIKES[eachspike].currentposonaxon = MOVINGSPIKES[eachspike].currentposonaxon + 1 ; 
+///console.log(MOVINGSPIKES[eachspike].currentaxon)
+	if (MOVINGSPIKES[eachspike].currentposonaxon > MOVINGSPIKES[eachspike].currentaxon.lengthsec-1) {
+		///PassFinishNode() ;
+///var NODES = {PurkinjeDendrite:{type:"Y", outputs:["Axon3"]}}
+		curr_end_node = NODES[MOVINGSPIKES[eachspike].currentaxon.end_node]
+		if (curr_end_node.type == "Y") {
+			for (eachoutput in curr_end_node.outputs) {
+///console.log(NODES[MOVINGSPIKES[eachspike].currentaxon.end_node])
+				currspike_id = currspike_id + 1 ; 
+				MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[curr_end_node.outputs[eachoutput]], currentposonaxon:0, currentpower:1, curraxonlength:GetAxonLength(AXONS[curr_end_node.outputs[eachoutput]].shape)}
+			}
+		}
+
+		if (curr_end_node.type == "SOMA") {
+			NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value = NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value + MOVINGSPIKES[eachspike].currentaxon.power ; 
+			if (NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value > 15) {NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value = 15}
+			if (NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value < 1) {NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value = 1}
+			if (NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value > 10) {
+				for (eachoutput in curr_end_node.outputs) {
+console.log(NODES[MOVINGSPIKES[eachspike].currentaxon.end_node])
+					currspike_id = currspike_id + 1 ; 
+					MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[curr_end_node.outputs[eachoutput]], currentposonaxon:0, currentpower:1, curraxonlength:GetAxonLength(AXONS[curr_end_node.outputs[eachoutput]].shape)}
+
+				}
+			NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value = 5 ; 
+			}
+
+		}
+		delete  MOVINGSPIKES[eachspike] ; 
+	}
+} 
+
+function anim(time) {
+///console.log(MOVINGSPIKES)
+  //if (!startTime) // it's the first frame
+   // startTime = time || performance.now();
+startTime = startTime + 1 ; 
+OnlyOnce = 1 ; 
+clear() ; 
+for (eachaxon in AXONS) {
+	drawLine(AXONS[eachaxon])
+}
+for (eachspike in MOVINGSPIKES) {
+
+RedrawSpike(eachspike) ; 
+RecalculateSpike(eachspike) ; 
+
+}
+
+for (eachnode in NODES) {
+
+RedrawNode(NODES[eachnode]) ; 
+RecalculateNode(NODES[eachnode]) ; 
+
+}
+  // deltaTime should be in the range [0 ~ 1]
+  var deltaTime = (time - startTime) / duration;
+  // currentPos = previous position + (difference * deltaTime)
+  //var currentX = x + ((nextX - x) * deltaTime);
+  //var currentY = y + ((nextY - y) * deltaTime);
+
+ // if (deltaTime >= 1) { // this means we ended our animation
+    x = nextX; // reset x variable
+    y = nextY; // reset y variable
+   // startTime = null; // reset startTime
+   /// draw(x, y); // draw the last frame, at required position
+ // } else {
+   /// draw(currentX, currentY);
+setTimeout(function() {
+  //your code to be executed after 1 second
+requestAnimationFrame(anim); // do it again
+}, 500);
+    
+//  }
+}
+
+MotorCortex.onclick = e => {
+CreateSpike('AxonMF_1_1')
+CreateSpike('AxonMF_1_2')
+CreateSpike('AxonMF_1_3')
+}
+
+// OP's code
+
+
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+
+
+
+/*
+function draw(x, y) {
+  clear(WIDTH, HEIGHT);
+  ctx.fillStyle = "purple";
+  circle(x, y, r);
+}
+
+draw(x, y);
+*/
+
+///////////////////////////////////////////////
+function circle(x, y, r) {
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2, true);
+  ctx.fill();
+}
+var WIDTH = 1600;
+var HEIGHT = 900;
+function clear() {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+}
+
+
+
+function GetAxonLength(_CurrSomaLayer) {
+///console.log(_CurrSomaLayer)
+	CurrLengthAtLayer = 0
+			for (var i = 0 ; i< _CurrSomaLayer.length-1 ; i++) {
+				var currxyz1 = _CurrSomaLayer[i]
+				var currxyz2 = _CurrSomaLayer[i+1]
+				CurrCutDist = GetDistXYZ(currxyz1, currxyz2)
+				CurrLengthAtLayer = CurrLengthAtLayer + CurrCutDist
+			}
+
+	return CurrLengthAtLayer
+}
+
+
+
+function CreateSpike(_axon_id) {
+///console.log(_axon_id)
+currspike_id = currspike_id + 1 ; 
+MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[_axon_id], currentposonaxon:0, currentpower:1, curraxonlength:GetAxonLength(AXONS[_axon_id].shape)}
+}
+
+
+
+function drawLine(_shape) {
+	///console.log(_shape)
+ctx.beginPath();
+ctx.moveTo(_shape.shape[0][0], _shape.shape[0][1]);
+_color = '#555555'
+if (_shape.type == "GABA") {_color = '#ff0000'}
+if (_shape.type == "glutamate") {_color = '#00ff00'}
+if (_shape.type == "GABA_glycine") {_color = '#ff0099'}
+for (i = 1; i < _shape.shape.length; i++) { 
+ctx.lineTo(_shape.shape[i][0], _shape.shape[i][1]);
+}
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = _color;
+ctx.stroke();
+}
+
+
+for (eachaxon in AXONS) {
+	drawLine(AXONS[eachaxon])
+}
+
+
+
+
+
+
+
+  anim();
+
+</script>
+<style>
+#canvas {
+  border: 1px solid black;
+}
+</style>
+
+
+
