@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SceneJS Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=800, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+
+    <!--<script src="http://scenejs.org/api/latest/scenejs.js"></script>-->
+ <script src="https://mp1233.github.io/bg/js/scenejs.js"></script>
+ <!--<script src="js/scenejs.js"></script>-->
+
+</head>
+<body>
+<button type="button" onclick="ChangeZoom(1)" style="top:0; width:200; position:relative; z-index:1000;">+</button>
+<button type="button" onclick="ChangeZoom(-1)" style="top:0; width:200; position:relative; z-index:1000;">-</button>
+<div id="zoom_status" style="top:100; width:200; position:relative;  z-index:1000;">Zoom level 1:100000. 1 neuron represents 100000 neurons</div>
+<div style="top:120; width:200; position:relative;  z-index:1000;"><button onclick="UpdateNeurons()">Submit</button>
+<input type='checkbox' value='SchColor' checked=1 onclick='HTML_SCHEMATIC_COLOR=checked'><label><font color=#000000>Use Schematic Colour</font></label><br>
+</div> 
+<table><tr><td>
+<div id="myspan" style="overflow-y:scroll; width:300px; height:200px; position:relative;  z-index:1000; user-select: none;"> hereismytext </div>
+</td><td style="width:200px;">
+<div id="myspan2" style="overflow-y:scroll; width:200px; height:200px; position: relative;  z-index:1000; user-select: none;"> hereismytext </div>
+</td></tr></table>
+
+
+
+
+
+
+<div>
+<canvas id="myCanvas" width="500px" height="500px"></canvas>
+
+</div>
+
+
+
+<style>
+        #sourceButton {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 8px;
+            color: #fff;
+            background-color: #02550b;
+            opacity: 0.7;
+        }
+
+</style>
+<script>
+
+
+
+
+
+
+///https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1440,f_auto/50491001_kupidw.png
+
+
+
+
+
+
+    var scene = SceneJS.createScene({
+        nodes: [{
+            type: "material",
+            color: {
+                r: 0.5,
+                g: 0.5,
+                b: 1.0
+            },
+
+            nodes: [{
+                type: "texture",
+                layers: [{
+                    src: "https://media.timeout.com/images/105649078/image.jpg"
+                }],
+
+
+                                nodes: [
+                                  {
+                                    type: "geometry",
+                                    positions : [ 1, 1, 0, - 1, 1, 2, -1, -1, 0, 1, -1, 0 ],
+                                    normals : [ 0, 0, -1, 0, 0, -1, 0, 0, -1, 0, 0, -1 ],
+  
+                                    /* UV coords map to left half of texture image
+                                     */
+                                    uv : [ 1, 1, .5, 1, .5, 0, 1, 0 ],
+                                    indices : [ 0, 1, 2,0, 2, 3]
+                                  }
+                                ]
+
+
+            }]
+        }]
+    });
+                
+
+
+console.log(scene) ; 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+////////////////////////////////////////////////
+//ZOOM IN ZOOM OUT CAN BE DONE HERE
+    scene.getNode("myRotate", function (myRotate) {
+
+        var angle = 0;
+
+        scene.on("tick",
+                function () {
+                    myRotate.setAngle(angle += 0.5);
+                });
+    });
+///////////////////////////////////////////////////
+//POINTS
+var ROI1 = { type:"geometry", id:ROIs.ROIs[NROI].id, primitive:"points", positions:[ROIs.ROIs[NROI].x, ROIs.ROIs[NROI].y, ROIs.ROIs[NROI].z], pointSize:10}
+ROIPoints.push(ROI1) ; 
+}
+/////////////////////////////////////////////////////
+
+
+*/
+///TODO EACH LAYER show checkbox
+//would take longer and needs quality 3D data if possible. so far this is just a demo
+//was reading your book and decided
+
+//purpose schematic atlas of whole rat brain connectome
+//uses descriptions instead of 3D models (Golgi, back-tracings etc)
+//shows numbers of neurons, topography, neurotransmitters and !scales!
+//also where possible principal arborizations and layers locations
+
+//this is a very rough draft made in a few weeks
+//3D is very schematic because of no data available. if there will be better data - better 3D models of arborizations may be available
+
+//https://ebrains.eu, voogd
+
+//visualisation part not yet, data part in progress
+
+///TODO 1) each mm nifti mri slices? -8 -7 -6 ... 15, 2) Pan xyz
+
+</script>
+</body>
+</html>
