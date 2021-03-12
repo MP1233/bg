@@ -1,11 +1,18 @@
 <body>
+MOSSY COMPLETED, CBN COMPLETED
+ deep layers of the superior colliculus, vestibular nuclei, and medial reticular formation are designated as premotor areas
+CBN TO >>> reticular tegmental nucleus of the pons ///loop feedback
 
 some oversimplified neuroml scheme
 link to full neuroml scheme
 <input type="button" id="Oculomotor" value="Oculomotor" onclick=CreateSpike('AxonIO_1_1')>
-<input type="button" id="MotorCortex" value="MotorCortex" onclick=CreateSpike('AxonMF_1_1')>
+<input type="button" id="MotorCortex" value="MotorCortex" onclick=CreateSpike('AxonMF_MotorCortex_1')>
+<input type="button" id="VisualCortex" value="VisualCortex" onclick=CreateSpike('AxonMF_VisualCortex_1')>
+<input type="button" id="SensoryCortex" value="SensoryCortex" onclick=CreateSpike('Axon_NEOCTX_Sensory_TO_IOPrvl')>
+<input type="button" id="SensoryInput" value="SensoryInput" onclick=CreateSpike('Axon_spinal_cord_TO_IOD')>
+<input type="button" id="VisualInput" value="VisualInput" onclick=CreateSpike('AxonMF_VisualInput_1')>
 <br>
-<canvas id="canvas" width=1600 height=900></canvas>
+<canvas id="canvas" width=2000 height=1200></canvas>
 <br>
 
 
@@ -20,14 +27,62 @@ gridcells.jpg
 <script>
 
 var AXONS = {
-/*Axon1:{start_node:"Button1", end_node:"PurkinjeDendrite", shape:[[50,50],[150,50],[150,150]], type:"glutamate", lengthsec:20}, 
-Axon2:{start_node:"Button2", end_node:"PurkinjeDendrite", shape:[[50,250],[150,250],[150,150]], type:"glutamate", lengthsec:10}, 
-Axon3:{start_node:"PurkinjeDendrite", end_node:"PurkinjeSoma", shape:[[150,150],[250,150]], type:"glutamate", lengthsec:10,power:1}, 
-Axon4:{start_node:"Button3", end_node:"PurkinjeSoma", shape:[[50,350],[250,350],[250,150]], type:"GABA", lengthsec:10, power:-1},
-Axon5:{start_node:"PurkinjeSoma", end_node:"Out", shape:[[250,150],[350,50],[450,50]], type:"GABA", lengthsec:10},
-Axon6:{start_node:"PurkinjeSoma", end_node:"Out", shape:[[250,150],[350,250],[450,250]], type:"GABA", lengthsec:10},*/
 
-AxonMF_1_1:{start_node:"MotorCortexButton", end_node:"Parallel_Fiber_1", shape:[[0,600],[130,600],[130,360]], type:"glutamate", lengthsec:10,power:1},
+/*
+AxonMF_SensoryInput_1:{start_node:"MotorCortexButton", end_node:"MF_Sensory_Node_1", shape:[[0,850],[600,850]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
+
+AxonMF_VisualCortex_1:{start_node:"VisualCortexButton", end_node:"RtTg_Visual", shape:[[1200,780],[1100,780],[1100,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
+
+AxonMF_SensoryCortex_1:{start_node:"SensoryCortexButton", end_node:"MF_SensoryCortex_Node_1", shape:[[1200,810],[1075,810]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
+AxonMF_SensoryCortex_2:{start_node:"MF_SensoryCortex_Node_1", end_node:"RtTg_Motor", shape:[[1075,810],[1050,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
+AxonMF_SensoryCortex_3:{start_node:"MF_SensoryCortex_Node_1", end_node:"RtTg_Visual", shape:[[1075,810],[1100,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
+
+AxonMF_MotorCortex_1:{start_node:"MotorCortexButton", end_node:"RtTg_Motor", shape:[[1200,840],[1050,840],[1050,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
+AxonMF_VisualInput_1:{start_node:"VisualInputButton", end_node:"RtTg_Visual", shape:[[1200,750],[1100,750],[1100,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
+
+
+
+
+
+
+
+AxonMF_SensoryInput_Bypass_1:{start_node:"MF_Sensory_Node_1", end_node:"MF_Sensory_Node_2", shape:[[600,850],[700,800],[1000,800],[1000,600]], type:"glutamate", lengthsec:10,power:1},///node>>>Parallel
+AxonMF_SensoryInput_Bypass_2:{start_node:"MF_Sensory_Node_2", end_node:"CRB_NUCL_Med", shape:[[1000,600],[160,500]], type:"glutamate", lengthsec:10,power:1},///node>>>Parallel
+AxonMF_SensoryInput_Bypass_3:{start_node:"MF_Sensory_Node_2", end_node:"Parallel_Bypass_Sensory", shape:[[1000,600],[1000,300]], type:"glutamate", lengthsec:10,power:1},///node>>>Parallel
+AxonMF_PontineMotor_1:{start_node:"RtTg_Motor", end_node:"MF_Motor_Node_2", shape:[[1050,700],[1050,600]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
+AxonMF_PontineMotor_2:{start_node:"MF_Motor_Node_2", end_node:"CRB_NUCL_Med", shape:[[1050,600],[160,500]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
+AxonMF_PontineMotor_3:{start_node:"MF_Motor_Node_2", end_node:"Parallel_RtTg_Motor", shape:[[1050,600],[1050,300]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
+
+AxonMF_PontineVisual_1:{start_node:"RtTg_Visual", end_node:"MF_Visual_Node_2", shape:[[1100,700],[1100,600]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
+AxonMF_PontineVisual_2:{start_node:"MF_Visual_Node_2", end_node:"CRB_NUCL_Med", shape:[[1100,600],[160,500]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
+AxonMF_PontineVisual_3:{start_node:"MF_Visual_Node_2", end_node:"Parallel_RtTg_Visual", shape:[[1100,600],[1100,300]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
+
+AxonMF_SensoryInput_PontineMotor_1:{start_node:"MF_Sensory_Node_1", end_node:"RtTg_Motor", shape:[[600,850],[1050,850],[1050,700]], type:"glutamate", lengthsec:10,power:1},///node>>>PontineMotor
+
+
+
+
+
+AxonMF_ParallelMotor_1:{start_node:"Parallel_RtTg_Motor", end_node:"Parallel_RtTg_Motor_Node1", shape:[[1050,300],[1050,50],[0,50]], type:"glutamate", lengthsec:10,power:9},///Parallel9
+AxonMF_ParallelVisual_1:{start_node:"Parallel_RtTg_Motor", end_node:"Parallel_RtTg_Motor_Node1", shape:[[1100,300],[1100,20],[0,20]], type:"glutamate", lengthsec:10,power:9},///Parallel9
+AxonMF_ParallelBypass_1:{start_node:"Parallel_RtTg_Motor", end_node:"Parallel_RtTg_Motor_Node1", shape:[[1000,300],[1000,80],[0,80]], type:"glutamate", lengthsec:10,power:9},///Parallel9
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*AxonMF_1_1:{start_node:"MotorCortexButton", end_node:"Parallel_Fiber_1", shape:[[0,600],[130,600],[130,360]], type:"glutamate", lengthsec:10,power:1},
 AxonMF_1_2:{start_node:"MotorCortexButton", end_node:"Golgi_Med", shape:[[0,600],[130,600],[200,320]], type:"glutamate", lengthsec:10,power:1},
 AxonMF_1_3:{start_node:"MotorCortexButton", end_node:"UniPolarBrush_Med", shape:[[0,600],[130,600],[110,380]], type:"glutamate", lengthsec:10,power:1},
 
@@ -36,54 +91,1035 @@ AxonIO_1_1:{start_node:"OculomotorButton", end_node:"IOVL_IOVK", shape:[[0,700],
 AxonIO_1_21:{start_node:"IOVL_IOVK", end_node:"CRB_NUCL_Med", shape:[[150,700],[160,690],[160,500]], type:"glutamate", lengthsec:10,power:1},
 AxonIO_1_22:{start_node:"IOVL_IOVK", end_node:"PRKJ_A", shape:[[150,700],[150,300]], type:"glutamate", lengthsec:10,power:1},
 AxonIO_1_23:{start_node:"IOVL_IOVK", end_node:"Golgi_Med", shape:[[150,700],[200,320]], type:"glutamate", lengthsec:10,power:1},
+*/
+AxonParallelFIB_1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
+AxonUniPolarBrush_1_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+/*TODO Golgi cells receive input from mossy fibers, parallel fibers, climbing fibers*/
+Axon_Golgi_A_FL_TO_Parallel_Fiber_Granule:{start_node:"Golgi_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_A_FL_TO_UniPolarBrush_A_FL:{start_node:"Golgi_A_FL", end_node:"UniPolarBrush_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_PRKJ_A_FL_TO_CBN_Med_rostral:{start_node:"PRKJ_A_FL", end_node:"CBN_Med_rostral", shape:[[160,310],[160,500]], type:"GABA", lengthsec:10,power:-1},
+Axon_PRKJ_A_FL_TO_CBN_Med_caudal:{start_node:"PRKJ_A_FL", end_node:"CBN_Med_caudal", shape:[[160,310],[160,500]], type:"GABA", lengthsec:10,power:-1},
+Axon_PRKJ_A_FL_TO_Golgi_A_FL:{start_node:"PRKJ_A_FL", end_node:"Golgi_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_PRKJ_A_FL_TO_Lugaro_A_FL:{start_node:"PRKJ_A_FL", end_node:"Lugaro_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_PRKJ_A_FL_TO_Basket_A_FL:{start_node:"PRKJ_A_FL", end_node:"Basket_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
 
-AxonPRKJ_1_1:{start_node:"PRKJ_A", end_node:"CRB_NUCL_Med", shape:[[150,300],[160,310],[160,500]], type:"GABA", lengthsec:10,power:-1},
-AxonPRKJ_1_2:{start_node:"PRKJ_A", end_node:"Golgi_Med", shape:[[150,300],[200,320]], type:"GABA", lengthsec:10,power:-1},
-AxonPRKJ_1_3:{start_node:"PRKJ_A", end_node:"Lugaro_Med", shape:[[150,300],[120,340]], type:"GABA", lengthsec:10,power:-1},
-AxonPRKJ_1_4:{start_node:"PRKJ_A", end_node:"Basket_Med", shape:[[150,300],[150,220]], type:"GABA", lengthsec:10,power:-1},
+Axon_Basket_A_FL_TO_PRKJ_A_FL:{start_node:"Basket_A_FL", end_node:"PRKJ_A_FL", shape:[[160,230],[160,290]], type:"GABA", lengthsec:10,power:-1},
+Axon_Basket_A_FL_TO_Golgi_A_FL:{start_node:"Basket_A_FL", end_node:"Golgi_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_Stellate_A_FL_TO_PRKJ_A_FL:{start_node:"Stellate_A_FL", end_node:"PRKJ_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
 
-AxonBasket_1_1:{start_node:"Basket_Med", end_node:"PRKJ_A", shape:[[150,220],[160,230],[160,290],[150,300]], type:"GABA", lengthsec:10,power:-1},
-AxonBasket_1_2:{start_node:"Basket_Med", end_node:"Golgi_Med", shape:[[150,220],[200,320]], type:"GABA", lengthsec:10,power:-1},
-AxonStellate_1_1:{start_node:"Stellate_Med", end_node:"PRKJ_A", shape:[[130,180],[150,300]], type:"GABA", lengthsec:10,power:-1},
-AxonParallelFIB_1:{start_node:"Parallel_Fiber_1", end_node:"PRKJ_A", shape:[[130,360],[150,300]], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_2:{start_node:"Parallel_Fiber_1", end_node:"Lugaro_Med", shape:[[130,360],[120,340]], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_3:{start_node:"Parallel_Fiber_1", end_node:"Basket_Med", shape:[[130,360],[150,220]], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_4:{start_node:"Parallel_Fiber_1", end_node:"Stellate_Med", shape:[[130,360],[130,180]], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_5:{start_node:"Parallel_Fiber_1", end_node:"Candelabrum_Med", shape:[[130,360],[190,340]], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_6:{start_node:"Parallel_Fiber_1", end_node:"Golgi_Med", shape:[[130,360],[200,320]], type:"glutamate", lengthsec:10,power:1},
+Axon_Lugaro_A_FL_TO_Golgi_A_FL:{start_node:"Lugaro_A_FL", end_node:"Golgi_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_A_FL_TO_Stellate_A_FL:{start_node:"Lugaro_A_FL", end_node:"Stellate_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_A_FL_TO_Basket_A_FL:{start_node:"Lugaro_A_FL", end_node:"Basket_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_A_FL_TO_PRKJ_A_FL:{start_node:"Lugaro_A_FL", end_node:"PRKJ_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
 
-
-AxonUniPolarBrush_1_1:{start_node:"UniPolarBrush_Med", end_node:"Parallel_Fiber_1", shape:[[200,320],[110,380]], type:"glutamate", lengthsec:10,power:1},
-AxonGolgi_1_1:{start_node:"Golgi_Med", end_node:"Parallel_Fiber_1", shape:[[200,320],[130,360]], type:"GABA_glycine", lengthsec:10,power:-1},
-AxonGolgi_1_2:{start_node:"Golgi_Med", end_node:"UniPolarBrush_Med", shape:[[200,320],[110,380]], type:"GABA_glycine", lengthsec:10,power:-1},
-AxonLugaro_1_1:{start_node:"Lugaro_Med", end_node:"Golgi_Med", shape:[[120,340],[200,320]], type:"GABA_glycine", lengthsec:10,power:-1},
-AxonLugaro_1_2:{start_node:"Lugaro_Med", end_node:"Stellate_Med", shape:[[120,340],[130,180]], type:"GABA_glycine", lengthsec:10,power:-1},
-AxonLugaro_1_3:{start_node:"Lugaro_Med", end_node:"Basket_Med", shape:[[120,340],[150,220]], type:"GABA_glycine", lengthsec:10,power:-1},
-AxonLugaro_1_4:{start_node:"Lugaro_Med", end_node:"PRKJ_A", shape:[[120,340],[150,300]], type:"GABA_glycine", lengthsec:10,power:-1},
-
+/*
 AxonCRBNUK_1_1:{start_node:"CRB_NUCL_Med", end_node:"IOVL_IOVK", shape:[[160,500],[170,510],[170,680],[150,700]], type:"GABA", lengthsec:10,power:-1},
 AxonCRBNUK_1_2:{start_node:"CRB_NUCL_Med", end_node:"PRKJ_A", shape:[[160,500],[170,490],[170,320],[150,300]], type:"?", lengthsec:10,power:1},
 AxonCRBNUK_1_3:{start_node:"CRB_NUCL_Med", end_node:"Out", shape:[[160,500],[180,520],[180,800],[0,800]], type:"?", lengthsec:10,power:1},
 AxonCRBNUK_1_4:{start_node:"CRB_NUCL_Med", end_node:"Out", shape:[[160,500],[190,530],[190,800],[1200,800]], type:"?", lengthsec:10,power:1},
+*/
+
+
+
+Axon_Parallel_Fiber_spinal_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_spinal", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_Parallel_Fiber_LRT_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_LRT", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_Parallel_Fiber_Vestibular_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_Vestibular", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_Parallel_Fiber_VestibularApp_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_VestibularApp", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_Parallel_Fiber_Pontine_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_Pontine", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_Parallel_Fiber_CBN_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_CBN", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////
+///IO
+///////////////////////////////////////////////////////
+///IOD///from somatosensory nuclei relaying cutaneous tactile and nociceptive information. registration of unexpected somatosensory signals or pain. caudolateral, hindlimb related, and rostromedial, face related
+Axon_deep_mesencephalic_nucleus_TO_IOD:{start_node:"deep_mesencephalic_nucleus", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+
+Axon_spinal_cord_TO_IOD:{start_node:"spinal_cord", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_SpinalTrigeminalNuclei_TO_IOD:{start_node:"SpinalTrigeminalNuclei", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_DorsalColumnNuclei_TO_IOD:{start_node:"DorsalColumnNuclei", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+
+///"gracile", :"cuneate",
+Axon_DorsalColumn_and_TrigeminalNuclei_TO_IOD:{start_node:"DorsalColumn_and_TrigeminalNuclei", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+
+Axon_Pretectum_TO_IOD:{start_node:"Pretectum", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_periaquaductal_gray_TO_IOD:{start_node:"periaquaductal_gray", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_InC_interstitial_nucleus_of_Cajal_TO_IOD:{start_node:"InC_interstitial_nucleus_of_Cajal", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_superior_colliculus_deep_layers_TO_IOD:{start_node:"superior_colliculus_deep_layers", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+///S1BF = primary somatosensory cortex, jaw, forelimb, hindlimb, shoulder, upper lip, trunk and barrel field regions; S1DZ, S1DZ0 = primary somatosensory cortex, dysgranular region and dysgranular zone 0; S2 = secondary somatosensory cortex]
+Axon_NEOCTX_FaceSensory_TO_IOD:{start_node:"NEOCTX_FaceSensory", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOD:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_HindlimbSensoryMotor_TO_IOD:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_Somatosensory_TO_IOD:{start_node:"NEOCTX_Somatosensory", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_dysgranular_TO_IOD:{start_node:"NEOCTX_dysgranular", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_CBN_IntAbl_TO_IOD:{start_node:"CBN_IntAbl", end_node:"IOD", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_IntAgr_TO_IOD:{start_node:"CBN_IntAgr", end_node:"IOD", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_LVe_TO_IOD:{start_node:"CBN_LVe", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+
+
+
+
+
+
+///IOM///somatosensory information + vestibular, Teleceptive information. mesodiencephalic input
+Axon_NEOCTX_Sensory_TO_IOM:{start_node:"NEOCTX_Sensory", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_Motor_TO_IOM:{start_node:"NEOCTX_Motor", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_interstitial_nucleus_medial_longitudinal_fasciculus_TO_IOM:{start_node:"interstitial_nucleus_medial_longitudinal_fasciculus", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_interstitial_nucleus_medial_longitudinal_fasciculus_TO_IOBe:{start_node:"interstitial_nucleus_medial_longitudinal_fasciculus", end_node:"IOBe", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_parasolitary_TO_IODMC:{start_node:"parasolitary", end_node:"IODMC", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_spinal_cord_TO_IOM:{start_node:"spinal_cord", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_DorsalColumnNuclei_TO_IOM:{start_node:"DorsalColumnNuclei", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_SpinalTrigeminalNuclei_TO_IOM:{start_node:"SpinalTrigeminalNuclei", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_vestibular_nuclei_TO_IOM:{start_node:"vestibular_nuclei", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_LVe_TO_IOM:{start_node:"CBN_LVe", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_superior_colliculus_deep_layers_TO_IOCgr:{start_node:"superior_colliculus_deep_layers", end_node:"IOCgr", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_superior_colliculus_deep_layers_TO_IOCol:{start_node:"superior_colliculus_deep_layers", end_node:"IOCol", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_periaquaductal_gray_TO_IOM:{start_node:"periaquaductal_gray", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_periaquaductal_gray_TO_IOBe:{start_node:"periaquaductal_gray", end_node:"IOBe", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_vestibular_nuclei_TO_IOBe:{start_node:"vestibular_nuclei", end_node:"IOBe", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_LVe_TO_IOBe:{start_node:"CBN_LVe", end_node:"IOBe", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_Med_rostral_TO_IOM:{start_node:"CBN_Med_rostral", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_Med_caudal_TO_IOM:{start_node:"CBN_Med_caudal", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_Med_rostral_TO_IOBe:{start_node:"CBN_Med_rostral", end_node:"IOBe", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_Med_caudal_TO_IOBe:{start_node:"CBN_Med_caudal", end_node:"IOBe", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_Med_rostral_TO_IODMC:{start_node:"CBN_Med_rostral", end_node:"IODMC", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_Med_caudal_TO_IODMC:{start_node:"CBN_Med_caudal", end_node:"IODMC", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_mesodiencephalic_junction_TO_IOM:{start_node:"mesodiencephalic_junction", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_CBN_IntPbl_TO_IOM:{start_node:"CBN_IntPbl", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_IntPgr_TO_IOM:{start_node:"CBN_IntPgr", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
+
+
+
+
+
+
+
+
+///IOK and IOVL /// compensatory eye movements,  recognizing retinal slip
+
+Axon_nucleus_optic_tract_TO_IOK:{start_node:"nucleus_optic_tract", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_accessory_optic_nuclei_TO_IOVL:{start_node:"accessory_optic_nuclei", end_node:"IOVL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_visual_tegmental_relay_zone_TO_IOVL:{start_node:"visual_tegmental_relay_zone", end_node:"IOVL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_prepositus_hypoglossal_nucleus_TO_IOK:{start_node:"prepositus_hypoglossal_nucleus", end_node:"IOK", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_prepositus_hypoglossal_nucleus_TO_IOVL:{start_node:"prepositus_hypoglossal_nucleus", end_node:"IOVL", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrvl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrdl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_HindlimbSensoryMotor_TO_IOPrvl:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_HindlimbSensoryMotor_TO_IOPrdl:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_Sensory_TO_IOPrvl:{start_node:"NEOCTX_Sensory", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_Sensory_TO_IOPrdl:{start_node:"NEOCTX_Sensory", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_Motor_TO_IOPrvl:{start_node:"NEOCTX_Motor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_Motor_TO_IOPrdl:{start_node:"NEOCTX_Motor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_parietal_association_TO_IOPrvl:{start_node:"NEOCTX_parietal_association", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_parietal_association_TO_IOPrdl:{start_node:"NEOCTX_parietal_association", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrvl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrdl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_supplementary_motor_TO_IOPrvl:{start_node:"NEOCTX_supplementary_motor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_supplementary_motor_TO_IOPrdl:{start_node:"NEOCTX_supplementary_motor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_periaquaductal_gray_TO_IOVL:{start_node:"periaquaductal_gray", end_node:"IOVL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_mesodiencephalic_junction_TO_IOVL:{start_node:"mesodiencephalic_junction", end_node:"IOVL", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_mesodiencephalic_junction_TO_IOPrvl:{start_node:"mesodiencephalic_junction", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_mesodiencephalic_junction_TO_IOPrdl:{start_node:"mesodiencephalic_junction", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_MA3_medial_accessory_oculomotor_nucleus_TO_IOM:{start_node:"MA3_medial_accessory_oculomotor_nucleus", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_MA3_medial_accessory_oculomotor_nucleus_TO_IOPrvl:{start_node:"MA3_medial_accessory_oculomotor_nucleus", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_MA3_medial_accessory_oculomotor_nucleus_TO_IOPrdl:{start_node:"MA3_medial_accessory_oculomotor_nucleus", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_fr_retroflex_fascicle_TO_IOM:{start_node:"fr_retroflex_fascicle", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_fr_retroflex_fascicle_TO_IOPrvl:{start_node:"fr_retroflex_fascicle", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_fr_retroflex_fascicle_TO_IOPrdl:{start_node:"fr_retroflex_fascicle", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_PR_prerubral_field_TO_IOM:{start_node:"PR_prerubral_field", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_PR_prerubral_field_TO_IOPrvl:{start_node:"PR_prerubral_field", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_PR_prerubral_field_TO_IOPrdl:{start_node:"PR_prerubral_field", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_SpinalTrigeminalNuclei_TO_IODM:{start_node:"SpinalTrigeminalNuclei", end_node:"IODM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_CBN_Latrd_TO_IOPrvl:{start_node:"CBN_Latrd", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_CBN_Latbr_TO_IOPrdl:{start_node:"CBN_Latbr", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_CBN_Latrd_TO_IOPrvl:{start_node:"CBN_Latrd", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_CBN_Latbr_TO_IOPrdl:{start_node:"CBN_Latbr", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_CBN_IntDL_TO_IODM:{start_node:"CBN_IntDL", end_node:"IODM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+
+
+
+
+
+
+
+Axon_CBN_MedDL_TO_IOM:{start_node:"CBN_MedDL", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_CBN_LVe_TO_IODvf:{start_node:"CBN_LVe", end_node:"IODvf", shape:[], type:"GABA", lengthsec:10,power:-1},
+
+
+
+/*
+IO >>> CBN+CBCTX (Climbing Fiber)
+
+*/
+//green
+Axon_IOAgr_TO_CBN_Med_caudal:{start_node:"IOAgr", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOAgr_TO_CBN_Med_rostral:{start_node:"IOAgr", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOAgr_TO_PRKJ_A_FL:{start_node:"IOAgr", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOB_TO_CBN_Med_caudal:{start_node:"IOB", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOB_TO_CBN_Med_rostral:{start_node:"IOB", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOB_TO_PRKJ_A_FL:{start_node:"IOB", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOBe_TO_PRKJ_A_FL:{start_node:"IOAgr", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOCgr_TO_CBN_Med_caudal:{start_node:"IOCgr", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOCgr_TO_CBN_Med_rostral:{start_node:"IOCgr", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOCgr_TO_PRKJ_A_FL:{start_node:"IOCgr", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOK_TO_CBN_Med_caudal:{start_node:"IOK", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOK_TO_CBN_Med_rostral:{start_node:"IOK", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOK_TO_PRKJ_A_FL:{start_node:"IOK", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOVL_TO_CBN_Med_caudal:{start_node:"IOVL", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOVL_TO_CBN_Med_rostral:{start_node:"IOVL", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOVL_TO_PRKJ_A_FL:{start_node:"IOVL", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+//olive
+Axon_IOCol_TO_CBN_MedDL:{start_node:"IOCol", end_node:"CBN_MedDL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOCol_TO_PRKJ_A2:{start_node:"IOCol", end_node:"PRKJ_A2", shape:[], type:"glutamate", lengthsec:10,power:-1},
+//lime
+Axon_IOAli_TO_CBN_IntIC:{start_node:"IOAli", end_node:"CBN_IntIC", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOAli_TO_PRKJ_CX_X:{start_node:"IOAli", end_node:"PRKJ_CX_X", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IODMC_TO_CBN_IntIC:{start_node:"IODMC", end_node:"CBN_IntIC", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IODMC_TO_PRKJ_CX_X:{start_node:"IODMC", end_node:"PRKJ_CX_X", shape:[], type:"glutamate", lengthsec:10,power:-1},
+//black
+Axon_IODvf_TO_PRKJ_B:{start_node:"IODvf", end_node:"PRKJ_B", shape:[], type:"glutamate", lengthsec:10,power:-1},
+//blue
+Axon_IOD_TO_CBN_IntPbl:{start_node:"IOD", end_node:"CBN_IntPbl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOD_TO_PRKJ_C1_C3:{start_node:"IOD", end_node:"PRKJ_C1_C3", shape:[], type:"glutamate", lengthsec:10,power:-1},
+//gr
+Axon_IOM_TO_CBN_IntAgr:{start_node:"IOM", end_node:"CBN_IntAgr", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOM_TO_PRKJ_C2_PFL:{start_node:"IOM", end_node:"PRKJ_C2_PFL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+//rd
+Axon_IOPrdl_TO_PRKJ_D1_PFL:{start_node:"IOPrdl", end_node:"PRKJ_D1_PFL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+//br
+Axon_IOPrvl_TO_PRKJ_D2:{start_node:"IOPrvl", end_node:"PRKJ_D2", shape:[], type:"glutamate", lengthsec:10,power:-1},
+//
+Axon_IODM_TO_PRKJ_D0:{start_node:"IODM", end_node:"PRKJ_D0", shape:[], type:"glutamate", lengthsec:10,power:-1},
+
+
+
+
+Axon_IOM_TO_CBN_Med_caudal:{start_node:"IOM", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOMTO_CBN_Med_rostral:{start_node:"IOM", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOMTO_CBN_MedDL:{start_node:"IOM", end_node:"CBN_MedDL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOBe_TO_CBN_Med_caudal:{start_node:"IOBe", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOBe_TO_CBN_Med_rostral:{start_node:"IOBe", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOM_TO_CBN_IntPgr:{start_node:"IOM", end_node:"CBN_IntPgr", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOM_TO_CBN_IntPbl:{start_node:"IOM", end_node:"CBN_IntPbl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOPrvl_TO_CBN_CBN_Latrd:{start_node:"IOPrvl", end_node:"CBN_Latrd", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOPrdl_TO_CBN_CBN_Latrd:{start_node:"IOPrdl", end_node:"CBN_Latrd", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOPrvl_TO_CBN_CBN_Latbr:{start_node:"IOPrvl", end_node:"CBN_Latbr", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOPrdl_TO_CBN_CBN_Latbr:{start_node:"IOPrdl", end_node:"CBN_Latbr", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IODM_TO_CBN_IntDL:{start_node:"IODM", end_node:"CBN_IntDL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOD_TO_CBN_IntAgr:{start_node:"IOD", end_node:"CBN_IntAgr", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOD_TO_CBN_IntAbl:{start_node:"IOD", end_node:"CBN_IntAbl", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IODvf_TO_CBN_LVe:{start_node:"CBN_IntDL", end_node:"IODM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+////////////////////////////////////////
+///MOSSY FIBERS
+////////////////////////////////////////
+
+
+//SPINAL CORD (proprioceptive information)
+FROM >>> SpinalCord_medial_lamina_VII_at_sacral_levels(Stilling_nucleus)_to_MossyCerebellum", cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+FROM >>>> SpinalCord_columnofClarke(medial_lamina_VII_at_thoracic_and_upper_lumbar_levels)ipsilaterally_to_MossyCerebellum",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:
+FROM >>> SpinalCord_central_cervical_nucleus_of_upper_cervical_segments_and_lower_medulla_to_MossyCerebellum",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+FROM >>> SpinalCord_lumbarcord_lateral_ventral_horn_spinal_border_cells_to_MossyCerebellum",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+FROM >>> "SpinalCord_medial_laminaVI_C2345678,_central_laminaVII_C45678(rostral_spinocerebellar_tract),_laminaV_C7toL3_and_Clarkecolumn(dorsal_spinocerebellar_tract) 
+FROM >>> "SpinalCord_central_cervical_nucleus_C1,C2,C3(central_cervical_spinocerebellar_tract),intermediate_zone,ventral hornspinal border cells of lower thoracic,lumbar segments (T11 to L3),dorsal horn,medial_laminaVII,ventrolateral_ventral_horn of sacral,caudal spinal cord _to_MossyCerebellum",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> ["CBCTX_1", "CBCTX_2", "CBCTX_3", "CBCTX_4", "CBCTX_5", "CBCTX_8", "CBCTX_9","CBCTX_coupola"]},
+["Cerebellum_Nuclei_IntA_R","Cerebellum_Nuclei_IntP_R"]}
+
+
+
+
+*/
+
+Axon_spinal_cord_TO_Parallel_Fiber_spinal:{start_node:"spinal_cord", end_node:"Parallel_Fiber_spinal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_spinal_cord_TO_CBN_IntAbl:{start_node:"spinal_cord", end_node:"CBN_IntAbl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_spinal_cord_TO_CBN_IntPbl:{start_node:"spinal_cord", end_node:"CBN_IntPbl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_spinal_cord_TO_CBN_IntAgr:{start_node:"spinal_cord", end_node:"CBN_IntAgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_spinal_cord_TO_CBN_IntPgr:{start_node:"spinal_cord", end_node:"CBN_IntPgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+
+
+
+
+
+/*
+//////////////////////////////////
+TO>>>Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei
+
+FROM >>> "gracile_L","gracile_R"]}},
+TO >>>  "CBCTX_4", "CBCTX_5", "CBCTX_8", "CBCTX_9","CBCTX_coupola"]},
+
+FROM >>> "cuneate_L","cuneate_R"]}},
+TO >>> "CBCTX_6a", "CBCTX_PM", "CBCTX_coupola"]},
+
+FROM >>> "Ecu_L","Ecu_R"]}},
+TO >>> "CBCTX_1", "CBCTX_2", "CBCTX_3", "CBCTX_4", "CBCTX_5", "CBCTX_6a","CBCTX_simple", "CBCTX_8", "CBCTX_9","CBCTX_coupola", "CBCTX_PM"]},
+
+FROM >>> "principal_sensory_nucleus"]}},
+TO >>> "CBCTX_1", "CBCTX_2", "CBCTX_3", "CBCTX_9", "CBCTX_simple",  "CBCTX_crus1",  "CBCTX_crus2",  "CBCTX_PM"]},
+
+FROM >>> "pars_interpolaris_spinal_nucleus"]}},
+TO >>> "CBCTX_1", "CBCTX_2", "CBCTX_3", "CBCTX_9", "CBCTX_simple",  "CBCTX_crus1",  "CBCTX_crus2",  "CBCTX_PM"]},
+
+FROM >>> "pars_oralis"]}},
+TO >>> "CBCTX_1", "CBCTX_2", "CBCTX_3", "CBCTX_9", "CBCTX_simple",  "CBCTX_crus1",  "CBCTX_crus2",  "CBCTX_PM"]},
+
+FROM >>> "pars_caudalis"]}},
+TO >>> "CBCTX_1", "CBCTX_2", "CBCTX_3", "CBCTX_9", "CBCTX_simple",  "CBCTX_crus1",  "CBCTX_crus2",  "CBCTX_PM"]},
+*/
+Axon_DorsalColumn_and_TrigeminalNuclei_TO_Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei:{start_node:"DorsalColumn_and_TrigeminalNuclei", end_node:"Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei", shape:[], type:"glutamate", lengthsec:10,power:1},
+/*
+
+
+
+//////////////////////////////////////////////
+TO>>>Parallel_Fiber_LRT
+
+
+
+
+FROM >>> "SpinalCord_cervical_enlargement_dorsal_horn,medial_cervical_dorsal_horn,groupC3–C4interneurons(forelimb)_to_LRT_dorsolateral,caudal",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> "LRt_lateral_reticular_nucleus_L"]},
+FROM >>> "SpinalCord_cervical_ventral_horn_to_LRT_medial",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> "LRt_lateral_reticular_nucleus_L", "LRt_lateral_reticular_nucleus_R"]},
+FROM >>> SpinalCord_lumbar_cord,bilateral_ventral_flexor_reflex_tract_to_LRT_parvocellular",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> "LRtPC_parvocellular_LRt_L", "LRtPC_parvocellular_LRt_R"]},
+FROM >>>"SpinalCord_cervical,lumbar_levels_to_LRT_subtrigeminal",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> "LRtS5_subtrigeminal_LRt_L", "LRtS5_subtrigeminal_LRt_R"]},
+
+FROM >>> "magnocellular_red_nucleus_L"]}},
+TO >>> "LRtS5_subtrigeminal_LRt_L"]},
+
+FROM >>> "Cerebellum_Nuclei_Med_R","Cerebellum_Nuclei_Meddl_R"]}},///medial cerebellar nucleus
+TO  >>> "LRt_lateral_reticular_nucleus_L"]},
+
+FROM >>> "cerebral cortex_to_LRT",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> "LRt_lateral_reticular_nucleus_L"]},
+
+
+
+
+FROM >>> "Amb_nucleus_ambiguus_L", "Amb_nucleus_ambiguus_R", "CVL_caudoventrolateral_reticular_nucleus_L", "CVL_caudoventrolateral_reticular_nucleus_R", "Li_nucleus_linearis_L", "Li_nucleus_linearis_R", "LRt_lateral_reticular_nucleus_L", "LRt_lateral_reticular_nucleus_R", "LRtPC_parvocellular_LRt_L", "LRtPC_parvocellular_LRt_R", "LRtS5_subtrigeminal_LRt_L", "LRtS5_subtrigeminal_LRt_R"]}},
+TO >>> "CBCTX_2", "CBCTX_3", "CBCTX_4", "CBCTX_5", "CBCTX_6a", "CBCTX_6bc", "CBCTX_8", "CBCTX_simple", "CBCTX_PM", "CBCTX_coupola", "CBCTX_Crus1"]},
+["Cerebellum_Nuclei_LVe_R","Cerebellum_Nuclei_IntA_R", "Cerebellum_Nuclei_IntP_R", "Cerebellum_Nuclei_IntDL_R", "Cerebellum_Nuclei_IntIC_R","Cerebellum_Nuclei_Lat_R","Cerebellum_Nuclei_Med_R","Cerebellum_Nuclei_Meddl_R"]}
+
+
+*/
+Axon_spinal_cord_TO_LRT:{start_node:"spinal_cord", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_magnocellular_red_nucleus_TO_LRT:{start_node:"magnocellular_red_nucleus", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_CBN_Med_rostral_TO_LRT:{start_node:"CBN_Med_rostral", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_LRT:{start_node:"CBN_Med_caudal", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_LRT:{start_node:"CBN_MedDL", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Medial_Prefrontal_TO_LRT:{start_node:"NEOCTX_Medial_Prefrontal", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Cingulate_TO_LRT:{start_node:"NEOCTX_Cingulate", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Visual_TO_LRT:{start_node:"NEOCTX_Visual", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Auditory_TO_LRT:{start_node:"NEOCTX_Auditory", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_FaceMotor_TO_LRT:{start_node:"NEOCTX_FaceMotor", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_FaceSensory_TO_LRT:{start_node:"NEOCTX_FaceSensory", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_LRT:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_HindlimbSensoryMotor_TO_LRT:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_Med_rostral:{start_node:"LRT", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_Med_caudal:{start_node:"LRT", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_MedDL:{start_node:"LRT", end_node:"CBN_MedDL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_IntIC:{start_node:"LRT", end_node:"CBN_IntIC", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_LVe:{start_node:"LRT", end_node:"CBN_LVe", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_IntAbl:{start_node:"LRT", end_node:"CBN_IntAbl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_IntPbl:{start_node:"LRT", end_node:"CBN_IntPbl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_Latrd:{start_node:"LRT", end_node:"CBN_Latrd", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_Latbr:{start_node:"LRT", end_node:"CBN_Latbr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_IntDL:{start_node:"LRT", end_node:"CBN_IntDL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_IntAgr:{start_node:"LRT", end_node:"CBN_IntAgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_CBN_IntPgr:{start_node:"LRT", end_node:"CBN_IntPgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_LRT_TO_Parallel_Fiber_LRT:{start_node:"LRT", end_node:"Parallel_Fiber_LRT", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+/*
+
+
+//////////////////////////////////////////
+// TO Parallel_Fiber_Vestibular 
+
+
+
+FROM >>> vestibular_nuclei_to_MossyCerebellum",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> "CBCTX_9", "CBCTX_10", "CBCTX_FL", "CBCTX_PFL", "CBCTX_1", "CBCTX_2", "CBCTX_6"]}//TODO bilateral symmetry
+
+FROM >>> "vestibular_sacculus_to_MossyCerebellum",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> ["CBCTX_9"]},
+["Cerebellum_Nuclei_Lat_R","Cerebellum_Nuclei_Med_R","Cerebellum_Nuclei_Meddl_R", "Y_L"]}
+
+FROM >>> "vestibular_utricle_to_MossyCerebellum",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> "CBCTX_9"]},
+
+FROM >>> "vestibular_cristae_semicircular_canals_to_MossyCerebellum",cell_neurotransmitter:"glutamate",num_of_cells:
+TO >>> "CBCTX_10"]},
+
+FROM >>> vestibular_nuclei_to_MossyCerebellum",cell_neurotransmitter:"glutamate",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, TO >>> "CBCTX_9", "CBCTX_10", "CBCTX_FL","Cerebellum_Nuclei_Med_R","Cerebellum_Nuclei_Meddl_R"]},
+["CBCTX_9", "CBCTX_10", "CBCTX_FL", "CBCTX_PFL", "CBCTX_1", "CBCTX_2", "CBCTX_6"]}//TODO bilateral symmetry
+
+
+
+
+
+
+acetyl
+FROM >>> "vestibular_nuclei_to_MossyCerebellum",cell_neurotransmitter:"acetylcholine",num_of_cells:999999,schematic_color:{ r:0.0, g:0.9, b:0.5 },
+TO >>> "CBCTX_9", "CBCTX_10", "CBCTX_1", "CBCTX_2", "CBCTX_FL", "CBCTX_PFL"]},
+["CBCTX_9", "CBCTX_10", "CBCTX_FL", "CBCTX_PFL", "CBCTX_1", "CBCTX_2", "CBCTX_6"]}//TODO bilateral symmetry
+]},
+]},
+
+FROM >>> "lateral_paragigantocellular_nucleus_LPGi_L"]}},
+TO >>> "CBCTX_9"]},
+
+
+
+
+
+
+
+
+*/
+Axon_vestibular_nuclei_TO_Parallel_Fiber_Vestibular:{start_node:"vestibular_nuclei", end_node:"Parallel_Fiber_Vestibular", shape:[], type:"glutamate and acetylocholine", lengthsec:10,power:1},
+Axon_vestibular_nuclei_TO_Parallel_Fiber_VestibularApp:{start_node:"vestibular_colchea", end_node:"Parallel_Fiber_VestibularApp", shape:[], type:"glutamate and acetylocholine", lengthsec:10,power:1},
+
+
+///////////////////////////////////////////////
+//PONTINE
+///subdivision of the RtTg into dorsomedial visual and ventrolateral motor components
+//where???
+
+Axon_NEOCTX_Medial_Prefrontal_TO_Pontine:{start_node:"NEOCTX_Medial_Prefrontal", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Cingulate_TO_Pontine:{start_node:"NEOCTX_Cingulate", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Visual_TO_Pontine:{start_node:"NEOCTX_Visual", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Auditory_TO_Pontine:{start_node:"NEOCTX_Auditory", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_FaceMotor_TO_Pontine:{start_node:"NEOCTX_FaceMotor", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_FaceSensory_TO_Pontine:{start_node:"NEOCTX_FaceSensory", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_Pontine:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_HindlimbSensoryMotor_TO_Pontine:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+
+Axon_SuperiorColliculus_TO_Pontine:{start_node:"superior_colliculus_deep_layers", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_InferiorColliculus_TO_Pontine:{start_node:"InferiorColliculus", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pretectum_TO_Pontine:{start_node:"Pretectum", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_DorsalColumnNuclei_TO_Pontine:{start_node:"DorsalColumnNuclei", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_spinal_cord_TO_Pontine:{start_node:"spinal_cord", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_TrigeminalNuclei_TO_Pontine:{start_node:"SpinalTrigeminalNuclei", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_MammillaryBody_TO_Pontine:{start_node:"MammillaryBody", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Cochlea_TO_Pontine:{start_node:"Cochlea", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_SuperiorCentralNucleusRaphe_TO_Pontine:{start_node:"SuperiorCentralNucleusRaphe", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_coeruleus_TO_Pontine:{start_node:"coeruleus", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_subcoeruleus_TO_Pontine:{start_node:"subcoeruleus", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_periaquaductal_gray_TO_Pontine:{start_node:"periaquaductal_gray", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_zona_incerta_TO_Pontine:{start_node:"zona_incerta", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_ventral_lateral_geniculate_nucleus_TO_Pontine:{start_node:"ventral_lateral_geniculate_nucleus", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_hypothalamus_TO_Pontine:{start_node:"hypothalamus", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_central_nucleus_amygdala_TO_Pontine:{start_node:"central_nucleus_amygdala", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_nucleus_basalis_TO_Pontine:{start_node:"nucleus_basalis", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+
+
+
+
+Axon_CBN_Med_rostral_TO_Pontine:{start_node:"CBN_Med_rostral", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_Pontine:{start_node:"CBN_Med_caudal", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_Pontine:{start_node:"CBN_MedDL", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_Pontine:{start_node:"CBN_Latrd", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_Pontine:{start_node:"CBN_Latbr", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAbl_TO_Pontine:{start_node:"CBN_IntAbl", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPbl_TO_Pontine:{start_node:"CBN_IntPbl", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntIC_TO_Pontine:{start_node:"CBN_IntIC", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntDL_TO_Pontine:{start_node:"CBN_IntDL", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAgr_TO_Pontine:{start_node:"CBN_IntAgr", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPgr_TO_Pontine:{start_node:"CBN_IntPgr", end_node:"Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+
+
+Axon_Pontine_TO_Parallel_Fiber_Pontine:{start_node:"Pontine", end_node:"Parallel_Fiber_Pontine", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_Med_rostral:{start_node:"Pontine", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_Med_caudal:{start_node:"Pontine", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_MedDL:{start_node:"Pontine", end_node:"CBN_MedDL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_IntIC:{start_node:"Pontine", end_node:"CBN_IntIC", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_IntAbl:{start_node:"Pontine", end_node:"CBN_IntAbl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_IntPbl:{start_node:"Pontine", end_node:"CBN_IntPbl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_Latrd:{start_node:"Pontine", end_node:"CBN_Latrd", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_Latbr:{start_node:"Pontine", end_node:"CBN_Latbr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_IntDL:{start_node:"Pontine", end_node:"CBN_IntDL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_IntAgr:{start_node:"Pontine", end_node:"CBN_IntAgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pontine_TO_CBN_IntPgr:{start_node:"Pontine", end_node:"CBN_IntPgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////
+///Cerebellar Nuclei and Nucleocortical Connections
+
+
+
+Axon_CBN_Med_rostral_TO_Parallel_Fiber_CBN:{start_node:"CBN_Med_rostral", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_Parallel_Fiber_CBN:{start_node:"CBN_Med_caudal", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_Parallel_Fiber_CBN:{start_node:"CBN_MedDL", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_Parallel_Fiber_CBN:{start_node:"CBN_Latrd", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_Parallel_Fiber_CBN:{start_node:"CBN_Latbr", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_IntAbl_TO_Parallel_Fiber_CBN:{start_node:"CBN_IntAbl", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_IntPbl_TO_Parallel_Fiber_CBN:{start_node:"CBN_IntPbl", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_IntIC_TO_Parallel_Fiber_CBN:{start_node:"CBN_IntIC", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_IntDL_TO_Parallel_Fiber_CBN:{start_node:"CBN_IntDL", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_IntAgr_TO_Parallel_Fiber_CBN:{start_node:"CBN_IntAgr", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+Axon_CBN_IntPgr_TO_Parallel_Fiber_CBN:{start_node:"CBN_IntPgr", end_node:"Parallel_Fiber_CBN", shape:[], type:"GABA and glycine", lengthsec:10,power:1},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////
+//CBN OUTPUT
+
+
+
+
+
+
+
+
+
+
+
+
+
+Axon_CBN_Med_rostral_TO_vestibular_nuclei:{start_node:"CBN_Med_rostral", end_node:"vestibular_nuclei", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_vestibular_nuclei:{start_node:"CBN_Med_caudal", end_node:"vestibular_nuclei", shape:[], type:"glycine", lengthsec:10,power:1},
+Axon_vestibular_nuclei_TO_ocular_pathway:{start_node:"vestibular_nuclei", end_node:"ocular_pathway", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_vestibular_nuclei_TO_spinal_cord:{start_node:"vestibular_nuclei", end_node:"spinal_cord", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_CBN_Med_caudal_TO_Gi_gigantocellular_reticular_nucleus:{start_node:"CBN_Med_caudal", end_node:"Gi_gigantocellular_reticular_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_PnC_pontine_reticular_nucleus_caudal:{start_node:"CBN_Med_caudal", end_node:"PnC_pontine_reticular_nucleus_caudal", shape:[], type:"glutamate", lengthsec:10,power:1},/// TYPE >>> gaze
+Axon_CBN_Med_caudal_TO_PnO_pontine_reticular_nucleus_oral:{start_node:"CBN_Med_caudal", end_node:"PnO_pontine_reticular_nucleus_oral", shape:[], type:"glutamate", lengthsec:10,power:1},/// TYPE >>> gaze
+Axon_CBN_Med_caudal_TO_periaquaductal_gray:{start_node:"CBN_Med_caudal", end_node:"periaquaductal_gray", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_InC_interstitial_nucleus_of_Cajal:{start_node:"CBN_Med_caudal", end_node:"InC_interstitial_nucleus_of_Cajal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_superior_colliculus_deep_layers:{start_node:"CBN_Med_caudal", end_node:"superior_colliculus_deep_layers", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_zona_incerta:{start_node:"CBN_Med_caudal", end_node:"zona_incerta", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_PF_thalamic_parafascicular_nucleus:{start_node:"CBN_Med_caudal", end_node:"PF_thalamic_parafascicular_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_VM_thalamic_ventromedial_nucleus:{start_node:"CBN_Med_caudal", end_node:"VM_thalamic_ventromedial_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+///TYPE >>> eye-catching MedDl, 
+Axon_CBN_MedDL_TO_MdV_medullary_reticular_nucleus_ventral:{start_node:"CBN_MedDL", end_node:"MdV_medullary_reticular_nucleus_ventral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_MdD_medullary_reticular_nucleus_dorsal:{start_node:"CBN_MedDL", end_node:"MdD_medullary_reticular_nucleus_dorsal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_Gi_gigantocellular_reticular_nucleus:{start_node:"CBN_MedDL", end_node:"Gi_gigantocellular_reticular_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_PnC_pontine_reticular_nucleus_caudal:{start_node:"CBN_MedDL", end_node:"PnC_pontine_reticular_nucleus_caudal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_PnO_pontine_reticular_nucleus_oral:{start_node:"CBN_MedDL", end_node:"PnO_pontine_reticular_nucleus_oral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_SpinalTrigeminalNuclei:{start_node:"CBN_MedDL", end_node:"SpinalTrigeminalNuclei", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_PPTg_pedunculopontine_tegmental_nucleus:{start_node:"CBN_MedDL", end_node:"PPTg_pedunculopontine_tegmental_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_periaquaductal_gray:{start_node:"CBN_MedDL", end_node:"periaquaductal_gray", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_InC_interstitial_nucleus_of_Cajal:{start_node:"CBN_MedDL", end_node:"InC_interstitial_nucleus_of_Cajal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_superior_colliculus_deep_layers:{start_node:"CBN_MedDL", end_node:"superior_colliculus_deep_layers", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_PF_thalamic_parafascicular_nucleus:{start_node:"CBN_MedDL", end_node:"PF_thalamic_parafascicular_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_MedDL_TO_VM_thalamic_ventromedial_nucleus:{start_node:"CBN_MedDL", end_node:"VM_thalamic_ventromedial_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_CBN_IntIC_TO_vestibular_nuclei:{start_node:"CBN_IntIC", end_node:"vestibular_nuclei", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntIC_TO_MA3_medial_accessory_oculomotor_nucleus_L:{start_node:"CBN_IntIC", end_node:"MA3_medial_accessory_oculomotor_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntIC_TO_magnocellular_red_nucleus:{start_node:"CBN_IntIC", end_node:"magnocellular_red_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntIC_TO_CVL_caudoventrolateral_reticular_nucleus:{start_node:"CBN_IntIC", end_node:"CVL_caudoventrolateral_reticular_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_CBN_IntPbl_TO_superior_colliculus:{start_node:"CBN_IntPbl", end_node:"superior_colliculus_deep_layers", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPgr_TO_superior_colliculus:{start_node:"CBN_IntPgr", end_node:"superior_colliculus_deep_layers", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPbl_TO_zona_incerta:{start_node:"CBN_IntPbl", end_node:"zona_incerta", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPgr_TO_zona_incerta:{start_node:"CBN_IntPgr", end_node:"zona_incerta", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPbl_TO_Pretectum:{start_node:"CBN_IntPbl", end_node:"Pretectum", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPgr_TO_Pretectum:{start_node:"CBN_IntPgr", end_node:"Pretectum", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_CBN_IntPbl_TO_mesodiencephalic_junction:{start_node:"CBN_IntPbl", end_node:"mesodiencephalic_junction", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPgr_TO_mesodiencephalic_junction:{start_node:"CBN_IntPgr", end_node:"mesodiencephalic_junction", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPbl_TO_thalamic_posterior_nucleus:{start_node:"CBN_IntPbl", end_node:"thalamic_posterior_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPgr_TO_thalamic_posterior_nucleus:{start_node:"CBN_IntPgr", end_node:"thalamic_posterior_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPbl_TO_VL_thalamic_ventrolateral_nucleus:{start_node:"CBN_IntPbl", end_node:"VL_thalamic_ventrolateral_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPgr_TO_VL_thalamic_ventrolateral_nucleus:{start_node:"CBN_IntPgr", end_node:"VL_thalamic_ventrolateral_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_red_nucleus_TO_spinal_cord:{start_node:"magnocellular_red_nucleus", end_node:"spinal_cord", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Pretectum_TO_IOD:{start_node:"Pretectum", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_CBN_IntAbl_TO_magnocellular_red_nucleus:{start_node:"CBN_IntAbl", end_node:"magnocellular_red_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAgr_TO_magnocellular_red_nucleus:{start_node:"CBN_IntAgr", end_node:"magnocellular_red_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAbl_TO_Pretectum:{start_node:"CBN_IntAbl", end_node:"Pretectum", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAgr_TO_Pretectum:{start_node:"CBN_IntAgr", end_node:"Pretectum", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAbl_TO_zona_incerta:{start_node:"CBN_IntAbl", end_node:"zona_incerta", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAgr_TO_zona_incerta:{start_node:"CBN_IntAgr", end_node:"zona_incerta", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_CBN_IntAbl_TO_VL_thalamic_ventrolateral_nucleus:{start_node:"CBN_IntAbl", end_node:"VL_thalamic_ventrolateral_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAgr_TO_VL_thalamic_ventrolateral_nucleus:{start_node:"CBN_IntAgr", end_node:"VL_thalamic_ventrolateral_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAbl_TO_RtTg_reticulotegmental_nucleus_pons:{start_node:"CBN_IntAbl", end_node:"RtTg_reticulotegmental_nucleus_pons", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntAgr_TO_RtTg_reticulotegmental_nucleus_pons:{start_node:"CBN_IntAgr", end_node:"RtTg_reticulotegmental_nucleus_pons", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_CBN_IntDL_TO_PCRt_parvicellular_reticular_nucleus:{start_node:"CBN_IntDL", end_node:"PCRt_parvicellular_reticular_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},///food manipulation
+Axon_CBN_IntDL_TO_SpinalTrigeminalNuclei:{start_node:"CBN_IntDL", end_node:"SpinalTrigeminalNuclei", shape:[], type:"glutamate", lengthsec:10,power:1},///food manipulation
+Axon_CBN_IntDL_TO_thalamic_posterior_nucleus:{start_node:"CBN_IntDL", end_node:"thalamic_posterior_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_CBN_Latrd_TO_fr_retroflex_fascicle:{start_node:"CBN_Latrd", end_node:"fr_retroflex_fascicle", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_fr_retroflex_fascicle:{start_node:"CBN_Latbr", end_node:"fr_retroflex_fascicle", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_CM_thalamic_central_medial_nucleus:{start_node:"CBN_Latrd", end_node:"CM_thalamic_central_medial_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_CM_thalamic_central_medial_nucleus:{start_node:"CBN_Latbr", end_node:"CM_thalamic_central_medial_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_PaR_pararubral_nucleus:{start_node:"CBN_Latrd", end_node:"PaR_pararubral_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_PaR_pararubral_nucleus:{start_node:"CBN_Latbr", end_node:"PaR_pararubral_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_PR_prerubral_field:{start_node:"CBN_Latrd", end_node:"PR_prerubral_field", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_PR_prerubral_field:{start_node:"CBN_Latbr", end_node:"PR_prerubral_field", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_F_fields_of_Forel_nucleus:{start_node:"CBN_Latrd", end_node:"F_fields_of_Forel_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_F_fields_of_Forel_nucleus:{start_node:"CBN_Latbr", end_node:"F_fields_of_Forel_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_LDDM_thalamic_laterodorsal_nucleus_dorsomedial:{start_node:"CBN_Latrd", end_node:"LDDM_thalamic_laterodorsal_nucleus_dorsomedial", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_LDDM_thalamic_laterodorsal_nucleus_dorsomedial:{start_node:"CBN_Latbr", end_node:"LDDM_thalamic_laterodorsal_nucleus_dorsomedial", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_LDVL_thalamic_laterodorsal_nucleus_ventrolateral:{start_node:"CBN_Latrd", end_node:"LDVL_thalamic_laterodorsal_nucleus_ventrolateral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_LDVL_thalamic_laterodorsal_nucleus_ventrolateral:{start_node:"CBN_Latbr", end_node:"LDVL_thalamic_laterodorsal_nucleus_ventrolateral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_PIL_thalamic_posterior_intralaminar:{start_node:"CBN_Latrd", end_node:"PIL_thalamic_posterior_intralaminar", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_PIL_thalamic_posterior_intralaminar:{start_node:"CBN_Latbr", end_node:"PIL_thalamic_posterior_intralaminar", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_VL_ventrolateral_thalamic_nucleus:{start_node:"CBN_Latrd", end_node:"VL_thalamic_ventrolateral_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_VL_ventrolateral_thalamic_nucleus:{start_node:"CBN_Latbr", end_node:"VL_thalamic_ventrolateral_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_MdV_medullary_reticular_nucleus_ventral:{start_node:"CBN_Latrd", end_node:"MdV_medullary_reticular_nucleus_ventral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_MdV_medullary_reticular_nucleus_ventral:{start_node:"CBN_Latbr", end_node:"MdV_medullary_reticular_nucleus_ventral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_MdD_medullary_reticular_nucleus_dorsal:{start_node:"CBN_Latrd", end_node:"MdD_medullary_reticular_nucleus_dorsal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_MdD_medullary_reticular_nucleus_dorsal:{start_node:"CBN_Latbr", end_node:"MdD_medullary_reticular_nucleus_dorsal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_PnC_pontine_reticular_nucleus_caudal:{start_node:"CBN_Latrd", end_node:"PnC_pontine_reticular_nucleus_caudal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_PnC_pontine_reticular_nucleus_caudal:{start_node:"CBN_Latbr", end_node:"PnC_pontine_reticular_nucleus_caudal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_PnO_pontine_reticular_nucleus_oral:{start_node:"CBN_Latrd", end_node:"PnO_pontine_reticular_nucleus_oral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_PnO_pontine_reticular_nucleus_oral:{start_node:"CBN_Latbr", end_node:"PnO_pontine_reticular_nucleus_oral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_zona_incerta:{start_node:"CBN_Latrd", end_node:"zona_incerta", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_zona_incerta:{start_node:"CBN_Latbr", end_node:"zona_incerta", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_periaquaductal_gray:{start_node:"CBN_Latrd", end_node:"periaquaductal_gray", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_periaquaductal_gray:{start_node:"CBN_Latbr", end_node:"periaquaductal_gray", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_Pretectum:{start_node:"CBN_Latrd", end_node:"Pretectum", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_Pretectum:{start_node:"CBN_Latbr", end_node:"Pretectum", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_PF_thalamic_parafascicular_nucleus:{start_node:"CBN_Latrd", end_node:"PF_thalamic_parafascicular_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_PF_thalamic_parafascicular_nucleus:{start_node:"CBN_Latbr", end_node:"PF_thalamic_parafascicular_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_thalamus_ventral_lateral_geniculate_nucleus:{start_node:"CBN_Latrd", end_node:"ventral_lateral_geniculate_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_thalamus_ventral_lateral_geniculate_nucleus:{start_node:"CBN_Latbr", end_node:"ventral_lateral_geniculate_nucleus", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }
 
+CBCTX_shiftXY=[0,300]
+PRKJ_shiftXY=[0,0]//150, 300
+Golgi_shiftXY=[50,20]
+Lugaro_shiftXY=[-30,40]
+Basket_shiftXY=[0,-80]
+Stellate_shiftXY=[-20,30]
+Candelabrum_shiftXY=[40,40]
+
+CBN_shiftXY=[0,500]
+IO_shiftXY=[0,700]
+
+GREEN_shiftXY=[250,0]
+OLIVE_shiftXY=[400,0]
+LIME_shiftXY=[550,0]
+BLACK_shiftXY=[700,0]
+BLUE_shiftXY=[850,0]
+GREY_shiftXY=[1000,0]
+RED_shiftXY=[1150,0]
+BROWN_shiftXY=[1300,0]
+YELLOW_shiftXY=[1450,0]
+
+
+Spine_shiftXY=[50,1000]
+Prespine_shiftXY=[150,1000]
+Prebrain_shiftXY=[1400,1000]
+Thalamus_shiftXY=[1800,1000]
+Neocortex_shiftXY=[1900,1000]
+Parallel_shiftXY=[1650,300]
+
+
+
+
+MedProj_shiftXY=[350, 1000]
+MedDLProj_shiftXY=[500, 1000]
+IntICProj_shiftXY=[650, 1000]
+IntA_shiftXY=[800, 1000] 
+IntP_shiftXY=[950, 1000]
+LatProj_shiftXY=[1100, 1000] 
+IntDL_shiftXY=[1250, 1000] 
+ 
+
 var NODES = {
 Out:{type:"Y", outputs:[]},
-/*PurkinjeDendrite:{type:"Y", outputs:["Axon3"]},
-PurkinjeSoma:{type:"SOMA", soma_value:5, outputs:["Axon5","Axon6"],coordxy:[250,150]},*/
 
-IOVL_IOVK:{type:"SOMA", soma_value:5, outputs:["AxonIO_1_21","AxonIO_1_22","AxonIO_1_23"],coordxy:[150,700]},
-CRB_NUCL_Med:{type:"SOMA", soma_value:5, outputs:["AxonCRBNUK_1_1","AxonCRBNUK_1_2","AxonCRBNUK_1_3","AxonCRBNUK_1_4"],coordxy:[160,500]},
-PRKJ_A:{type:"SOMA", soma_value:5, outputs:["AxonPRKJ_1_1","AxonPRKJ_1_2","AxonPRKJ_1_3","AxonPRKJ_1_4"],coordxy:[150,300]},//Purkinje cells
-Golgi_Med:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[200,320]},
-Lugaro_Med:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[120,340]},///from serotonine
-Basket_Med:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[150,220]},
-Stellate_Med:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[130,180]},
-UniPolarBrush_Med:{type:"SOMA", soma_value:5, outputs:["AxonUniPolarBrush_1_1"],coordxy:[110,380]},//to granule cells
-Parallel_Fiber_1:{type:"SOMA", soma_value:5, outputs:["AxonParallelFIB_1","AxonParallelFIB_2","AxonParallelFIB_3","AxonParallelFIB_4","AxonParallelFIB_5","AxonParallelFIB_6"],coordxy:[130,360]},
-Candelabrum_Med:{type:"SOMA", soma_value:5, outputs:[],coordxy:[190,340]}, 
+//GREEN
+IOAgr:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+IO_shiftXY[0]+0,GREEN_shiftXY[1]+IO_shiftXY[1]+0]},
+IOB:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+IO_shiftXY[0]+10,GREEN_shiftXY[1]+IO_shiftXY[1]+10]},
+IOBe:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+IO_shiftXY[0]+20,GREEN_shiftXY[1]+IO_shiftXY[1]+20]},
+IOCgr:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+IO_shiftXY[0]+30,GREEN_shiftXY[1]+IO_shiftXY[1]+30]},
+IOK:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+IO_shiftXY[0]+40,GREEN_shiftXY[1]+IO_shiftXY[1]+40]},
+IOVL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+IO_shiftXY[0]+50,GREEN_shiftXY[1]+IO_shiftXY[1]+50]},
+CBN_Med_rostral:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBN_shiftXY[0]+0,GREEN_shiftXY[1]+CBN_shiftXY[1]+0]},
+CBN_Med_caudal:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBN_shiftXY[0]+10,GREEN_shiftXY[1]+CBN_shiftXY[1]+10]},
+PRKJ_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
+
+Lugaro_A_FL:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_A_FL:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_A_FL:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Candelabrum_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]}, 
+
+
+//OLIVE
+IOCol:{type:"SOMA", soma_value:5, outputs:[],coordxy:[OLIVE_shiftXY[0]+IO_shiftXY[0]+0,OLIVE_shiftXY[1]+IO_shiftXY[1]+0]},
+CBN_MedDL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[OLIVE_shiftXY[0]+CBN_shiftXY[0]+0,OLIVE_shiftXY[1]+CBN_shiftXY[1]+0]},
+PRKJ_A2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[OLIVE_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],OLIVE_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
+Golgi_A2:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[OLIVE_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],OLIVE_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+Lugaro_A2:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[OLIVE_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],OLIVE_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_A2:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[OLIVE_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],OLIVE_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_A2:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[OLIVE_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],OLIVE_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Candelabrum_A2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[OLIVE_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],OLIVE_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]},
+
+//LIME
+IOAli:{type:"SOMA", soma_value:5, outputs:[],coordxy:[LIME_shiftXY[0]+IO_shiftXY[0]+0,LIME_shiftXY[1]+IO_shiftXY[1]+0]},
+IODMC:{type:"SOMA", soma_value:5, outputs:[],coordxy:[LIME_shiftXY[0]+IO_shiftXY[0]+10,LIME_shiftXY[1]+IO_shiftXY[1]+10]},
+CBN_IntIC:{type:"SOMA", soma_value:5, outputs:[],coordxy:[LIME_shiftXY[0]+CBN_shiftXY[0]+0,LIME_shiftXY[1]+CBN_shiftXY[1]+0]},
+PRKJ_CX_X:{type:"SOMA", soma_value:5, outputs:[],coordxy:[LIME_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],LIME_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
+Golgi_CX_X:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[LIME_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],LIME_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+Lugaro_CX_X:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[LIME_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],LIME_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_CX_X:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[LIME_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],LIME_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_CX_X:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[LIME_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],LIME_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Candelabrum_CX_X:{type:"SOMA", soma_value:5, outputs:[],coordxy:[LIME_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],LIME_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]},
+
+//BLACK
+IODvf:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BLACK_shiftXY[0]+IO_shiftXY[0]+0,BLACK_shiftXY[1]+IO_shiftXY[1]+0]},
+CBN_LVe:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BLACK_shiftXY[0]+CBN_shiftXY[0]+0,BLACK_shiftXY[1]+CBN_shiftXY[1]+0]},
+PRKJ_B:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BLACK_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],BLACK_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
+Golgi_B:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[BLACK_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],BLACK_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+Lugaro_B:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[BLACK_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],BLACK_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_B:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[BLACK_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],BLACK_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_B:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[BLACK_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],BLACK_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Candelabrum_B:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BLACK_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],BLACK_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]},
+
+//BLUE
+IOD:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BLUE_shiftXY[0]+IO_shiftXY[0]+0,BLUE_shiftXY[1]+IO_shiftXY[1]+0]},
+CBN_IntAbl:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BLUE_shiftXY[0]+CBN_shiftXY[0]+0,BLUE_shiftXY[1]+CBN_shiftXY[1]+0]},
+CBN_IntPbl:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BLUE_shiftXY[0]+CBN_shiftXY[0]+10,BLUE_shiftXY[1]+CBN_shiftXY[1]+10]},
+PRKJ_C1_C3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BLUE_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],BLUE_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
+Golgi_C1_C3:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[BLUE_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],BLUE_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+Lugaro_C1_C3:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[BLUE_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],BLUE_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_C1_C3:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[BLUE_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],BLUE_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_C1_C3:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[BLUE_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],BLUE_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Candelabrum_C1_C3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BLUE_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],BLUE_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]},
+
+//RED
+IOPrdl:{type:"SOMA", soma_value:5, outputs:[],coordxy:[RED_shiftXY[0]+IO_shiftXY[0]+0,RED_shiftXY[1]+IO_shiftXY[1]+0]},
+CBN_Latrd:{type:"SOMA", soma_value:5, outputs:[],coordxy:[RED_shiftXY[0]+CBN_shiftXY[0]+0,RED_shiftXY[1]+CBN_shiftXY[1]+0]},
+PRKJ_D1_PFL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[RED_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],RED_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
+Golgi_D1_PFL:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[RED_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],RED_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+Lugaro_D1_PFL:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[RED_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],RED_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_D1_PFL:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[RED_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],RED_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_D1_PFL:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[RED_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],RED_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Candelabrum_D1_PFL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[RED_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],RED_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]},
+
+//BROWN
+IOPrvl:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BROWN_shiftXY[0]+IO_shiftXY[0]+0,BROWN_shiftXY[1]+IO_shiftXY[1]+0]},
+CBN_Latbr:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BROWN_shiftXY[0]+CBN_shiftXY[0]+0,BROWN_shiftXY[1]+CBN_shiftXY[1]+0]},
+PRKJ_D2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BROWN_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],BROWN_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
+Golgi_D2:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[BROWN_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],BROWN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+Lugaro_D2:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[BROWN_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],BROWN_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_D2:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[BROWN_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],BROWN_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_D2:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[BROWN_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],BROWN_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Candelabrum_D2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[BROWN_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],BROWN_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]},
+
+//YELLOW
+IODM:{type:"SOMA", soma_value:5, outputs:[],coordxy:[YELLOW_shiftXY[0]+IO_shiftXY[0]+0,YELLOW_shiftXY[1]+IO_shiftXY[1]+0]},
+CBN_IntDL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[YELLOW_shiftXY[0]+CBN_shiftXY[0]+0,YELLOW_shiftXY[1]+CBN_shiftXY[1]+0]},
+PRKJ_D0:{type:"SOMA", soma_value:5, outputs:[],coordxy:[YELLOW_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],YELLOW_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
+Golgi_D0:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[YELLOW_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],YELLOW_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+Lugaro_D0:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[YELLOW_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],YELLOW_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_D0:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[YELLOW_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],YELLOW_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_D0:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[YELLOW_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],YELLOW_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Candelabrum_D0:{type:"SOMA", soma_value:5, outputs:[],coordxy:[YELLOW_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],YELLOW_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]},
+
+//GREY
+IOM:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREY_shiftXY[0]+IO_shiftXY[0]+0,GREY_shiftXY[1]+IO_shiftXY[1]+0]},
+CBN_IntAgr:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREY_shiftXY[0]+CBN_shiftXY[0]+0,GREY_shiftXY[1]+CBN_shiftXY[1]+0]},
+CBN_IntPgr:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREY_shiftXY[0]+CBN_shiftXY[0]+10,GREY_shiftXY[1]+CBN_shiftXY[1]+10]},
+PRKJ_C2_PFL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREY_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],GREY_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
+Golgi_C2_PFL:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[GREY_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],GREY_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+Lugaro_C2_PFL:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[GREY_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],GREY_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_C2_PFL:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[GREY_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],GREY_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_C2_PFL:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[GREY_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],GREY_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Candelabrum_C2_PFL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREY_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],GREY_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]},
+
+
+
+
+
+/*Spine_shiftXY=[50,1000]
+Prespine_shiftXY=[150,1000]
+Prebrain_shiftXY=[1500,1000]
+Thalamus_shiftXY=[1600,1000]
+Neocortex_shiftXY=[1700,1000]
+
+LatProj_shiftXY=[1150, 1000] 
+*/
+
+/////////////////
+
+
+
+
+/*
+
+IntP
+Pretectum
+mesodiencephalic_junction
+
+
+IntA
+RtTg_reticulotegmental_nucleus_pons
+
+IntDL
+PCRt_parvicellular_reticular_nucleus
+*/
+
+
+
+
+
+
+
+
+
+
+
+central_nucleus_amygdala:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+150,Prebrain_shiftXY[1]+0]},
+nucleus_basalis:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+160,Prebrain_shiftXY[1]+10]},
+Cochlea:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+170,Prebrain_shiftXY[1]+20]},
+coeruleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+180,Prebrain_shiftXY[1]+30]},
+CVL_caudoventrolateral_reticular_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+0,IntICProj_shiftXY[1]+0]},
+DorsalColumnNuclei:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+190,Prebrain_shiftXY[1]+40]},
+DorsalColumn_and_TrigeminalNuclei:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+110,Prebrain_shiftXY[1]+110]},
+F_fields_of_Forel_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[LatProj_shiftXY[0]+0,LatProj_shiftXY[1]+0]},
+fr_retroflex_fascicle:{type:"SOMA", soma_value:5, outputs:[],coordxy:[LatProj_shiftXY[0]+10,LatProj_shiftXY[1]+10]},
+Gi_gigantocellular_reticular_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedProj_shiftXY[0]+0,MedProj_shiftXY[1]+0]},
+hypothalamus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+200,Prebrain_shiftXY[1]+50]},
+InC_interstitial_nucleus_of_Cajal:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedProj_shiftXY[0]+10,MedProj_shiftXY[1]+10]},
+InferiorColliculus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+210,Prebrain_shiftXY[1]+60]},
+
+interstitial_nucleus_medial_longitudinal_fasciculus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+0,IntICProj_shiftXY[1]+30]},
+
+LRT:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+120,Prebrain_shiftXY[1]+120]},
+MA3_medial_accessory_oculomotor_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+10,IntICProj_shiftXY[1]+10]},
+magnocellular_red_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+20,IntICProj_shiftXY[1]+20]},
+
+deep_mesencephalic_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+0,IntICProj_shiftXY[1]+20]},
+
+MammillaryBody:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+220,Prebrain_shiftXY[1]+70]},
+MdV_medullary_reticular_nucleus_ventral:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedDLProj_shiftXY[0]+10,MedDLProj_shiftXY[1]+10]}, 
+MdD_medullary_reticular_nucleus_dorsal:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedDLProj_shiftXY[0]+0,MedDLProj_shiftXY[1]+0]},
+mesodiencephalic_junction:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntP_shiftXY[0]+10,IntP_shiftXY[1]+10]},
+ocular_pathway:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prespine_shiftXY[0]+0,Prespine_shiftXY[1]+0]},
+
+nucleus_optic_tract:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+0,IntICProj_shiftXY[1]+50]},
+accessory_optic_nuclei:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+0,IntICProj_shiftXY[1]+60]},
+
+PaR_pararubral_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[LatProj_shiftXY[0]+20,LatProj_shiftXY[1]+20]},
+
+parasolitary:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+0,IntICProj_shiftXY[1]+40]},
+
+PCRt_parvicellular_reticular_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntDL_shiftXY[0]+0,IntDL_shiftXY[1]+0]},
+periaquaductal_gray:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedProj_shiftXY[0]+20,MedProj_shiftXY[1]+20]},
+PnC_pontine_reticular_nucleus_caudal:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedProj_shiftXY[0]+30,MedProj_shiftXY[1]+30]},
+PnO_pontine_reticular_nucleus_oral:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedProj_shiftXY[0]+40,MedProj_shiftXY[1]+40]},
+Pontine:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+140,Prebrain_shiftXY[1]+140]},
+PPTg_pedunculopontine_tegmental_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedDLProj_shiftXY[0]+20,MedDLProj_shiftXY[1]+20]},
+
+prepositus_hypoglossal_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+0,IntICProj_shiftXY[1]+70]},
+
+PR_prerubral_field:{type:"SOMA", soma_value:5, outputs:[],coordxy:[LatProj_shiftXY[0]+30,LatProj_shiftXY[1]+30]},
+Pretectum:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntP_shiftXY[0]+0,IntP_shiftXY[1]+0]},
+RtTg_reticulotegmental_nucleus_pons:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntA_shiftXY[0]+0,IntA_shiftXY[1]+0]},
+SpinalTrigeminalNuclei:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedDLProj_shiftXY[0]+30,MedDLProj_shiftXY[1]+30]},
+subcoeruleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+240,Prebrain_shiftXY[1]+90]},
+superior_colliculus_deep_layers:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedProj_shiftXY[0]+50,MedProj_shiftXY[1]+50]},
+SuperiorCentralNucleusRaphe:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+250,Prebrain_shiftXY[1]+100]},
+vestibular_nuclei:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prespine_shiftXY[0]+10,Prespine_shiftXY[1]+10]},
+vestibular_colchea:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prespine_shiftXY[0]+20,Prespine_shiftXY[1]+20]},
+
+visual_tegmental_relay_zone:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+0,IntICProj_shiftXY[1]+80]},
+
+zona_incerta:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedProj_shiftXY[0]+60,MedProj_shiftXY[1]+60]},
+
+///NeoCTX
+NEOCTX_Medial_Prefrontal:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+0,Neocortex_shiftXY[1]+0]},
+NEOCTX_Cingulate:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+10,Neocortex_shiftXY[1]+10]},
+NEOCTX_Visual:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+20,Neocortex_shiftXY[1]+20]},
+NEOCTX_Auditory:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+30,Neocortex_shiftXY[1]+30]},
+NEOCTX_FaceMotor:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+40,Neocortex_shiftXY[1]+40]},
+NEOCTX_FaceSensory:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+50,Neocortex_shiftXY[1]+50]},
+NEOCTX_ForelimbSensoryMotor:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+60,Neocortex_shiftXY[1]+60]},
+NEOCTX_HindlimbSensoryMotor:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+70,Neocortex_shiftXY[1]+70]},
+
+NEOCTX_Somatosensory:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+80,Neocortex_shiftXY[1]+80]},
+NEOCTX_dysgranular:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+90,Neocortex_shiftXY[1]+90]},
+NEOCTX_Sensory:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+100,Neocortex_shiftXY[1]+100]},
+NEOCTX_Motor:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+110,Neocortex_shiftXY[1]+110]},
+NEOCTX_parietal_association:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+120,Neocortex_shiftXY[1]+120]},
+NEOCTX_supplementary_motor:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Neocortex_shiftXY[0]+130,Neocortex_shiftXY[1]+130]},
+
+
+
+
+
+
+
+
+
+
+
+///Spinal
+spinal_cord:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Spine_shiftXY[0]+0,Spine_shiftXY[1]+0]},
+///Thal
+PF_thalamic_parafascicular_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Thalamus_shiftXY[0]+0,Thalamus_shiftXY[1]+0]},
+VM_thalamic_ventromedial_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Thalamus_shiftXY[0]+10,Thalamus_shiftXY[1]+10]},
+ventral_lateral_geniculate_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Thalamus_shiftXY[0]+20,Thalamus_shiftXY[1]+20]},
+thalamic_posterior_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Thalamus_shiftXY[0]+30,Thalamus_shiftXY[1]+30]},
+VL_thalamic_ventrolateral_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Thalamus_shiftXY[0]+40,Thalamus_shiftXY[1]+40]},
+CM_thalamic_central_medial_nucleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Thalamus_shiftXY[0]+50,Thalamus_shiftXY[1]+50]},
+LDDM_thalamic_laterodorsal_nucleus_dorsomedial:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Thalamus_shiftXY[0]+60,Thalamus_shiftXY[1]+60]},
+LDVL_thalamic_laterodorsal_nucleus_ventrolateral:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Thalamus_shiftXY[0]+70,Thalamus_shiftXY[1]+70]},
+PIL_thalamic_posterior_intralaminar:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Thalamus_shiftXY[0]+80,Thalamus_shiftXY[1]+80]},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Parallel_Fiber_spinal:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+0,Parallel_shiftXY[1]+0]},
+Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+10,Parallel_shiftXY[1]+10]},
+Parallel_Fiber_LRT:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+20,Parallel_shiftXY[1]+20]},
+Parallel_Fiber_Vestibular:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+30,Parallel_shiftXY[1]+30]},
+Parallel_Fiber_VestibularApp:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+40,Parallel_shiftXY[1]+40]},
+Parallel_Fiber_Pontine:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+50,Parallel_shiftXY[1]+50]},
+Parallel_Fiber_CBN:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+60,Parallel_shiftXY[1]+60]},
+
+Parallel_Fiber_Granule:{type:"Y", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+0,Parallel_shiftXY[1]-20]},
+
+UniPolarBrush_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+20,Parallel_shiftXY[1]-20]},
+Golgi_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]-20,Parallel_shiftXY[1]-20]},///,coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+//////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//////////////////////////////////////////OLD
+
+/*
+RtTg_Motor:{type:"SOMA", soma_value:5, outputs:["AxonMF_PontineMotor_1"],coordxy:[1050,700]},
+RtTg_Visual:{type:"SOMA", soma_value:5, outputs:["AxonMF_PontineVisual_1"],coordxy:[1100,700]},
+Parallel_RtTg_Motor:{type:"SOMA", soma_value:5, outputs:["AxonMF_ParallelMotor_1"],coordxy:[1050,300]},
+Parallel_RtTg_Visual:{type:"SOMA", soma_value:5, outputs:["AxonMF_ParallelVisual_1"],coordxy:[1100,300]},
+Parallel_Bypass_Sensory:{type:"SOMA", soma_value:5, outputs:["AxonMF_ParallelBypass_1"],coordxy:[1000,300]},
+
+MF_Sensory_Node_1:{type:"Y", outputs:["AxonMF_SensoryInput_Bypass_1", "AxonMF_SensoryInput_PontineMotor_1"]},
+MF_Sensory_Node_2:{type:"Y", outputs:["AxonMF_SensoryInput_Bypass_2", "AxonMF_SensoryInput_Bypass_3"]},
+MF_Visual_Node_2:{type:"Y", outputs:["AxonMF_PontineVisual_2", "AxonMF_PontineVisual_3"]},
+MF_Motor_Node_2:{type:"Y", outputs:["AxonMF_PontineMotor_2", "AxonMF_PontineMotor_3"]},
+MF_SensoryCortex_Node_1:{type:"Y", outputs:["AxonMF_SensoryCortex_2", "AxonMF_SensoryCortex_3"]},
+*/
+
+
+
+
+///IOVL_IOVK:{type:"SOMA", soma_value:5, outputs:["AxonIO_1_21","AxonIO_1_22","AxonIO_1_23"],coordxy:[150,700]},
+///CRB_NUCL_Med:{type:"SOMA", soma_value:5, outputs:["AxonCRBNUK_1_1","AxonCRBNUK_1_2","AxonCRBNUK_1_3","AxonCRBNUK_1_4"],coordxy:[160,500]},
+///PRKJ_A:{type:"SOMA", soma_value:5, outputs:["AxonPRKJ_1_1","AxonPRKJ_1_2","AxonPRKJ_1_3","AxonPRKJ_1_4"],coordxy:[150,300]},//Purkinje cells
+///Golgi_Med:{type:"SOMA", soma_value:5, outputs:["AxonGolgi_1_1","AxonGolgi_1_2"],coordxy:[200,320]},
+///Lugaro_Med:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[120,340]},///from serotonine
+///Basket_Med:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[150,220]},
+///Stellate_Med:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[130,180]},
+///UniPolarBrush_Med:{type:"SOMA", soma_value:5, outputs:["AxonUniPolarBrush_1_1"],coordxy:[110,380]},//to granule cells
+///Parallel_Fiber_1:{type:"SOMA", soma_value:5, outputs:["AxonParallelFIB_1","AxonParallelFIB_2","AxonParallelFIB_3","AxonParallelFIB_4","AxonParallelFIB_5","AxonParallelFIB_6"],coordxy:[130,360]},
+///Candelabrum_Med:{type:"SOMA", soma_value:5, outputs:[],coordxy:[190,340]}, 
 
 }
 
@@ -137,10 +1173,13 @@ circle(_currxy[0], _currxy[1], 5)
 
 
 
-function RedrawNode(eachnode) {
+function RedrawNode(eachnode,eachnode_name) {
 ///console.log(eachnode)
+
 if (eachnode.type == "SOMA") {
 circle(eachnode.coordxy[0], eachnode.coordxy[1], eachnode.soma_value)
+ctx.font = "10px Arial";
+ctx.fillText(eachnode_name, eachnode.coordxy[0], eachnode.coordxy[1]);
 }} 
 
 
@@ -207,7 +1246,7 @@ RecalculateSpike(eachspike) ;
 
 for (eachnode in NODES) {
 
-RedrawNode(NODES[eachnode]) ; 
+RedrawNode(NODES[eachnode],eachnode) ; 
 RecalculateNode(NODES[eachnode]) ; 
 
 }
@@ -231,13 +1270,13 @@ requestAnimationFrame(anim); // do it again
     
 //  }
 }
-
+/*
 MotorCortex.onclick = e => {
 CreateSpike('AxonMF_1_1')
 CreateSpike('AxonMF_1_2')
 CreateSpike('AxonMF_1_3')
 }
-
+*/
 // OP's code
 
 
@@ -264,8 +1303,8 @@ function circle(x, y, r) {
   ctx.arc(x, y, r, 0, Math.PI * 2, true);
   ctx.fill();
 }
-var WIDTH = 1600;
-var HEIGHT = 900;
+var WIDTH = 2000;
+var HEIGHT = 1200;
 function clear() {
   ctx.clearRect(0, 0, WIDTH, HEIGHT);
 }
@@ -296,8 +1335,10 @@ MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[_axon_id], currentposonaxon:0, c
 
 
 function drawLine(_shape) {
-	///console.log(_shape)
+	///console.log("AAA", NODES[_shape.start_node].coordxy, NODES[_shape.end_node].coordxy)
 ctx.beginPath();
+///ctx.moveTo(NODES[_shape.start_node].coordxy[0], NODES[_shape.start_node].coordxy[1]);
+///console.log(_shape)
 ctx.moveTo(_shape.shape[0][0], _shape.shape[0][1]);
 _color = '#555555'
 if (_shape.type == "GABA") {_color = '#ff0000'}
@@ -306,22 +1347,36 @@ if (_shape.type == "GABA_glycine") {_color = '#ff0099'}
 for (i = 1; i < _shape.shape.length; i++) { 
 ctx.lineTo(_shape.shape[i][0], _shape.shape[i][1]);
 }
-      ctx.lineWidth = 2;
+///ctx.lineTo(NODES[_shape.end_node].coordxy[0], NODES[_shape.end_node].coordxy[1]);
+      ctx.lineWidth = Math.abs(_shape.power)+1;
       ctx.strokeStyle = _color;
 ctx.stroke();
 }
 
 
-for (eachaxon in AXONS) {
-	drawLine(AXONS[eachaxon])
+//for (eachaxon in AXONS) {
+//	drawLine(AXONS[eachaxon])
+//}
+
+
+
+
+function FillNodeOutputs() {
+///TODO add arrows 
+	for (each in AXONS) {
+///console.log(NODES[AXONS[each].start_node].outputs, AXONS[each].end_node)
+		NODES[AXONS[each].start_node].outputs.push(AXONS[each].end_node) ;
+		AXONS[each].shape.unshift(NODES[AXONS[each].start_node].coordxy)
+		AXONS[each].shape.push(NODES[AXONS[each].end_node].coordxy)
+	}
+console.log(AXONS)
 }
 
 
 
 
 
-
-
+FillNodeOutputs();
   anim();
 
 </script>
