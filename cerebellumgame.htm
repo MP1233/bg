@@ -26,96 +26,378 @@ gridcells.jpg
 
 <script>
 
+CBCTX_shiftXY=[0,300]
+PRKJ_shiftXY=[0,0]//150, 300
+Golgi_shiftXY=[50,40]
+Lugaro_shiftXY=[-60,80]
+Basket_shiftXY=[10,-80]
+Stellate_shiftXY=[-40,60]
+Candelabrum_shiftXY=[60,70]
+
+CBN_shiftXY=[0,500]
+IO_shiftXY=[0,700]
+
+GREEN_shiftXY=[250,0]
+OLIVE_shiftXY=[400,0]
+LIME_shiftXY=[550,0]
+BLACK_shiftXY=[700,0]
+BLUE_shiftXY=[850,0]
+GREY_shiftXY=[1000,0]
+RED_shiftXY=[1150,0]
+BROWN_shiftXY=[1300,0]
+YELLOW_shiftXY=[1450,0]
+
+
+Spine_shiftXY=[50,1000]
+Prespine_shiftXY=[150,1000]
+Prebrain_shiftXY=[1400,1000]
+Thalamus_shiftXY=[1800,1000]
+Neocortex_shiftXY=[1900,1000]
+Parallel_shiftXY=[1650,400]
+
+
+
+
+MedProj_shiftXY=[350, 1000]
+MedDLProj_shiftXY=[500, 1000]
+IntICProj_shiftXY=[650, 1000]
+IntA_shiftXY=[800, 1000] 
+IntP_shiftXY=[950, 1000]
+LatProj_shiftXY=[1100, 1000] 
+IntDL_shiftXY=[1250, 1000] 
+ 
+
+
+
 var AXONS = {
 
-/*
-AxonMF_SensoryInput_1:{start_node:"MotorCortexButton", end_node:"MF_Sensory_Node_1", shape:[[0,850],[600,850]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
-
-AxonMF_VisualCortex_1:{start_node:"VisualCortexButton", end_node:"RtTg_Visual", shape:[[1200,780],[1100,780],[1100,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
-
-AxonMF_SensoryCortex_1:{start_node:"SensoryCortexButton", end_node:"MF_SensoryCortex_Node_1", shape:[[1200,810],[1075,810]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
-AxonMF_SensoryCortex_2:{start_node:"MF_SensoryCortex_Node_1", end_node:"RtTg_Motor", shape:[[1075,810],[1050,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
-AxonMF_SensoryCortex_3:{start_node:"MF_SensoryCortex_Node_1", end_node:"RtTg_Visual", shape:[[1075,810],[1100,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
-
-AxonMF_MotorCortex_1:{start_node:"MotorCortexButton", end_node:"RtTg_Motor", shape:[[1200,840],[1050,840],[1050,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
-AxonMF_VisualInput_1:{start_node:"VisualInputButton", end_node:"RtTg_Visual", shape:[[1200,750],[1100,750],[1100,700]], type:"glutamate", lengthsec:10,power:1},///Spin>Node
-
-
-
-
-
-
-
-AxonMF_SensoryInput_Bypass_1:{start_node:"MF_Sensory_Node_1", end_node:"MF_Sensory_Node_2", shape:[[600,850],[700,800],[1000,800],[1000,600]], type:"glutamate", lengthsec:10,power:1},///node>>>Parallel
-AxonMF_SensoryInput_Bypass_2:{start_node:"MF_Sensory_Node_2", end_node:"CRB_NUCL_Med", shape:[[1000,600],[160,500]], type:"glutamate", lengthsec:10,power:1},///node>>>Parallel
-AxonMF_SensoryInput_Bypass_3:{start_node:"MF_Sensory_Node_2", end_node:"Parallel_Bypass_Sensory", shape:[[1000,600],[1000,300]], type:"glutamate", lengthsec:10,power:1},///node>>>Parallel
-AxonMF_PontineMotor_1:{start_node:"RtTg_Motor", end_node:"MF_Motor_Node_2", shape:[[1050,700],[1050,600]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
-AxonMF_PontineMotor_2:{start_node:"MF_Motor_Node_2", end_node:"CRB_NUCL_Med", shape:[[1050,600],[160,500]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
-AxonMF_PontineMotor_3:{start_node:"MF_Motor_Node_2", end_node:"Parallel_RtTg_Motor", shape:[[1050,600],[1050,300]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
-
-AxonMF_PontineVisual_1:{start_node:"RtTg_Visual", end_node:"MF_Visual_Node_2", shape:[[1100,700],[1100,600]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
-AxonMF_PontineVisual_2:{start_node:"MF_Visual_Node_2", end_node:"CRB_NUCL_Med", shape:[[1100,600],[160,500]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
-AxonMF_PontineVisual_3:{start_node:"MF_Visual_Node_2", end_node:"Parallel_RtTg_Visual", shape:[[1100,600],[1100,300]], type:"glutamate", lengthsec:10,power:1},///PontineMotor>>>Parallel
-
-AxonMF_SensoryInput_PontineMotor_1:{start_node:"MF_Sensory_Node_1", end_node:"RtTg_Motor", shape:[[600,850],[1050,850],[1050,700]], type:"glutamate", lengthsec:10,power:1},///node>>>PontineMotor
-
-
-
-
-
-AxonMF_ParallelMotor_1:{start_node:"Parallel_RtTg_Motor", end_node:"Parallel_RtTg_Motor_Node1", shape:[[1050,300],[1050,50],[0,50]], type:"glutamate", lengthsec:10,power:9},///Parallel9
-AxonMF_ParallelVisual_1:{start_node:"Parallel_RtTg_Motor", end_node:"Parallel_RtTg_Motor_Node1", shape:[[1100,300],[1100,20],[0,20]], type:"glutamate", lengthsec:10,power:9},///Parallel9
-AxonMF_ParallelBypass_1:{start_node:"Parallel_RtTg_Motor", end_node:"Parallel_RtTg_Motor_Node1", shape:[[1000,300],[1000,80],[0,80]], type:"glutamate", lengthsec:10,power:9},///Parallel9
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*AxonMF_1_1:{start_node:"MotorCortexButton", end_node:"Parallel_Fiber_1", shape:[[0,600],[130,600],[130,360]], type:"glutamate", lengthsec:10,power:1},
-AxonMF_1_2:{start_node:"MotorCortexButton", end_node:"Golgi_Med", shape:[[0,600],[130,600],[200,320]], type:"glutamate", lengthsec:10,power:1},
-AxonMF_1_3:{start_node:"MotorCortexButton", end_node:"UniPolarBrush_Med", shape:[[0,600],[130,600],[110,380]], type:"glutamate", lengthsec:10,power:1},
-
-
-AxonIO_1_1:{start_node:"OculomotorButton", end_node:"IOVL_IOVK", shape:[[0,700],[150,700]], type:"glutamate", lengthsec:10,power:1},
-AxonIO_1_21:{start_node:"IOVL_IOVK", end_node:"CRB_NUCL_Med", shape:[[150,700],[160,690],[160,500]], type:"glutamate", lengthsec:10,power:1},
-AxonIO_1_22:{start_node:"IOVL_IOVK", end_node:"PRKJ_A", shape:[[150,700],[150,300]], type:"glutamate", lengthsec:10,power:1},
-AxonIO_1_23:{start_node:"IOVL_IOVK", end_node:"Golgi_Med", shape:[[150,700],[200,320]], type:"glutamate", lengthsec:10,power:1},
-*/
-AxonParallelFIB_1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
-AxonParallelFIB_6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_A_FL", shape:[], type:"glutamate", lengthsec:10,power:1},
+///////////////////////////////////
+///GREEN
+AxonParallelFIB_1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_A_FL", shape:[[Parallel_shiftXY[0], 50], [GREEN_shiftXY[0]+PRKJ_shiftXY[0]+10, 50],[GREEN_shiftXY[0]+PRKJ_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_A_FL", shape:[[Parallel_shiftXY[0], 50], [GREEN_shiftXY[0]+Lugaro_shiftXY[0]+10, 50],[GREEN_shiftXY[0]+Lugaro_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_A_FL", shape:[[Parallel_shiftXY[0], 50], [GREEN_shiftXY[0]+Basket_shiftXY[0]+10, 50],[GREEN_shiftXY[0]+Basket_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_A_FL", shape:[[Parallel_shiftXY[0], 50], [GREEN_shiftXY[0]+Stellate_shiftXY[0]+10, 50],[GREEN_shiftXY[0]+Stellate_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_A_FL", shape:[[Parallel_shiftXY[0], 50], [GREEN_shiftXY[0]+Candelabrum_shiftXY[0]+10, 50],[GREEN_shiftXY[0]+Candelabrum_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_A_FL", shape:[[Parallel_shiftXY[0], 50], [GREEN_shiftXY[0]+Golgi_shiftXY[0]+10, 50],[GREEN_shiftXY[0]+Golgi_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
 AxonUniPolarBrush_1_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
 /*TODO Golgi cells receive input from mossy fibers, parallel fibers, climbing fibers*/
-Axon_Golgi_A_FL_TO_Parallel_Fiber_Granule:{start_node:"Golgi_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
-Axon_Golgi_A_FL_TO_UniPolarBrush_A_FL:{start_node:"Golgi_A_FL", end_node:"UniPolarBrush_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
-Axon_PRKJ_A_FL_TO_CBN_Med_rostral:{start_node:"PRKJ_A_FL", end_node:"CBN_Med_rostral", shape:[[160,310],[160,500]], type:"GABA", lengthsec:10,power:-1},
-Axon_PRKJ_A_FL_TO_CBN_Med_caudal:{start_node:"PRKJ_A_FL", end_node:"CBN_Med_caudal", shape:[[160,310],[160,500]], type:"GABA", lengthsec:10,power:-1},
-Axon_PRKJ_A_FL_TO_Golgi_A_FL:{start_node:"PRKJ_A_FL", end_node:"Golgi_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
-Axon_PRKJ_A_FL_TO_Lugaro_A_FL:{start_node:"PRKJ_A_FL", end_node:"Lugaro_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
-Axon_PRKJ_A_FL_TO_Basket_A_FL:{start_node:"PRKJ_A_FL", end_node:"Basket_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_Golgi_A_FL_TO_Parallel_Fiber_Granule:{start_node:"Golgi_A_FL", end_node:"Parallel_Fiber_Granule", shape:[[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10],[Parallel_shiftXY[0]-10, GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10]], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_A_FL_TO_UniPolarBrush_A_FL:{start_node:"Golgi_A_FL", end_node:"UniPolarBrush_A_FL", shape:[[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1] - 10]], type:"GABA_glycine", lengthsec:10,power:-1},
 
-Axon_Basket_A_FL_TO_PRKJ_A_FL:{start_node:"Basket_A_FL", end_node:"PRKJ_A_FL", shape:[[160,230],[160,290]], type:"GABA", lengthsec:10,power:-1},
-Axon_Basket_A_FL_TO_Golgi_A_FL:{start_node:"Basket_A_FL", end_node:"Golgi_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
-Axon_Stellate_A_FL_TO_PRKJ_A_FL:{start_node:"Stellate_A_FL", end_node:"PRKJ_A_FL", shape:[], type:"GABA", lengthsec:10,power:-1},
+Axon_PRKJ_A_FL_TO_CBN_Med_rostral:{start_node:"PRKJ_A_FL", end_node:"CBN_Med_rostral", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREEN_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
 
-Axon_Lugaro_A_FL_TO_Golgi_A_FL:{start_node:"Lugaro_A_FL", end_node:"Golgi_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_PRKJ_A_FL_TO_CBN_Med_caudal:{start_node:"PRKJ_A_FL", end_node:"CBN_Med_caudal", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREEN_shiftXY[1]+CBN_shiftXY[1]+5]], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_A_FL_TO_Golgi_A_FL:{start_node:"PRKJ_A_FL", end_node:"Golgi_A_FL", shape:[[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_A_FL_TO_Lugaro_A_FL:{start_node:"PRKJ_A_FL", end_node:"Lugaro_A_FL", shape:[[GREEN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+10,GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_A_FL_TO_Basket_A_FL:{start_node:"PRKJ_A_FL", end_node:"Basket_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+10,GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],[GREEN_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Basket_A_FL_TO_PRKJ_A_FL:{start_node:"Basket_A_FL", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Golgi_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+Axon_Basket_A_FL_TO_Golgi_A_FL:{start_node:"Basket_A_FL", end_node:"Golgi_A_FL", shape:[[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Stellate_A_FL_TO_PRKJ_A_FL:{start_node:"Stellate_A_FL", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Lugaro_A_FL_TO_Golgi_A_FL:{start_node:"Lugaro_A_FL", end_node:"Golgi_A_FL", shape:[[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
 Axon_Lugaro_A_FL_TO_Stellate_A_FL:{start_node:"Lugaro_A_FL", end_node:"Stellate_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
-Axon_Lugaro_A_FL_TO_Basket_A_FL:{start_node:"Lugaro_A_FL", end_node:"Basket_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
-Axon_Lugaro_A_FL_TO_PRKJ_A_FL:{start_node:"Lugaro_A_FL", end_node:"PRKJ_A_FL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_A_FL_TO_Basket_A_FL:{start_node:"Lugaro_A_FL", end_node:"Basket_A_FL", shape:[[GREEN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],[GREEN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[GREEN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_A_FL_TO_PRKJ_A_FL:{start_node:"Lugaro_A_FL", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+
+///////////////////////////////////
+///OLIVE
+AxonParallelFIB_ol1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_A2", shape:[[Parallel_shiftXY[0], 50], [OLIVE_shiftXY[0]+PRKJ_shiftXY[0]+10, 50],[OLIVE_shiftXY[0]+PRKJ_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_ol2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_A2", shape:[[Parallel_shiftXY[0], 50], [OLIVE_shiftXY[0]+Lugaro_shiftXY[0]+10, 50],[OLIVE_shiftXY[0]+Lugaro_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_ol3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_A2", shape:[[Parallel_shiftXY[0], 50], [OLIVE_shiftXY[0]+Basket_shiftXY[0]+10, 50],[OLIVE_shiftXY[0]+Basket_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_ol4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_A2", shape:[[Parallel_shiftXY[0], 50], [OLIVE_shiftXY[0]+Stellate_shiftXY[0]+10, 50],[OLIVE_shiftXY[0]+Stellate_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_ol5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_A2", shape:[[Parallel_shiftXY[0], 50], [OLIVE_shiftXY[0]+Candelabrum_shiftXY[0]+10, 50],[OLIVE_shiftXY[0]+Candelabrum_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_ol6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_A2", shape:[[Parallel_shiftXY[0], 50], [OLIVE_shiftXY[0]+Golgi_shiftXY[0]+10, 50],[OLIVE_shiftXY[0]+Golgi_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonUniPolarBrush_ol_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_Golgi_A2_TO_Parallel_Fiber_Granule:{start_node:"Golgi_A2", end_node:"Parallel_Fiber_Granule", shape:[[OLIVE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, OLIVE_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10],[Parallel_shiftXY[0]-10, OLIVE_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10]], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_A2_TO_UniPolarBrush_A_FL:{start_node:"Golgi_A2", end_node:"UniPolarBrush_A_FL", shape:[[OLIVE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, OLIVE_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1] - 10]], type:"GABA_glycine", lengthsec:10,power:-1},
+
+Axon_PRKJ_A2_TO_CBN_MedDL:{start_node:"PRKJ_A2", end_node:"CBN_MedDL", shape:[[OLIVE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, OLIVE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [OLIVE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, OLIVE_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_A2_TO_Golgi_A2:{start_node:"PRKJ_A2", end_node:"Golgi_A2", shape:[[OLIVE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,OLIVE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[OLIVE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,OLIVE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_A2_TO_Lugaro_A2:{start_node:"PRKJ_A2", end_node:"Lugaro_A2", shape:[[OLIVE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+10,OLIVE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[OLIVE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,OLIVE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_A2_TO_Basket_A2:{start_node:"PRKJ_A2", end_node:"Basket_A2", shape:[[OLIVE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+10,OLIVE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],[OLIVE_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]+0,OLIVE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Basket_A2_TO_PRKJ_A2:{start_node:"Basket_A2", end_node:"PRKJ_A2", shape:[[OLIVE_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]-10,OLIVE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[OLIVE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,OLIVE_shiftXY[1]+Golgi_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+Axon_Basket_A2_TO_Golgi_A2:{start_node:"Basket_A2", end_node:"Golgi_A2", shape:[[OLIVE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,OLIVE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],[OLIVE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,OLIVE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Stellate_A2_TO_PRKJ_A2:{start_node:"Stellate_A2", end_node:"PRKJ_A2", shape:[[OLIVE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,OLIVE_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[OLIVE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,OLIVE_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Lugaro_A2_TO_Golgi_A2:{start_node:"Lugaro_A2", end_node:"Golgi_A2", shape:[[OLIVE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,OLIVE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[OLIVE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,OLIVE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_A2_TO_Stellate_A2:{start_node:"Lugaro_A2", end_node:"Stellate_A2", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_A2_TO_Basket_A2:{start_node:"Lugaro_A2", end_node:"Basket_A2", shape:[[OLIVE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,OLIVE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],[OLIVE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,OLIVE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[OLIVE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,OLIVE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_A2_TO_PRKJ_A2:{start_node:"Lugaro_A2", end_node:"PRKJ_A2", shape:[[OLIVE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,OLIVE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[OLIVE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,OLIVE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+
+
+///////////////////////////////////
+///LIME
+AxonParallelFIB_li1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_CX_X", shape:[[Parallel_shiftXY[0], 50], [LIME_shiftXY[0]+PRKJ_shiftXY[0]+10, 50],[LIME_shiftXY[0]+PRKJ_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_li2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_CX_X", shape:[[Parallel_shiftXY[0], 50], [LIME_shiftXY[0]+Lugaro_shiftXY[0]+10, 50],[LIME_shiftXY[0]+Lugaro_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_li3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_CX_X", shape:[[Parallel_shiftXY[0], 50], [LIME_shiftXY[0]+Basket_shiftXY[0]+10, 50],[LIME_shiftXY[0]+Basket_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_li4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_CX_X", shape:[[Parallel_shiftXY[0], 50], [LIME_shiftXY[0]+Stellate_shiftXY[0]+10, 50],[LIME_shiftXY[0]+Stellate_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_li5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_CX_X", shape:[[Parallel_shiftXY[0], 50], [LIME_shiftXY[0]+Candelabrum_shiftXY[0]+10, 50],[LIME_shiftXY[0]+Candelabrum_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_li6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_CX_X", shape:[[Parallel_shiftXY[0], 50], [LIME_shiftXY[0]+Golgi_shiftXY[0]+10, 50],[LIME_shiftXY[0]+Golgi_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonUniPolarBrush_li_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_Golgi_CX_X_TO_Parallel_Fiber_Granule:{start_node:"Golgi_CX_X", end_node:"Parallel_Fiber_Granule", shape:[[LIME_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, LIME_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10],[Parallel_shiftXY[0]-10, LIME_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10]], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_CX_X_TO_UniPolarBrush_A_FL:{start_node:"Golgi_CX_X", end_node:"UniPolarBrush_A_FL", shape:[[LIME_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, LIME_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1] - 10]], type:"GABA_glycine", lengthsec:10,power:-1},
+
+Axon_PRKJ_CX_X_TO_CBN_MedDL:{start_node:"PRKJ_CX_X", end_node:"CBN_IntIC", shape:[[LIME_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, LIME_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [LIME_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, LIME_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_CX_X_TO_Golgi_CX_X:{start_node:"PRKJ_CX_X", end_node:"Golgi_CX_X", shape:[[LIME_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,LIME_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[LIME_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,LIME_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_CX_X_TO_Lugaro_CX_X:{start_node:"PRKJ_CX_X", end_node:"Lugaro_CX_X", shape:[[LIME_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+10,LIME_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[LIME_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,LIME_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_CX_X_TO_Basket_CX_X:{start_node:"PRKJ_CX_X", end_node:"Basket_CX_X", shape:[[LIME_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+10,LIME_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],[LIME_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]+0,LIME_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Basket_CX_X_TO_PRKJ_CX_X:{start_node:"Basket_CX_X", end_node:"PRKJ_CX_X", shape:[[LIME_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]-10,LIME_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[LIME_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,LIME_shiftXY[1]+Golgi_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+Axon_Basket_CX_X_TO_Golgi_CX_X:{start_node:"Basket_CX_X", end_node:"Golgi_CX_X", shape:[[LIME_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,LIME_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],[LIME_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,LIME_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Stellate_CX_X_TO_PRKJ_CX_X:{start_node:"Stellate_CX_X", end_node:"PRKJ_CX_X", shape:[[LIME_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,LIME_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[LIME_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,LIME_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Lugaro_CX_X_TO_Golgi_CX_X:{start_node:"Lugaro_CX_X", end_node:"Golgi_CX_X", shape:[[LIME_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,LIME_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[LIME_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,LIME_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_CX_X_TO_Stellate_CX_X:{start_node:"Lugaro_CX_X", end_node:"Stellate_CX_X", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_CX_X_TO_Basket_CX_X:{start_node:"Lugaro_CX_X", end_node:"Basket_CX_X", shape:[[LIME_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,LIME_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],[LIME_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,LIME_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[LIME_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,LIME_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_CX_X_TO_PRKJ_CX_X:{start_node:"Lugaro_CX_X", end_node:"PRKJ_CX_X", shape:[[LIME_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,LIME_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[LIME_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,LIME_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+
+
+///////////////////////////////////
+///BLACK
+AxonParallelFIB_blc1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_B", shape:[[Parallel_shiftXY[0], 50], [BLACK_shiftXY[0]+PRKJ_shiftXY[0]+10, 50],[BLACK_shiftXY[0]+PRKJ_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_blc2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_B", shape:[[Parallel_shiftXY[0], 50], [BLACK_shiftXY[0]+Lugaro_shiftXY[0]+10, 50],[BLACK_shiftXY[0]+Lugaro_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_blc3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_B", shape:[[Parallel_shiftXY[0], 50], [BLACK_shiftXY[0]+Basket_shiftXY[0]+10, 50],[BLACK_shiftXY[0]+Basket_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_blc4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_B", shape:[[Parallel_shiftXY[0], 50], [BLACK_shiftXY[0]+Stellate_shiftXY[0]+10, 50],[BLACK_shiftXY[0]+Stellate_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_blc5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_B", shape:[[Parallel_shiftXY[0], 50], [BLACK_shiftXY[0]+Candelabrum_shiftXY[0]+10, 50],[BLACK_shiftXY[0]+Candelabrum_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_blc6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_B", shape:[[Parallel_shiftXY[0], 50], [BLACK_shiftXY[0]+Golgi_shiftXY[0]+10, 50],[BLACK_shiftXY[0]+Golgi_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonUniPolarBrush_blc_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_Golgi_B_TO_Parallel_Fiber_Granule:{start_node:"Golgi_B", end_node:"Parallel_Fiber_Granule", shape:[[BLACK_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, BLACK_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10],[Parallel_shiftXY[0]-10, BLACK_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10]], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_B_TO_UniPolarBrush_A_FL:{start_node:"Golgi_B", end_node:"UniPolarBrush_A_FL", shape:[[BLACK_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, BLACK_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1] - 10]], type:"GABA_glycine", lengthsec:10,power:-1},
+
+Axon_PRKJ_B_TO_CBN_LVe:{start_node:"PRKJ_B", end_node:"CBN_LVe", shape:[[BLACK_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, BLACK_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [BLACK_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, BLACK_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_B_TO_Golgi_B:{start_node:"PRKJ_B", end_node:"Golgi_B", shape:[[BLACK_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,BLACK_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLACK_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,BLACK_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_B_TO_Lugaro_B:{start_node:"PRKJ_B", end_node:"Lugaro_B", shape:[[BLACK_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+10,BLACK_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLACK_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,BLACK_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_B_TO_Basket_B:{start_node:"PRKJ_B", end_node:"Basket_B", shape:[[BLACK_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+10,BLACK_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],[BLACK_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]+0,BLACK_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Basket_B_TO_PRKJ_B:{start_node:"Basket_B", end_node:"PRKJ_B", shape:[[BLACK_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]-10,BLACK_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[BLACK_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,BLACK_shiftXY[1]+Golgi_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+Axon_Basket_B_TO_Golgi_B:{start_node:"Basket_B", end_node:"Golgi_B", shape:[[BLACK_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,BLACK_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLACK_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,BLACK_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Stellate_B_TO_PRKJ_B:{start_node:"Stellate_B", end_node:"PRKJ_B", shape:[[BLACK_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,BLACK_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLACK_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,BLACK_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Lugaro_B_TO_Golgi_B:{start_node:"Lugaro_B", end_node:"Golgi_B", shape:[[BLACK_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,BLACK_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLACK_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,BLACK_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_B_TO_Stellate_B:{start_node:"Lugaro_B", end_node:"Stellate_B", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_B_TO_Basket_B:{start_node:"Lugaro_B", end_node:"Basket_B", shape:[[BLACK_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,BLACK_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],[BLACK_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,BLACK_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[BLACK_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,BLACK_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_B_TO_PRKJ_B:{start_node:"Lugaro_B", end_node:"PRKJ_B", shape:[[BLACK_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,BLACK_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLACK_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,BLACK_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+
+
+///////////////////////////////////
+///BLUE
+AxonParallelFIB_bl1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_C1_C3", shape:[[Parallel_shiftXY[0], 50], [BLUE_shiftXY[0]+PRKJ_shiftXY[0]+10, 50],[BLUE_shiftXY[0]+PRKJ_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_bl2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_C1_C3", shape:[[Parallel_shiftXY[0], 50], [BLUE_shiftXY[0]+Lugaro_shiftXY[0]+10, 50],[BLUE_shiftXY[0]+Lugaro_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_bl3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_C1_C3", shape:[[Parallel_shiftXY[0], 50], [BLUE_shiftXY[0]+Basket_shiftXY[0]+10, 50],[BLUE_shiftXY[0]+Basket_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_bl4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_C1_C3", shape:[[Parallel_shiftXY[0], 50], [BLUE_shiftXY[0]+Stellate_shiftXY[0]+10, 50],[BLUE_shiftXY[0]+Stellate_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_bl5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_C1_C3", shape:[[Parallel_shiftXY[0], 50], [BLUE_shiftXY[0]+Candelabrum_shiftXY[0]+10, 50],[BLUE_shiftXY[0]+Candelabrum_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_bl6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_C1_C3", shape:[[Parallel_shiftXY[0], 50], [BLUE_shiftXY[0]+Golgi_shiftXY[0]+10, 50],[BLUE_shiftXY[0]+Golgi_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonUniPolarBrush_bl_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_Golgi_C1_C3_TO_Parallel_Fiber_Granule:{start_node:"Golgi_C1_C3", end_node:"Parallel_Fiber_Granule", shape:[[BLUE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, BLUE_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10],[Parallel_shiftXY[0]-10, BLUE_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10]], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_C1_C3_TO_UniPolarBrush_A_FL:{start_node:"Golgi_C1_C3", end_node:"UniPolarBrush_A_FL", shape:[[BLUE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, BLUE_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1] - 10]], type:"GABA_glycine", lengthsec:10,power:-1},
+
+Axon_PRKJ_C1_C3_TO_CBN_IntAbl:{start_node:"PRKJ_C1_C3", end_node:"CBN_IntAbl", shape:[[BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, BLUE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, BLUE_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
+Axon_PRKJ_C1_C3_TO_CBN_IntPbl:{start_node:"PRKJ_C1_C3", end_node:"CBN_IntPbl", shape:[[BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, BLUE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, BLUE_shiftXY[1]+CBN_shiftXY[1]+0]], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_C1_C3_TO_Golgi_C1_C3:{start_node:"PRKJ_C1_C3", end_node:"Golgi_C1_C3", shape:[[BLUE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,BLUE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLUE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,BLUE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_C1_C3_TO_Lugaro_C1_C3:{start_node:"PRKJ_C1_C3", end_node:"Lugaro_C1_C3", shape:[[BLUE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+10,BLUE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLUE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,BLUE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_C1_C3_TO_C1_C3asket_C1_C3:{start_node:"PRKJ_C1_C3", end_node:"Basket_C1_C3", shape:[[BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+10,BLUE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],[BLUE_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]+0,BLUE_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_C1_C3asket_C1_C3_TO_PRKJ_C1_C3:{start_node:"Basket_C1_C3", end_node:"PRKJ_C1_C3", shape:[[BLUE_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]-10,BLUE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,BLUE_shiftXY[1]+Golgi_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+Axon_C1_C3asket_C1_C3_TO_Golgi_C1_C3:{start_node:"Basket_C1_C3", end_node:"Golgi_C1_C3", shape:[[BLUE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,BLUE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLUE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,BLUE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Stellate_C1_C3_TO_PRKJ_C1_C3:{start_node:"Stellate_C1_C3", end_node:"PRKJ_C1_C3", shape:[[BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,BLUE_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,BLUE_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Lugaro_C1_C3_TO_Golgi_C1_C3:{start_node:"Lugaro_C1_C3", end_node:"Golgi_C1_C3", shape:[[BLUE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,BLUE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLUE_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,BLUE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_C1_C3_TO_Stellate_C1_C3:{start_node:"Lugaro_C1_C3", end_node:"Stellate_C1_C3", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_C1_C3_TO_C1_C3asket_C1_C3:{start_node:"Lugaro_C1_C3", end_node:"Basket_C1_C3", shape:[[BLUE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,BLUE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],[BLUE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,BLUE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[BLUE_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,BLUE_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_C1_C3_TO_PRKJ_C1_C3:{start_node:"Lugaro_C1_C3", end_node:"PRKJ_C1_C3", shape:[[BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,BLUE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[BLUE_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,BLUE_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+
+
+
+
+///////////////////////////////////
+///GREY
+AxonParallelFIB_gr1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_C2_PFL", shape:[[Parallel_shiftXY[0], 50], [GREY_shiftXY[0]+PRKJ_shiftXY[0]+10, 50],[GREY_shiftXY[0]+PRKJ_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_gr2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_C2_PFL", shape:[[Parallel_shiftXY[0], 50], [GREY_shiftXY[0]+Lugaro_shiftXY[0]+10, 50],[GREY_shiftXY[0]+Lugaro_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_gr3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_C2_PFL", shape:[[Parallel_shiftXY[0], 50], [GREY_shiftXY[0]+Basket_shiftXY[0]+10, 50],[GREY_shiftXY[0]+Basket_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_gr4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_C2_PFL", shape:[[Parallel_shiftXY[0], 50], [GREY_shiftXY[0]+Stellate_shiftXY[0]+10, 50],[GREY_shiftXY[0]+Stellate_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_gr5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_C2_PFL", shape:[[Parallel_shiftXY[0], 50], [GREY_shiftXY[0]+Candelabrum_shiftXY[0]+10, 50],[GREY_shiftXY[0]+Candelabrum_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_gr6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_C2_PFL", shape:[[Parallel_shiftXY[0], 50], [GREY_shiftXY[0]+Golgi_shiftXY[0]+10, 50],[GREY_shiftXY[0]+Golgi_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonUniPolarBrush_gr_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_Golgi_C2_PFL_TO_Parallel_Fiber_Granule:{start_node:"Golgi_C2_PFL", end_node:"Parallel_Fiber_Granule", shape:[[GREY_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, GREY_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10],[Parallel_shiftXY[0]-10, GREY_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10]], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_C2_PFL_TO_UniPolarBrush_A_FL:{start_node:"Golgi_C2_PFL", end_node:"UniPolarBrush_A_FL", shape:[[GREY_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, GREY_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1] - 10]], type:"GABA_glycine", lengthsec:10,power:-1},
+
+Axon_PRKJ_C2_PFL_TO_CBN_IntAgr:{start_node:"PRKJ_C2_PFL", end_node:"CBN_IntAgr", shape:[[GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREY_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREY_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
+Axon_PRKJ_C2_PFL_TO_CBN_IntPgr:{start_node:"PRKJ_C2_PFL", end_node:"CBN_IntPgr", shape:[[GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREY_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREY_shiftXY[1]+CBN_shiftXY[1]+0]], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_C2_PFL_TO_Golgi_C2_PFL:{start_node:"PRKJ_C2_PFL", end_node:"Golgi_C2_PFL", shape:[[GREY_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREY_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREY_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREY_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_C2_PFL_TO_Lugaro_C2_PFL:{start_node:"PRKJ_C2_PFL", end_node:"Lugaro_C2_PFL", shape:[[GREY_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+10,GREY_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREY_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,GREY_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_C2_PFL_TO_C2_PFLasket_C2_PFL:{start_node:"PRKJ_C2_PFL", end_node:"Basket_C2_PFL", shape:[[GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+10,GREY_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],[GREY_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]+0,GREY_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_C2_PFLasket_C2_PFL_TO_PRKJ_C2_PFL:{start_node:"Basket_C2_PFL", end_node:"PRKJ_C2_PFL", shape:[[GREY_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]-10,GREY_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,GREY_shiftXY[1]+Golgi_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+Axon_C2_PFLasket_C2_PFL_TO_Golgi_C2_PFL:{start_node:"Basket_C2_PFL", end_node:"Golgi_C2_PFL", shape:[[GREY_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREY_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREY_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREY_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Stellate_C2_PFL_TO_PRKJ_C2_PFL:{start_node:"Stellate_C2_PFL", end_node:"PRKJ_C2_PFL", shape:[[GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,GREY_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,GREY_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Lugaro_C2_PFL_TO_Golgi_C2_PFL:{start_node:"Lugaro_C2_PFL", end_node:"Golgi_C2_PFL", shape:[[GREY_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREY_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREY_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREY_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_C2_PFL_TO_Stellate_C2_PFL:{start_node:"Lugaro_C2_PFL", end_node:"Stellate_C2_PFL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_C2_PFL_TO_C2_PFLasket_C2_PFL:{start_node:"Lugaro_C2_PFL", end_node:"Basket_C2_PFL", shape:[[GREY_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,GREY_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],[GREY_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,GREY_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[GREY_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,GREY_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_C2_PFL_TO_PRKJ_C2_PFL:{start_node:"Lugaro_C2_PFL", end_node:"PRKJ_C2_PFL", shape:[[GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,GREY_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREY_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,GREY_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+
+
+
+
+
+///////////////////////////////////
+///RED
+AxonParallelFIB_rd1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_D1_PFL", shape:[[Parallel_shiftXY[0], 50], [RED_shiftXY[0]+PRKJ_shiftXY[0]+10, 50],[RED_shiftXY[0]+PRKJ_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_rd2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_D1_PFL", shape:[[Parallel_shiftXY[0], 50], [RED_shiftXY[0]+Lugaro_shiftXY[0]+10, 50],[RED_shiftXY[0]+Lugaro_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_rd3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_D1_PFL", shape:[[Parallel_shiftXY[0], 50], [RED_shiftXY[0]+Basket_shiftXY[0]+10, 50],[RED_shiftXY[0]+Basket_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_rd4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_D1_PFL", shape:[[Parallel_shiftXY[0], 50], [RED_shiftXY[0]+Stellate_shiftXY[0]+10, 50],[RED_shiftXY[0]+Stellate_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_rd5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_D1_PFL", shape:[[Parallel_shiftXY[0], 50], [RED_shiftXY[0]+Candelabrum_shiftXY[0]+10, 50],[RED_shiftXY[0]+Candelabrum_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_rd6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_D1_PFL", shape:[[Parallel_shiftXY[0], 50], [RED_shiftXY[0]+Golgi_shiftXY[0]+10, 50],[RED_shiftXY[0]+Golgi_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonUniPolarBrush_rd_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_Golgi_D1_PFL_TO_Parallel_Fiber_Granule:{start_node:"Golgi_D1_PFL", end_node:"Parallel_Fiber_Granule", shape:[[RED_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, RED_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10],[Parallel_shiftXY[0]-10, RED_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10]], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_D1_PFL_TO_UniPolarBrush_A_FL:{start_node:"Golgi_D1_PFL", end_node:"UniPolarBrush_A_FL", shape:[[RED_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, RED_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1] - 10]], type:"GABA_glycine", lengthsec:10,power:-1},
+
+Axon_PRKJ_D1_PFL_TO_CBN_Latrd:{start_node:"PRKJ_D1_PFL", end_node:"CBN_Latrd", shape:[[RED_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, RED_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [RED_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, RED_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_D1_PFL_TO_Golgi_D1_PFL:{start_node:"PRKJ_D1_PFL", end_node:"Golgi_D1_PFL", shape:[[RED_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,RED_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[RED_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,RED_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_D1_PFL_TO_Lugaro_D1_PFL:{start_node:"PRKJ_D1_PFL", end_node:"Lugaro_D1_PFL", shape:[[RED_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+10,RED_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[RED_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,RED_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_D1_PFL_TO_D1_PFLasket_D1_PFL:{start_node:"PRKJ_D1_PFL", end_node:"Basket_D1_PFL", shape:[[RED_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+10,RED_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],[RED_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]+0,RED_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_D1_PFLasket_D1_PFL_TO_PRKJ_D1_PFL:{start_node:"Basket_D1_PFL", end_node:"PRKJ_D1_PFL", shape:[[RED_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]-10,RED_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[RED_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,RED_shiftXY[1]+Golgi_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+Axon_D1_PFLasket_D1_PFL_TO_Golgi_D1_PFL:{start_node:"Basket_D1_PFL", end_node:"Golgi_D1_PFL", shape:[[RED_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,RED_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],[RED_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,RED_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Stellate_D1_PFL_TO_PRKJ_D1_PFL:{start_node:"Stellate_D1_PFL", end_node:"PRKJ_D1_PFL", shape:[[RED_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,RED_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[RED_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,RED_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Lugaro_D1_PFL_TO_Golgi_D1_PFL:{start_node:"Lugaro_D1_PFL", end_node:"Golgi_D1_PFL", shape:[[RED_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,RED_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[RED_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,RED_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_D1_PFL_TO_Stellate_D1_PFL:{start_node:"Lugaro_D1_PFL", end_node:"Stellate_D1_PFL", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_D1_PFL_TO_D1_PFLasket_D1_PFL:{start_node:"Lugaro_D1_PFL", end_node:"Basket_D1_PFL", shape:[[RED_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,RED_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],[RED_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,RED_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[RED_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,RED_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_D1_PFL_TO_PRKJ_D1_PFL:{start_node:"Lugaro_D1_PFL", end_node:"PRKJ_D1_PFL", shape:[[RED_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,RED_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[RED_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,RED_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+
+
+
+
+
+
+///////////////////////////////////
+///BROWN
+AxonParallelFIB_br1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_D2", shape:[[Parallel_shiftXY[0], 50], [BROWN_shiftXY[0]+PRKJ_shiftXY[0]+10, 50],[BROWN_shiftXY[0]+PRKJ_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_br2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_D2", shape:[[Parallel_shiftXY[0], 50], [BROWN_shiftXY[0]+Lugaro_shiftXY[0]+10, 50],[BROWN_shiftXY[0]+Lugaro_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_br3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_D2", shape:[[Parallel_shiftXY[0], 50], [BROWN_shiftXY[0]+Basket_shiftXY[0]+10, 50],[BROWN_shiftXY[0]+Basket_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_br4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_D2", shape:[[Parallel_shiftXY[0], 50], [BROWN_shiftXY[0]+Stellate_shiftXY[0]+10, 50],[BROWN_shiftXY[0]+Stellate_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_br5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_D2", shape:[[Parallel_shiftXY[0], 50], [BROWN_shiftXY[0]+Candelabrum_shiftXY[0]+10, 50],[BROWN_shiftXY[0]+Candelabrum_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_br6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_D2", shape:[[Parallel_shiftXY[0], 50], [BROWN_shiftXY[0]+Golgi_shiftXY[0]+10, 50],[BROWN_shiftXY[0]+Golgi_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonUniPolarBrush_br_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_Golgi_D2_TO_Parallel_Fiber_Granule:{start_node:"Golgi_D2", end_node:"Parallel_Fiber_Granule", shape:[[BROWN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, BROWN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10],[Parallel_shiftXY[0]-10, BROWN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10]], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_D2_TO_UniPolarBrush_A_FL:{start_node:"Golgi_D2", end_node:"UniPolarBrush_A_FL", shape:[[BROWN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, BROWN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1] - 10]], type:"GABA_glycine", lengthsec:10,power:-1},
+
+Axon_PRKJ_D2_TO_CBN_Latbr:{start_node:"PRKJ_D2", end_node:"CBN_Latbr", shape:[[BROWN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, BROWN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [BROWN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, BROWN_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_D2_TO_Golgi_D2:{start_node:"PRKJ_D2", end_node:"Golgi_D2", shape:[[BROWN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,BROWN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[BROWN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,BROWN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_D2_TO_Lugaro_D2:{start_node:"PRKJ_D2", end_node:"Lugaro_D2", shape:[[BROWN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+10,BROWN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[BROWN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,BROWN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_D2_TO_D2asket_D2:{start_node:"PRKJ_D2", end_node:"Basket_D2", shape:[[BROWN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+10,BROWN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],[BROWN_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]+0,BROWN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_D2asket_D2_TO_PRKJ_D2:{start_node:"Basket_D2", end_node:"PRKJ_D2", shape:[[BROWN_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]-10,BROWN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[BROWN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,BROWN_shiftXY[1]+Golgi_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+Axon_D2asket_D2_TO_Golgi_D2:{start_node:"Basket_D2", end_node:"Golgi_D2", shape:[[BROWN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,BROWN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],[BROWN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,BROWN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Stellate_D2_TO_PRKJ_D2:{start_node:"Stellate_D2", end_node:"PRKJ_D2", shape:[[BROWN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,BROWN_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[BROWN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,BROWN_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Lugaro_D2_TO_Golgi_D2:{start_node:"Lugaro_D2", end_node:"Golgi_D2", shape:[[BROWN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,BROWN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[BROWN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,BROWN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_D2_TO_Stellate_D2:{start_node:"Lugaro_D2", end_node:"Stellate_D2", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_D2_TO_D2asket_D2:{start_node:"Lugaro_D2", end_node:"Basket_D2", shape:[[BROWN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,BROWN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],[BROWN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,BROWN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[BROWN_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,BROWN_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_D2_TO_PRKJ_D2:{start_node:"Lugaro_D2", end_node:"PRKJ_D2", shape:[[BROWN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,BROWN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[BROWN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,BROWN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+
+
+
+
+
+
+
+
+///////////////////////////////////
+///YELLOW
+AxonParallelFIB_yl1:{start_node:"Parallel_Fiber_Granule", end_node:"PRKJ_D0", shape:[[Parallel_shiftXY[0], 50], [YELLOW_shiftXY[0]+PRKJ_shiftXY[0]+10, 50],[YELLOW_shiftXY[0]+PRKJ_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_yl2:{start_node:"Parallel_Fiber_Granule", end_node:"Lugaro_D0", shape:[[Parallel_shiftXY[0], 50], [YELLOW_shiftXY[0]+Lugaro_shiftXY[0]+10, 50],[YELLOW_shiftXY[0]+Lugaro_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_yl3:{start_node:"Parallel_Fiber_Granule", end_node:"Basket_D0", shape:[[Parallel_shiftXY[0], 50], [YELLOW_shiftXY[0]+Basket_shiftXY[0]+10, 50],[YELLOW_shiftXY[0]+Basket_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_yl4:{start_node:"Parallel_Fiber_Granule", end_node:"Stellate_D0", shape:[[Parallel_shiftXY[0], 50], [YELLOW_shiftXY[0]+Stellate_shiftXY[0]+10, 50],[YELLOW_shiftXY[0]+Stellate_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_yl5:{start_node:"Parallel_Fiber_Granule", end_node:"Candelabrum_D0", shape:[[Parallel_shiftXY[0], 50], [YELLOW_shiftXY[0]+Candelabrum_shiftXY[0]+10, 50],[YELLOW_shiftXY[0]+Candelabrum_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonParallelFIB_yl6:{start_node:"Parallel_Fiber_Granule", end_node:"Golgi_D0", shape:[[Parallel_shiftXY[0], 50], [YELLOW_shiftXY[0]+Golgi_shiftXY[0]+10, 50],[YELLOW_shiftXY[0]+Golgi_shiftXY[0], 60]], type:"glutamate", lengthsec:10,power:1},
+AxonUniPolarBrush_yl_1:{start_node:"UniPolarBrush_A_FL", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+Axon_Golgi_D0_TO_Parallel_Fiber_Granule:{start_node:"Golgi_D0", end_node:"Parallel_Fiber_Granule", shape:[[YELLOW_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, YELLOW_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10],[Parallel_shiftXY[0]-10, YELLOW_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]-10]], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Golgi_D0_TO_UniPolarBrush_A_FL:{start_node:"Golgi_D0", end_node:"UniPolarBrush_A_FL", shape:[[YELLOW_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+10, YELLOW_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1] - 10]], type:"GABA_glycine", lengthsec:10,power:-1},
+
+Axon_PRKJ_D0_TO_CBN_IntDL:{start_node:"PRKJ_D0", end_node:"CBN_IntDL", shape:[[YELLOW_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, YELLOW_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [YELLOW_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, YELLOW_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_D0_TO_Golgi_D0:{start_node:"PRKJ_D0", end_node:"Golgi_D0", shape:[[YELLOW_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,YELLOW_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[YELLOW_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,YELLOW_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+
+Axon_PRKJ_D0_TO_Lugaro_D0:{start_node:"PRKJ_D0", end_node:"Lugaro_D0", shape:[[YELLOW_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+10,YELLOW_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+0],[YELLOW_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,YELLOW_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_PRKJ_D0_TO_D0asket_D0:{start_node:"PRKJ_D0", end_node:"Basket_D0", shape:[[YELLOW_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+10,YELLOW_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],[YELLOW_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]+0,YELLOW_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_D0asket_D0_TO_PRKJ_D0:{start_node:"Basket_D0", end_node:"PRKJ_D0", shape:[[YELLOW_shiftXY[0]+Basket_shiftXY[0]+CBCTX_shiftXY[0]-10,YELLOW_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[YELLOW_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,YELLOW_shiftXY[1]+Golgi_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+Axon_D0asket_D0_TO_Golgi_D0:{start_node:"Basket_D0", end_node:"Golgi_D0", shape:[[YELLOW_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,YELLOW_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],[YELLOW_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,YELLOW_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Stellate_D0_TO_PRKJ_D0:{start_node:"Stellate_D0", end_node:"PRKJ_D0", shape:[[YELLOW_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,YELLOW_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[YELLOW_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,YELLOW_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+Axon_Lugaro_D0_TO_Golgi_D0:{start_node:"Lugaro_D0", end_node:"Golgi_D0", shape:[[YELLOW_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,YELLOW_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[YELLOW_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,YELLOW_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_D0_TO_Stellate_D0:{start_node:"Lugaro_D0", end_node:"Stellate_D0", shape:[], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_D0_TO_D0asket_D0:{start_node:"Lugaro_D0", end_node:"Basket_D0", shape:[[YELLOW_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,YELLOW_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],[YELLOW_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]-10,YELLOW_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+10],[YELLOW_shiftXY[0]+Lugaro_shiftXY[0]+CBCTX_shiftXY[0]+0,YELLOW_shiftXY[1]+Basket_shiftXY[1]+CBCTX_shiftXY[1]+0],], type:"GABA_glycine", lengthsec:10,power:-1},
+Axon_Lugaro_D0_TO_PRKJ_D0:{start_node:"Lugaro_D0", end_node:"PRKJ_D0", shape:[[YELLOW_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,YELLOW_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[YELLOW_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,YELLOW_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA_glycine", lengthsec:10,power:-1},
+
+
+
+
+
+
+
+
+
 
 /*
 AxonCRBNUK_1_1:{start_node:"CRB_NUCL_Med", end_node:"IOVL_IOVK", shape:[[160,500],[170,510],[170,680],[150,700]], type:"GABA", lengthsec:10,power:-1},
@@ -126,13 +408,13 @@ AxonCRBNUK_1_4:{start_node:"CRB_NUCL_Med", end_node:"Out", shape:[[160,500],[190
 
 
 
-Axon_Parallel_Fiber_spinal_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_spinal", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_Parallel_Fiber_LRT_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_LRT", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_Parallel_Fiber_Vestibular_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_Vestibular", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_Parallel_Fiber_VestibularApp_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_VestibularApp", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_Parallel_Fiber_Pontine_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_Pontine", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_Parallel_Fiber_CBN_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_CBN", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_Parallel_Fiber_spinal_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_spinal", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_DorsalColumn_and_TrigeminalNuclei", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Parallel_Fiber_LRT_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_LRT", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Parallel_Fiber_Vestibular_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_Vestibular", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Parallel_Fiber_VestibularApp_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_VestibularApp", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Parallel_Fiber_Pontine_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_Pontine", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_Parallel_Fiber_CBN_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_CBN", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
 
 
 
@@ -150,28 +432,28 @@ Axon_Parallel_Fiber_CBN_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_CB
 ///IO
 ///////////////////////////////////////////////////////
 ///IOD///from somatosensory nuclei relaying cutaneous tactile and nociceptive information. registration of unexpected somatosensory signals or pain. caudolateral, hindlimb related, and rostromedial, face related
-Axon_deep_mesencephalic_nucleus_TO_IOD:{start_node:"deep_mesencephalic_nucleus", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_deep_mesencephalic_nucleus_TO_IOD:{start_node:"deep_mesencephalic_nucleus", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
 
-Axon_spinal_cord_TO_IOD:{start_node:"spinal_cord", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_SpinalTrigeminalNuclei_TO_IOD:{start_node:"SpinalTrigeminalNuclei", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_DorsalColumnNuclei_TO_IOD:{start_node:"DorsalColumnNuclei", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_spinal_cord_TO_IOD:{start_node:"spinal_cord", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_SpinalTrigeminalNuclei_TO_IOD:{start_node:"SpinalTrigeminalNuclei", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_DorsalColumnNuclei_TO_IOD:{start_node:"DorsalColumnNuclei", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
 
 ///"gracile", :"cuneate",
-Axon_DorsalColumn_and_TrigeminalNuclei_TO_IOD:{start_node:"DorsalColumn_and_TrigeminalNuclei", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_DorsalColumn_and_TrigeminalNuclei_TO_IOD:{start_node:"DorsalColumn_and_TrigeminalNuclei", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
 
-Axon_Pretectum_TO_IOD:{start_node:"Pretectum", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_periaquaductal_gray_TO_IOD:{start_node:"periaquaductal_gray", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_InC_interstitial_nucleus_of_Cajal_TO_IOD:{start_node:"InC_interstitial_nucleus_of_Cajal", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_superior_colliculus_deep_layers_TO_IOD:{start_node:"superior_colliculus_deep_layers", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_Pretectum_TO_IOD:{start_node:"Pretectum", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_periaquaductal_gray_TO_IOD:{start_node:"periaquaductal_gray", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_InC_interstitial_nucleus_of_Cajal_TO_IOD:{start_node:"InC_interstitial_nucleus_of_Cajal", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_superior_colliculus_deep_layers_TO_IOD:{start_node:"superior_colliculus_deep_layers", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
 ///S1BF = primary somatosensory cortex, jaw, forelimb, hindlimb, shoulder, upper lip, trunk and barrel field regions; S1DZ, S1DZ0 = primary somatosensory cortex, dysgranular region and dysgranular zone 0; S2 = secondary somatosensory cortex]
-Axon_NEOCTX_FaceSensory_TO_IOD:{start_node:"NEOCTX_FaceSensory", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_ForelimbSensoryMotor_TO_IOD:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_HindlimbSensoryMotor_TO_IOD:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_Somatosensory_TO_IOD:{start_node:"NEOCTX_Somatosensory", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_dysgranular_TO_IOD:{start_node:"NEOCTX_dysgranular", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_FaceSensory_TO_IOD:{start_node:"NEOCTX_FaceSensory", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOD:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_HindlimbSensoryMotor_TO_IOD:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Somatosensory_TO_IOD:{start_node:"NEOCTX_Somatosensory", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_dysgranular_TO_IOD:{start_node:"NEOCTX_dysgranular", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
 Axon_CBN_IntAbl_TO_IOD:{start_node:"CBN_IntAbl", end_node:"IOD", shape:[], type:"GABA", lengthsec:10,power:-1},
 Axon_CBN_IntAgr_TO_IOD:{start_node:"CBN_IntAgr", end_node:"IOD", shape:[], type:"GABA", lengthsec:10,power:-1},
-Axon_CBN_LVe_TO_IOD:{start_node:"CBN_LVe", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_CBN_LVe_TO_IOD:{start_node:"CBN_LVe", end_node:"IOD", shape:[], type:"glutamate", lengthsec:10,power:1},
 
 
 
@@ -179,20 +461,20 @@ Axon_CBN_LVe_TO_IOD:{start_node:"CBN_LVe", end_node:"IOD", shape:[], type:"gluta
 
 
 ///IOM///somatosensory information + vestibular, Teleceptive information. mesodiencephalic input
-Axon_NEOCTX_Sensory_TO_IOM:{start_node:"NEOCTX_Sensory", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_Motor_TO_IOM:{start_node:"NEOCTX_Motor", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_interstitial_nucleus_medial_longitudinal_fasciculus_TO_IOM:{start_node:"interstitial_nucleus_medial_longitudinal_fasciculus", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_interstitial_nucleus_medial_longitudinal_fasciculus_TO_IOBe:{start_node:"interstitial_nucleus_medial_longitudinal_fasciculus", end_node:"IOBe", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_Sensory_TO_IOM:{start_node:"NEOCTX_Sensory", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Motor_TO_IOM:{start_node:"NEOCTX_Motor", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_interstitial_nucleus_medial_longitudinal_fasciculus_TO_IOM:{start_node:"interstitial_nucleus_medial_longitudinal_fasciculus", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_interstitial_nucleus_medial_longitudinal_fasciculus_TO_IOBe:{start_node:"interstitial_nucleus_medial_longitudinal_fasciculus", end_node:"IOBe", shape:[], type:"glutamate", lengthsec:10,power:1},
 Axon_parasolitary_TO_IODMC:{start_node:"parasolitary", end_node:"IODMC", shape:[], type:"GABA", lengthsec:10,power:-1},
-Axon_spinal_cord_TO_IOM:{start_node:"spinal_cord", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_DorsalColumnNuclei_TO_IOM:{start_node:"DorsalColumnNuclei", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_SpinalTrigeminalNuclei_TO_IOM:{start_node:"SpinalTrigeminalNuclei", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_vestibular_nuclei_TO_IOM:{start_node:"vestibular_nuclei", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_spinal_cord_TO_IOM:{start_node:"spinal_cord", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_DorsalColumnNuclei_TO_IOM:{start_node:"DorsalColumnNuclei", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_SpinalTrigeminalNuclei_TO_IOM:{start_node:"SpinalTrigeminalNuclei", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_vestibular_nuclei_TO_IOM:{start_node:"vestibular_nuclei", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:1},
 Axon_LVe_TO_IOM:{start_node:"CBN_LVe", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
-Axon_superior_colliculus_deep_layers_TO_IOCgr:{start_node:"superior_colliculus_deep_layers", end_node:"IOCgr", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_superior_colliculus_deep_layers_TO_IOCol:{start_node:"superior_colliculus_deep_layers", end_node:"IOCol", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_periaquaductal_gray_TO_IOM:{start_node:"periaquaductal_gray", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_periaquaductal_gray_TO_IOBe:{start_node:"periaquaductal_gray", end_node:"IOBe", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_superior_colliculus_deep_layers_TO_IOCgr:{start_node:"superior_colliculus_deep_layers", end_node:"IOCgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_superior_colliculus_deep_layers_TO_IOCol:{start_node:"superior_colliculus_deep_layers", end_node:"IOCol", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_periaquaductal_gray_TO_IOM:{start_node:"periaquaductal_gray", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_periaquaductal_gray_TO_IOBe:{start_node:"periaquaductal_gray", end_node:"IOBe", shape:[], type:"glutamate", lengthsec:10,power:1},
 Axon_vestibular_nuclei_TO_IOBe:{start_node:"vestibular_nuclei", end_node:"IOBe", shape:[], type:"GABA", lengthsec:10,power:-1},
 Axon_LVe_TO_IOBe:{start_node:"CBN_LVe", end_node:"IOBe", shape:[], type:"GABA", lengthsec:10,power:-1},
 Axon_CBN_Med_rostral_TO_IOM:{start_node:"CBN_Med_rostral", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
@@ -201,7 +483,7 @@ Axon_CBN_Med_rostral_TO_IOBe:{start_node:"CBN_Med_rostral", end_node:"IOBe", sha
 Axon_CBN_Med_caudal_TO_IOBe:{start_node:"CBN_Med_caudal", end_node:"IOBe", shape:[], type:"GABA", lengthsec:10,power:-1},
 Axon_CBN_Med_rostral_TO_IODMC:{start_node:"CBN_Med_rostral", end_node:"IODMC", shape:[], type:"GABA", lengthsec:10,power:-1},
 Axon_CBN_Med_caudal_TO_IODMC:{start_node:"CBN_Med_caudal", end_node:"IODMC", shape:[], type:"GABA", lengthsec:10,power:-1},
-Axon_mesodiencephalic_junction_TO_IOM:{start_node:"mesodiencephalic_junction", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_mesodiencephalic_junction_TO_IOM:{start_node:"mesodiencephalic_junction", end_node:"IOM", shape:[], type:"glutamate", lengthsec:10,power:1},
 Axon_CBN_IntPbl_TO_IOM:{start_node:"CBN_IntPbl", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
 Axon_CBN_IntPgr_TO_IOM:{start_node:"CBN_IntPgr", end_node:"IOM", shape:[], type:"GABA", lengthsec:10,power:-1},
 
@@ -214,44 +496,44 @@ Axon_CBN_IntPgr_TO_IOM:{start_node:"CBN_IntPgr", end_node:"IOM", shape:[], type:
 
 ///IOK and IOVL /// compensatory eye movements,  recognizing retinal slip
 
-Axon_nucleus_optic_tract_TO_IOK:{start_node:"nucleus_optic_tract", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_accessory_optic_nuclei_TO_IOVL:{start_node:"accessory_optic_nuclei", end_node:"IOVL", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_visual_tegmental_relay_zone_TO_IOVL:{start_node:"visual_tegmental_relay_zone", end_node:"IOVL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_nucleus_optic_tract_TO_IOK:{start_node:"nucleus_optic_tract", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_accessory_optic_nuclei_TO_IOVL:{start_node:"accessory_optic_nuclei", end_node:"IOVL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_visual_tegmental_relay_zone_TO_IOVL:{start_node:"visual_tegmental_relay_zone", end_node:"IOVL", shape:[], type:"glutamate", lengthsec:10,power:1},
 Axon_prepositus_hypoglossal_nucleus_TO_IOK:{start_node:"prepositus_hypoglossal_nucleus", end_node:"IOK", shape:[], type:"GABA", lengthsec:10,power:-1},
 Axon_prepositus_hypoglossal_nucleus_TO_IOVL:{start_node:"prepositus_hypoglossal_nucleus", end_node:"IOVL", shape:[], type:"GABA", lengthsec:10,power:-1},
-Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrvl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrdl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_HindlimbSensoryMotor_TO_IOPrvl:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_HindlimbSensoryMotor_TO_IOPrdl:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_Sensory_TO_IOPrvl:{start_node:"NEOCTX_Sensory", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_Sensory_TO_IOPrdl:{start_node:"NEOCTX_Sensory", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_Motor_TO_IOPrvl:{start_node:"NEOCTX_Motor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_Motor_TO_IOPrdl:{start_node:"NEOCTX_Motor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_parietal_association_TO_IOPrvl:{start_node:"NEOCTX_parietal_association", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_parietal_association_TO_IOPrdl:{start_node:"NEOCTX_parietal_association", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrvl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrdl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_supplementary_motor_TO_IOPrvl:{start_node:"NEOCTX_supplementary_motor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_NEOCTX_supplementary_motor_TO_IOPrdl:{start_node:"NEOCTX_supplementary_motor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_periaquaductal_gray_TO_IOVL:{start_node:"periaquaductal_gray", end_node:"IOVL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrvl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrdl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_HindlimbSensoryMotor_TO_IOPrvl:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_HindlimbSensoryMotor_TO_IOPrdl:{start_node:"NEOCTX_HindlimbSensoryMotor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Sensory_TO_IOPrvl:{start_node:"NEOCTX_Sensory", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Sensory_TO_IOPrdl:{start_node:"NEOCTX_Sensory", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Motor_TO_IOPrvl:{start_node:"NEOCTX_Motor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_Motor_TO_IOPrdl:{start_node:"NEOCTX_Motor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_parietal_association_TO_IOPrvl:{start_node:"NEOCTX_parietal_association", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_parietal_association_TO_IOPrdl:{start_node:"NEOCTX_parietal_association", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrvl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_ForelimbSensoryMotor_TO_IOPrdl:{start_node:"NEOCTX_ForelimbSensoryMotor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_supplementary_motor_TO_IOPrvl:{start_node:"NEOCTX_supplementary_motor", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_NEOCTX_supplementary_motor_TO_IOPrdl:{start_node:"NEOCTX_supplementary_motor", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_periaquaductal_gray_TO_IOVL:{start_node:"periaquaductal_gray", end_node:"IOVL", shape:[], type:"glutamate", lengthsec:10,power:1},
 Axon_mesodiencephalic_junction_TO_IOVL:{start_node:"mesodiencephalic_junction", end_node:"IOVL", shape:[], type:"dopamine", lengthsec:10,power:-1},
-Axon_mesodiencephalic_junction_TO_IOPrvl:{start_node:"mesodiencephalic_junction", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_mesodiencephalic_junction_TO_IOPrdl:{start_node:"mesodiencephalic_junction", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_MA3_medial_accessory_oculomotor_nucleus_TO_IOM:{start_node:"MA3_medial_accessory_oculomotor_nucleus", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_MA3_medial_accessory_oculomotor_nucleus_TO_IOPrvl:{start_node:"MA3_medial_accessory_oculomotor_nucleus", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_MA3_medial_accessory_oculomotor_nucleus_TO_IOPrdl:{start_node:"MA3_medial_accessory_oculomotor_nucleus", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_fr_retroflex_fascicle_TO_IOM:{start_node:"fr_retroflex_fascicle", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_fr_retroflex_fascicle_TO_IOPrvl:{start_node:"fr_retroflex_fascicle", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_fr_retroflex_fascicle_TO_IOPrdl:{start_node:"fr_retroflex_fascicle", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_PR_prerubral_field_TO_IOM:{start_node:"PR_prerubral_field", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_PR_prerubral_field_TO_IOPrvl:{start_node:"PR_prerubral_field", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_PR_prerubral_field_TO_IOPrdl:{start_node:"PR_prerubral_field", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_SpinalTrigeminalNuclei_TO_IODM:{start_node:"SpinalTrigeminalNuclei", end_node:"IODM", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_CBN_Latrd_TO_IOPrvl:{start_node:"CBN_Latrd", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_CBN_Latbr_TO_IOPrdl:{start_node:"CBN_Latbr", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_CBN_Latrd_TO_IOPrvl:{start_node:"CBN_Latrd", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_CBN_Latbr_TO_IOPrdl:{start_node:"CBN_Latbr", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_CBN_IntDL_TO_IODM:{start_node:"CBN_IntDL", end_node:"IODM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_mesodiencephalic_junction_TO_IOPrvl:{start_node:"mesodiencephalic_junction", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_mesodiencephalic_junction_TO_IOPrdl:{start_node:"mesodiencephalic_junction", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_MA3_medial_accessory_oculomotor_nucleus_TO_IOM:{start_node:"MA3_medial_accessory_oculomotor_nucleus", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_MA3_medial_accessory_oculomotor_nucleus_TO_IOPrvl:{start_node:"MA3_medial_accessory_oculomotor_nucleus", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_MA3_medial_accessory_oculomotor_nucleus_TO_IOPrdl:{start_node:"MA3_medial_accessory_oculomotor_nucleus", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_fr_retroflex_fascicle_TO_IOM:{start_node:"fr_retroflex_fascicle", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_fr_retroflex_fascicle_TO_IOPrvl:{start_node:"fr_retroflex_fascicle", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_fr_retroflex_fascicle_TO_IOPrdl:{start_node:"fr_retroflex_fascicle", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_PR_prerubral_field_TO_IOM:{start_node:"PR_prerubral_field", end_node:"IOK", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_PR_prerubral_field_TO_IOPrvl:{start_node:"PR_prerubral_field", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_PR_prerubral_field_TO_IOPrdl:{start_node:"PR_prerubral_field", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_SpinalTrigeminalNuclei_TO_IODM:{start_node:"SpinalTrigeminalNuclei", end_node:"IODM", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_IOPrvl:{start_node:"CBN_Latrd", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_IOPrdl:{start_node:"CBN_Latbr", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latrd_TO_IOPrvl:{start_node:"CBN_Latrd", end_node:"IOPrvl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbr_TO_IOPrdl:{start_node:"CBN_Latbr", end_node:"IOPrdl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntDL_TO_IODM:{start_node:"CBN_IntDL", end_node:"IODM", shape:[], type:"glutamate", lengthsec:10,power:1},
 
 
 
@@ -267,65 +549,118 @@ Axon_CBN_LVe_TO_IODvf:{start_node:"CBN_LVe", end_node:"IODvf", shape:[], type:"G
 /*
 IO >>> CBN+CBCTX (Climbing Fiber)
 
+
+
+Axon_PRKJ_A_FL_TO_CBN_Med_rostral:{start_node:"PRKJ_A_FL", end_node:"CBN_Med_rostral", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+10], [GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10, GREEN_shiftXY[1]+CBN_shiftXY[1]-10]], type:"GABA", lengthsec:10,power:-1},
+IO_shiftXY=[0,700]
 */
 //green
-Axon_IOAgr_TO_CBN_Med_caudal:{start_node:"IOAgr", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOAgr_TO_CBN_Med_rostral:{start_node:"IOAgr", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOAgr_TO_PRKJ_A_FL:{start_node:"IOAgr", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOB_TO_CBN_Med_caudal:{start_node:"IOB", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOB_TO_CBN_Med_rostral:{start_node:"IOB", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOB_TO_PRKJ_A_FL:{start_node:"IOB", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOBe_TO_PRKJ_A_FL:{start_node:"IOAgr", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOCgr_TO_CBN_Med_caudal:{start_node:"IOCgr", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOCgr_TO_CBN_Med_rostral:{start_node:"IOCgr", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOCgr_TO_PRKJ_A_FL:{start_node:"IOCgr", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOK_TO_CBN_Med_caudal:{start_node:"IOK", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOK_TO_CBN_Med_rostral:{start_node:"IOK", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOK_TO_PRKJ_A_FL:{start_node:"IOK", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOVL_TO_CBN_Med_caudal:{start_node:"IOVL", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOVL_TO_CBN_Med_rostral:{start_node:"IOVL", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOVL_TO_PRKJ_A_FL:{start_node:"IOVL", end_node:"PRKJ_A_FL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+
+Axon_IOAgr_TO_CBN_Med_caudal:{start_node:"IOAgr", end_node:"CBN_Med_caudal", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],
+
+[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+20]
+
+], type:"glutamate", lengthsec:10,power:1},
+Axon_IOAgr_TO_CBN_Med_rostral:{start_node:"IOAgr", end_node:"CBN_Med_rostral", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],
+
+[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+10]
+
+], type:"glutamate", lengthsec:10,power:1},
+Axon_IOAgr_TO_PRKJ_A_FL:{start_node:"IOAgr", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+20],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOAgr_TO_Golgi_A_FL:{start_node:"IOAgr", end_node:"Golgi_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+10],
+[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+30, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],
+[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOB_TO_CBN_Med_caudal:{start_node:"IOB", end_node:"CBN_Med_caudal", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+20]], type:"glutamate", lengthsec:10,power:1},
+Axon_IOB_TO_CBN_Med_rostral:{start_node:"IOB", end_node:"CBN_Med_rostral", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+10]], type:"glutamate", lengthsec:10,power:1},
+Axon_IOB_TO_PRKJ_A_FL:{start_node:"IOB", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+20],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOBe_TO_PRKJ_A_FL:{start_node:"IOAgr", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+20],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOB_TO_Golgi_A_FL:{start_node:"IOB", end_node:"Golgi_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+10],
+[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+30, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],
+[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOBe_TO_Golgi_A_FL:{start_node:"IOAgr", end_node:"Golgi_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+10],
+[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+30, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],
+[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOCgr_TO_CBN_Med_caudal:{start_node:"IOCgr", end_node:"CBN_Med_caudal", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+20]], type:"glutamate", lengthsec:10,power:1},
+Axon_IOCgr_TO_CBN_Med_rostral:{start_node:"IOCgr", end_node:"CBN_Med_rostral", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+10]], type:"glutamate", lengthsec:10,power:1},
+Axon_IOCgr_TO_PRKJ_A_FL:{start_node:"IOCgr", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+20],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOCgr_TO_Golgi_A_FL:{start_node:"IOCgr", end_node:"Golgi_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+10],
+[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+30, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],
+[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOK_TO_CBN_Med_caudal:{start_node:"IOK", end_node:"CBN_Med_caudal", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+20]], type:"glutamate", lengthsec:10,power:1},
+Axon_IOK_TO_CBN_Med_rostral:{start_node:"IOK", end_node:"CBN_Med_rostral", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+10]], type:"glutamate", lengthsec:10,power:1},
+Axon_IOK_TO_PRKJ_A_FL:{start_node:"IOK", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+20],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOK_TO_Golgi_A_FL:{start_node:"IOK", end_node:"Golgi_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+10],
+[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+30, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],
+[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOVL_TO_CBN_Med_caudal:{start_node:"IOVL", end_node:"CBN_Med_caudal", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+20]], type:"glutamate", lengthsec:10,power:1},
+Axon_IOVL_TO_CBN_Med_rostral:{start_node:"IOVL", end_node:"CBN_Med_rostral", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+CBN_shiftXY[1]+10]], type:"glutamate", lengthsec:10,power:1},
+Axon_IOVL_TO_PRKJ_A_FL:{start_node:"IOVL", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+PRKJ_shiftXY[1]+CBCTX_shiftXY[1]+20],], type:"glutamate", lengthsec:10,power:1},
+Axon_IOVL_TO_Golgi_A_FL:{start_node:"IOVL", end_node:"Golgi_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, IO_shiftXY[1]],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+20, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+10],
+[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+30, GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],
+[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+Golgi_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Lugaro_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"glutamate", lengthsec:10,power:1},
 //olive
-Axon_IOCol_TO_CBN_MedDL:{start_node:"IOCol", end_node:"CBN_MedDL", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOCol_TO_PRKJ_A2:{start_node:"IOCol", end_node:"PRKJ_A2", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOCol_TO_CBN_MedDL:{start_node:"IOCol", end_node:"CBN_MedDL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOCol_TO_PRKJ_A2:{start_node:"IOCol", end_node:"PRKJ_A2", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOCol_TO_Golgi_A2:{start_node:"IOCol", end_node:"Golgi_A2", shape:[], type:"glutamate", lengthsec:10,power:1},
 //lime
-Axon_IOAli_TO_CBN_IntIC:{start_node:"IOAli", end_node:"CBN_IntIC", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOAli_TO_PRKJ_CX_X:{start_node:"IOAli", end_node:"PRKJ_CX_X", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IODMC_TO_CBN_IntIC:{start_node:"IODMC", end_node:"CBN_IntIC", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IODMC_TO_PRKJ_CX_X:{start_node:"IODMC", end_node:"PRKJ_CX_X", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOAli_TO_CBN_IntIC:{start_node:"IOAli", end_node:"CBN_IntIC", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOAli_TO_PRKJ_CX_X:{start_node:"IOAli", end_node:"PRKJ_CX_X", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOAli_TO_Golgi_CX_X:{start_node:"IOAli", end_node:"Golgi_CX_X", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IODMC_TO_CBN_IntIC:{start_node:"IODMC", end_node:"CBN_IntIC", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IODMC_TO_PRKJ_CX_X:{start_node:"IODMC", end_node:"PRKJ_CX_X", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IODMC_TO_Golgi_CX_X:{start_node:"IODMC", end_node:"Golgi_CX_X", shape:[], type:"glutamate", lengthsec:10,power:1},
 //black
-Axon_IODvf_TO_PRKJ_B:{start_node:"IODvf", end_node:"PRKJ_B", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IODvf_TO_PRKJ_B:{start_node:"IODvf", end_node:"PRKJ_B", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IODvf_TO_Golgi_B:{start_node:"IODvf", end_node:"Golgi_B", shape:[], type:"glutamate", lengthsec:10,power:1},
 //blue
-Axon_IOD_TO_CBN_IntPbl:{start_node:"IOD", end_node:"CBN_IntPbl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOD_TO_PRKJ_C1_C3:{start_node:"IOD", end_node:"PRKJ_C1_C3", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOD_TO_CBN_IntPbl:{start_node:"IOD", end_node:"CBN_IntPbl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOD_TO_PRKJ_C1_C3:{start_node:"IOD", end_node:"PRKJ_C1_C3", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOD_TO_Golgi_C1_C3:{start_node:"IOD", end_node:"Golgi_C1_C3", shape:[], type:"glutamate", lengthsec:10,power:1},
 //gr
-Axon_IOM_TO_CBN_IntAgr:{start_node:"IOM", end_node:"CBN_IntAgr", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOM_TO_PRKJ_C2_PFL:{start_node:"IOM", end_node:"PRKJ_C2_PFL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOM_TO_CBN_IntAgr:{start_node:"IOM", end_node:"CBN_IntAgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOM_TO_PRKJ_C2_PFL:{start_node:"IOM", end_node:"PRKJ_C2_PFL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOM_TO_Golgi_C2_PFL:{start_node:"IOM", end_node:"Golgi_C2_PFL", shape:[], type:"glutamate", lengthsec:10,power:1},
 //rd
-Axon_IOPrdl_TO_PRKJ_D1_PFL:{start_node:"IOPrdl", end_node:"PRKJ_D1_PFL", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOPrdl_TO_PRKJ_D1_PFL:{start_node:"IOPrdl", end_node:"PRKJ_D1_PFL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOPrdl_TO_Golgi_D1_PFL:{start_node:"IOPrdl", end_node:"Golgi_D1_PFL", shape:[], type:"glutamate", lengthsec:10,power:1},
 //br
-Axon_IOPrvl_TO_PRKJ_D2:{start_node:"IOPrvl", end_node:"PRKJ_D2", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOPrvl_TO_PRKJ_D2:{start_node:"IOPrvl", end_node:"PRKJ_D2", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOPrvl_TO_Golgi_D2:{start_node:"IOPrvl", end_node:"Golgi_D2", shape:[], type:"glutamate", lengthsec:10,power:1},
 //
-Axon_IODM_TO_PRKJ_D0:{start_node:"IODM", end_node:"PRKJ_D0", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IODM_TO_PRKJ_D0:{start_node:"IODM", end_node:"PRKJ_D0", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IODM_TO_Golgi_D0:{start_node:"IODM", end_node:"Golgi_D0", shape:[], type:"glutamate", lengthsec:10,power:1},
 
 
 
 
-Axon_IOM_TO_CBN_Med_caudal:{start_node:"IOM", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOMTO_CBN_Med_rostral:{start_node:"IOM", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOMTO_CBN_MedDL:{start_node:"IOM", end_node:"CBN_MedDL", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOBe_TO_CBN_Med_caudal:{start_node:"IOBe", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOBe_TO_CBN_Med_rostral:{start_node:"IOBe", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOM_TO_CBN_IntPgr:{start_node:"IOM", end_node:"CBN_IntPgr", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOM_TO_CBN_IntPbl:{start_node:"IOM", end_node:"CBN_IntPbl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOPrvl_TO_CBN_CBN_Latrd:{start_node:"IOPrvl", end_node:"CBN_Latrd", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOPrdl_TO_CBN_CBN_Latrd:{start_node:"IOPrdl", end_node:"CBN_Latrd", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOPrvl_TO_CBN_CBN_Latbr:{start_node:"IOPrvl", end_node:"CBN_Latbr", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOPrdl_TO_CBN_CBN_Latbr:{start_node:"IOPrdl", end_node:"CBN_Latbr", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IODM_TO_CBN_IntDL:{start_node:"IODM", end_node:"CBN_IntDL", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOD_TO_CBN_IntAgr:{start_node:"IOD", end_node:"CBN_IntAgr", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IOD_TO_CBN_IntAbl:{start_node:"IOD", end_node:"CBN_IntAbl", shape:[], type:"glutamate", lengthsec:10,power:-1},
-Axon_IODvf_TO_CBN_LVe:{start_node:"CBN_IntDL", end_node:"IODM", shape:[], type:"glutamate", lengthsec:10,power:-1},
+Axon_IOM_TO_CBN_Med_caudal:{start_node:"IOM", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOMTO_CBN_Med_rostral:{start_node:"IOM", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOMTO_CBN_MedDL:{start_node:"IOM", end_node:"CBN_MedDL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOBe_TO_CBN_Med_caudal:{start_node:"IOBe", end_node:"CBN_Med_caudal", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOBe_TO_CBN_Med_rostral:{start_node:"IOBe", end_node:"CBN_Med_rostral", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOM_TO_CBN_IntPgr:{start_node:"IOM", end_node:"CBN_IntPgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOM_TO_CBN_IntPbl:{start_node:"IOM", end_node:"CBN_IntPbl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOPrvl_TO_CBN_CBN_Latrd:{start_node:"IOPrvl", end_node:"CBN_Latrd", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOPrdl_TO_CBN_CBN_Latrd:{start_node:"IOPrdl", end_node:"CBN_Latrd", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOPrvl_TO_CBN_CBN_Latbr:{start_node:"IOPrvl", end_node:"CBN_Latbr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOPrdl_TO_CBN_CBN_Latbr:{start_node:"IOPrdl", end_node:"CBN_Latbr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IODM_TO_CBN_IntDL:{start_node:"IODM", end_node:"CBN_IntDL", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOD_TO_CBN_IntAgr:{start_node:"IOD", end_node:"CBN_IntAgr", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IOD_TO_CBN_IntAbl:{start_node:"IOD", end_node:"CBN_IntAbl", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_IODvf_TO_CBN_LVe:{start_node:"IODvf", end_node:"CBN_LVe", shape:[], type:"glutamate", lengthsec:10,power:1},
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -752,48 +1087,53 @@ Axon_CBN_Latbr_TO_thalamus_ventral_lateral_geniculate_nucleus:{start_node:"CBN_L
 
 
 
+
+
+
+
+
+
+
+
+
+
+Axon_PRKJ_A_FL_TO_CBN_vestibular_nuclei:{start_node:"PRKJ_A_FL", end_node:"vestibular_nuclei", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_PRKJ_A_FL_TO_CBN_LVe:{start_node:"PRKJ_A_FL", end_node:"CBN_LVe", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Med_caudal_TO_spinal_cord:{start_node:"CBN_Med_caudal", end_node:"spinal_cord", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_IntPblTO_spinal_cord:{start_node:"CBN_IntPbl", end_node:"spinal_cord", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_CBN_Latbrl_TO_spinal_cord:{start_node:"CBN_Latbr", end_node:"spinal_cord", shape:[], type:"glutamate", lengthsec:10,power:1},
+Axon_MdV_medullary_reticular_nucleus_ventral_TO_CBN_Med_caudal:{start_node:"MdV_medullary_reticular_nucleus_ventral", end_node:"CBN_Med_caudal", shape:[], type:"serotonin", lengthsec:10,power:1},
+Axon_MdV_medullary_reticular_nucleus_ventral_TO_CBN_IntPbl:{start_node:"MdV_medullary_reticular_nucleus_ventral", end_node:"CBN_IntPbl", shape:[], type:"serotonin", lengthsec:10,power:1},
+Axon_MdV_medullary_reticular_nucleus_ventral_TO_CBN_Latbr:{start_node:"MdV_medullary_reticular_nucleus_ventral", end_node:"CBN_Latbr", shape:[], type:"serotonin", lengthsec:10,power:1},
+Axon_PnC_pontine_reticular_nucleus_caudal_TO_CBN_Med_caudal:{start_node:"PnC_pontine_reticular_nucleus_caudal", end_node:"CBN_Med_caudal", shape:[], type:"serotonin", lengthsec:10,power:1},
+Axon_PnC_pontine_reticular_nucleus_caudal_TO_CBN_IntPbl:{start_node:"PnC_pontine_reticular_nucleus_caudal", end_node:"CBN_IntPbl", shape:[], type:"serotonin", lengthsec:10,power:1},
+Axon_PnC_pontine_reticular_nucleus_caudal_TO_CBN_Latbr:{start_node:"PnC_pontine_reticular_nucleus_caudal", end_node:"CBN_Latbr", shape:[], type:"serotonin", lengthsec:10,power:1},
+Axon_SuperiorCentralNucleusRaphe_TO_CBN_Med_caudal:{start_node:"SuperiorCentralNucleusRaphe", end_node:"CBN_Med_caudal", shape:[], type:"serotonin", lengthsec:10,power:1},
+Axon_SuperiorCentralNucleusRaphe_TO_CBN_IntPbl:{start_node:"SuperiorCentralNucleusRaphe", end_node:"CBN_IntPbl", shape:[], type:"serotonin", lengthsec:10,power:1},
+Axon_SuperiorCentralNucleusRaphe_TO_CBN_Latbr:{start_node:"SuperiorCentralNucleusRaphe", end_node:"CBN_Latbr", shape:[], type:"serotonin", lengthsec:10,power:1},
+Axon_ventral_tegmental_area_TO_PRKJ_A_FL:{start_node:"ventral_tegmental_area", end_node:"PRKJ_A_FL", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_PRKJ_A2:{start_node:"ventral_tegmental_area", end_node:"PRKJ_A2", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_PRKJ_CX_X:{start_node:"ventral_tegmental_area", end_node:"PRKJ_CX_X", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_PRKJ_B:{start_node:"ventral_tegmental_area", end_node:"PRKJ_B", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_PRKJ_C1_C3:{start_node:"ventral_tegmental_area", end_node:"PRKJ_C1_C3", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_PRKJ_C2_PFL:{start_node:"ventral_tegmental_area", end_node:"PRKJ_C2_PFL", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_PRKJ_D1_PFL:{start_node:"ventral_tegmental_area", end_node:"PRKJ_D1_PFL", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_PRKJ_D2:{start_node:"ventral_tegmental_area", end_node:"PRKJ_D2", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_PRKJ_D0:{start_node:"ventral_tegmental_area", end_node:"PRKJ_D0", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_CBN_IntPbl:{start_node:"ventral_tegmental_area", end_node:"CBN_IntPbl", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_CBN_IntPgr:{start_node:"ventral_tegmental_area", end_node:"CBN_IntPgr", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_CBN_IntAbl:{start_node:"ventral_tegmental_area", end_node:"CBN_IntAbl", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_CBN_IntAgr:{start_node:"ventral_tegmental_area", end_node:"CBN_IntAgr", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_CBN_Latbrl:{start_node:"ventral_tegmental_area", end_node:"CBN_Latbr", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_ventral_tegmental_area_TO_CBN_Latbrd:{start_node:"ventral_tegmental_area", end_node:"CBN_Latrd", shape:[], type:"dopamine", lengthsec:10,power:-1},
+Axon_PPTg_pedunculopontine_tegmental_nucleus_TO_CBN_IntPbl:{start_node:"PPTg_pedunculopontine_tegmental_nucleus", end_node:"CBN_IntPbl", shape:[], type:"acetylcholine", lengthsec:10,power:1},
+Axon_PPTg_pedunculopontine_tegmental_nucleus_TO_CBN_Latbr:{start_node:"PPTg_pedunculopontine_tegmental_nucleus", end_node:"CBN_Latbr", shape:[], type:"acetylcholine", lengthsec:10,power:1},
+Axon_PPTg_pedunculopontine_tegmental_nucleus_TO_CBN_Med_caudal:{start_node:"PPTg_pedunculopontine_tegmental_nucleus", end_node:"CBN_Med_caudal", shape:[], type:"acetylcholine", lengthsec:10,power:1},
+
+
 }
 
-CBCTX_shiftXY=[0,300]
-PRKJ_shiftXY=[0,0]//150, 300
-Golgi_shiftXY=[50,20]
-Lugaro_shiftXY=[-30,40]
-Basket_shiftXY=[0,-80]
-Stellate_shiftXY=[-20,30]
-Candelabrum_shiftXY=[40,40]
 
-CBN_shiftXY=[0,500]
-IO_shiftXY=[0,700]
-
-GREEN_shiftXY=[250,0]
-OLIVE_shiftXY=[400,0]
-LIME_shiftXY=[550,0]
-BLACK_shiftXY=[700,0]
-BLUE_shiftXY=[850,0]
-GREY_shiftXY=[1000,0]
-RED_shiftXY=[1150,0]
-BROWN_shiftXY=[1300,0]
-YELLOW_shiftXY=[1450,0]
-
-
-Spine_shiftXY=[50,1000]
-Prespine_shiftXY=[150,1000]
-Prebrain_shiftXY=[1400,1000]
-Thalamus_shiftXY=[1800,1000]
-Neocortex_shiftXY=[1900,1000]
-Parallel_shiftXY=[1650,300]
-
-
-
-
-MedProj_shiftXY=[350, 1000]
-MedDLProj_shiftXY=[500, 1000]
-IntICProj_shiftXY=[650, 1000]
-IntA_shiftXY=[800, 1000] 
-IntP_shiftXY=[950, 1000]
-LatProj_shiftXY=[1100, 1000] 
-IntDL_shiftXY=[1250, 1000] 
- 
 
 var NODES = {
 Out:{type:"Y", outputs:[]},
@@ -808,10 +1148,10 @@ IOVL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+IO_shiftXY
 CBN_Med_rostral:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBN_shiftXY[0]+0,GREEN_shiftXY[1]+CBN_shiftXY[1]+0]},
 CBN_Med_caudal:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBN_shiftXY[0]+10,GREEN_shiftXY[1]+CBN_shiftXY[1]+10]},
 PRKJ_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
-
-Lugaro_A_FL:{type:"SOMA", soma_value:5, outputs:["AxonLugaro_1_1","AxonLugaro_1_2","AxonLugaro_1_3","AxonLugaro_1_4"],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
-Basket_A_FL:{type:"SOMA", soma_value:5, outputs:["AxonBasket_1_1","AxonBasket_1_2"],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
-Stellate_A_FL:{type:"SOMA", soma_value:5, outputs:["AxonStellate_1_1"],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
+Golgi_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+Lugaro_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Lugaro_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Lugaro_shiftXY[1]]},///from serotonine
+Basket_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Basket_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Basket_shiftXY[1]]},
+Stellate_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Stellate_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Stellate_shiftXY[1]]},
 Candelabrum_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Candelabrum_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Candelabrum_shiftXY[1]]}, 
 
 
@@ -991,6 +1331,9 @@ SpinalTrigeminalNuclei:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedDLProj
 subcoeruleus:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+240,Prebrain_shiftXY[1]+90]},
 superior_colliculus_deep_layers:{type:"SOMA", soma_value:5, outputs:[],coordxy:[MedProj_shiftXY[0]+50,MedProj_shiftXY[1]+50]},
 SuperiorCentralNucleusRaphe:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prebrain_shiftXY[0]+250,Prebrain_shiftXY[1]+100]},
+
+ventral_tegmental_area:{type:"SOMA", soma_value:5, outputs:[],coordxy:[IntICProj_shiftXY[0]+0,IntICProj_shiftXY[1]+90]},
+
 vestibular_nuclei:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prespine_shiftXY[0]+10,Prespine_shiftXY[1]+10]},
 vestibular_colchea:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Prespine_shiftXY[0]+20,Prespine_shiftXY[1]+20]},
 
@@ -1064,8 +1407,8 @@ Parallel_Fiber_CBN:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shif
 
 Parallel_Fiber_Granule:{type:"Y", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+0,Parallel_shiftXY[1]-20]},
 
-UniPolarBrush_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+20,Parallel_shiftXY[1]-20]},
-Golgi_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]-20,Parallel_shiftXY[1]-20]},///,coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
+UniPolarBrush_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]+20,Parallel_shiftXY[1]-70]},
+///Golgi_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[Parallel_shiftXY[0]-20,Parallel_shiftXY[1]-20]},///,coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+Golgi_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+Golgi_shiftXY[1]]},
 //////////////
 
 
@@ -1351,6 +1694,15 @@ ctx.lineTo(_shape.shape[i][0], _shape.shape[i][1]);
       ctx.lineWidth = Math.abs(_shape.power)+1;
       ctx.strokeStyle = _color;
 ctx.stroke();
+
+
+ctx.beginPath();
+ctx.moveTo(_shape.arrow[0][0], _shape.arrow[0][1]);
+ctx.lineTo(_shape.arrow[1][0], _shape.arrow[1][1]);
+ctx.lineTo(_shape.arrow[2][0], _shape.arrow[2][1]);
+      ctx.lineWidth = Math.abs(_shape.power)+1;
+      ctx.strokeStyle = _color;
+ctx.stroke();
 }
 
 
@@ -1368,6 +1720,17 @@ function FillNodeOutputs() {
 		NODES[AXONS[each].start_node].outputs.push(AXONS[each].end_node) ;
 		AXONS[each].shape.unshift(NODES[AXONS[each].start_node].coordxy)
 		AXONS[each].shape.push(NODES[AXONS[each].end_node].coordxy)
+
+arrow1 = AXONS[each].shape[AXONS[each].shape.length-1]
+_r = 10
+arrowangle = Math.atan2(AXONS[each].shape[AXONS[each].shape.length-1][0]-AXONS[each].shape[AXONS[each].shape.length-2][0], AXONS[each].shape[AXONS[each].shape.length-1][1] - AXONS[each].shape[AXONS[each].shape.length-2][1])
+///console.log(arrowangle)
+
+arrow0 = [arrow1[0]-_r*Math.sin(arrowangle-0.2), arrow1[1]-_r*Math.cos(arrowangle-0.2)] 
+
+arrow2 = [arrow1[0]-_r*Math.sin(arrowangle+0.2), arrow1[1]-_r*Math.cos(arrowangle+0.2)] 
+
+		AXONS[each].arrow=[arrow0,arrow1,arrow2]
 	}
 console.log(AXONS)
 }
