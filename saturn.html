@@ -323,11 +323,120 @@ AddSolarPlanettoDB("S2003_J23",GetPlanetByName(&planetanchor,"Jupiter"),(3600*24
 
 */
 
+	Miranda:{Texture:"https://mp1233.github.io/bg/img/miranda.jpg", size:{radius:240}, orbit:{radius:129900, period:(3600*24*1.413479)}, rotates_around:"Uranus"},
+	Ariel:{Texture:"https://mp1233.github.io/bg/img/ariel.jpg", size:{radius:581.1}, orbit:{radius:190900, period:(3600*24*2.520379)}, rotates_around:"Uranus"},
+	Umbriel:{Texture:"https://mp1233.github.io/bg/img/umbriel.jpg", size:{radius:584.7}, orbit:{radius:266000, period:(3600*24*4.144177)}, rotates_around:"Uranus"},
+	Titania:{Texture:"https://mp1233.github.io/bg/img/titania.jpg", size:{radius:788.9)}, orbit:{radius:436300, period:(3600*24*8.705872)}, rotates_around:"Uranus"},
+	Oberon:{Texture:"https://mp1233.github.io/bg/img/oberon.jpg", size:{radius:761.4}, orbit:{radius:583500, period:(3600*24*13.463239)}, rotates_around:"Uranus"},
+	Portia:{Texture:"https://mp1233.github.io/bg/img/portia.jpg", size:{radius:68}, orbit:{radius:66100, period:(3600*24*0.513196)}, rotates_around:"Uranus"},
+	Puck:{Texture:"https://mp1233.github.io/bg/img/puck.jpg", size:{radius:81}, orbit:{radius:86000, period:(3600*24*0.761833)}, rotates_around:"Uranus"},
+	Sycorax:{Texture:"https://mp1233.github.io/bg/img/sycorax.jpg", size:{radius:95}, orbit:{radius:12179000, period:(3600*24*1283.4)}, rotates_around:"Uranus"},
 
 
+/*
+AddSolarPlanettoDB("Miranda",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*1.413479),129900,4.22,68.312,326.438,0.0027,GetEpochDifferenceinSeconds(1980,1,1),311.330,
+	 RGB(200,200,250),240,0,0,g_pMirandaTexture,NULL,g_pMirandaMediumTexture) ;
+  AddSolarPlanettoDB("Ariel",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*2.520379),190900,0.31,115.349,22.394,0.0034,GetEpochDifferenceinSeconds(1980,1,1),39.481,
+	 RGB(200,200,250),581.1,0,0,g_pArielTexture,NULL,g_pArielMediumTexture) ;
+  AddSolarPlanettoDB("Umbriel",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*4.144177),266000,0.36,84.709,33.485,0.0050,GetEpochDifferenceinSeconds(1980,1,1),12.469,
+	 RGB(200,200,250),584.7,0,0,g_pUmbrielTexture,NULL,g_pUmbrielMediumTexture) ;
+  AddSolarPlanettoDB("Titania",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*8.705872),436300,0.14,284.400,99.771,0.0022,GetEpochDifferenceinSeconds(1980,1,1),24.614,
+	 RGB(200,200,250),788.9) ;
+  AddSolarPlanettoDB("Oberon",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*13.463239),583500,0.10,104.400,279.771,0.0008,GetEpochDifferenceinSeconds(1980,1,1),283.088,
+	 RGB(200,200,250),761.4,0,0,g_pOberonTexture,NULL,g_pOberonMediumTexture) ;
+  AddSolarPlanettoDB("Cordelia",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.335034),49800,0.08,136.827,38.374,0.0003,GetEpochDifferenceinSeconds(1986,1,19.5),254.805,
+	 RGB(200,200,250),20) ;
+  AddSolarPlanettoDB("Ophelia",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.376400),53800,0.10,17.761,164.048,0.0099,GetEpochDifferenceinSeconds(1986,1,19.5),116.259,
+	 RGB(200,200,250),21) ;
+  AddSolarPlanettoDB("Bianca",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.434579),59200,0.19,8.293,93.220,0.0009,GetEpochDifferenceinSeconds(1986,1,19.5),138.486,
+	 RGB(200,200,250),27) ;
+  AddSolarPlanettoDB("Cressida",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.463570),61800,0.01,44.236,99.403,0.0004,GetEpochDifferenceinSeconds(1986,1,19.5),233.795,
+	 RGB(200,200,250),40) ;
+  AddSolarPlanettoDB("Desdemona",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.473650),62700,0.11,183.285,306.089,0.0001,GetEpochDifferenceinSeconds(1986,1,19.5),184.627,
+	 RGB(200,200,250),32) ;
+  AddSolarPlanettoDB("Juliet",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.493065),64400,0.07,223.819,200.155,0.0007,GetEpochDifferenceinSeconds(1986,1,19.5),244.696,
+	 RGB(200,200,250),47) ;
+  AddSolarPlanettoDB("Portia",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.513196),66100,0.06,222.433,260.067,0,GetEpochDifferenceinSeconds(1986,1,19.5),218.312,
+	 RGB(200,200,250),68) ;
+  AddSolarPlanettoDB("Rosalind",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.558460),69900,0.28,140.477,12.847,0.0001,GetEpochDifferenceinSeconds(1986,1,19.5),136.181,
+	 RGB(200,200,250),36) ;
+  AddSolarPlanettoDB("Belinda",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.623527),75300,0.03,42.406,279.337,0.0001,GetEpochDifferenceinSeconds(1986,1,19.5),357.224,
+	 RGB(200,200,250),40) ;
+  AddSolarPlanettoDB("Puck",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.761833),86000,0.32,177.094,268.734,0.0001,GetEpochDifferenceinSeconds(1986,1,19.5),245.796,
+	 RGB(200,200,250),81) ;
+  AddSolarPlanettoDB("Caliban",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*579.5),7231000,140.88,342.817,163.845,0.159,GetEpochDifferenceinSeconds(2004,7,14),325.188,
+	 RGB(200,200,250),48) ;
+  AddSolarPlanettoDB("Stephano",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*676.5),8004000,144.06,19.024,188.561,0.230,GetEpochDifferenceinSeconds(2004,7,14),65.156,
+	 RGB(200,200,250),10) ;
+  AddSolarPlanettoDB("Sycorax",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*1283.4),12179000,159.40,21.291,261.915,0.522,GetEpochDifferenceinSeconds(2004,7,14),8.788,
+	 RGB(200,200,250),95) ;
+  AddSolarPlanettoDB("Prospero",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*1992.8),16256000,151.91,175.554,318.599,0.443,GetEpochDifferenceinSeconds(2004,7,14),187.893,
+	 RGB(200,200,250),15) ;
+  AddSolarPlanettoDB("Setebos",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*2202.3),17418000,158.17,1.539,249.456,0.588,GetEpochDifferenceinSeconds(2004,7,14),93.328,
+	 RGB(200,200,250),15) ;
+  AddSolarPlanettoDB("Trinculo",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*758.1),8504000,166.33,159.773,192.806,0.208,GetEpochDifferenceinSeconds(2004,7,14),255.448,
+	 RGB(200,200,250),5) ;
+  AddSolarPlanettoDB("S1986_U10",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.638),76400,0,0,0,0,EpochDifferenceinSeconds,0,
+	 RGB(200,200,250),40) ;
+  AddSolarPlanettoDB("S2001_U2",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*2823.4),20901000,167.3,159.568,216.431,0.426,GetEpochDifferenceinSeconds(2004,7,14),234.514,
+	 RGB(200,200,250),6) ;
+  AddSolarPlanettoDB("S2001_U3",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*266.6),4276000,145.2,124.720,93.135,0.146,GetEpochDifferenceinSeconds(2004,7,14),90.868,
+	 RGB(200,200,250),6) ;
+  AddSolarPlanettoDB("S2003_U1",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.923),97700,0,0,0,0,EpochDifferenceinSeconds,0,
+	 RGB(200,200,250),16) ;
+  AddSolarPlanettoDB("S2003_U2",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*0.618),74800,0,0,0,0,EpochDifferenceinSeconds,0,
+	 RGB(200,200,250),12) ;
+  AddSolarPlanettoDB("S2003_U3",GetPlanetByName(&planetanchor,"Uranus"),(3600*24*1694.8),14345000,56.6,89.354,3.535,0.661,GetEpochDifferenceinSeconds(2004,7,14),322.440,
+	 RGB(200,200,250),6) ;
+*/
+
+	Naiad:{Texture:"https://mp1233.github.io/bg/img/naiad.jpg", size:{radius:48}, orbit:{radius:48227, period:(3600*24*0.294396)}, rotates_around:"Neptune"},
+	Thalassa:{Texture:"https://mp1233.github.io/bg/img/thalassa.jpg", size:{radius:54}, orbit:{radius:50075, period:(3600*24*0.311485)}, rotates_around:"Neptune"},
+	Despina:{Texture:"https://mp1233.github.io/bg/img/despina.jpg", size:{radius:90}, orbit:{radius:52526, period:(3600*24*0.334655)}, rotates_around:"Neptune"},
+	Galatea:{Texture:"https://mp1233.github.io/bg/img/galatea.jpg", size:{radius:102}, orbit:{radius:61953, period:(3600*24*0.428745)}, rotates_around:"Neptune"},
+	Larissa:{Texture:"https://mp1233.github.io/bg/img/larissa.jpg", size:{radius:108}, orbit:{radius:73548, period:(3600*24*0.554654)}, rotates_around:"Neptune"},
+	Proteus:{Texture:"https://mp1233.github.io/bg/img/proteus.jpg", size:{radius:220}, orbit:{radius:117647, period:(3600*24*1.122315)}, rotates_around:"Neptune"},
+	Triton:{Texture:"https://mp1233.github.io/bg/img/triton.jpg", size:{radius:1353}, orbit:{radius:354760, period:(3600*24*5.876854)}, rotates_around:"Neptune"},
+	Nereid:{Texture:"https://mp1233.github.io/bg/img/nereid.jpg", size:{radius:170}, orbit:{radius:5513400, period:(3600*24*360.13619)}, rotates_around:"Neptune"},
+
+/*
+ AddSolarPlanettoDB("Naiad",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*0.294396),48227,4.74,31.733,56.438,0.0003,GetEpochDifferenceinSeconds(1989,8,18.5),339.933,
+	 RGB(100,100,250),48) ;
+  AddSolarPlanettoDB("Thalassa",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*0.311485),50075,0.21,323.125,98.094,0.0002,GetEpochDifferenceinSeconds(1989,8,18.5),186.362,
+	 RGB(100,100,250),54) ;
+  AddSolarPlanettoDB("Despina",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*0.334655),52526,0.07,293.365,159.496,0.0001,GetEpochDifferenceinSeconds(1989,8,18.5),0.253,
+	 RGB(100,100,250),90) ;
+  AddSolarPlanettoDB("Galatea",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*0.428745),61953,0.05,27.468,125.707,0.0001,GetEpochDifferenceinSeconds(1989,8,18.5),261.313,
+	 RGB(100,100,250),102) ;
+  AddSolarPlanettoDB("Larissa",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*0.554654),73548,0.20,138.073,17.588,0.0014,GetEpochDifferenceinSeconds(1989,8,18.5),37.004,
+	 RGB(100,100,250),108) ;
+  AddSolarPlanettoDB("Proteus",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*1.122315),117647,0.04,301.706,162.690,0.0004,GetEpochDifferenceinSeconds(1989,8,18.5),117.050,
+	 RGB(100,100,250),220,0,0,NULL,Proteus_Small_Heights,NULL,Proteus_Large_Heights) ;
+  AddSolarPlanettoDB("Triton",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*5.876854),354760,157.345,344.046,172.431,0.000016,GetEpochDifferenceinSeconds(1989,8,25),264.775,
+	 RGB(100,100,250),1353.4,0,0,g_pTritonTexture,NULL,g_pTritonMediumTexture) ;
+  AddSolarPlanettoDB("Nereid",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*360.13619),5513400,7.23,280.830,334.762,0.7512,GetEpochDifferenceinSeconds(1989,8,25),359.341,
+	 RGB(100,100,250),170) ;
+  AddSolarPlanettoDB("S2002N1",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*1874.8),15686000,134.1,159.729,202.989,0.572,GetEpochDifferenceinSeconds(2003,6,10),96.399,
+	 RGB(100,100,250),24) ;
+  AddSolarPlanettoDB("S2002N2",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*2918.9),22452000,48.4,79.334,55.532,0.297,GetEpochDifferenceinSeconds(2003,6,10),207.083,
+	 RGB(100,100,250),24) ;
+  AddSolarPlanettoDB("S2002N3",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*2982.3),22580000,34.6,142.395,60.693,0.479,GetEpochDifferenceinSeconds(2003,6,10),328.589,
+	 RGB(100,100,250),24) ;
+  AddSolarPlanettoDB("S2002N4",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*8863.1),46570000,132.5,89.330,49.985,0.527,GetEpochDifferenceinSeconds(2003,6,10),269.829,
+	 RGB(100,100,250),30) ;
+  AddSolarPlanettoDB("S2003N1",GetPlanetByName(&planetanchor,"Neptune"),(3600*24*9136.1),46738000,137.3,145.905,300.968,0.450,GetEpochDifferenceinSeconds(2003,6,10),206.165,
+	 RGB(100,100,250),14) ;
+*/
+
+	Pluto:{Texture:"https://mp1233.github.io/bg/img/pluto.jpg", size:{radius:1137}, orbit:{radius:20000, period:(3600*24*6.3872)}, rotates_around:"PlutoSystem"},
+	Charon:{Texture:"https://mp1233.github.io/bg/img/charon.jpg", size:{radius:593}, orbit:{radius:-19410, period:(3600*24*6.3872)}, rotates_around:"PlutoSystem"},
 
 
+/*
+AddSolarPlanettoDB("Pluto",GetPlanetByName(&planetanchor,"Pluto system"),(3600*24*6.3872),20000,99.089,209.793,223.015,0,GetEpochDifferenceinSeconds(1986,6,19),79.960,RGB(100,10,10),1137,6.3872,118.5) ;
+AddSolarPlanettoDB("Charon",GetPlanetByName(&planetanchor,"Pluto system"),(3600*24*6.3872),19410,99.089,209.793,223.015,0.0002,GetEpochDifferenceinSeconds(1986,6,19),259.960,RGB(100,100,100),593,6.3872) ;
 
+*/
 
 
 }
