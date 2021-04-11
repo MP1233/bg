@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>three.js webgl - adaptive tone-mapping</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="https://threejs.org/examples/main.css">
+		<style>
+			.label {
+				background-color: black;
+				position: absolute;
+				z-index: 100;
+				padding: 5px
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="d">
+
+
+
+		</div>
+
+		<script type="module">
+
+			import * as THREE from 'https://threejs.org/build/three.module.js';
+
+
+			import { OrbitControls } from 'https://threejs.org/examples/jsm/controls/OrbitControls.js';
+			import { EffectComposer } from 'https://threejs.org/examples/jsm/postprocessing/EffectComposer.js';
+			import { RenderPass } from 'https://threejs.org/examples/jsm/postprocessing/RenderPass.js';
+			import { ShaderPass } from 'https://threejs.org/examples/jsm/postprocessing/ShaderPass.js';
+			import { AdaptiveToneMappingPass } from 'https://threejs.org/examples/jsm/postprocessing/AdaptiveToneMappingPass.js';
+			import { BloomPass } from 'https://threejs.org/examples/jsm/postprocessing/BloomPass.js';
+			import { GammaCorrectionShader } from 'https://threejs.org/examples/jsm/shaders/GammaCorrectionShader.js';
+
+
+
+var PLANETS_DATA = {
+	Saturn: {Texture:"https://mp1233.github.io/bg/img/saturn.jpg", size:{radius:60}, orbit:{radius:0}, rotates_around:[0,0,0]},
+
+	Mimas:{Texture:"https://mp1233.github.io/bg/img/mimas.jpg", size:{radius:56}, orbit:{radius:400}, rotates_around:"Saturn"},
+	Enceladus:{Texture:"https://mp1233.github.io/bg/img/enceladus.jpg", size:{radius:56}, orbit:{radius:200}, rotates_around:"Saturn"},
+	Tethys:{Texture:"https://mp1233.github.io/bg/img/tethys.jpg", size:{radius:56}, orbit:{radius:200}, rotates_around:"Saturn"},
+	Dione:{Texture:"https://mp1233.github.io/bg/img/dione.jpg", size:{radius:56}, orbit:{radius:100}, rotates_around:"Saturn"},
+	Rhea:{Texture:"https://mp1233.github.io/bg/img/rhea.jpg", size:{radius:56}, orbit:{radius:600}, rotates_around:"Saturn"},
+	Titan:{Texture:"https://mp1233.github.io/bg/img/titan.jpg", size:{radius:56}, orbit:{radius:300}, rotates_around:"Saturn"},
+	Hyperion:{Texture:"https://mp1233.github.io/bg/img/hyperion.jpg", size:{radius:56}, orbit:{radius:300}, rotates_around:"Saturn"},
+	Iapetus:{Texture:"https://mp1233.github.io/bg/img/iapetus.jpg", size:{radius:36}, orbit:{radius:500}, rotates_around:"Saturn"},
+		
+
+		
+				
+
+								
+
+
+
+
+/*
+
+ AddSolarPlanettoDB("Mimas",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*0.9424218),185520,1.53,322.864,177.457,0.0202,GetEpochDifferenceinSeconds(1999,1,1),100.173,
+					RGB(150,50,150),209,0,0,g_pMimasTexture,NULL,g_pMimasMediumTexture)  ;
+ AddSolarPlanettoDB("Enceladus",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*1.370218),238020,0,334.689,137.077,0.0045,GetEpochDifferenceinSeconds(1999,1,1),162.044,
+						RGB(150,50,150),256,0,0,g_pEnceladusTexture,NULL,g_pEnceladusMediumTexture)  ;
+ AddSolarPlanettoDB("Tethys",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*1.887802),294660,1.86,149.166,149.174,0.0000,GetEpochDifferenceinSeconds(1999,1,1),28.755,
+					 RGB(150,50,150),536,0,0,g_pTethysTexture,NULL,g_pTethysMediumTexture)  ;
+ AddSolarPlanettoDB("Dione",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*2.736915),377400,0.02,173.999,57.741,0.0022,GetEpochDifferenceinSeconds(1999,1,1),109.204,
+					RGB(150,50,150),560,0,0,g_pDioneTexture,NULL,g_pDioneMediumTexture)  ;
+ AddSolarPlanettoDB("Rhea",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*4.517500),527040,0.35,205.869,1.095,0.0010,GetEpochDifferenceinSeconds(1999,1,1),238.732,
+				   RGB(150,50,150),764,0,0,g_pRheaTexture,NULL,g_pRheaMediumTexture)  ;
+ AddSolarPlanettoDB("Titan",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*15.945421),1221830,0.33,172.749,44.046,0.0292,GetEpochDifferenceinSeconds(1999,1,1),192.132,
+					RGB(150,50,150),2575,0,0,g_pTitanTexture,NULL,g_pTitanMediumTexture,NULL,NULL,0,1,g_pTitanAtmosphereTexture)  ;
+ AddSolarPlanettoDB("Hyperion",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*21.276609),1481100,0.43,262.058,273.863,0.1042,GetEpochDifferenceinSeconds(1999,1,1),52.956,
+					   RGB(150,50,150),185,0,0,NULL,Hyperion_Small_Heights,NULL,Hyperion_Large_Heights)  ;
+ AddSolarPlanettoDB("Iapetus",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*79.330183),3561300,14.72,275.850,75.583,0.0283,GetEpochDifferenceinSeconds(1999,1,1),350.306,
+					  RGB(150,50,150),718,0,0,g_pIapetusTexture,NULL,g_pIapetusMediumTexture)  ;
+ AddSolarPlanettoDB("Pan",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*0.5750),133583,0,0,0,0,GetEpochDifferenceinSeconds(1981,7,1),122.072,
+				  RGB(150,50,150),10)  ;
+ AddSolarPlanettoDB("Atlas",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*0.6019),137670,0.3,0,0,0,GetEpochDifferenceinSeconds(1981,7,1),186.541,
+					RGB(150,50,150),18.5)  ;
+  AddSolarPlanettoDB("Prometheus",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*0.6130),139353,0,212.854,0,0.0024,GetEpochDifferenceinSeconds(1981,7,1),335.684,
+	 RGB(150,50,150),74,0,0,NULL,Prometheus_Small_Heights,NULL,Prometheus_Large_Heights)  ;
+  AddSolarPlanettoDB("Pandora",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*0.6285),141700,0,68.229,0,0.0042,GetEpochDifferenceinSeconds(1981,7,1),13.918,
+	 RGB(150,50,150),55)  ;
+  AddSolarPlanettoDB("Epimetheus",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*0.6942),151422,0.34,100.866,335.006,0.009,GetEpochDifferenceinSeconds(1981,7,1),55.972,
+	 RGB(150,50,150),69,0,0,NULL,Epimetheus_Small_Heights)  ;
+  AddSolarPlanettoDB("Janus",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*0.6945),151472,0.14,27.852,303.797,0.007,GetEpochDifferenceinSeconds(1981,7,1),236.455,
+	 RGB(150,50,150),97,0,0,g_pJanusTexture,Janus_Small_Heights,g_pJanusMediumTexture,Janus_Large_Heights)  ;
+  AddSolarPlanettoDB("Calypso",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*1.8878),294660,0,43.640,209.184,0,GetEpochDifferenceinSeconds(1981,7,1),201.815,
+	 RGB(150,50,150),15)  ;
+  AddSolarPlanettoDB("Telesto",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*1.8878),294660,0,80.729,126.124,0,GetEpochDifferenceinSeconds(1981,7,1),7.907,
+	 RGB(150,50,150),15)  ;
+  AddSolarPlanettoDB("Helene",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*2.7369),377400,0,80.357,10.214,0.005,GetEpochDifferenceinSeconds(1981,7,1),10.033,
+	 RGB(150,50,150),18)  ;
+  AddSolarPlanettoDB("Phoebe",GetPlanetByName(&planetanchor,"Saturn"),3600*24*550.48,12952000,175.3,337.537,237.143,0.1633,GetEpochDifferenceinSeconds(1999,1,1),174.569,
+	 RGB(150,50,150),115,0.4,0,g_pPhoebeTexture,NULL,g_pPhoebeMediumTexture)  ;
+  AddSolarPlanettoDB("Ymiir",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*1312),23100000,173.1,22.684,173.104,0.33,GetEpochDifferenceinSeconds(2000,2,26),244.128,
+	 RGB(150,50,150),8)  ;
+  AddSolarPlanettoDB("Paaliaq",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*687),15200000,47.2,238.857,45.077,0.36,GetEpochDifferenceinSeconds(2000,2,26),351.882,
+	 RGB(150,50,150),10)  ;
+  AddSolarPlanettoDB("Siarnaq",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*893),18160000,45.6,65.495,45.539,0.29,GetEpochDifferenceinSeconds(2000,2,26),225.754,
+	 RGB(150,50,150),16)  ;
+  AddSolarPlanettoDB("Tarvos",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*926),18240000,34.9,273.666,33.495,0.54,GetEpochDifferenceinSeconds(2000,2,26),282.342,
+	 RGB(150,50,150),7)  ;
+  AddSolarPlanettoDB("Kiviuq",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*449),11370000,48.7,83.043,46.148,0.33,GetEpochDifferenceinSeconds(2000,2,26),221.005,
+	 RGB(150,50,150),7)  ;
+  AddSolarPlanettoDB("Ijiraq",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*451),11440000,49.1,85.523,46.730,0.32,GetEpochDifferenceinSeconds(2000,2,26),64.495,
+	 RGB(150,50,150),5)  ;
+  AddSolarPlanettoDB("Thrym",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*1089),20470000,175.0,62.518,175.815,0.47,GetEpochDifferenceinSeconds(2000,2,26),63.027,
+	 RGB(150,50,150),3)  ;
+  AddSolarPlanettoDB("Skadi",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*729),15650000,148.5,201.882,152.621,0.27,GetEpochDifferenceinSeconds(2000,2,26),148.583,
+	 RGB(150,50,150),3)  ;
+  AddSolarPlanettoDB("Mundilfari",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*951),18710000,169.4,309.948,167.476,0.21,GetEpochDifferenceinSeconds(2000,2,26),106.167,
+	 RGB(150,50,150),3)  ;
+  AddSolarPlanettoDB("Erriapo",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*871),17610000,33.5,281.776,34.469,0.47,GetEpochDifferenceinSeconds(2000,2,26),322.166,
+	 RGB(150,50,150),4)  ;
+  AddSolarPlanettoDB("Albiorix",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*738),16390000,34.0,55.454,33.979,0.48,GetEpochDifferenceinSeconds(2000,2,26),58.812,
+	 RGB(150,50,150),13)  ;
+  AddSolarPlanettoDB("Suttung",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*1017),19470000,175.8,35.650,175.811,0.11,GetEpochDifferenceinSeconds(2000,2,26),340.300,
+	 RGB(150,50,150),3)  ;
+  AddSolarPlanettoDB("S2003_S1",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*956),18720000,134.6,178.540,182.340,0.35,GetEpochDifferenceinSeconds(2003,6,10),203.684,
+	 RGB(150,50,150),3)  ;
+  AddSolarPlanettoDB("S2004_S1",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*1.01),194000,0,0,0,0,EpochDifferenceinSeconds,0,
+	 RGB(150,50,150),3)  ;
+  AddSolarPlanettoDB("S2004_S2",GetPlanetByName(&planetanchor,"Saturn"),(3600*24*1.14),211000,0,0,0,0,EpochDifferenceinSeconds,0,
+	 RGB(150,50,150),4)  ;
+
+*/
+
+
+
+
+
+
+
+
+}
+
+var PLANETS_SCENE = {}
+var PLANETS_TEXTURE = {}
+
+var TimerNum = 0 ; 
+
+
+
+			let bloomPass, adaptToneMappingPass, ldrToneMappingPass, hdrToneMappingPass;
+			let params;
+
+			let camera, scene, renderer, dynamicHdrEffectComposer, hdrEffectComposer, ldrEffectComposer;
+			let cameraCube, sceneCube;
+			let cameraBG, debugScene;
+			let adaptiveLuminanceMat, currentLuminanceMat;
+
+			let directionalLight;
+
+			let orbitControls;
+
+			let windowHalfX = window.innerWidth / 2;
+			let windowHalfY = window.innerHeight / 2;
+
+			let windowThirdX = window.innerWidth / 3;
+
+
+let iapetusMesh ; 
+
+
+
+
+			init();
+			animate();
+
+			function init() {
+
+				params = {
+					bloomAmount: 1.0,
+					sunLight: 4.0,
+
+					enabled: true,
+					avgLuminance: 0.7,
+					middleGrey: 0.04,
+					maxLuminance: 16,
+
+					adaptionRate: 2.0
+				};
+
+				const container = document.createElement( 'div' );
+				document.body.appendChild( container );
+
+				// CAMERAS
+
+				camera = new THREE.PerspectiveCamera( 70, windowThirdX / window.innerHeight, 0.1, 100000 );
+				camera.position.x = 700;
+				camera.position.y = 400;
+				camera.position.z = 800;
+				cameraCube = new THREE.PerspectiveCamera( 70, windowThirdX / window.innerHeight, 1, 100000 );
+
+				//cameraBG = new THREE.OrthographicCamera( - windowHalfX, windowHalfX, windowHalfY, - windowHalfY, - 10000, 10000 );
+				//cameraBG.position.z = 100;
+
+				orbitControls = new OrbitControls( camera, container );
+				///orbitControls.autoRotate = true;
+				///orbitControls.autoRotateSpeed = 1;
+
+				//controls.maxPolarAngle = Math.PI * 2.0;
+				//controls.minDistance = 100;
+				//controls.maxDistance = 5000;
+
+
+				// SCENE
+
+				scene = new THREE.Scene();
+				sceneCube = new THREE.Scene();
+				debugScene = new THREE.Scene();
+
+				// LIGHTS
+
+				const ambient = new THREE.AmbientLight( 0x050505 );
+				scene.add( ambient );
+
+				directionalLight = new THREE.DirectionalLight( 0xffffff, params.sunLight );
+				directionalLight.position.set( 2, 0, 10 ).normalize();
+				scene.add( directionalLight );
+
+				const atmoShader = {
+					side: THREE.BackSide,
+					// blending: THREE.AdditiveBlending,
+					transparent: true,
+					lights: true,
+					uniforms: THREE.UniformsUtils.merge( [
+
+						THREE.UniformsLib[ "common" ],
+						THREE.UniformsLib[ "lights" ]
+
+					] ),
+
+
+				};
+
+				const earthAtmoMat = new THREE.ShaderMaterial( atmoShader );
+
+				const earthMat = new THREE.MeshPhongMaterial( {
+					color: 0xffffff,
+					shininess: 200
+				} );
+								const iapetusMat = new THREE.MeshPhongMaterial( {
+					color: 0xffffff,
+					shininess: 200
+				} );
+
+
+
+
+
+
+
+
+
+
+
+
+
+				const textureLoader = new THREE.TextureLoader();
+
+
+
+
+/*var PLANETS_DATA = {
+	Saturn: {Texture:"https://mp1233.github.io/bg/img/saturn.jpg", size:{radius:60}, orbit:{radius:0}},
+	Iapetus:{Texture:"https://mp1233.github.io/bg/img/iapetus.jpg", size:{radius:6}, orbit:{radius:500}},
+}
+
+var PLANETS_SCENE = {}
+var PLANETS_TEXTURE = {}*/
+for (var each in PLANETS_DATA) {
+console.log(each)
+/*			PLANETS_TEXTURE[each] = new THREE.MeshPhongMaterial( {
+					color: 0xffffff,
+					shininess: 200
+				} );
+				///const textureLoader = new THREE.TextureLoader();
+				const currtext = PLANETS_DATA[each].Texture
+				textureLoader.load( currtext, function ( tex ) {
+
+					PLANETS_TEXTURE[each].map = tex;
+					PLANETS_TEXTURE[each].map.encoding = THREE.sRGBEncoding;
+					PLANETS_TEXTURE[each].needsUpdate = true;
+
+				} );
+
+
+				var tempGeo = new THREE.SphereGeometry( PLANETS_DATA[each].size.radius, 24, 24 );
+				console.log(PLANETS_TEXTURE)
+				PLANETS_SCENE[each] = new THREE.Mesh( tempGeo, PLANETS_TEXTURE[each] );
+				scene.add( PLANETS_SCENE[each] );*/
+
+			const currPLANETS_TEXTURE = new THREE.MeshPhongMaterial( {
+					color: 0xffffff,
+					shininess: 200
+				} );
+				///const textureLoader = new THREE.TextureLoader();
+				const currtext = PLANETS_DATA[each].Texture
+				textureLoader.load( currtext, function ( tex ) {
+
+					currPLANETS_TEXTURE.map = tex;
+					currPLANETS_TEXTURE.map.encoding = THREE.sRGBEncoding;
+					currPLANETS_TEXTURE.needsUpdate = true;
+
+				} );
+
+
+				var tempGeo = new THREE.SphereGeometry( PLANETS_DATA[each].size.radius, 24, 24 );
+				///console.log(PLANETS_TEXTURE)
+				PLANETS_SCENE[each] = new THREE.Mesh( tempGeo, currPLANETS_TEXTURE );
+				scene.add( PLANETS_SCENE[each] );
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////
+/*				textureLoader.load( 'https://mp1233.github.io/bg/img/saturn.jpg', function ( tex ) {
+
+					earthMat.map = tex;
+					earthMat.map.encoding = THREE.sRGBEncoding;
+					earthMat.needsUpdate = true;
+
+				} );
+
+				textureLoader.load( 'https://mp1233.github.io/bg/img/iapetus.jpg', function ( tex ) {
+
+					iapetusMat.map = tex;
+					iapetusMat.map.encoding = THREE.sRGBEncoding;
+					iapetusMat.needsUpdate = true;
+
+				} );
+
+
+
+
+
+
+				const earthGeo = new THREE.SphereGeometry( 200, 24, 24 );
+				const sphereMesh = new THREE.Mesh( earthGeo, earthMat );
+				scene.add( sphereMesh );
+
+				const iapetusGeo = new THREE.SphereGeometry( 100, 24, 24 );
+				iapetusMesh = new THREE.Mesh( iapetusGeo, iapetusMat );
+				iapetusMesh.position.z = 800;
+				scene.add( iapetusMesh );
+*/
+//////////////////////////////////////////////////////////
+
+				const vBGShader = [
+					// "attribute vec2 uv;",
+					"varying vec2 vUv;",
+					"void main() {",
+					"vUv = uv;",
+					"gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );",
+					"}"
+
+				].join( "\n" );
+
+				const pBGShader = [
+
+					"uniform sampler2D map;",
+					"varying vec2 vUv;",
+
+					"void main() {",
+
+					"vec2 sampleUV = vUv;",
+					"vec4 color = texture2D( map, sampleUV, 0.0 );",
+
+					"gl_FragColor = vec4( color.xyz, 1.0 );",
+
+					"}"
+
+				].join( "\n" );
+
+				// Skybox
+				adaptiveLuminanceMat = new THREE.ShaderMaterial( {
+					uniforms: {
+						"map": { value: null }
+					},
+					vertexShader: vBGShader,
+					fragmentShader: pBGShader,
+					depthTest: false,
+					// color: 0xffffff
+					blending: THREE.NoBlending
+				} );
+
+				currentLuminanceMat = new THREE.ShaderMaterial( {
+					uniforms: {
+						"map": { value: null }
+					},
+					vertexShader: vBGShader,
+					fragmentShader: pBGShader,
+					depthTest: false
+					// color: 0xffffff
+					// blending: THREE.NoBlending
+				} );
+
+				let quadBG = new THREE.Mesh( new THREE.PlaneGeometry( 0.1, 0.1 ), currentLuminanceMat );
+				quadBG.position.z = - 500;
+				quadBG.position.x = - window.innerWidth * 0.5 + window.innerWidth * 0.05;
+				quadBG.scale.set( window.innerWidth, window.innerHeight, 1 );
+				///debugScene.add( quadBG );
+
+				quadBG = new THREE.Mesh( new THREE.PlaneGeometry( 0.1, 0.1 ), adaptiveLuminanceMat );
+				quadBG.position.z = - 500;
+				quadBG.position.x = - window.innerWidth * 0.5 + window.innerWidth * 0.15;
+				quadBG.scale.set( window.innerWidth, window.innerHeight, 1 );
+				///debugScene.add( quadBG );
+
+				const r = "textures/cube/MilkyWay/";
+				const urls = [ r + "dark-s_px.jpg", r + "dark-s_nx.jpg",
+							 r + "dark-s_py.jpg", r + "dark-s_ny.jpg",
+							 r + "dark-s_pz.jpg", r + "dark-s_nz.jpg" ];
+
+				const textureCube = new THREE.CubeTextureLoader().load( urls );
+				textureCube.encoding = THREE.sRGBEncoding;
+
+				sceneCube.background = textureCube;
+
+				renderer = new THREE.WebGLRenderer();
+				renderer.setPixelRatio( window.devicePixelRatio );
+				renderer.setSize( window.innerWidth, window.innerHeight );
+				renderer.autoClear = false;
+
+				container.appendChild( renderer.domElement );
+
+				// let width = window.innerWidth || 1;
+				const height = window.innerHeight || 1;
+
+				const parameters = { minFilter: THREE.LinearFilter, magFilter: THREE.LinearFilter, format: THREE.RGBAFormat };
+				const regularRenderTarget = new THREE.WebGLRenderTarget( windowThirdX, height, parameters );
+				ldrEffectComposer = new EffectComposer( renderer, regularRenderTarget );
+
+				parameters.type = THREE.FloatType;
+
+				if ( renderer.capabilities.isWebGL2 === false && renderer.extensions.has( 'OES_texture_half_float_linear' ) === false ) {
+
+					parameters.type = undefined; // avoid usage of floating point textures
+
+				}
+
+				const hdrRenderTarget = new THREE.WebGLRenderTarget( windowThirdX, height, parameters );
+				dynamicHdrEffectComposer = new EffectComposer( renderer, hdrRenderTarget );
+				dynamicHdrEffectComposer.setSize( window.innerWidth, window.innerHeight );
+				hdrEffectComposer = new EffectComposer( renderer, hdrRenderTarget );
+
+				const scenePass = new RenderPass( scene, camera, undefined, undefined, undefined );
+
+
+
+
+
+
+				///ldrEffectComposer.addPass( skyboxPass );
+				ldrEffectComposer.addPass( scenePass );
+
+
+
+
+
+				window.addEventListener( 'resize', onWindowResize );
+
+			}
+
+			function onWindowResize() {
+
+				windowHalfX = window.innerWidth / 2;
+				windowHalfY = window.innerHeight / 2;
+				windowThirdX = window.innerWidth / 3;
+
+				camera.aspect = windowThirdX / window.innerHeight;
+				camera.updateProjectionMatrix();
+
+
+
+				renderer.setSize( window.innerWidth, window.innerHeight );
+
+			}
+
+			function animate() {
+
+				requestAnimationFrame( animate );
+
+
+
+
+				directionalLight.intensity = params.sunLight;
+
+				orbitControls.update();
+
+				///console.log("aaaaaaaaaaaaaaaaaaaaaaaaa")
+
+				render();
+
+			}
+
+			function render() {
+
+
+
+TimerNum = TimerNum+1
+
+
+/*var PLANETS_DATA = {
+	Saturn: {Texture:"https://mp1233.github.io/bg/img/saturn.jpg", size:{radius:60}, orbit:{radius:0}},
+	Iapetus:{Texture:"https://mp1233.github.io/bg/img/iapetus.jpg", size:{radius:6}, orbit:{radius:500}},
+}
+
+var PLANETS_SCENE = {}
+var PLANETS_TEXTURE = {}*/
+for (var each in PLANETS_SCENE) {
+PLANETS_SCENE[each].position.x = PLANETS_DATA[each].orbit.radius*Math.sin(TimerNum/100) ; 
+PLANETS_SCENE[each].position.y = PLANETS_DATA[each].orbit.radius*Math.cos(TimerNum/100) ; 
+}
+
+
+				///console.log("aaaaaaaaaaaaaaaaaaaaaaaaa", iapetusMesh)
+if(iapetusMesh ) {
+iapetusMesh.position.z = iapetusMesh.position.z - 10 }
+
+
+
+				camera.lookAt( scene.position );
+				
+
+				///renderer.setViewport( 0, 0, windowThirdX, window.innerHeight );
+				ldrEffectComposer.render( 0.017 );
+
+
+
+			}
+
+		</script>
+
+	</body>
+</html>
