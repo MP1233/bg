@@ -38,8 +38,11 @@
 var TimerMultiply = 1000
 var OrbitRadiusMultiply = 0.001
 var PlanetRadiusMultiply = 0.02
+var FlightTime = 100 ; 
+var FlightTimeToDestination = 0 ; 
 
 var UserLocation = {planet:"Saturn", lat:0, lon:0}
+var PrevUserLocation = {planet:"Saturn", lat:0, lon:0}
 
 var PLANETS_XYZ = {}
 var PLANETS_DATA = {
@@ -715,6 +718,11 @@ console.log(each)
 
 TimerNum = TimerNum+1
 
+
+
+
+
+
 function GetUserLocation(_UserLocation, _TimerNum) {
 
 	var ret = {x:0, y:0, z:0}
@@ -752,6 +760,18 @@ var PLANETS_SCENE = {}
 var PLANETS_TEXTURE = {}*/
 
 var currentUsepLocationXYZ = GetUserLocation(UserLocation, TimerNum)
+
+
+if (FlightTimeToDestination > 0 ) {
+FlightTimeToDestination = FlightTimeToDestination - 1 ; 
+console.log(FlightTimeToDestination)
+var nextXYZ = GetUserLocation(UserLocation, TimerNum)
+var prevXYZ = GetUserLocation(PrevUserLocation, TimerNum)
+currentUsepLocationXYZ = {x:(nextXYZ.x + ((prevXYZ.x -nextXYZ.x)*FlightTimeToDestination/FlightTime )), y:(nextXYZ.y + ((prevXYZ.y -nextXYZ.y)*FlightTimeToDestination/FlightTime )), z:(nextXYZ.z + ((prevXYZ.z -nextXYZ.z)*FlightTimeToDestination/FlightTime )), }
+}
+
+
+
 
 ///console.log(currentUsepLocationXYZ)
 
@@ -811,8 +831,14 @@ console.log(e)
         }
     })
     function ChangeSchematicColor(_item) {
+
 console.log(_item)
+PrevUserLocation.planet =UserLocation.planet 
         UserLocation.planet =_item
+FlightTimeToDestination = FlightTime ; 
+
+
+
     }
 
 
