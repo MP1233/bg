@@ -460,6 +460,7 @@ var TimerNum = 0 ;
 			let adaptiveLuminanceMat, currentLuminanceMat;
 
 			let directionalLight;
+			let ambLight;
 
 			let orbitControls;
 
@@ -542,6 +543,9 @@ document.getElementById('myspan4').innerHTML = spanInnerHtml ;
 
 				const ambient = new THREE.AmbientLight( 0x050505 );
 				scene.add( ambient );
+
+				const ambLight = new THREE.AmbientLight( 0xffffff ); // soft white light
+scene.add( ambLight );
 
 				directionalLight = new THREE.DirectionalLight( 0xffffff, params.sunLight );
 				directionalLight.position.set( 2, 0, 10 ).normalize();
@@ -843,8 +847,10 @@ PLANETS_SCENE[each].rotateY(curr_planetAngle+1.57)
 
 
 				///console.log("aaaaaaaaaaaaaaaaaaaaaaaaa", iapetusMesh)
-if(iapetusMesh ) {
-iapetusMesh.position.z = iapetusMesh.position.z - 10 }
+
+
+
+directionalLight.position.set(- currentUsepLocationXYZ.x, 0, - currentUsepLocationXYZ.y ).normalize();
 
 
 
