@@ -786,8 +786,8 @@ PLANETS_SCENE[each].position.x = curr_planet_XYZ.x - currentUsepLocationXYZ.x///
 PLANETS_SCENE[each].position.z = curr_planet_XYZ.y - currentUsepLocationXYZ.y ///PLANETS_DATA[each].orbit.radius*Math.cos(TimerNum/100) ; 
 
 
-if (each == UserLocation.planet) {
-
+if ((each == UserLocation.planet) && (FlightTimeToDestination == 0)) {
+///console.log(each, FlightTimeToDestination)
 	PLANETS_SCENE[each].position.x = -99999999999999999999999 ; 
 PLANETS_SCENE[each].position.z = -99999999999999999999 ; 
 }
