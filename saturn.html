@@ -608,8 +608,8 @@ console.log(each)
 				///console.log(PLANETS_TEXTURE)
 				PLANETS_SCENE[each] = new THREE.Mesh( tempGeo, currPLANETS_TEXTURE );
 				//PLANETS_SCENE[each].matrix.elements[0] = 0.1
-				PLANETS_SCENE[each].scale.x = 0.01
-				PLANETS_SCENE[each].updateProjectionMatrix
+				///PLANETS_SCENE[each].scale.x = 0.01
+				///PLANETS_SCENE[each].updateProjectionMatrix
 				scene.add( PLANETS_SCENE[each] );
 console.log(PLANETS_SCENE[each])
 
@@ -804,13 +804,42 @@ var rotationMatrix = new THREE.Matrix4();
 rotationMatrix[2] = -Math.sin(curr_planetAngle)
 rotationMatrix[4] = Math.sin(curr_planetAngle)
 rotationMatrix[6] = Math.cos(curr_planetAngle)*/
+
+
+/////////////
+//ZOOM IN PLANETS
+
+
+
+//TODO only if dist < rad
+
+var CameradistToPlanet = Math.sqrt((PLANETS_SCENE[each].position.x *PLANETS_SCENE[each].position.x ) + (PLANETS_SCENE[each].position.y * PLANETS_SCENE[each].position.y )) ; 
+var CameraPlanetRadius = PlanetRadiusMultiply*PLANETS_DATA[each].size.radius ; 
+
+
+
+
+
+
+
+if (CameradistToPlanet < CameraPlanetRadius) {
+				PLANETS_SCENE[each].scale.x = 0.01
+				PLANETS_SCENE[each].updateProjectionMatrix
+
 PLANETS_SCENE[each].setRotationFromMatrix(rotationMatrix)
 				PLANETS_SCENE[each].updateProjectionMatrix
 PLANETS_SCENE[each].rotateY(curr_planetAngle+1.57)
 
 				PLANETS_SCENE[each].updateProjectionMatrix
 
-}
+
+			
+
+} else {
+				PLANETS_SCENE[each].scale.x = 1
+				PLANETS_SCENE[each].updateProjectionMatrix
+
+}}
 
 
 				///console.log("aaaaaaaaaaaaaaaaaaaaaaaaa", iapetusMesh)
