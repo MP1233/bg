@@ -5,12 +5,24 @@ CBN TO >>> reticular tegmental nucleus of the pons ///loop feedback
 
 some oversimplified neuroml scheme
 link to full neuroml scheme
-<input type="button" id="Oculomotor" value="Oculomotor" onclick=CreateSpike('AxonIO_1_1')>
-<input type="button" id="MotorCortex" value="MotorCortex" onclick=CreateSpike('AxonMF_MotorCortex_1')>
-<input type="button" id="VisualCortex" value="VisualCortex" onclick=CreateSpike('AxonMF_VisualCortex_1')>
-<input type="button" id="SensoryCortex" value="SensoryCortex" onclick=CreateSpike('Axon_NEOCTX_Sensory_TO_IOPrvl')>
-<input type="button" id="SensoryInput" value="SensoryInput" onclick=CreateSpike('Axon_spinal_cord_TO_IOD')>
-<input type="button" id="VisualInput" value="VisualInput" onclick=CreateSpike('AxonMF_VisualInput_1')>
+
+<input type="button" id="MotorCortex" value="MotorCortex" onclick=CreateSpike('Axon_NEOCTX_Motor_TO_IOM')>
+<input type="button" id="VisualCortex" value="VisualCortex" onclick=CreateSpike('Axon_NEOCTX_Visual_TO_Pontine')>
+<input type="button" id="SensoryCortex" value="SensoryCortex" onclick=CreateSpike('Axon_NEOCTX_Sensory_TO_IOM')>
+
+
+
+
+
+
+<input type="button" id="SensoryInput" value="SensoryInput" >
+<input type="button" id="VisualInput" value="VisualInput" >
+<input type="button" id="HearingInput" value="HearingInput" >
+<input type="button" id="MotorInput" value="MotorInput" >
+<input type="button" id="PainInput" value="PainInput" >
+<input type="button" id="VestibularInput" value="VestibularInput" >
+
+
 <br>
 <canvas id="canvas" width=2200 height=1700></canvas>
 <br>
@@ -73,6 +85,75 @@ SomatosensoryShiftXY=[0, 60]
 VestibularShiftXY=[0, 100]
 WhiskersShiftXY=[0, 150]
 UnknownShiftXY=[0, 200]
+
+
+
+	funccolors = {appetite:"#00ffff",
+	food:"#00dddd",
+	taste:"#00cccc",
+breathing:"#00bbbb",
+breath:"#00bbbb",
+attention:"#00ffdd",
+limbic:"#00ff99",
+
+emotion:"#00ffbb",
+hearing:"#ff0000",
+whiskers:"#dd0000",
+sniffing:"#bb0000",
+
+
+
+//1 - learning , motor
+
+learning:"#00ff00",
+motor:"#00bb00",
+behavior:"#00dd00",
+
+//2 - control of head and eye movements
+
+orientation:"#0000bb",
+oculomotor:"#0000dd",
+visual:"#0000ff",
+
+
+//3 - stance and locomotion
+
+locomotion:"#ffff00",
+posture:"#dddd00",
+proprioceptive:"#bbbb00",
+
+
+//4 - somatosensory reflexes
+
+somatosensory:"#ff00ff",
+sensory:"#dd00dd",
+sensory_hindlimb:"#bb00bb",
+sensory_forelimb:"#990099",
+pain:"#770077",
+reflexes:"#550055",
+arousal:"#330033",
+sensory_proprioceptive:"#110011",
+temperature:"#220022",
+touch:"#440044",
+sensory_lips:"#660066",
+sensory_head:"#880088",
+flexor_reflex:"#aa00aa",
+
+//5 - optokinetic and vestibulo-ocular reflexes
+
+//orientation:"#777777",
+vestibular:"#999999",
+balance:"#777777",
+///visual:"#bbbbbb",
+
+
+
+/////////
+
+peptides:"#000000",
+}
+
+
 
 
 
@@ -1543,42 +1624,10 @@ circle(_currxy[0], _currxy[1], 5)
 
 function GetFunctionColor(_func) {
 	ret = "black"
-	funccolors = {appetite:"#00ffff",
-attention:"#00ffdd",
-hearing:"#ff0000",
 
-//1 - learning , motor
-
-learning:"#00ff00",
-motor:"#00bb00",
-
-//2 - control of head and eye movements
-
-orientation:"#0000bb",
-oculomotor:"#0000dd",
-visual:"#0000ff",
-
-
-//3 - stance and locomotion
-
-locomotion:"#ffff00",
-posture:"#dddd00",
-
-//4 - somatosensory reflexes
-
-somatosensory:"#ff00ff",
-sensory:"#dd00dd",
-sensory_hindlimb:"#bb00bb",
-sensory_forelimb:"#990099",
-
-//5 - optokinetic and vestibulo-ocular reflexes
-
-//orientation:"#777777",
-vestibular:"#999999",
-///visual:"#bbbbbb",
-
-}
 if (_func in funccolors) {ret = funccolors[_func]}
+	///else {console.log(_func)
+		///console.log(a)}
 return ret
 }
 
@@ -1673,6 +1722,31 @@ RedrawNode(NODES[eachnode],eachnode) ;
 RecalculateNode(NODES[eachnode]) ; 
 
 }
+
+
+i_color = 0
+for (eachcolor in funccolors) {
+	i_color = i_color + 1 ; 
+	ctx.fillStyle = funccolors[eachcolor];
+circle(1900, i_color*20, 10)
+
+
+	ctx.font = "15px Arial bold";
+	///ctx.color = "#ff0000" ;
+	///ctx.fillStyle = GetFunctionColor(eachnode.functions[i]) ; ///"#ff0000"; 
+	ctx.fillText(eachcolor, 1920, i_color*20);
+
+
+///ctx.beginPath();
+
+///ctx.rect(1900, i_color*20, 20, 20);
+///ctx.stroke();
+
+}
+
+
+
+
   // deltaTime should be in the range [0 ~ 1]
   var deltaTime = (time - startTime) / duration;
   // currentPos = previous position + (difference * deltaTime)
@@ -1701,6 +1775,112 @@ CreateSpike('AxonMF_1_3')
 }
 */
 // OP's code
+
+
+
+
+function GetInputAxons(_inputtags) {
+console.log(_inputtags)
+foundtagnodes = {}
+	for (eachnode in NODES) {
+///console.log(NODES[eachnode].functions)
+		for (eachinputtag in _inputtags) {
+			for (eachfunction in NODES[eachnode].functions) {
+				if (inputtags[eachinputtag] == NODES[eachnode].functions[eachfunction]) {
+					foundtagnodes[eachnode] = 1
+///console.log(eachnode, eachinputtag, eachfunction)
+				}
+			}
+		}
+	}
+console.log(foundtagnodes)
+foundtagaxons = {}
+	for (eachaxon in AXONS) {
+
+		for (eachfoundtagnode in foundtagnodes) {
+			if (eachfoundtagnode == AXONS[eachaxon].start_node) {
+///console.log(eachaxon)	
+					foundtagaxons[eachaxon]		= 1 ; 
+			}
+		}
+	}
+console.log(foundtagaxons)
+return foundtagaxons
+}
+
+
+
+SensoryInput.onclick = e => {
+inputtags = ['somatosensory', 'sensory', 'sensory_hindlimb', 'sensory_forelimb']
+inputAxons = GetInputAxons(inputtags)
+for (eachaxon in inputAxons) {
+CreateSpike(eachaxon)
+}
+}
+
+
+
+
+VisualInput.onclick = e => {
+inputtags = ['visual', 'oculomotor']
+inputAxons = GetInputAxons(inputtags)
+for (eachaxon in inputAxons) {
+CreateSpike(eachaxon)
+}
+}
+
+HearingInput.onclick = e => {
+inputtags = ['hearing']
+inputAxons = GetInputAxons(inputtags)
+for (eachaxon in inputAxons) {
+CreateSpike(eachaxon)
+}
+}
+
+MotorInput.onclick = e => {
+inputtags = ['motor']
+inputAxons = GetInputAxons(inputtags)
+for (eachaxon in inputAxons) {
+CreateSpike(eachaxon)
+}
+}
+
+PainInput.onclick = e => {
+inputtags = ['pain']
+inputAxons = GetInputAxons(inputtags)
+for (eachaxon in inputAxons) {
+CreateSpike(eachaxon)
+}
+}
+
+VestibularInput.onclick = e => {
+inputtags = ['vestibular', 'balance']
+inputAxons = GetInputAxons(inputtags)
+for (eachaxon in inputAxons) {
+CreateSpike(eachaxon)
+}
+}
+
+
+
+/*
+
+<input type="button" id="SensoryInput" value="SensoryInput" >
+<input type="button" id="VisualInput" value="VisualInput" >
+<input type="button" id="HearingInput" value="HearingInput" >
+<input type="button" id="MotorInput" value="MotorInput" >
+<input type="button" id="PainInput" value="PainInput" >
+<input type="button" id="VestibularInput" value="VestibularInput" >
+
+*/
+
+
+
+
+
+
+
+
 
 
 
