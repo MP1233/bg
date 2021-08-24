@@ -1,0 +1,354 @@
+body {margin:0; padding:0; font-family: 'Roboto Condensed', sans-serif;}
+
+ /* menu */
+
+.menu-top {
+    width: 100%;
+    height: 80px;
+    line-height: 80px;
+    background-color: #1b1c1d;
+}
+.menu-top ul {
+    display: flex;
+	justify-content: flex-end;
+    list-style-type: none;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.menu-top ul li {
+    padding-right: 24px;
+}
+.menu-top ul a {
+    color: white;
+    text-decoration: none;
+}
+.menu-top ul a:hover {
+    color: #a1a1a1;
+}
+
+/* rat_atlas_generation_threejs */
+
+#sourceButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px;
+    color: #fff;
+    background-color: #02550b;
+    opacity: 0.7;
+}
+.zoom-line {
+    display: flex;
+	justify-content: flex-end;
+    font-family: 'Roboto Condensed', sans-serif;
+    height: 38px;
+    line-height: 38px;
+    background-color: #605ca8;
+    color: white;
+    font-size: 18px;
+	font-weight:400;
+}
+.zoom-line div {
+    padding-right: 24px;
+}
+.zoom-btn {
+    display: flex;
+    padding-top: 9px;
+}
+.zoom-bt {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    padding: 0;
+    margin-right: 5px;
+    position: relative;
+    z-index: 1000;
+    color: #474747;
+    font-size: 16px;
+    display: block;
+    background-color: #fff;
+    border: 1px solid #d5d5d5;
+    border-radius: 3px;
+}
+.submit-block {
+    height: 56px;
+    line-height: 56px;
+    text-align: right;
+    padding-right: 24px;
+	font-size: 18px;
+	font-weight:400;
+}
+#UpdateNeuronsButton {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #fff;
+    border: 1px solid #d5d5d5;
+    border-radius: 5px;
+    color: #474747;
+    font-size: 18px;
+    padding: 0 14px;
+    line-height: 32px;
+}
+.UpdateNeuronsButton {
+    font-family: 'Roboto Condensed', sans-serif;
+    background-color: #fff;
+    border: 1px solid #d5d5d5;
+    border-radius: 5px;
+    color: #474747;
+    font-size: 18px;
+    padding: 0 14px;
+    line-height: 32px;
+}
+input.UpdateNeuronsButton:hover { background:#f3f3f3}
+input.UpdateNeuronsButton:active { background:#f3f3f3 }
+.button-block {
+    margin-bottom: 10px;
+}
+.cerebellum {
+    padding: 0 10px;
+}
+.title-block {
+    display: flex;
+}
+.bottom-text-layer {
+    display:block;
+    padding: 10px 0;
+}
+.cerebellum #canvas {
+    margin-right: 10px;
+}
+/* adaptive table */
+.table-div{
+  width: calc(100% - 20px);
+  height: 300px;
+  display: flex;
+  padding: 0 10px 20px 10px;
+}
+.table-div div {
+    padding-left: 10px;
+}
+.table-div div:first-child {
+  padding-left: 0px;
+}
+.tablediv-1 {
+    max-width: 400px;
+    /*overflow: scroll;*/
+}
+.element-1 {
+    height: 230px;
+    overflow-y: scroll;
+}
+.element-2 {
+    height: 230px;
+    /*overflow: scroll;*/
+}
+.tablediv-2 {
+    max-width: 400px;
+    /*overflow: scroll;*/
+}
+.main-list h3 {
+    margin: 10px 15px;
+    padding: 0;
+}
+
+.table-div div ul {
+    list-style-type: none;
+    padding: 0 10px 0 0;
+    margin: 0;
+}
+.table-div div ul li {
+    margin: 0 0px 14px 0;
+    font-size: 18px;
+    line-height: 18px;
+}
+.main-list {
+    border-radius: 5px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+}
+.main-list th, .main-list td {
+    padding: 10px 20px;
+    font-size: 13px;
+    border: none;
+    font-family: Verdana, sans-serif;
+    border: 1px solid #337AB7;
+    vertical-align: top;
+}
+.main-list th {
+    color: #FFF;
+    background: #337AB7;
+    font-weight: bold;
+    border: 1px solid #1a4a73;
+    text-transform: uppercase;
+    text-align: center;
+}
+.main-list tr:nth-child(even) {
+    background: #edf7ff;
+}
+.main-list td span {
+    background: #337AB7;
+    color: #FFF;
+    display: none;
+    font-size: 11px;
+    font-weight: bold;
+    font-family: Verdana, sans-serif;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+@media(max-width: 768px) {
+    .main-list thead {
+        display: none;
+    }
+    .main-list tr {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-bottom: 30px;
+    }
+    .main-list td {
+        margin: 0 -1px -1px 0;
+        padding-top: 35px;
+        position: relative;
+        width: 50%;
+    }
+    .main-list td span {
+        display: block;
+    }
+}
+@media(max-width: 480px) {
+    .main-list td {
+        width: 100%;
+    }
+}
+hr {
+    margin: 15px 0 0 40px;
+    border: none;
+    color: #e6e6e6;
+    background-color: #e6e6e6;
+    height: 1px;
+}
+.ul-page-1 {
+	/*overflow-y:scroll;*/
+	height:230px;
+	position:relative;
+	z-index:1000;
+	user-select: none;
+}
+.ul-page-2 {
+    width: 530px;
+    /*overflow: scroll;*/
+    /* overflow-y: scroll; */
+    height: 230px;
+    position: relative;
+    z-index: 1000;
+    user-select: none;
+}
+.ul-page-3 {
+	width: 120px;
+	/*overflow-y:scroll;*/
+	height:230px;
+	position: relative;
+	z-index:1000;
+	user-select: none;
+}
+.ul-page-4 {
+	/*overflow-y:scroll;*/
+	/*max-width: 600px;*/
+	height:230px;
+	position: relative;
+	z-index:1000;
+	user-select: none;
+}
+.ul-page-5 {
+	width: 80px;
+	height:230px;
+	position: relative;
+	z-index:1000;
+	user-select: none;
+}
+
+/* полоса прокрутки (скроллбар) */
+::-webkit-scrollbar {
+    width: 8px; /* ширина для вертикального скролла */
+    height: 8px; /* высота для горизонтального скролла */
+    background-color: #e6e6e6;
+}
+
+/* ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+    background-color: #b3b3b3;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #b3b3b3;
+}
+
+/* Стрелки */
+
+::-webkit-scrollbar-button:vertical:start:decrement {
+    /*background: linear-gradient(120deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(240deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+    linear-gradient(0deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+    background-color: #f6f8f4;*/
+	display:none;
+}
+
+::-webkit-scrollbar-button:vertical:end:increment {
+    /*background:
+        linear-gradient(300deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(60deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(180deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+    background-color: #f6f8f4;*/
+	display:none;
+}
+
+::-webkit-scrollbar-button:horizontal:start:decrement {
+    /*background:
+        linear-gradient(30deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(150deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(270deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+    background-color: #f6f8f4;*/
+	display:none;
+}
+
+::-webkit-scrollbar-button:horizontal:end:increment {
+    /*background:
+        linear-gradient(210deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(330deg, #02141a 40%, rgba(0, 0, 0, 0) 41%),
+        linear-gradient(90deg, #02141a 30%, rgba(0, 0, 0, 0) 31%);
+    background-color: #f6f8f4;*/
+	display:none;
+}
+
+/* custom size */
+@media only screen and (max-width: 1599px) and (min-width: 1360px) {
+.tablediv-1 {
+    max-width: 300px;
+}
+.tablediv-2 {
+    max-width: 300px;
+}
+}
+@media only screen and (max-width: 1359px) and (min-width: 1280px) {
+.tablediv-1 {
+    max-width: 200px;
+}
+.tablediv-2 {
+    max-width: 200px;
+}
+}
+@media only screen and (max-width: 1279px) and (min-width: 1024px) {
+.tablediv-1 {
+    max-width: 200px;
+}
+.tablediv-2 {
+    max-width: 180px;
+}
+}
