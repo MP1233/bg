@@ -1,70 +1,21 @@
-<h1>Bio-calculator. Calculation algorythms using neocortex neurons.</h1>
-
-
- human cortex is 6 layered structure with primary and interneuron types studied. many of such types of neurons are already modelled in neuroML
- one of examples of tasks that human brain can perform - summing or substracting 2 values. although it is clear that such calculations are more complex and widespread across different areas of the brain, that the purpose of this work is to implement a microcircuit for simple calculations using already existing models of neocortex neurons to see how such microcircuit will appear in 3D. also to adjust such microcircuit to known charateristics of 6 layered structure, such as synapses and cell types density in the layers<br>
- although non of the microcircuits is non supposed to work as a math calculator, it is quite possible that it can use some of similar algorythms for some of its calculations. the purpose is to approximize how well can such type of algorythm fit the cortex 6 layered structure<br>
-
-also this work can be used as practical experience with different neuroML type simulators. and adjusting synaptic properties task
-
-<br><br>
-current architecture simply activates "summ neuron" when two "value neurons" start firing. however further work planned on context of "+" "-" "1st value" vs "second value" and "=" command. context signals probably be transferred via 1st layer
-<br><br>
-
-
-
-
-
-
-
-
-
-
 
 
 
 
 <h3>(A + B) , (A - B) implementation</h3>
 
-For brevity let A have only n=4 values - 0,1,2,3 and B also have m=4 values - 0,1,2,3. Thus number of neurons needed for this input will be m+n = 8 Simple structure of code for such implementation will look like<br>
-<br>
-if Operation==PLUS {Operation=PLUS}<br>
-if Operation==MINUS {Operation=MINUS}<br>
-#2 neurons<br>
-<br>
-if input1==0 {Component1=0}<br>
-if input1==1 {Component1=1}<br>
-if input1==2 {Component1=2}<br>
-if input1==3 {Component1=3}<br>
-if input2==0 {Component2=0}<br>
-if input2==1 {Component2=1}<br>
-if input2==2 {Component2=2}<br>
-if input2==3 {Component2=3}<br>
-#8 neudons + infinite loop to enhance input signal<br>
-<br>
-if (Component1==0 , Component2==0, Operation==+) {Output = [0+0]}<br>
-if (Component1==0 , Component2==1, Operation==+) {Output = [0+1]}<br>
-if (Component1==0 , Component2==2, Operation==+) {Output = [0+2]}<br>
-if (Component1==0 , Component2==3, Operation==+) {Output = [0+3]}<br>
-if (Component1==1 , Component2==0, Operation==+) {Output = [1+0]}<br>
-<br>
-...<br>
-if (Component1==3 , Component2==3, Operation==-) {Output = [3-3]}<br>
-#32 neurons<br>
-<br>
-<br>
-if Output==[0+0] {Result=0}<br>
-if Output==[0+1] {Result=1}<br>
-if Output==[0+2] {Result=2}<br>
-...<br>
-if Output==[3-3] {Result=0}<br>
-#result space[-3..6] 10 neurons<br>
-<br>
-<br>
-<br>
-<br>
-for + operator we will need space of m*n=16 neurons. also 16 neurons for - operator. alltogether 32 neurons. result of such operation will occupy range [-3..6] 10 neurons. This algorythm can be implemented with excitory neurons (see App1).<br>
- click on operation_input, input1 & input2 neurons several times to start input firing and see which output neurons will fire<br>
+
+
+
+<br><br><br><br>
+Filtering usually is done using feedback and feedforward inhibition. (Fig 3). Feedforward inhibition usually used to enhance simultaneous inputs and filter asynchroneus inputs. Feedback used to select most active networks and suppress other networks. Hence our task will demand feedback inhibiton. Results of such inhibition filter applied can be tested on (App 4)<br><br>
+
+
+<img src="Neuroml_img/feedbackfeedforward.png"><br>
+Fig 3<br><br><br>
+
+
+
 
 <br>
 <input type="button" id="Axon_OscPLUS" value="PLUS" >
@@ -78,43 +29,20 @@ for + operator we will need space of m*n=16 neurons. also 16 neurons for - opera
 <input type="button" id="Axon_Osc2_2" value="Component2_2" >
 <input type="button" id="Axon_Osc2_3" value="Component2_3" >
 
-
-
 <br>
 <canvas id="canvas" width=1200 height=1300></canvas>
 <br>
-App1<br><br><br>
+App4<br><br><br>
 
 
-A<img src="Neuroml_img/tut2_raster_gid.png"><br>B<img src="Neuroml_img/tut2_traces__gid_10_.png"><br>
-Fig 2 Netpyne output for Input: Component1=0, Component2=0, Operation=PLUS. A all neurons, B Output0+0 neuron<br><br><br>
+Such algorythm was applied to NeuroML Netpyne with simplified neurons that have not natural parameters such as 1.0 firing probability. (Fig 5). code /tut2new.py
 
-
-
-
-It is possible to see that neuron that gives us correct answer fires the most, however other output neurons also fire. In computer code "if" statement prevents all other conditions. However in our network preventing all other actions is not that trivial. Thus we need to filter incorrect neurons using inhibitory neurons. <br><br><br>
-
-
-<a href="test_neuroML2.html">PAGE 2</a>
-
-<br><br><br><br>
-Filtering usually is done using feedback and feedforward inhibition. (Fig 3). Feedforward inhibition usually used to enhance simultaneous inputs and filter asynchroneus inputs. Feedback used to select most active networks and suppress other networks. Hence our task will demand feedback inhibiton. Results of such inhibition filter aoolied can be tested on (App 4)
+Fig 5
 
 
 
 
-
-App4
-
-
-Such algorythm was applied to NeuroML Netpyne with simplified neurons that have not natural parameters such as 1.0 firing probability. (Fig 4). code /tut2new.py
-
-Fig 4
-
-
-
-
-
+<a href="test_neuroML3.html">PAGE 3</a>
 <h3>context implementation. complex equations solutions. for example A+B-C+D=</h3>
 
 
@@ -196,6 +124,8 @@ GREEN2_shiftXY=[400,20]
 GREEN3_shiftXY=[570,580]
 GREEN4_shiftXY=[800,1000]
 
+GREEN5_shiftXY=[750,1000]
+
 
 
 
@@ -275,6 +205,93 @@ var AXONS = {
 ///GREEN
 
 ///Axon_Stellate_A_FL_TO_PRKJ_A_FL:{start_node:"Stellate_A_FL", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
+
+
+
+Axon_ToFilterminus3:{start_node:"RESULT_minus3", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilterminus2:{start_node:"RESULT_minus2", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilterminus1:{start_node:"RESULT_minus1", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilter0:{start_node:"RESULT_0", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilter1:{start_node:"RESULT_1", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilter2:{start_node:"RESULT_2", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilter3:{start_node:"RESULT_3", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilter4:{start_node:"RESULT_4", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilter5:{start_node:"RESULT_5", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilter6:{start_node:"RESULT_6", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+
+
+
+
+
+Axon_ToFilter0plus0:{start_node:"Output_0PLUS0", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter0plus1:{start_node:"Output_0PLUS1", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter0plus2:{start_node:"Output_0PLUS2", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter0plus3:{start_node:"Output_0PLUS3", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter1plus0:{start_node:"Output_1PLUS0", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter1plus1:{start_node:"Output_1PLUS1", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter1plus2:{start_node:"Output_1PLUS2", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter1plus3:{start_node:"Output_1PLUS3", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter2plus0:{start_node:"Output_2PLUS0", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter2plus1:{start_node:"Output_2PLUS1", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter2plus2:{start_node:"Output_2PLUS2", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter2plus3:{start_node:"Output_2PLUS3", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter3plus0:{start_node:"Output_3PLUS0", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter3plus1:{start_node:"Output_3PLUS1", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter3plus2:{start_node:"Output_3PLUS2", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter3plus3:{start_node:"Output_3PLUS3", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter0minus0:{start_node:"Output_0MINUS0", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter0minus1:{start_node:"Output_0MINUS1", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter0minus2:{start_node:"Output_0MINUS2", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter0minus3:{start_node:"Output_0MINUS3", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter1minus0:{start_node:"Output_1MINUS0", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter1minus1:{start_node:"Output_1MINUS1", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter1minus2:{start_node:"Output_1MINUS2", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter1minus3:{start_node:"Output_1MINUS3", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter2minus0:{start_node:"Output_2MINUS0", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter2minus1:{start_node:"Output_2MINUS1", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter2minus2:{start_node:"Output_2MINUS2", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter2minus3:{start_node:"Output_2MINUS3", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter3minus0:{start_node:"Output_3MINUS0", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter3minus1:{start_node:"Output_3MINUS1", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter3minus2:{start_node:"Output_3MINUS2", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+Axon_ToFilter3minus3:{start_node:"Output_3MINUS3", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:5},
+
+
+
+
+Axon_FromFilter0plus0:{start_node:"FILTER_neuron", end_node:"Output_0PLUS0", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter0plus1:{start_node:"FILTER_neuron", end_node:"Output_0PLUS1", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter0plus2:{start_node:"FILTER_neuron", end_node:"Output_0PLUS2", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter0plus3:{start_node:"FILTER_neuron", end_node:"Output_0PLUS3", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter1plus0:{start_node:"FILTER_neuron", end_node:"Output_1PLUS0", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter1plus1:{start_node:"FILTER_neuron", end_node:"Output_1PLUS1", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter1plus2:{start_node:"FILTER_neuron", end_node:"Output_1PLUS2", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter1plus3:{start_node:"FILTER_neuron", end_node:"Output_1PLUS3", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter2plus0:{start_node:"FILTER_neuron", end_node:"Output_2PLUS0", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter2plus1:{start_node:"FILTER_neuron", end_node:"Output_2PLUS1", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter2plus2:{start_node:"FILTER_neuron", end_node:"Output_2PLUS2", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter2plus3:{start_node:"FILTER_neuron", end_node:"Output_2PLUS3", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter3plus0:{start_node:"FILTER_neuron", end_node:"Output_3PLUS0", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter3plus1:{start_node:"FILTER_neuron", end_node:"Output_3PLUS1", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter3plus2:{start_node:"FILTER_neuron", end_node:"Output_3PLUS2", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter3plus3:{start_node:"FILTER_neuron", end_node:"Output_3PLUS3", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+
+Axon_FromFilter0minus0:{start_node:"FILTER_neuron", end_node:"Output_0MINUS0", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter0minus1:{start_node:"FILTER_neuron", end_node:"Output_0MINUS1", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter0minus2:{start_node:"FILTER_neuron", end_node:"Output_0MINUS2", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter0minus3:{start_node:"FILTER_neuron", end_node:"Output_0MINUS3", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter1minus0:{start_node:"FILTER_neuron", end_node:"Output_1MINUS0", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter1minus1:{start_node:"FILTER_neuron", end_node:"Output_1MINUS1", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter1minus2:{start_node:"FILTER_neuron", end_node:"Output_1MINUS2", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter1minus3:{start_node:"FILTER_neuron", end_node:"Output_1MINUS3", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter2minus0:{start_node:"FILTER_neuron", end_node:"Output_2MINUS0", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter2minus1:{start_node:"FILTER_neuron", end_node:"Output_2MINUS1", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter2minus2:{start_node:"FILTER_neuron", end_node:"Output_2MINUS2", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter2minus3:{start_node:"FILTER_neuron", end_node:"Output_2MINUS3", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter3minus0:{start_node:"FILTER_neuron", end_node:"Output_3MINUS0", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter3minus1:{start_node:"FILTER_neuron", end_node:"Output_3MINUS1", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter3minus2:{start_node:"FILTER_neuron", end_node:"Output_3MINUS2", shape:["default"], type:"GABA", lengthsec:10,power:-15},
+Axon_FromFilter3minus3:{start_node:"FILTER_neuron", end_node:"Output_3MINUS3", shape:["default"], type:"GABA", lengthsec:10,power:-15},
 
 
 ///Axon_Parallel_Fiber_spinal_TO_Parallel_Fiber_Granule:{start_node:"Parallel_Fiber_spinal", end_node:"Parallel_Fiber_Granule", shape:[], type:"glutamate", lengthsec:10,power:1},
@@ -540,6 +557,10 @@ RESULT_4:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN4_shiftXY[0]+60,GR
 RESULT_5:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN4_shiftXY[0]+40,GREEN4_shiftXY[1]+180]},
 RESULT_6:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN4_shiftXY[0]+20,GREEN4_shiftXY[1]+200]},
 
+
+FILTER_neuron:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN5_shiftXY[0]+20,GREEN5_shiftXY[1]+50]},
+FILTER2_neuron:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN5_shiftXY[0]+300,GREEN5_shiftXY[1]+0]},
+
 /*
 
 PRKJ_A_FL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN_shiftXY[0]+CBCTX_shiftXY[0]+PRKJ_shiftXY[0],GREEN_shiftXY[1]+CBCTX_shiftXY[1]+PRKJ_shiftXY[1]]},
@@ -648,6 +669,10 @@ if (eachnode.soma_value < 5) {eachnode.soma_value = 1*eachnode.soma_value + 1}
 OnlyOnce = 0 ; 
 }}} 
  
+
+
+var CalculationResults = {RESULT_0:0, RESULT_1:0, RESULT_2:0, RESULT_3:0, RESULT_4:0, RESULT_5:0, RESULT_6:0, RESULT_minus1:0, RESULT_minus2:0, RESULT_minus3:0}
+
 function RecalculateSpike(eachspike) {
     ///console.log(MOVINGSPIKES[eachspike].currentposonaxon) ;
     MOVINGSPIKES[eachspike].currentposonaxon = MOVINGSPIKES[eachspike].currentposonaxon + 1 ; 
@@ -670,7 +695,27 @@ function RecalculateSpike(eachspike) {
             if (NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value < 1) {NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value = 1}
             if (NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value > 10) {
                 for (eachoutput in curr_end_node.outputs) {
-console.log(NODES[MOVINGSPIKES[eachspike].currentaxon.end_node])
+///console.log(NODES[MOVINGSPIKES[eachspike].currentaxon.end_node])
+///console.log(MOVINGSPIKES[eachspike].currentaxon)
+///console.log(CalculationResults)
+if ( (MOVINGSPIKES[eachspike].currentaxon.end_node in CalculationResults) == 0) {
+CalculationResults[MOVINGSPIKES[eachspike].currentaxon.end_node] = 0 ; 
+
+    console.log(MOVINGSPIKES[eachspike].currentaxon.end_node)}
+ CalculationResults[MOVINGSPIKES[eachspike].currentaxon.end_node] = CalculationResults[MOVINGSPIKES[eachspike].currentaxon.end_node]+1
+ /*   
+if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_0") {CalculationResults.RESULT_0 = CalculationResults.RESULT_0+1}
+if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_1") {CalculationResults.RESULT_1 = CalculationResults.RESULT_1+1}
+    if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_2") {CalculationResults.RESULT_2 = CalculationResults.RESULT_2+1}
+        if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_3") {CalculationResults.RESULT_3 = CalculationResults.RESULT_3+1}
+            if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_4") {CalculationResults.RESULT_4 = CalculationResults.RESULT_4+1}
+                if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_5") {CalculationResults.RESULT_5 = CalculationResults.RESULT_5+1}
+                    if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_6") {CalculationResults.RESULT_6 = CalculationResults.RESULT_6+1}
+
+                                if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_minus1") {CalculationResults.RESULT_minus1 = CalculationResults.RESULT_minus1+1}
+                                    if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_minus2") {CalculationResults.RESULT_minus2 = CalculationResults.RESULT_minus2+1}
+                                        if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_minus3") {CalculationResults.RESULT_minus3 = CalculationResults.RESULT_minus3+1}
+                                            */
                     currspike_id = currspike_id + 1 ; 
                     MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[curr_end_node.outputs[eachoutput]], currentposonaxon:0, currentpower:1, curraxonlength:GetAxonLength(AXONS[curr_end_node.outputs[eachoutput]].shape)}
 
@@ -708,24 +753,15 @@ RecalculateNode(NODES[eachnode]) ;
 }
 
 
+///if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_minus1") {CalculationResults.RESULT_1 = CalculationResults.RESULT_1+1}
+
 i_color = 0
-for (eachcolor in funccolors) {
+for (eachcolor in CalculationResults) {
     i_color = i_color + 1 ; 
     ctx.fillStyle = funccolors[eachcolor];
-circle(1900, i_color*20, 10)
-
-
+///circle(190, i_color*20, 10)
     ctx.font = "15px Arial bold";
-    ///ctx.color = "#ff0000" ;
-    ///ctx.fillStyle = GetFunctionColor(eachnode.functions[i]) ; ///"#ff0000"; 
-    ctx.fillText(eachcolor, 1920, i_color*20);
-
-
-///ctx.beginPath();
-
-///ctx.rect(1900, i_color*20, 20, 20);
-///ctx.stroke();
-
+    ctx.fillText(eachcolor + ' = ' + CalculationResults[eachcolor], 1050, 0 + i_color*20);
 }
 
 
