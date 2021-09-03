@@ -1,5 +1,9 @@
 
-
+<a href=>(A + B) , (A - B) implementation (part1)</a><br>
+<a href=>(A + B) , (A - B) implementation (part2 filter)</a><br>
+<a href=>context implementation. complex equations solutions. for example A+B-C+D=</a><br>
+<a href=>fitting 6 layers</a><br>
+<a href=>fitting existing cortex neuron models</a><br><br><br>
 
 
 <h3>(A + B) , (A - B) implementation</h3>
@@ -203,6 +207,8 @@ var component1_excitement1 = 2
 var component2_excitement1 = 2
 var PLUS_excitement1 = 2
 var MINUS_excitement1 = 2
+var filter2_excitement1 = 5
+var filter2_inhibition = -2
 
 var feedback_inhibition_time1 = 30
 
@@ -215,16 +221,27 @@ var AXONS = {
 
 
 
-Axon_ToFilterminus3:{start_node:"RESULT_minus3", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
-Axon_ToFilterminus2:{start_node:"RESULT_minus2", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
-Axon_ToFilterminus1:{start_node:"RESULT_minus1", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
-Axon_ToFilter0:{start_node:"RESULT_0", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
-Axon_ToFilter1:{start_node:"RESULT_1", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
-Axon_ToFilter2:{start_node:"RESULT_2", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
-Axon_ToFilter3:{start_node:"RESULT_3", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
-Axon_ToFilter4:{start_node:"RESULT_4", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
-Axon_ToFilter5:{start_node:"RESULT_5", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
-Axon_ToFilter6:{start_node:"RESULT_6", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_ToFilterminus3:{start_node:"RESULT_minus3", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+Axon_ToFilterminus2:{start_node:"RESULT_minus2", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+Axon_ToFilterminus1:{start_node:"RESULT_minus1", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+Axon_ToFilter0:{start_node:"RESULT_0", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+Axon_ToFilter1:{start_node:"RESULT_1", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+Axon_ToFilter2:{start_node:"RESULT_2", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+Axon_ToFilter3:{start_node:"RESULT_3", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+Axon_ToFilter4:{start_node:"RESULT_4", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+Axon_ToFilter5:{start_node:"RESULT_5", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+Axon_ToFilter6:{start_node:"RESULT_6", end_node:"FILTER2_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter2_excitement1},
+
+Axon_FromFilterminus3:{start_node:"FILTER2_neuron", end_node:"RESULT_minus3", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
+Axon_FromFilterminus2:{start_node:"FILTER2_neuron", end_node:"RESULT_minus2", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
+Axon_FromFilterminus1:{start_node:"FILTER2_neuron", end_node:"RESULT_minus1", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
+Axon_FromFilter0:{start_node:"FILTER2_neuron", end_node:"RESULT_0", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
+Axon_FromFilter1:{start_node:"FILTER2_neuron", end_node:"RESULT_1", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
+Axon_FromFilter2:{start_node:"FILTER2_neuron", end_node:"RESULT_2", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
+Axon_FromFilter3:{start_node:"FILTER2_neuron", end_node:"RESULT_3", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
+Axon_FromFilter4:{start_node:"FILTER2_neuron", end_node:"RESULT_4", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
+Axon_FromFilter5:{start_node:"FILTER2_neuron", end_node:"RESULT_5", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
+Axon_FromFilter6:{start_node:"FILTER2_neuron", end_node:"RESULT_6", shape:["default"], type:"GABA", lengthsec:10,power:filter2_inhibition},
 
 
 
