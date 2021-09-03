@@ -14,7 +14,8 @@
 
 <h3>context implementation. complex equations solutions. for example A+B-C+D=</h3>
 
-Now let's add context. It is possible to enter longer formulas now. for example A+B-C+D=. buttons are similar to calculator. however expression is limited to range [0..3]
+Now let's add context. It is possible to enter longer formulas now. for example A+B-C+D=. buttons are similar to calculator. however expression is limited to range [0..3]<br>
+Also when we want to start action, we use feedforward inhibition, assuming that start signal is when more than 1 spike comes to neuron. for our plus/minus module we could also implement feedforward inhibition, assuming start signal is 3 signals to neuron simultaneously
 
 
 <br>
@@ -43,7 +44,7 @@ Lets start with these 2 approximations of 6layers microcircuit and try to fit ou
 
 at this stage lets take existing neuroML models of cortex neurons and synapses and reimplement our model replacing model neurons with real ones<br><br>
 
-formula or machine learning to fit best coefficients
+formula or machine learning / plasticity to fit best coefficients
 
 at the beginning or "=" command input of input_number_cell 0..9 oscillates 1st_component_cell 0..9
 after"-" or "+" command input of input_number_cell 0..9 oscillates 2nd_component_cell 0..9. operation_cell +..- also oscilates
@@ -115,6 +116,7 @@ GREEN5_shiftXY=[1250,1800]
 
 GREEN6_shiftXY=[0,0]
 GREEN7_shiftXY=[200,350]
+GREEN8_shiftXY=[0,850]
 
 
 
@@ -205,6 +207,8 @@ var AXONS = {
 
 ///Axon_Stellate_A_FL_TO_PRKJ_A_FL:{start_node:"Stellate_A_FL", end_node:"PRKJ_A_FL", shape:[[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]-10,GREEN_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]+0],[GREEN_shiftXY[0]+PRKJ_shiftXY[0]+CBCTX_shiftXY[0]+0,GREEN_shiftXY[1]+Stellate_shiftXY[1]+CBCTX_shiftXY[1]-10],], type:"GABA", lengthsec:10,power:-1},
 
+///STEP 1 = INPUT CE/EQ/+/- , block others. INPUT 0/1/2/3 , block others
+
 Axon_INPUT2_CE:{start_node:"INPUT_CE", end_node:"INPUT2_CE", shape:[], type:"glutamate", lengthsec:10,power:10},
 Axon_INPUT2_EQ:{start_node:"INPUT_EQ", end_node:"INPUT2_EQ", shape:[], type:"glutamate", lengthsec:10,power:10},
 Axon_INPUT2_PLUS:{start_node:"INPUT_PLUS", end_node:"INPUT2_PLUS", shape:[], type:"glutamate", lengthsec:10,power:10},
@@ -235,7 +239,7 @@ Axon_INPUTOsc2:{start_node:"INPUTosc_2", end_node:"INPUTosc_2", shape:["loop"], 
 Axon_INPUTOsc3:{start_node:"INPUTosc_3", end_node:"INPUTosc_3", shape:["loop"], type:"glutamate", lengthsec:10,power:10},
 
 
-//CLONE EQ P M 0 1 2 3
+//BLOCK OTHERS
 Axon_INPUT2filter_CE:{start_node:"INPUT2_CE", end_node:"INPUT_FILTER_CE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 
 Axon_INPUT2filter_CE_EQ:{start_node:"INPUT_FILTER_CE", end_node:"INPUT2_EQ", shape:["default"], type:"GABA", lengthsec:10,power:-10},
@@ -273,43 +277,132 @@ Axon_INPUT2filter_MINUS_CE:{start_node:"INPUT_FILTER_MINUS", end_node:"INPUT2_CE
 Axon_INPUToscfilter_MINUS_CE:{start_node:"INPUT_FILTER_MINUS", end_node:"INPUTosc_CE", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 
 
+Axon_INPUT2filter_0:{start_node:"INPUT2_0", end_node:"INPUT_FILTER_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+Axon_INPUT2filter_0_1:{start_node:"INPUT_FILTER_0", end_node:"INPUT2_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_0_1:{start_node:"INPUT_FILTER_0", end_node:"INPUTosc_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUT2filter_0_2:{start_node:"INPUT_FILTER_0", end_node:"INPUT2_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_0_2:{start_node:"INPUT_FILTER_0", end_node:"INPUTosc_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUT2filter_0_3:{start_node:"INPUT_FILTER_0", end_node:"INPUT2_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_0_3:{start_node:"INPUT_FILTER_0", end_node:"INPUTosc_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+
+Axon_INPUT2filter_1:{start_node:"INPUT2_1", end_node:"INPUT_FILTER_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+Axon_INPUT2filter_1_0:{start_node:"INPUT_FILTER_1", end_node:"INPUT2_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_1_0:{start_node:"INPUT_FILTER_1", end_node:"INPUTosc_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUT2filter_1_2:{start_node:"INPUT_FILTER_1", end_node:"INPUT2_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_1_2:{start_node:"INPUT_FILTER_1", end_node:"INPUTosc_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUT2filter_1_3:{start_node:"INPUT_FILTER_1", end_node:"INPUT2_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_1_3:{start_node:"INPUT_FILTER_1", end_node:"INPUTosc_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+
+Axon_INPUT2filter_2:{start_node:"INPUT2_2", end_node:"INPUT_FILTER_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+Axon_INPUT2filter_2_1:{start_node:"INPUT_FILTER_2", end_node:"INPUT2_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_2_1:{start_node:"INPUT_FILTER_2", end_node:"INPUTosc_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUT2filter_2_0:{start_node:"INPUT_FILTER_2", end_node:"INPUT2_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_2_0:{start_node:"INPUT_FILTER_2", end_node:"INPUTosc_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUT2filter_2_3:{start_node:"INPUT_FILTER_2", end_node:"INPUT2_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_2_3:{start_node:"INPUT_FILTER_2", end_node:"INPUTosc_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+
+Axon_INPUT2filter_3:{start_node:"INPUT2_3", end_node:"INPUT_FILTER_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+Axon_INPUT2filter_3_1:{start_node:"INPUT_FILTER_3", end_node:"INPUT2_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_3_1:{start_node:"INPUT_FILTER_3", end_node:"INPUTosc_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUT2filter_3_2:{start_node:"INPUT_FILTER_3", end_node:"INPUT2_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_3_2:{start_node:"INPUT_FILTER_3", end_node:"INPUTosc_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUT2filter_3_0:{start_node:"INPUT_FILTER_3", end_node:"INPUT2_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_INPUToscfilter_3_0:{start_node:"INPUT_FILTER_3", end_node:"INPUTosc_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+
+
+
+
+
+///STEP 2 = OPERATOR+VALUE > OUTPUT. AFTER VALUE INPUT if OPERATOR & VALUE start TRANSACTION TO OUTPUT (neuron that detects both value+operator were input. after transaction delete. TRANSACTION_NEURON_EMPTY, T_N_ONLYVALUE, T_N_ONLYOPERATOR, T_N_COMPLETE)
+///FEEDBACK FILTER FOR 1 PLUS/MINUS 2 Comp_1 3 Comp_2
+
+
+
 
 ///OPERATORS OUTPUT
 Axon_OUTPUTPLUS1:{start_node:"INPUTosc_PLUS", end_node:"OUTPUT_PLUS", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUTPLUS2:{start_node:"OUTPUT_PLUS", end_node:"Operator_PLUS", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUTPLUS3:{start_node:"OUTPUT_PLUS", end_node:"OUTPUT_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+//Axon_OUTPUTPLUS2:{start_node:"OUTPUT_PLUS", end_node:"Operator_PLUS", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+//Axon_OUTPUTPLUS3:{start_node:"OUTPUT_PLUS", end_node:"OUTPUT_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+//Axon_OUTPUTPLUS4:{start_node:"OUTPUT_PLUS", end_node:"OUTPUT_PLUS", shape:["loop"], type:"GABA", lengthsec:10,power:-10},
 
 Axon_OUTPUTMINUS1:{start_node:"INPUTosc_MINUS", end_node:"OUTPUT_MINUS", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUTMINUS2:{start_node:"OUTPUT_MINUS", end_node:"Operator_MINUS", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUTMINUS3:{start_node:"OUTPUT_MINUS", end_node:"OUTPUT_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+///Axon_OUTPUTMINUS2:{start_node:"OUTPUT_MINUS", end_node:"Operator_MINUS", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+//Axon_OUTPUTMINUS3:{start_node:"OUTPUT_MINUS", end_node:"OUTPUT_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+//Axon_OUTPUTMINUS4:{start_node:"OUTPUT_MINUS", end_node:"OUTPUT_MINUS", shape:["loop"], type:"GABA", lengthsec:10,power:-10},
 
+/*
 Axon_OPERATOR_FILTER_CE:{start_node:"OUTPUT_OPERATOR_FILTER", end_node:"INPUTosc_CE", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 Axon_OPERATOR_FILTER_EQ:{start_node:"OUTPUT_OPERATOR_FILTER", end_node:"INPUTosc_EQ", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 Axon_OPERATOR_FILTER_PLUS:{start_node:"OUTPUT_OPERATOR_FILTER", end_node:"INPUTosc_PLUS", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 Axon_OPERATOR_FILTER_MINUS:{start_node:"OUTPUT_OPERATOR_FILTER", end_node:"INPUTosc_MINUS", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+*/
+///TRANSACTION IN PROCESS
 //don't inhibit 0123. or output will be XXX
 ///Comp1_0 CLONE
 
 
 Axon_OUTPUT_Component1_01:{start_node:"INPUTosc_CE", end_node:"OUTPUT_Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_Component1_02:{start_node:"INPUTosc_0", end_node:"OUTPUT_Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component1_03:{start_node:"OUTPUT_Component1_0", end_node:"Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component1_04:{start_node:"OUTPUT_Component1_0", end_node:"OUTPUT_VALUE_FILTER", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-//also calculator inhibits plus minus eq ce
+Axon_OUTPUT_Component1_03:{start_node:"RESULT_0", end_node:"OUTPUT_Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_11:{start_node:"INPUTosc_CE", end_node:"OUTPUT_Component1_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_12:{start_node:"INPUTosc_1", end_node:"OUTPUT_Component1_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_13:{start_node:"RESULT_1", end_node:"OUTPUT_Component1_1", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_21:{start_node:"INPUTosc_CE", end_node:"OUTPUT_Component1_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_22:{start_node:"INPUTosc_2", end_node:"OUTPUT_Component1_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_23:{start_node:"RESULT_2", end_node:"OUTPUT_Component1_2", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_31:{start_node:"INPUTosc_CE", end_node:"OUTPUT_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_32:{start_node:"INPUTosc_3", end_node:"OUTPUT_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_33:{start_node:"RESULT_3", end_node:"OUTPUT_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+
+
+
+
+///Axon_OUTPUT_Component1_03:{start_node:"OUTPUT_Component1_0", end_node:"Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+///Axon_OUTPUT_Component1_04:{start_node:"OUTPUT_Component1_0", end_node:"OUTPUT_VALUE_FILTER", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+///Axon_OUTPUT_Component1_05:{start_node:"OUTPUT_Component1_0", end_node:"OUTPUT_Component1_0", shape:["loop"], type:"GABA", lengthsec:10,power:-10},
+///Axon_OUTPUT_Component1_06:{start_node:"OUTPUT_Component1_0", end_node:"Component1_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+///Axon_OUTPUT_Component1_07:{start_node:"OUTPUT_Component1_0", end_node:"Component1_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+///Axon_OUTPUT_Component1_08:{start_node:"OUTPUT_Component1_0", end_node:"Component1_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+//AFTER OUTPUT > TRANSACTION COPLETE. CLOSE ALL INPUTS. also calculator inhibits plus minus eq ce
+//inhibit itself, Comp1_123
 
 
 ///Comp2_0 CLONE
 
-Axon_OUTPUT_Component2_01:{start_node:"INPUTosc_PLUS", end_node:"OUTPUT_Component2_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component2_02:{start_node:"INPUTosc_MINUS", end_node:"OUTPUT_Component2_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component2_03:{start_node:"INPUTosc_0", end_node:"OUTPUT_Component2_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component2_04:{start_node:"OUTPUT_Component2_0", end_node:"Component2_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component2_05:{start_node:"OUTPUT_Component2_0", end_node:"OUTPUT_VALUE_FILTER", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2p_01:{start_node:"INPUTosc_PLUS", end_node:"MidOutput_Component2p_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2p_03:{start_node:"INPUTosc_0", end_node:"MidOutput_Component2p_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2m_02:{start_node:"INPUTosc_MINUS", end_node:"MidOutput_Component2m_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2m_03:{start_node:"INPUTosc_0", end_node:"MidOutput_Component2m_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2_01:{start_node:"MidOutput_Component2m_0", end_node:"OUTPUT_Component2_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2_02:{start_node:"MidOutput_Component2p_0", end_node:"OUTPUT_Component2_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+///Axon_OUTPUT_Component2_04:{start_node:"OUTPUT_Component2_0", end_node:"Component2_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+///Axon_OUTPUT_Component2_05:{start_node:"OUTPUT_Component2_0", end_node:"OUTPUT_VALUE_FILTER", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2p_11:{start_node:"INPUTosc_PLUS", end_node:"MidOutput_Component2p_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2p_13:{start_node:"INPUTosc_1", end_node:"MidOutput_Component2p_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2m_12:{start_node:"INPUTosc_MINUS", end_node:"MidOutput_Component2m_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2m_13:{start_node:"INPUTosc_1", end_node:"MidOutput_Component2m_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2_11:{start_node:"MidOutput_Component2m_1", end_node:"OUTPUT_Component2_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2_12:{start_node:"MidOutput_Component2p_1", end_node:"OUTPUT_Component2_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2p_21:{start_node:"INPUTosc_PLUS", end_node:"MidOutput_Component2p_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2p_23:{start_node:"INPUTosc_2", end_node:"MidOutput_Component2p_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2m_22:{start_node:"INPUTosc_MINUS", end_node:"MidOutput_Component2m_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2m_23:{start_node:"INPUTosc_2", end_node:"MidOutput_Component2m_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2_21:{start_node:"MidOutput_Component2m_2", end_node:"OUTPUT_Component2_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2_22:{start_node:"MidOutput_Component2p_2", end_node:"OUTPUT_Component2_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2p_31:{start_node:"INPUTosc_PLUS", end_node:"MidOutput_Component2p_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2p_33:{start_node:"INPUTosc_3", end_node:"MidOutput_Component2p_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2m_32:{start_node:"INPUTosc_MINUS", end_node:"MidOutput_Component2m_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2m_33:{start_node:"INPUTosc_3", end_node:"MidOutput_Component2m_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2_31:{start_node:"MidOutput_Component2m_3", end_node:"OUTPUT_Component2_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component2_32:{start_node:"MidOutput_Component2p_3", end_node:"OUTPUT_Component2_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 
 
 
-
-
+///STEP 3 = AFTER TRANSACTION COMPLETE DELETE BOTH OPERATOR+VALUE
 
 Axon_VALUE_FILTER_0:{start_node:"OUTPUT_VALUE_FILTER", end_node:"INPUTosc_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 Axon_VALUE_FILTER_1:{start_node:"OUTPUT_VALUE_FILTER", end_node:"INPUTosc_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
@@ -322,13 +415,18 @@ Axon_VALUE_FILTER_PLUS:{start_node:"OUTPUT_VALUE_FILTER", end_node:"INPUTosc_PLU
 Axon_VALUE_FILTER_MINUS:{start_node:"OUTPUT_VALUE_FILTER", end_node:"INPUTosc_MINUS", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 
 
+///STEP 4 = OUTPUT to CALCULATOR ONLY ONCE. FEEDBACK BLOCK
 
-
-
-
-
-
-
+Axon_OUTPUT_PLUS:{start_node:"OUTPUT_PLUS", end_node:"Operator_PLUS", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_MINUS:{start_node:"OUTPUT_MINUS", end_node:"Operator_MINUS", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_0a:{start_node:"OUTPUT_Component1_0", end_node:"Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_1a:{start_node:"OUTPUT_Component1_1", end_node:"Component1_1", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_2a:{start_node:"OUTPUT_Component1_2", end_node:"Component1_2", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_3a:{start_node:"OUTPUT_Component1_3", end_node:"Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component2_0a:{start_node:"OUTPUT_Component2_0", end_node:"Component2_0", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component2_1a:{start_node:"OUTPUT_Component2_1", end_node:"Component2_1", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component2_2a:{start_node:"OUTPUT_Component2_2", end_node:"Component2_2", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component2_3a:{start_node:"OUTPUT_Component2_3", end_node:"Component2_3", shape:["default"], type:"glutamate", lengthsec:10,power:0},
 
 
 
@@ -833,12 +931,29 @@ OUTPUT_Component1_1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shift
 OUTPUT_Component1_2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+100,GREEN7_shiftXY[1]+100]},
 OUTPUT_Component1_3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+120,GREEN7_shiftXY[1]+120]},
 OUTPUT_Component2_0:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+140,GREEN7_shiftXY[1]+140]},
-OUTPUT_Component2_1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+160,GREEN7_shiftXY[1]+160]},
-OUTPUT_Component2_2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+180,GREEN7_shiftXY[1]+180]},
-OUTPUT_Component2_3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+200,GREEN7_shiftXY[1]+200]},
+MidOutput_Component2m_0:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+160,GREEN7_shiftXY[1]+160]},
+MidOutput_Component2p_0:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+180,GREEN7_shiftXY[1]+180]},
+OUTPUT_Component2_1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+200,GREEN7_shiftXY[1]+200]},
+MidOutput_Component2m_1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+220,GREEN7_shiftXY[1]+220]},
+MidOutput_Component2p_1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+240,GREEN7_shiftXY[1]+240]},
+OUTPUT_Component2_2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+260,GREEN7_shiftXY[1]+260]},
+MidOutput_Component2m_2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+280,GREEN7_shiftXY[1]+280]},
+MidOutput_Component2p_2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+300,GREEN7_shiftXY[1]+300]},
+OUTPUT_Component2_3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+320,GREEN7_shiftXY[1]+320]},
+MidOutput_Component2m_3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+340,GREEN7_shiftXY[1]+340]},
+MidOutput_Component2p_3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+360,GREEN7_shiftXY[1]+360]},
 
 OUTPUT_OPERATOR_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]-20,GREEN7_shiftXY[1]-20]},
 OUTPUT_VALUE_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shiftXY[0]+-0,GREEN7_shiftXY[1]+-0]},
+
+
+
+
+TRANSACTION_NEURON_EMPTY:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+20,GREEN8_shiftXY[1]+20]},
+TRANSACTION_NEURON_ONLY_VALUE:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+40,GREEN8_shiftXY[1]+40]},
+TRANSACTION_NEURON_ONLY_OPERATOR:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+60,GREEN8_shiftXY[1]+60]},
+TRANSACTION_NEURON_COMPLETE:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+80,GREEN8_shiftXY[1]+80]},
+
 
 /*
 or inh feedback after each operation
