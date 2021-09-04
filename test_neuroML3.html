@@ -39,6 +39,8 @@ App4<br><br><br>
 
 Lets start with these 2 approximations of 6layers microcircuit and try to fit our network to this scheme. layer4 input+ amplification. Layer 3+2 processing. (Fig) Ascending / descending (Fig)
 
+Also our network has many loops. it is not clear wwhether these loops occur in cortex or part of them occupy thalamo-striatal loop
+
 
 <h3>fitting existing cortex neuron models</h3>
 
@@ -358,18 +360,18 @@ Axon_OUTPUT_Component1_31:{start_node:"INPUTosc_CE", end_node:"OUTPUT_Component1
 Axon_OUTPUT_Component1_32:{start_node:"INPUTosc_3", end_node:"OUTPUT_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_Component1_33:{start_node:"RESULT_3", end_node:"OUTPUT_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:0},
 
-Axon_OUTPUT_Component1_0filter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_0_A", shape:["default"], type:"glutamate", lengthsec:5,power:5},
-Axon_OUTPUT_Component1_0filter2:{start_node:"INPUTosc_0", end_node:"FILTER_OUTPUT_Component1_0_A", shape:["default"], type:"glutamate", lengthsec:5,power:5},
-Axon_OUTPUT_Component1_0filter3:{start_node:"FILTER_OUTPUT_Component1_0_A", end_node:"OUTPUT_Component1_0", shape:["default"], type:"GABA", lengthsec:4,power:-6},
-Axon_OUTPUT_Component1_1filter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_1_A", shape:["default"], type:"glutamate", lengthsec:5,power:5},
-Axon_OUTPUT_Component1_1filter2:{start_node:"INPUTosc_0", end_node:"FILTER_OUTPUT_Component1_1_A", shape:["default"], type:"glutamate", lengthsec:5,power:5},
-Axon_OUTPUT_Component1_1filter3:{start_node:"FILTER_OUTPUT_Component1_1_A", end_node:"OUTPUT_Component1_1", shape:["default"], type:"GABA", lengthsec:4,power:-6},
-Axon_OUTPUT_Component1_2filter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_2_A", shape:["default"], type:"glutamate", lengthsec:5,power:5},
-Axon_OUTPUT_Component1_2filter2:{start_node:"INPUTosc_0", end_node:"FILTER_OUTPUT_Component1_2_A", shape:["default"], type:"glutamate", lengthsec:5,power:5},
-Axon_OUTPUT_Component1_2filter3:{start_node:"FILTER_OUTPUT_Component1_2_A", end_node:"OUTPUT_Component1_2", shape:["default"], type:"GABA", lengthsec:4,power:-6},
-Axon_OUTPUT_Component1_3filter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_3_A", shape:["default"], type:"glutamate", lengthsec:5,power:5},
-Axon_OUTPUT_Component1_3filter2:{start_node:"INPUTosc_0", end_node:"FILTER_OUTPUT_Component1_3_A", shape:["default"], type:"glutamate", lengthsec:5,power:5},
-Axon_OUTPUT_Component1_3filter3:{start_node:"FILTER_OUTPUT_Component1_3_A", end_node:"OUTPUT_Component1_3", shape:["default"], type:"GABA", lengthsec:4,power:-6},
+Axon_OUTPUT_Component1_0filter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_0_A", shape:["default"], type:"glutamate", lengthsec:1,power:10},
+Axon_OUTPUT_Component1_0filter2:{start_node:"INPUTosc_0", end_node:"FILTER_OUTPUT_Component1_0_A", shape:["default"], type:"glutamate", lengthsec:1,power:10},
+Axon_OUTPUT_Component1_0filter3:{start_node:"FILTER_OUTPUT_Component1_0_A", end_node:"OUTPUT_Component1_0", shape:["default"], type:"GABA", lengthsec:1,power:-10},
+Axon_OUTPUT_Component1_1filter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_1_A", shape:["default"], type:"glutamate", lengthsec:1,power:10},
+Axon_OUTPUT_Component1_1filter2:{start_node:"INPUTosc_0", end_node:"FILTER_OUTPUT_Component1_1_A", shape:["default"], type:"glutamate", lengthsec:1,power:10},
+Axon_OUTPUT_Component1_1filter3:{start_node:"FILTER_OUTPUT_Component1_1_A", end_node:"OUTPUT_Component1_1", shape:["default"], type:"GABA", lengthsec:1,power:-10},
+Axon_OUTPUT_Component1_2filter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_2_A", shape:["default"], type:"glutamate", lengthsec:1,power:10},
+Axon_OUTPUT_Component1_2filter2:{start_node:"INPUTosc_0", end_node:"FILTER_OUTPUT_Component1_2_A", shape:["default"], type:"glutamate", lengthsec:1,power:10},
+Axon_OUTPUT_Component1_2filter3:{start_node:"FILTER_OUTPUT_Component1_2_A", end_node:"OUTPUT_Component1_2", shape:["default"], type:"GABA", lengthsec:1,power:-10},
+Axon_OUTPUT_Component1_3filter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_3_A", shape:["default"], type:"glutamate", lengthsec:1,power:10},
+Axon_OUTPUT_Component1_3filter2:{start_node:"INPUTosc_0", end_node:"FILTER_OUTPUT_Component1_3_A", shape:["default"], type:"glutamate", lengthsec:1,power:10},
+Axon_OUTPUT_Component1_3filter3:{start_node:"FILTER_OUTPUT_Component1_3_A", end_node:"OUTPUT_Component1_3", shape:["default"], type:"GABA", lengthsec:4,power:-10},
 
 
 
@@ -1278,7 +1280,8 @@ for (var i = 0 ; i< eachnode.functions.length ; i++) {
 }
 ctx.font = "10px Arial";
     ctx.fillStyle = "black"; 
-ctx.fillText(eachnode_name, textshiftx + eachnode.coordxy[0], eachnode.coordxy[1]);
+
+ctx.fillText('    ' + eachnode.soma_value + ' ' + eachnode_name, textshiftx + eachnode.coordxy[0], eachnode.coordxy[1]);
 }} 
 
 
