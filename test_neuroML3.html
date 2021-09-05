@@ -16,6 +16,9 @@
 
 Now let's add context. It is possible to enter longer formulas now. for example A+B-C+D=. buttons are similar to calculator. however expression is limited to range [0..3]<br>
 Also when we want to start action, we use feedforward inhibition, assuming that start signal is when more than 1 spike comes to neuron. for our plus/minus module we could also implement feedforward inhibition, assuming start signal is 3 signals to neuron simultaneously
+Also compared to App2 Feedback algorythm was modified. However real parameters of  neurons may determine which algorythm better fits the system
+Since this is just illustration diagram, neuron params and time sync not done. This will be done in real neurons model for netpyne
+To do some test - press 10 times CE, wait 20 seconds, press 10 times 0, wait 20 seconds, press +, wait 20 seconds, press 2, etc
 
 
 <br>
@@ -191,12 +194,12 @@ peptides:"#000000",
 
 
 
-var filter_inhibition1 = -1 //-12 -11 -10 (20-14) -7 (20 18) -6 (20 16) -5 (20 14) -3 (20 16) -2 (20 18) -1 (20 16) 0 (20 12)
+var filter_inhibition1 = -10 //-12 -11 -10 (20-14) -7 (20 18) -6 (20 16) -5 (20 14) -3 (20 16) -2 (20 18) -1 (20 16) 0 (20 12)
 var filter_excitation1 = 15
-var component1_excitement1 = 2
-var component2_excitement1 = 2
-var PLUS_excitement1 = 2
-var MINUS_excitement1 = 2
+var component1_excitement1 = 10
+var component2_excitement1 = 10
+var PLUS_excitement1 = 10
+var MINUS_excitement1 = 10
 var filter2_excitement1 = 5
 var filter2_inhibition = -2
 
@@ -513,6 +516,7 @@ Axon_Transaction_FILTER6:{start_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", end
 
 Axon_Transaction_FILTER7:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
 Axon_Transaction_FILTER8:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+Axon_Transaction_FILTER8:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"GABA", lengthsec:4,power:-20},
 ///Axon_Transaction_FILTER9:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
 
 /*
@@ -537,6 +541,7 @@ Axon_Transaction_FILTER16:{start_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", en
 
 Axon_Transaction_FILTER17:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
 Axon_Transaction_FILTER18:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+Axon_Transaction_FILTER18a:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"GABA", lengthsec:4,power:-20},
 ///Axon_Transaction_FILTER19:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
 
 Axon_Transaction_CORE11:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
@@ -730,7 +735,7 @@ Axon_FromFilter6:{start_node:"FILTER2_neuron", end_node:"RESULT_6", shape:["defa
 
 
 
-
+/*
 
 Axon_ToFilter0plus0:{start_node:"Output_0PLUS0", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter_excitation1},
 Axon_ToFilter0plus1:{start_node:"Output_0PLUS1", end_node:"FILTER_neuron", shape:["default"], type:"glutamate", lengthsec:10,power:filter_excitation1},
@@ -955,6 +960,275 @@ Axon_FromFilter073minus2:{start_node:"FILTER_neuron", end_node:"Output_3MINUS2",
 Axon_FromFilter073minus3:{start_node:"FILTER_neuron", end_node:"Output_3MINUS3", shape:["default"], type:"GABA", lengthsec:0.7*feedback_inhibition_time1,power:filter_inhibition1},
 
 
+*/
+
+
+
+Axon_Component10_1p0a:{start_node:"Component1_0", end_node:"Output_1PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_1p1a:{start_node:"Component1_0", end_node:"Output_1PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_1p2a:{start_node:"Component1_0", end_node:"Output_1PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_1p3a:{start_node:"Component1_0", end_node:"Output_1PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_2p0a:{start_node:"Component1_0", end_node:"Output_2PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_2p1a:{start_node:"Component1_0", end_node:"Output_2PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_2p2a:{start_node:"Component1_0", end_node:"Output_2PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_2p3a:{start_node:"Component1_0", end_node:"Output_2PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_3p0a:{start_node:"Component1_0", end_node:"Output_3PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_3p1a:{start_node:"Component1_0", end_node:"Output_3PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_3p2a:{start_node:"Component1_0", end_node:"Output_3PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_3p3a:{start_node:"Component1_0", end_node:"Output_3PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+Axon_Component10_1m0a:{start_node:"Component1_0", end_node:"Output_1MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_1m1a:{start_node:"Component1_0", end_node:"Output_1MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_1m2a:{start_node:"Component1_0", end_node:"Output_1MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_1m3a:{start_node:"Component1_0", end_node:"Output_1MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_2m0a:{start_node:"Component1_0", end_node:"Output_2MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_2m1a:{start_node:"Component1_0", end_node:"Output_2MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_2m2a:{start_node:"Component1_0", end_node:"Output_2MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_2m3a:{start_node:"Component1_0", end_node:"Output_2MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_3m0a:{start_node:"Component1_0", end_node:"Output_3MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_3m1a:{start_node:"Component1_0", end_node:"Output_3MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_3m2a:{start_node:"Component1_0", end_node:"Output_3MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component10_3m3a:{start_node:"Component1_0", end_node:"Output_3MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+
+
+
+Axon_Component11_0p0a:{start_node:"Component1_1", end_node:"Output_0PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_0p1a:{start_node:"Component1_1", end_node:"Output_0PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_0p2a:{start_node:"Component1_1", end_node:"Output_0PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_0p3a:{start_node:"Component1_1", end_node:"Output_0PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_2p0a:{start_node:"Component1_1", end_node:"Output_2PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_2p1a:{start_node:"Component1_1", end_node:"Output_2PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_2p2a:{start_node:"Component1_1", end_node:"Output_2PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_2p3a:{start_node:"Component1_1", end_node:"Output_2PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_3p0a:{start_node:"Component1_1", end_node:"Output_3PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_3p1a:{start_node:"Component1_1", end_node:"Output_3PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_3p2a:{start_node:"Component1_1", end_node:"Output_3PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_3p3a:{start_node:"Component1_1", end_node:"Output_3PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+Axon_Component11_0m0a:{start_node:"Component1_1", end_node:"Output_0MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_0m1a:{start_node:"Component1_1", end_node:"Output_0MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_0m2a:{start_node:"Component1_1", end_node:"Output_0MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_0m3a:{start_node:"Component1_1", end_node:"Output_0MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_2m0a:{start_node:"Component1_1", end_node:"Output_2MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_2m1a:{start_node:"Component1_1", end_node:"Output_2MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_2m2a:{start_node:"Component1_1", end_node:"Output_2MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_2m3a:{start_node:"Component1_1", end_node:"Output_2MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_3m0a:{start_node:"Component1_1", end_node:"Output_3MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_3m1a:{start_node:"Component1_1", end_node:"Output_3MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_3m2a:{start_node:"Component1_1", end_node:"Output_3MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component11_3m3a:{start_node:"Component1_1", end_node:"Output_3MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+
+
+Axon_Component12_1p0a:{start_node:"Component1_2", end_node:"Output_1PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_1p1a:{start_node:"Component1_2", end_node:"Output_1PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_1p2a:{start_node:"Component1_2", end_node:"Output_1PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_1p3a:{start_node:"Component1_2", end_node:"Output_1PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_0p0a:{start_node:"Component1_2", end_node:"Output_0PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_0p1a:{start_node:"Component1_2", end_node:"Output_0PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_0p2a:{start_node:"Component1_2", end_node:"Output_0PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_0p3a:{start_node:"Component1_2", end_node:"Output_0PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_3p0a:{start_node:"Component1_2", end_node:"Output_3PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_3p1a:{start_node:"Component1_2", end_node:"Output_3PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_3p2a:{start_node:"Component1_2", end_node:"Output_3PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_3p3a:{start_node:"Component1_2", end_node:"Output_3PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+Axon_Component12_1m0a:{start_node:"Component1_2", end_node:"Output_1MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_1m1a:{start_node:"Component1_2", end_node:"Output_1MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_1m2a:{start_node:"Component1_2", end_node:"Output_1MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_1m3a:{start_node:"Component1_2", end_node:"Output_1MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_0m0a:{start_node:"Component1_2", end_node:"Output_0MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_0m1a:{start_node:"Component1_2", end_node:"Output_0MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_0m2a:{start_node:"Component1_2", end_node:"Output_0MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_0m3a:{start_node:"Component1_2", end_node:"Output_0MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_3m0a:{start_node:"Component1_2", end_node:"Output_3MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_3m1a:{start_node:"Component1_2", end_node:"Output_3MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_3m2a:{start_node:"Component1_2", end_node:"Output_3MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component12_3m3a:{start_node:"Component1_2", end_node:"Output_3MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+
+
+Axon_Component13_1p0a:{start_node:"Component1_3", end_node:"Output_1PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_1p1a:{start_node:"Component1_3", end_node:"Output_1PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_1p2a:{start_node:"Component1_3", end_node:"Output_1PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_1p3a:{start_node:"Component1_3", end_node:"Output_1PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_2p0a:{start_node:"Component1_3", end_node:"Output_2PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_2p1a:{start_node:"Component1_3", end_node:"Output_2PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_2p2a:{start_node:"Component1_3", end_node:"Output_2PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_2p3a:{start_node:"Component1_3", end_node:"Output_2PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_0p0a:{start_node:"Component1_3", end_node:"Output_0PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_0p1a:{start_node:"Component1_3", end_node:"Output_0PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_0p2a:{start_node:"Component1_3", end_node:"Output_0PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_0p3a:{start_node:"Component1_3", end_node:"Output_0PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+Axon_Component13_1m0a:{start_node:"Component1_3", end_node:"Output_1MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_1m1a:{start_node:"Component1_3", end_node:"Output_1MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_1m2a:{start_node:"Component1_3", end_node:"Output_1MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_1m3a:{start_node:"Component1_3", end_node:"Output_1MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_2m0a:{start_node:"Component1_3", end_node:"Output_2MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_2m1a:{start_node:"Component1_3", end_node:"Output_2MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_2m2a:{start_node:"Component1_3", end_node:"Output_2MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_2m3a:{start_node:"Component1_3", end_node:"Output_2MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_0m0a:{start_node:"Component1_3", end_node:"Output_0MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_0m1a:{start_node:"Component1_3", end_node:"Output_0MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_0m2a:{start_node:"Component1_3", end_node:"Output_0MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component13_0m3a:{start_node:"Component1_3", end_node:"Output_0MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+
+
+
+
+
+
+Axon_Component20_0p1a:{start_node:"Component2_0", end_node:"Output_0PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_0p2a:{start_node:"Component2_0", end_node:"Output_0PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_0p3a:{start_node:"Component2_0", end_node:"Output_0PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_1p1a:{start_node:"Component2_0", end_node:"Output_1PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_1p2a:{start_node:"Component2_0", end_node:"Output_1PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_1p3a:{start_node:"Component2_0", end_node:"Output_1PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_2p1a:{start_node:"Component2_0", end_node:"Output_2PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_2p2a:{start_node:"Component2_0", end_node:"Output_2PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_2p3a:{start_node:"Component2_0", end_node:"Output_2PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_3p1a:{start_node:"Component2_0", end_node:"Output_3PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_3p2a:{start_node:"Component2_0", end_node:"Output_3PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_3p3a:{start_node:"Component2_0", end_node:"Output_3PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+Axon_Component20_0m1a:{start_node:"Component2_0", end_node:"Output_0MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_0m2a:{start_node:"Component2_0", end_node:"Output_0MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_0m3a:{start_node:"Component2_0", end_node:"Output_0MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_1m1a:{start_node:"Component2_0", end_node:"Output_1MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_1m2a:{start_node:"Component2_0", end_node:"Output_1MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_1m3a:{start_node:"Component2_0", end_node:"Output_1MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_2m1a:{start_node:"Component2_0", end_node:"Output_2MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_2m2a:{start_node:"Component2_0", end_node:"Output_2MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_2m3a:{start_node:"Component2_0", end_node:"Output_2MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_3m1a:{start_node:"Component2_0", end_node:"Output_3MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_3m2a:{start_node:"Component2_0", end_node:"Output_3MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component20_3m3a:{start_node:"Component2_0", end_node:"Output_3MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+
+
+Axon_Component21_0p0a:{start_node:"Component2_1", end_node:"Output_0PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_0p2a:{start_node:"Component2_1", end_node:"Output_0PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_0p3a:{start_node:"Component2_1", end_node:"Output_0PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_1p0a:{start_node:"Component2_1", end_node:"Output_1PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_1p2a:{start_node:"Component2_1", end_node:"Output_1PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_1p3a:{start_node:"Component2_1", end_node:"Output_1PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_2p0a:{start_node:"Component2_1", end_node:"Output_2PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_2p2a:{start_node:"Component2_1", end_node:"Output_2PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_2p3a:{start_node:"Component2_1", end_node:"Output_2PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_3p0a:{start_node:"Component2_1", end_node:"Output_3PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_3p2a:{start_node:"Component2_1", end_node:"Output_3PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_3p3a:{start_node:"Component2_1", end_node:"Output_3PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+Axon_Component21_0m0a:{start_node:"Component2_1", end_node:"Output_0MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_0m2a:{start_node:"Component2_1", end_node:"Output_0MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_0m3a:{start_node:"Component2_1", end_node:"Output_0MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_1m0a:{start_node:"Component2_1", end_node:"Output_1MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_1m2a:{start_node:"Component2_1", end_node:"Output_1MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_1m3a:{start_node:"Component2_1", end_node:"Output_1MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_2m0a:{start_node:"Component2_1", end_node:"Output_2MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_2m2a:{start_node:"Component2_1", end_node:"Output_2MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_2m3a:{start_node:"Component2_1", end_node:"Output_2MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_3m0a:{start_node:"Component2_1", end_node:"Output_3MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_3m2a:{start_node:"Component2_1", end_node:"Output_3MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component21_3m3a:{start_node:"Component2_1", end_node:"Output_3MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+
+
+Axon_Component22_0p1a:{start_node:"Component2_2", end_node:"Output_0PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_0p0a:{start_node:"Component2_2", end_node:"Output_0PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_0p3a:{start_node:"Component2_2", end_node:"Output_0PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_1p1a:{start_node:"Component2_2", end_node:"Output_1PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_1p0a:{start_node:"Component2_2", end_node:"Output_1PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_1p3a:{start_node:"Component2_2", end_node:"Output_1PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_2p1a:{start_node:"Component2_2", end_node:"Output_2PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_2p0a:{start_node:"Component2_2", end_node:"Output_2PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_2p3a:{start_node:"Component2_2", end_node:"Output_2PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_3p1a:{start_node:"Component2_2", end_node:"Output_3PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_3p0a:{start_node:"Component2_2", end_node:"Output_3PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_3p3a:{start_node:"Component2_2", end_node:"Output_3PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+Axon_Component22_0m1a:{start_node:"Component2_2", end_node:"Output_0MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_0m0a:{start_node:"Component2_2", end_node:"Output_0MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_0m3a:{start_node:"Component2_2", end_node:"Output_0MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_1m1a:{start_node:"Component2_2", end_node:"Output_1MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_1m0a:{start_node:"Component2_2", end_node:"Output_1MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_1m3a:{start_node:"Component2_2", end_node:"Output_1MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_2m1a:{start_node:"Component2_2", end_node:"Output_2MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_2m0a:{start_node:"Component2_2", end_node:"Output_2MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_2m3a:{start_node:"Component2_2", end_node:"Output_2MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_3m1a:{start_node:"Component2_2", end_node:"Output_3MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_3m0a:{start_node:"Component2_2", end_node:"Output_3MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component22_3m3a:{start_node:"Component2_2", end_node:"Output_3MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+
+
+Axon_Component23_0p1a:{start_node:"Component2_3", end_node:"Output_0PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_0p2a:{start_node:"Component2_3", end_node:"Output_0PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_0p0a:{start_node:"Component2_3", end_node:"Output_0PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_1p1a:{start_node:"Component2_3", end_node:"Output_1PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_1p2a:{start_node:"Component2_3", end_node:"Output_1PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_1p0a:{start_node:"Component2_3", end_node:"Output_1PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_2p1a:{start_node:"Component2_3", end_node:"Output_2PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_2p2a:{start_node:"Component2_3", end_node:"Output_2PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_2p0a:{start_node:"Component2_3", end_node:"Output_2PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_3p1a:{start_node:"Component2_3", end_node:"Output_3PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_3p2a:{start_node:"Component2_3", end_node:"Output_3PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_3p0a:{start_node:"Component2_3", end_node:"Output_3PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+Axon_Component23_0m1a:{start_node:"Component2_3", end_node:"Output_0MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_0m2a:{start_node:"Component2_3", end_node:"Output_0MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_0m0a:{start_node:"Component2_3", end_node:"Output_0MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_1m1a:{start_node:"Component2_3", end_node:"Output_1MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_1m2a:{start_node:"Component2_3", end_node:"Output_1MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_1m0a:{start_node:"Component2_3", end_node:"Output_1MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_2m1a:{start_node:"Component2_3", end_node:"Output_2MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_2m2a:{start_node:"Component2_3", end_node:"Output_2MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_2m0a:{start_node:"Component2_3", end_node:"Output_2MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_3m1a:{start_node:"Component2_3", end_node:"Output_3MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_3m2a:{start_node:"Component2_3", end_node:"Output_3MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Component23_3m0a:{start_node:"Component2_3", end_node:"Output_3MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+
+
+
+
+
+Axon_Componentm_1p0a:{start_node:"Operator_MINUS", end_node:"Output_1PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_1p1a:{start_node:"Operator_MINUS", end_node:"Output_1PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_1p2a:{start_node:"Operator_MINUS", end_node:"Output_1PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_1p3a:{start_node:"Operator_MINUS", end_node:"Output_1PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_2p0a:{start_node:"Operator_MINUS", end_node:"Output_2PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_2p1a:{start_node:"Operator_MINUS", end_node:"Output_2PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_2p2a:{start_node:"Operator_MINUS", end_node:"Output_2PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_2p3a:{start_node:"Operator_MINUS", end_node:"Output_2PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_0p0a:{start_node:"Operator_MINUS", end_node:"Output_0PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_0p1a:{start_node:"Operator_MINUS", end_node:"Output_0PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_0p2a:{start_node:"Operator_MINUS", end_node:"Output_0PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_0p3a:{start_node:"Operator_MINUS", end_node:"Output_0PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_3p0a:{start_node:"Operator_MINUS", end_node:"Output_3PLUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_3p1a:{start_node:"Operator_MINUS", end_node:"Output_3PLUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_3p2a:{start_node:"Operator_MINUS", end_node:"Output_3PLUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentm_3p3a:{start_node:"Operator_MINUS", end_node:"Output_3PLUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+
+Axon_Componentp_1m0a:{start_node:"Operator_PLUS", end_node:"Output_1MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_1m1a:{start_node:"Operator_PLUS", end_node:"Output_1MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_1m2a:{start_node:"Operator_PLUS", end_node:"Output_1MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_1m3a:{start_node:"Operator_PLUS", end_node:"Output_1MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_2m0a:{start_node:"Operator_PLUS", end_node:"Output_2MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_2m1a:{start_node:"Operator_PLUS", end_node:"Output_2MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_2m2a:{start_node:"Operator_PLUS", end_node:"Output_2MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_2m3a:{start_node:"Operator_PLUS", end_node:"Output_2MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_0m0a:{start_node:"Operator_PLUS", end_node:"Output_0MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_0m1a:{start_node:"Operator_PLUS", end_node:"Output_0MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_0m2a:{start_node:"Operator_PLUS", end_node:"Output_0MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_0m3a:{start_node:"Operator_PLUS", end_node:"Output_0MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_3m0a:{start_node:"Operator_PLUS", end_node:"Output_3MINUS0", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_3m1a:{start_node:"Operator_PLUS", end_node:"Output_3MINUS1", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_3m2a:{start_node:"Operator_PLUS", end_node:"Output_3MINUS2", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
+Axon_Componentp_3m3a:{start_node:"Operator_PLUS", end_node:"Output_3MINUS3", shape:["default"], type:"GABA", lengthsec:feedback_inhibition_time1,power:filter_inhibition1},
 
 
 
@@ -973,34 +1247,34 @@ Axon_Osc2_1:{start_node:"Component2_1", end_node:"Component2_1", shape:["loop"],
 Axon_Osc2_2:{start_node:"Component2_2", end_node:"Component2_2", shape:["loop"], type:"glutamate", lengthsec:10,power:10},
 Axon_Osc2_3:{start_node:"Component2_3", end_node:"Component2_3", shape:["loop"], type:"glutamate", lengthsec:10,power:10},
 
-Axon_pmfilterkill:{start_node:"Operator_PLUS", end_node:"Operator_MINUS", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon_mpfilterkill:{start_node:"Operator_MINUS", end_node:"Operator_PLUS", shape:["default"], type:"GABA", lengthsec:10,power:-20},
+Axon_pmfilterkill:{start_node:"Operator_PLUS", end_node:"Operator_MINUS", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_mpfilterkill:{start_node:"Operator_MINUS", end_node:"Operator_PLUS", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 
-Axon1_01filterkill:{start_node:"Component1_0", end_node:"Component1_1", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_02filterkill:{start_node:"Component1_0", end_node:"Component1_2", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_03filterkill:{start_node:"Component1_0", end_node:"Component1_3", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_10filterkill:{start_node:"Component1_1", end_node:"Component1_0", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_12filterkill:{start_node:"Component1_1", end_node:"Component1_2", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_13filterkill:{start_node:"Component1_1", end_node:"Component1_3", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_21filterkill:{start_node:"Component1_2", end_node:"Component1_1", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_20filterkill:{start_node:"Component1_2", end_node:"Component1_0", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_23filterkill:{start_node:"Component1_2", end_node:"Component1_3", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_31filterkill:{start_node:"Component1_3", end_node:"Component1_1", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_32filterkill:{start_node:"Component1_3", end_node:"Component1_2", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon1_30filterkill:{start_node:"Component1_3", end_node:"Component1_0", shape:["default"], type:"GABA", lengthsec:10,power:-20},
+Axon1_01filterkill:{start_node:"Component1_0", end_node:"Component1_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_02filterkill:{start_node:"Component1_0", end_node:"Component1_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_03filterkill:{start_node:"Component1_0", end_node:"Component1_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_10filterkill:{start_node:"Component1_1", end_node:"Component1_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_12filterkill:{start_node:"Component1_1", end_node:"Component1_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_13filterkill:{start_node:"Component1_1", end_node:"Component1_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_21filterkill:{start_node:"Component1_2", end_node:"Component1_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_20filterkill:{start_node:"Component1_2", end_node:"Component1_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_23filterkill:{start_node:"Component1_2", end_node:"Component1_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_31filterkill:{start_node:"Component1_3", end_node:"Component1_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_32filterkill:{start_node:"Component1_3", end_node:"Component1_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon1_30filterkill:{start_node:"Component1_3", end_node:"Component1_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 
-Axon2_01filterkill:{start_node:"Component2_0", end_node:"Component2_1", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_02filterkill:{start_node:"Component2_0", end_node:"Component2_2", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_03filterkill:{start_node:"Component2_0", end_node:"Component2_3", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_10filterkill:{start_node:"Component2_1", end_node:"Component2_0", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_12filterkill:{start_node:"Component2_1", end_node:"Component2_2", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_13filterkill:{start_node:"Component2_1", end_node:"Component2_3", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_21filterkill:{start_node:"Component2_2", end_node:"Component2_1", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_20filterkill:{start_node:"Component2_2", end_node:"Component2_0", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_23filterkill:{start_node:"Component2_2", end_node:"Component2_3", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_31filterkill:{start_node:"Component2_3", end_node:"Component2_1", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_32filterkill:{start_node:"Component2_3", end_node:"Component2_2", shape:["default"], type:"GABA", lengthsec:10,power:-20},
-Axon2_30filterkill:{start_node:"Component2_3", end_node:"Component2_0", shape:["default"], type:"GABA", lengthsec:10,power:-20},
+Axon2_01filterkill:{start_node:"Component2_0", end_node:"Component2_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_02filterkill:{start_node:"Component2_0", end_node:"Component2_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_03filterkill:{start_node:"Component2_0", end_node:"Component2_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_10filterkill:{start_node:"Component2_1", end_node:"Component2_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_12filterkill:{start_node:"Component2_1", end_node:"Component2_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_13filterkill:{start_node:"Component2_1", end_node:"Component2_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_21filterkill:{start_node:"Component2_2", end_node:"Component2_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_20filterkill:{start_node:"Component2_2", end_node:"Component2_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_23filterkill:{start_node:"Component2_2", end_node:"Component2_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_31filterkill:{start_node:"Component2_3", end_node:"Component2_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_32filterkill:{start_node:"Component2_3", end_node:"Component2_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon2_30filterkill:{start_node:"Component2_3", end_node:"Component2_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 
 
 
