@@ -203,7 +203,7 @@ var MINUS_excitement1 = 10
 var filter2_excitement1 = 0
 var filter2_inhibition = -0
 
-var feedback_inhibition_time1 = 30
+var feedback_inhibition_time1 = 10
 
 var AXONS = {
 
@@ -366,19 +366,31 @@ Axon_OPERATOR_FILTER_MINUS:{start_node:"OUTPUT_OPERATOR_FILTER", end_node:"INPUT
 
 Axon_OUTPUT_Component1_01:{start_node:"INPUTosc_CE", end_node:"OUTPUT_Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_Component1_02:{start_node:"INPUTosc_0", end_node:"OUTPUT_Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component1_03:{start_node:"RESULT_0", end_node:"OUTPUT_Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_03:{start_node:"RESULT_0", end_node:"OUTPUT_Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_03fa:{start_node:"RESULT_0", end_node:"INPUTosc_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_OUTPUT_Component1_03fb:{start_node:"RESULT_0", end_node:"INPUTosc_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_OUTPUT_Component1_03fc:{start_node:"RESULT_0", end_node:"INPUTosc_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 ///RESULT_0 > KILLOTHERSFILTER > inh OUTPUT_Component1_123
 Axon_OUTPUT_Component1_11:{start_node:"INPUTosc_CE", end_node:"OUTPUT_Component1_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_Component1_12:{start_node:"INPUTosc_1", end_node:"OUTPUT_Component1_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component1_13:{start_node:"RESULT_1", end_node:"OUTPUT_Component1_1", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_13:{start_node:"RESULT_1", end_node:"OUTPUT_Component1_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_13fa:{start_node:"RESULT_1", end_node:"INPUTosc_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_OUTPUT_Component1_13fb:{start_node:"RESULT_1", end_node:"INPUTosc_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_OUTPUT_Component1_13fc:{start_node:"RESULT_1", end_node:"INPUTosc_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 ///RESULT_1 > KILLOTHERSFILTER > inh OUTPUT_Component1_023
 Axon_OUTPUT_Component1_21:{start_node:"INPUTosc_CE", end_node:"OUTPUT_Component1_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_Component1_22:{start_node:"INPUTosc_2", end_node:"OUTPUT_Component1_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component1_23:{start_node:"RESULT_2", end_node:"OUTPUT_Component1_2", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_23:{start_node:"RESULT_2", end_node:"OUTPUT_Component1_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_23fa:{start_node:"RESULT_2", end_node:"INPUTosc_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_OUTPUT_Component1_23fb:{start_node:"RESULT_2", end_node:"INPUTosc_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_OUTPUT_Component1_23fc:{start_node:"RESULT_2", end_node:"INPUTosc_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 ///RESULT_2 > KILLOTHERSFILTER > inh OUTPUT_Component1_123
 Axon_OUTPUT_Component1_31:{start_node:"INPUTosc_CE", end_node:"OUTPUT_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_Component1_32:{start_node:"INPUTosc_3", end_node:"OUTPUT_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component1_33:{start_node:"RESULT_3", end_node:"OUTPUT_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:0},
+Axon_OUTPUT_Component1_33:{start_node:"RESULT_3", end_node:"OUTPUT_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_OUTPUT_Component1_33fa:{start_node:"RESULT_3", end_node:"INPUTosc_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_OUTPUT_Component1_33fb:{start_node:"RESULT_3", end_node:"INPUTosc_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_OUTPUT_Component1_33fc:{start_node:"RESULT_3", end_node:"INPUTosc_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 ///RESULT_3 > KILLOTHERSFILTER > inh OUTPUT_Component1_123
 ///filter
 Axon_OUTPUT_Component1_0FWDfilter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_0_A", shape:["default"], type:"glutamate", lengthsec:5,power:10},
