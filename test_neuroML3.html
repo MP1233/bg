@@ -18,7 +18,7 @@ Now let's add context. It is possible to enter longer formulas now. for example 
 Also when we want to start action, we use feedforward inhibition, assuming that start signal is when more than 1 spike comes to neuron. for our plus/minus module we could also implement feedforward inhibition, assuming start signal is 3 signals to neuron simultaneously
 Also compared to App2 Feedback algorythm was modified. However real parameters of  neurons may determine which algorythm better fits the system
 Since this is just illustration diagram, neuron params and time sync not done. This will be done in real neurons model for netpyne
-To do some test - press 10 times CE, wait 20 seconds, press 10 times 0, wait 20 seconds, press +, wait 20 seconds, press 2, etc
+To do some test - press 10 times CE, wait 20 seconds, press 10 times 0, wait 20 seconds, press 10 times +, wait 1 second, press 10 times 2, press 10 times -, wait 1 second, press 10 times 1, etc
 
 
 <br>
@@ -125,6 +125,7 @@ GREEN8_shiftXY=[0,850]
 GREEN9_shiftXY=[200,650]
 
 GREENa_shiftXY=[1450,1900]
+GREENb_shiftXY=[1550, 2000]
 
 
 
@@ -1534,6 +1535,70 @@ Axon_3minus3:{start_node:"Output_3MINUS3", end_node:"RESULT_0", shape:["default"
 
 
 
+
+Axon_RESULT_EQ_3ma:{start_node:"RESULT_minus3", end_node:"RESULT_EQ_minus3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_3mb:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_minus3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_3mc:{start_node:"RESULT_minus3", end_node:"RESULT_EQ_FILTER_minus3", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_3md:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_minus3", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_0e:{start_node:"RESULT_EQ_FILTER_minus3", end_node:"RESULT_EQ_minus3", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_RESULT_EQ_2ma:{start_node:"RESULT_minus2", end_node:"RESULT_EQ_minus2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_2mb:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_minus2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_2mc:{start_node:"RESULT_minus2", end_node:"RESULT_EQ_FILTER_minus2", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_2md:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_minus2", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_2me:{start_node:"RESULT_EQ_FILTER_minus2", end_node:"RESULT_EQ_minus2", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_RESULT_EQ_1ma:{start_node:"RESULT_minus1", end_node:"RESULT_EQ_minus1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_1mb:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_minus1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_1mc:{start_node:"RESULT_minus1", end_node:"RESULT_EQ_FILTER_minus1", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_1md:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_minus1", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_1me:{start_node:"RESULT_EQ_FILTER_minus1", end_node:"RESULT_EQ_minus1", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_RESULT_EQ_0a:{start_node:"RESULT_0", end_node:"RESULT_EQ_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_0b:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_0c:{start_node:"RESULT_0", end_node:"RESULT_EQ_FILTER_0", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_0d:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_0", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_0e:{start_node:"RESULT_EQ_FILTER_0", end_node:"RESULT_EQ_0", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_RESULT_EQ_1a:{start_node:"RESULT_1", end_node:"RESULT_EQ_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_1b:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_1c:{start_node:"RESULT_1", end_node:"RESULT_EQ_FILTER_1", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_1d:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_1", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_1e:{start_node:"RESULT_EQ_FILTER_1", end_node:"RESULT_EQ_1", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_RESULT_EQ_2a:{start_node:"RESULT_2", end_node:"RESULT_EQ_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_2b:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_2c:{start_node:"RESULT_2", end_node:"RESULT_EQ_FILTER_2", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_2d:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_2", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_2e:{start_node:"RESULT_EQ_FILTER_2", end_node:"RESULT_EQ_2", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_RESULT_EQ_3a:{start_node:"RESULT_3", end_node:"RESULT_EQ_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_3b:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_3c:{start_node:"RESULT_3", end_node:"RESULT_EQ_FILTER_3", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_3d:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_3", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_3e:{start_node:"RESULT_EQ_FILTER_3", end_node:"RESULT_EQ_3", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_RESULT_EQ_4a:{start_node:"RESULT_4", end_node:"RESULT_EQ_4", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_4b:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_4", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_4c:{start_node:"RESULT_4", end_node:"RESULT_EQ_FILTER_4", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_4d:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_4", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_4e:{start_node:"RESULT_EQ_FILTER_4", end_node:"RESULT_EQ_4", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_RESULT_EQ_5a:{start_node:"RESULT_5", end_node:"RESULT_EQ_5", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_5b:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_5", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_5c:{start_node:"RESULT_5", end_node:"RESULT_EQ_FILTER_5", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_5d:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_5", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_5e:{start_node:"RESULT_EQ_FILTER_5", end_node:"RESULT_EQ_5", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_RESULT_EQ_6a:{start_node:"RESULT_6", end_node:"RESULT_EQ_6", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_6b:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_6", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_RESULT_EQ_6c:{start_node:"RESULT_6", end_node:"RESULT_EQ_FILTER_6", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_6d:{start_node:"INPUT_EQ", end_node:"RESULT_EQ_FILTER_6", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_RESULT_EQ_6e:{start_node:"RESULT_EQ_FILTER_6", end_node:"RESULT_EQ_6", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+
+
+
 }
 
 
@@ -1784,6 +1849,29 @@ SUMM_FILTER_INH:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENa_shiftXY[0
 SUMM_FILTER_TOTAL_INH:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENa_shiftXY[0]+240,GREENa_shiftXY[1]+100]},
 SUMM_FILTER_EXC:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENa_shiftXY[0]+120,GREENa_shiftXY[1]+120]},
 SUMM_FILTER_TOTAL:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENa_shiftXY[0]+140,GREENa_shiftXY[1]+140]},
+
+
+RESULT_EQ_minus3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+200,GREENb_shiftXY[1]+20]},
+RESULT_EQ_FILTER_minus3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+190,GREENb_shiftXY[1]+30]},
+RESULT_EQ_minus2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+180,GREENb_shiftXY[1]+40]},
+RESULT_EQ_FILTER_minus2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+170,GREENb_shiftXY[1]+50]},
+RESULT_EQ_minus1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+160,GREENb_shiftXY[1]+60]},
+RESULT_EQ_FILTER_minus1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+150,GREENb_shiftXY[1]+70]},
+RESULT_EQ_0:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+140,GREENb_shiftXY[1]+80]},
+RESULT_EQ_FILTER_0:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+130,GREENb_shiftXY[1]+90]},
+RESULT_EQ_1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+120,GREENb_shiftXY[1]+100]},
+RESULT_EQ_FILTER_1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+110,GREENb_shiftXY[1]+110]},
+RESULT_EQ_2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+100,GREENb_shiftXY[1]+120]},
+RESULT_EQ_FILTER_2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+90,GREENb_shiftXY[1]+130]},
+RESULT_EQ_3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+80,GREENb_shiftXY[1]+140]},
+RESULT_EQ_FILTER_3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+70,GREENb_shiftXY[1]+150]},
+RESULT_EQ_4:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+60,GREENb_shiftXY[1]+160]},
+RESULT_EQ_FILTER_4:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+50,GREENb_shiftXY[1]+170]},
+RESULT_EQ_5:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+40,GREENb_shiftXY[1]+180]},
+RESULT_EQ_FILTER_5:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+30,GREENb_shiftXY[1]+190]},
+RESULT_EQ_6:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+20,GREENb_shiftXY[1]+200]},
+RESULT_EQ_FILTER_6:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREENb_shiftXY[0]+10,GREENb_shiftXY[1]+210]},
+
 
 /*
 
