@@ -2077,6 +2077,63 @@ function anim(time) {
 startTime = startTime + 1 ; 
 OnlyOnce = 1 ; 
 clear() ; 
+
+
+
+////////////////////////////////////////////////////////////////////////
+//DRAW LAYERS
+ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.fillStyle = "#ffffdd";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(GREEN2_shiftXY[0]-100, GREEN2_shiftXY[1]-40,520, 1060);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 2", GREEN2_shiftXY[0]+100, GREEN2_shiftXY[1]+1000);
+
+ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.fillStyle = "#ffeedd";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(GREEN4_shiftXY[0], GREEN4_shiftXY[1],260, 260);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 3", GREEN4_shiftXY[0]+0, GREEN4_shiftXY[1]+250);
+
+ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.fillStyle = "#ddffff";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(GREEN_shiftXY[0]-100, GREEN_shiftXY[1]-40,320, 1060);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 4", GREEN_shiftXY[0]+100, GREEN_shiftXY[1]+1000);
+
+ctx.beginPath();
+ctx.fillStyle = "#ddddff";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(GREENa_shiftXY[0], GREENa_shiftXY[1],260, 260);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 5", GREENa_shiftXY[0]+0, GREENa_shiftXY[1]+250);
+
+ctx.beginPath();
+ctx.fillStyle = "#ffddff";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(GREENb_shiftXY[0], GREENb_shiftXY[1],260, 260);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 6", GREENb_shiftXY[0]+100, GREENb_shiftXY[1]+250);
+
+
+////////////////////////////////////////////////////////////////////////////
+
+
 for (eachaxon in AXONS) {
     drawLine(AXONS[eachaxon])
 }
