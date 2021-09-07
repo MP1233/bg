@@ -18,7 +18,13 @@ Now let's add context. It is possible to enter longer formulas now. for example 
 Also when we want to start action, we use feedforward inhibition, assuming that start signal is when more than 1 spike comes to neuron. for our plus/minus module we could also implement feedforward inhibition, assuming start signal is 3 signals to neuron simultaneously
 Also compared to App2 Feedback algorythm was modified. However real parameters of  neurons may determine which algorythm better fits the system
 Since this is just illustration diagram, neuron params and time sync not done. This will be done in real neurons model for netpyne
-To do some test - press 10 times CE, wait 20 seconds, press 10 times 0, wait 20 seconds, press 10 times +, wait 1 second, press 10 times 2, press 10 times -, wait 1 second, press 10 times 1, etc
+
+
+Now we have microcircuits that are connectec with other microcircuits by forward and feecback inter-microcircuits connections (also see Fig). 1st microcircuit summs or minus components. 2nd microcircuit processes input signals. 3rd transaction microcircuit waits while information input is complete and the time is right to commit the transaction
+Microcircuits in addition to direct connections also connected via the relay mechanism, which better suits thalamus
+
+
+To do some test - press 10 times CE, wait 20 seconds, press 10 times 0, wait 20 seconds, press 10 times +, wait 1 second, press 10 times 2, press 10 times -, wait 1 second, press 10 times 1, etc (this network is a draft diagram and might perform incorrect. it is done only for testing purposes. paarameters should be aligned into real neurons model. probably vast amount of neurons will be involved into error handling actions, rather than in primary calculations)
 
 
 <br>
@@ -40,16 +46,27 @@ App4<br><br><br>
 <a href="test_neuroML3.html">PAGE 4</a>
 <h3>fitting 6 layers</h3>
 
-Lets start with these 2 approximations of 6layers microcircuit and try to fit our network to this scheme. layer4 input+ amplification. Layer 3+2 processing. (Fig) Ascending / descending (Fig)
+Lets start with these 4 approximations of 6layers microcircuit and try to fit our network to this scheme. layer4 input+ amplification. Layer 3+2 processing. (Fig) Ascending / descending (Fig)<br><br>
+<img src="Neuroml_img/layers1.png"><br><br>
+<img src="Neuroml_img/layers2.png"><br><br>
+<img src="Neuroml_img/layers3.png"><br><br>
+<img src="Neuroml_img/layers4.png"><br><br>
 
-Also our network has many loops. it is not clear wwhether these loops occur in cortex or part of them occupy thalamo-striatal loop
+
+Also our network has many loops. it is not yet clear whether these loops occur in cortex or part of them occupy thalamo-striatal loop
 
 
 <h3>fitting existing cortex neuron models</h3>
 
 at this stage lets take existing neuroML models of cortex neurons and synapses and reimplement our model replacing model neurons with real ones<br><br>
+some information about neuron types location and other characteristics can be found on these Figs<br><br>
 
-formula or machine learning / plasticity to fit best coefficients
+<img src="Neuroml_img/neuron_types_exc.png"><br><br>
+<img src="Neuroml_img/neuron_types_exc2.png"><br><br>
+<img src="Neuroml_img/neurons_density_exc.png"><br><br>
+
+
+also we should use these formulas or machine learning / plasticity to fit best coefficients .....................
 
 at the beginning or "=" command input of input_number_cell 0..9 oscillates 1st_component_cell 0..9
 after"-" or "+" command input of input_number_cell 0..9 oscillates 2nd_component_cell 0..9. operation_cell +..- also oscilates
@@ -2106,7 +2123,7 @@ ctx.beginPath();
 ctx.lineWidth = "4";
 ctx.fillStyle = "#ddffff";
 ///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
-ctx.rect(GREEN_shiftXY[0]-100, GREEN_shiftXY[1]-40,320, 1060);
+ctx.rect(GREEN_shiftXY[0]-20, GREEN_shiftXY[1]-40,220, 1060);
 ctx.fill();
 ctx.font = "25px Arial bold";
 ctx.fillStyle = "#000000" ;
