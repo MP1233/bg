@@ -39,10 +39,16 @@ Fig 3<br><br><br>
 App4<br><br><br>
 
 
-Such algorythm was applied to NeuroML Netpyne with simplified neurons that have not natural parameters such as 1.0 firing probability. (Fig 5). code /tut2new.py
+Such algorythm was applied to NeuroML Netpyne with simplified neurons that have not natural parameters such as 1.0 firing probability. (Fig 5). <a href="Neuroml_img/calculator_filter.py">code /calculator_filter.py</a> <br>
+However this code 1) uses modified feedback filter from App3 instead of classic filter from App2. 2) Based on total synchronistion of neurons spiking 3) Uses ideal neuron models with firing probability 1.0. Whether or not such simplifications are valid should be clear after fitting real neurons into model <br><br>
+<img src="Neuroml_img/tut2_raster_gid_filter.png"><br>
 
-Fig 5
+Fig 5<br>Component1_0, Component2_0, Output_0PLUS0, Result_0 neurons show spiking, other neurons are silent<br><br>
 
+
+
+A<img src="Neuroml_img/tut2_traces__gid_11_filter.png"><br>B<img src="Neuroml_img/tut2_traces__gid_12_filter.png"><br>
+Fig6<br> A Comparison of correct answer neuron 0+0 and B incorrect answer neuron 0+1<br><br>
 
 
 
