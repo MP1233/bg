@@ -67,8 +67,23 @@ netParams.connParams['Axon_Transaction_CORE15'] = {     'preConds': {'pop': 'TRA
 <br>
 netParams.connParams['Axon_Transaction_CORE16'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
 <br>
-we need both condition to be valid to start action. so our first condition excites inhibitory neuron. after 2nd condition activated it inhibits this inhibitory neuron. and action can start. This way we utilize BG direct and inderect pathways in our model. After several ... TRANSACTION_NEURON_COMPLETE opens the gate and updated information for comp1 comp2 operator can procede to calculator part <br>
+we need both condition to be valid to start action. so our first condition excites inhibitory neuron. after 2nd condition activated it inhibits this inhibitory neuron. and action can start. This way we utilize BG direct and inderect pathways in our model. After several consequentfiltering actions TRANSACTION_NEURON_COMPLETE opens the gate and updated information for comp1 comp2 operator can procede to calculator part <br>
 <br>
+
+Result - Neuroml Netpyne total model <a href = Neuroml_img/tut2input5.py>code</a>
+CE 0+2-1+2 EQ
+
+Illustrations:
+
+<img src="Neuroml_img/TOTAL_NETWORK_5pop.png"><br><br>
+
+Fig Total Graph of neuron populations activity in time while receiving inputs CE 0 + 2 - 1 + 2 EQ at 500 1000 1500 2000 2500 3000 3500 4000 msecs <br><br>
+A<img src="Neuroml_img/Intermediate_Calculation_0.png"><br><br>
+B<img src="Neuroml_img/Intermediate_Calculation_1.png"><br><br>
+C<img src="Neuroml_img/Intermediate_Calculation_2.png"><br><br>
+D<img src="Neuroml_img/Intermediate_Calculation_3.png"><br><br>
+E<img src="Neuroml_img/TOTAL_RESULT_3.png"><br><br>
+Fig Neurons that fire when current total intermediate summ is A 0, B 1, C 2, D 3, E -Final result 3 neuron  <br><br>
 
 <h3>fitting existing cortex neuron models</h3>
 
