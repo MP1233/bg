@@ -1189,9 +1189,9 @@ netParams.connParams['TR6'] = {     'preConds': {'pop': 'TOTAL_RESULT_GPI'},    
 netParams.connParams['TR7'] = {     'preConds': {'pop': 'TOTAL_RESULT_GPI'},    'postConds': {'pop': 'TOTAL_RESULT_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
 
 netParams.connParams['TR8'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'TOTAL_RESULT_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
-netParams.connParams['TR9'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'TOTAL_RESULT_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
-netParams.connParams['TRa'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'TOTAL_RESULT_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
-netParams.connParams['TRb'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'TOTAL_RESULT_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['TR9'] = {     'preConds': {'pop': 'Output_1osc'},    'postConds': {'pop': 'TOTAL_RESULT_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['TRa'] = {     'preConds': {'pop': 'Output_2osc'},    'postConds': {'pop': 'TOTAL_RESULT_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['TRb'] = {     'preConds': {'pop': 'Output_3osc'},    'postConds': {'pop': 'TOTAL_RESULT_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
 
 
@@ -1716,6 +1716,7 @@ netParams.stimSourceParams['bkg_5'] = {'type': 'NetStim', 'rate': 30, 'noise': 0
 netParams.stimSourceParams['bkg_6'] = {'type': 'NetStim', 'rate': 30, 'noise': 0.5, 'start': 2600, 'duration': 200}
 netParams.stimSourceParams['bkg_7'] = {'type': 'NetStim', 'rate': 30, 'noise': 0.5, 'start': 3100, 'duration': 200}
 netParams.stimSourceParams['bkg_8'] = {'type': 'NetStim', 'rate': 30, 'noise': 0.5, 'start': 3600, 'duration': 200}
+netParams.stimSourceParams['bkg_9'] = {'type': 'NetStim', 'rate': 30, 'noise': 0.5, 'start': 4100, 'duration': 200}
 
 netParams.stimSourceParams['bkg_1i'] = {'type': 'NetStim', 'rate': 310, 'noise': 0.5, 'start': 300, 'duration': 200}
 netParams.stimSourceParams['bkg_2i'] = {'type': 'NetStim', 'rate': 310, 'noise': 0.5, 'start': 800, 'duration': 200}
@@ -1743,6 +1744,7 @@ netParams.stimTargetParams['bkg_5->MINUS'] = {'source': 'bkg_5', 'conds': {'pop'
 netParams.stimTargetParams['bkg_6->1'] = {'source': 'bkg_6', 'conds': {'pop': 'INPUT_1'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
 netParams.stimTargetParams['bkg_7->PLUS'] = {'source': 'bkg_7', 'conds': {'pop': 'INPUT_PLUSf'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
 netParams.stimTargetParams['bkg_8->2'] = {'source': 'bkg_8', 'conds': {'pop': 'INPUT_2f'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_9->EQ'] = {'source': 'bkg_9', 'conds': {'pop': 'INPUT_EQ'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
 
 netParams.stimTargetParams['bkg_1i>CE'] = {'source': 'bkg_1i', 'conds': {'pop': 'INPUT_CE'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
 netParams.stimTargetParams['bkg_2i->0'] = {'source': 'bkg_2i', 'conds': {'pop': 'INPUT_0'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
@@ -1770,7 +1772,7 @@ netParams.stimTargetParams['bkg_8i>2f'] = {'source': 'bkg_8i', 'conds': {'pop': 
 # Simulation options
 simConfig = specs.SimConfig()       # object of class SimConfig to store simulation configuration
 
-simConfig.duration = 4*1e3          # Duration of the simulation, in ms
+simConfig.duration = 4.5*1e3          # Duration of the simulation, in ms
 simConfig.dt = 0.025                # Internal integration timestep to use
 simConfig.verbose = False           # Show detailed messages
 simConfig.recordTraces = {'V_soma':{'sec':'soma','loc':0.5,'var':'v'}}  # Dict with traces to record
@@ -1780,7 +1782,7 @@ simConfig.savePickle = False        # Save params, network and sim output to pic
 simConfig.saveJson = True
 
 simConfig.analysis['plotRaster'] = {'saveFig': True}                  # Plot a raster
-simConfig.analysis['plotTraces'] = {'include': [0,55,270,275,280,285,290,295,300,305,310,315,320], 'saveFig': True} #590,595,600,605,610,615,620,625,630,635,640,645,650,655,660,665,670,675,680,685,690,695,700,705,710,715,120,725,730,735,740,745,750,755,760,765,770,775], 'saveFig': True} # ,65,215,225,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,390,395,400,405,410,415,420,425], 'saveFig': True}  # 0 - PLUS, 2 - Comp 1 0, 6 - Comp 2 0, 
+simConfig.analysis['plotTraces'] = {'include': [0,55,270,285,300,315,850,855,860,865,870,875], 'saveFig': True} #590,595,600,605,610,615,620,625,630,635,640,645,650,655,660,665,670,675,680,685,690,695,700,705,710,715,120,725,730,735,740,745,750,755,760,765,770,775], 'saveFig': True} # ,65,215,225,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,390,395,400,405,410,415,420,425], 'saveFig': True}  # 0 - PLUS, 2 - Comp 1 0, 6 - Comp 2 0, 
 simConfig.analysis['plot2Dnet'] = {'saveFig': True}                   # plot 2D cell positions and connections
 
 # Create network and run simulation
