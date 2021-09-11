@@ -81,17 +81,27 @@ netParams.popParams['FILTER'] = {'cellType': 'PYR', 'numCells': 10}
 
 netParams.popParams['TOTAL_INPUT'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Operator_PLUS'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Operator_PLUSosc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Operator_MINUS'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Operator_MINUSosc'] = {'cellType': 'PYR', 'numCells': 5}
 
 netParams.popParams['Component1_0'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Component1_0osc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Component1_1'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Component1_1osc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Component1_2'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Component1_2osc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Component1_3'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Component1_3osc'] = {'cellType': 'PYR', 'numCells': 5}
 
 netParams.popParams['Component2_0'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Component2_0osc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Component2_1'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Component2_1osc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Component2_2'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Component2_2osc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Component2_3'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Component2_3osc'] = {'cellType': 'PYR', 'numCells': 5}
 
 netParams.popParams['Output_0PLUS0'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Output_0PLUS1'] = {'cellType': 'PYR', 'numCells': 5}
@@ -128,9 +138,17 @@ netParams.popParams['Output_3MINUS2'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Output_3MINUS3'] = {'cellType': 'PYR', 'numCells': 5}
 
 netParams.popParams['Output_0'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Output_0osc'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Output_0osc2'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Output_1'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Output_1osc'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Output_1osc2'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Output_2'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Output_2osc'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Output_2osc2'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Output_3'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Output_3osc'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['Output_3osc2'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Output_4'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Output_5'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['Output_6'] = {'cellType': 'PYR', 'numCells': 5}
@@ -233,14 +251,44 @@ netParams.popParams['TRANSACTION_NEURON_ONLY_OPERATOR_killer'] = {'cellType': 'P
 netParams.popParams['TRANSACTION_NEURON_COMPLETEO'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['TRANSACTION_NEURON_COMPLETEO_osc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['TRANSACTION_NEURON_COMPLETEO_osc2'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['TRANSACTION_NEURON_COMPLETEO_killer'] = {'cellType': 'PYR', 'numCells': 5}
 
 netParams.popParams['TRANSACTION_NEURON_COMPLETEV'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['TRANSACTION_NEURON_COMPLETEV_osc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['TRANSACTION_NEURON_COMPLETEV_osc2'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['TRANSACTION_NEURON_COMPLETEV_killer'] = {'cellType': 'PYR', 'numCells': 5}
 
 netParams.popParams['TRANSACTION_NEURON_COMPLETE'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['TRANSACTION_NEURON_COMPLETE_osc'] = {'cellType': 'PYR', 'numCells': 5}
 netParams.popParams['TRANSACTION_NEURON_COMPLETE_osc2'] = {'cellType': 'PYR', 'numCells': 5}
+
+
+netParams.popParams['TRANSACTION_NEURON_COMPLETE_GPI'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_PLUS'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_MINUS'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_Component1_0'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_Component1_1'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_Component1_2'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_Component1_3'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_Component2_0'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_Component2_1'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_Component2_2'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['START_TRANSACTION_Component2_3'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['FINISH_TRANSACTION'] = {'cellType': 'PYR', 'numCells': 5}
+
+
+
+
+
+netParams.popParams['Output_0123'] = {'cellType': 'PYR', 'numCells': 5}
+
+
+
+netParams.popParams['TOTAL_RESULT_GPI'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['TOTAL_RESULT_0'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['TOTAL_RESULT_1'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['TOTAL_RESULT_2'] = {'cellType': 'PYR', 'numCells': 5}
+netParams.popParams['TOTAL_RESULT_3'] = {'cellType': 'PYR', 'numCells': 5}
 
 
 
@@ -573,49 +621,303 @@ netParams.connParams['Axon_OUTPUT_Component2_3mFWDfilter3'] = {     'preConds': 
 
 
 
-netParams.connParams['Axon_Transaction_CORE00'] = {     'preConds': {'pop': 'INPUT2_CE'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE00'] = {     'preConds': {'pop': 'INPUT2_CE'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+
+
 netParams.connParams['Axon_Transaction_CORE0b'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
 netParams.connParams['Axon_Transaction_CORE0c'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc2'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
 netParams.connParams['Axon_Transaction_CORE0d'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc2'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'}  
+
 netParams.connParams['Axon_Transaction_CORE0e'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
 netParams.connParams['Axon_Transaction_CORE0f'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
 netParams.connParams['Axon_Transaction_CORE0g'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
 netParams.connParams['Axon_Transaction_CORE0h'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEV_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
 netParams.connParams['Axon_Transaction_CORE0i'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
-
-netParams.connParams['Axon_Transaction_CORE10'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_ONLY_VALUE'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-
-#INPUT2_0 > TRANSACTION_NEURON_ONLY_VALUE_killer inh
-#TRANSACTION_NEURON_EMPTY > TRANSACTION_NEURON_ONLY_VALUE_killer exc
-#TRANSACTION_NEURON_ONLY_VALUE_killer > TRANSACTION_ONLY_VALUE inh
-
-
-netParams.connParams['Axon_Transaction_CORE1b'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_ONLY_VALUE_osc'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['Axon_Transaction_CORE1c'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_VALUE_osc'},    'postConds': {'pop': 'TRANSACTION_ONLY_VALUE_osc2'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
-netParams.connParams['Axon_Transaction_CORE1d'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_VALUE_osc2'},    'postConds': {'pop': 'TRANSACTION_ONLY_VALUE_osc'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'}  
-netParams.connParams['Axon_Transaction_CORE1e'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_EMPTY_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
-netParams.connParams['Axon_Transaction_CORE1f'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
-netParams.connParams['Axon_Transaction_CORE1g'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
-netParams.connParams['Axon_Transaction_CORE1h'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEV_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
-netParams.connParams['Axon_Transaction_CORE1i'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
-
-
-
-
-netParams.connParams['Axon_Transaction_CORE0j'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
-netParams.connParams['Axon_Transaction_CORE0k'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
-netParams.connParams['Axon_Transaction_CORE0l'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
-netParams.connParams['Axon_Transaction_CORE0m'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
-netParams.connParams['Axon_Transaction_CORE0n'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-
-netParams.connParams['Axon_Transaction_CORE0o'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
-
-
-
+netParams.connParams['Axon_Transaction_CORE0ee'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE0ff'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE0gg'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE0hh'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEV_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE0ii'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
 
 """
 
-netParams.connParams['Axon_Transaction_CORE20'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_ONLY_OPERATOR'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE10'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+#INPUT2_0,1,2,3 > TRANSACTION_NEURON_ONLY_VALUE_killer inh
+#TRANSACTION_NEURON_EMPTY > TRANSACTION_NEURON_ONLY_VALUE_killer exc
+#TRANSACTION_NEURON_ONLY_VALUE_killer > TRANSACTION_ONLY_VALUE inh
+netParams.connParams['Axon_Transaction_CORE11'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE12'] = {     'preConds': {'pop': 'INPUT2_1'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE13'] = {     'preConds': {'pop': 'INPUT2_2'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE14'] = {     'preConds': {'pop': 'INPUT2_3'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE15'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': 1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE16'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 1,    'synMech': 'inh'}
+
+netParams.connParams['Axon_Transaction_CORE1b'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE1c'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc2'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE1d'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc2'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'}  
+
+netParams.connParams['Axon_Transaction_CORE1e'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1f'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1g'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1h'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEV_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1i'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE1ee'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1ff'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1gg'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1hh'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEV_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1ii'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+
+"""
+
+
+
+
+netParams.connParams['Axon_Transaction_CORE10'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+#INPUT2_0,1,2,3 > TRANSACTION_NEURON_ONLY_VALUE_killer inh
+#TRANSACTION_NEURON_EMPTY > TRANSACTION_NEURON_ONLY_VALUE_killer exc
+#TRANSACTION_NEURON_ONLY_VALUE_killer > TRANSACTION_ONLY_VALUE inh
+#netParams.connParams['Axon_Transaction_CORE11'] = {     'preConds': {'pop': 'INPUT2_CE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE12'] = {     'preConds': {'pop': 'INPUT2_EQ'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE13'] = {     'preConds': {'pop': 'INPUT2_PLUS'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE14'] = {     'preConds': {'pop': 'INPUT2_MINUS'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE15'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_killer'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': 1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE16'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_killer'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 1,    'synMech': 'inh'}
+
+netParams.connParams['Axon_Transaction_CORE1b'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE1c'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc2'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE1d'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc2'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'}  
+
+netParams.connParams['Axon_Transaction_CORE1e'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1f'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1g'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1h'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEV_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1i'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE1ee'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1ff'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1gg'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1hh'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEV_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE1ii'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+
+
+
+
+
+
+
+
+netParams.connParams['Axon_Transaction_CORE20'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+#INPUT2_0,1,2,3 > TRANSACTION_NEURON_ONLY_VALUE_killer inh
+#TRANSACTION_NEURON_EMPTY > TRANSACTION_NEURON_ONLY_VALUE_killer exc
+#TRANSACTION_NEURON_ONLY_VALUE_killer > TRANSACTION_ONLY_VALUE inh
+netParams.connParams['Axon_Transaction_CORE21'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE22'] = {     'preConds': {'pop': 'INPUT2_1'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE23'] = {     'preConds': {'pop': 'INPUT2_2'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE24'] = {     'preConds': {'pop': 'INPUT2_3'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE25'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_killer'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': 1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE26'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_killer'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 1,    'synMech': 'inh'}
+
+netParams.connParams['Axon_Transaction_CORE27'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+
+netParams.connParams['Axon_Transaction_CORE2b'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE2c'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc2'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE2d'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc2'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'}  
+
+netParams.connParams['Axon_Transaction_CORE2e'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE2f'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE2g'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE2h'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEV_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE2i'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE2ee'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE2ff'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE2gg'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEO_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE2hh'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETEV_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_Transaction_CORE2ii'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+
+
+
+
+
+
+netParams.connParams['Axon_aTransaction_CORE27'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_aTransaction_CORE28'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_aTransaction_CORE29'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_aTransaction_CORE30'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+
+netParams.connParams['Axon_startTransaction_PLUS'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_PLUS'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_startTransaction_MINUS'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_MINUS'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_startTransaction_Component1_0'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_startTransaction_Component1_1'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_startTransaction_Component1_2'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_startTransaction_Component1_3'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_startTransaction_Component2_0'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_startTransaction_Component2_1'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_startTransaction_Component2_2'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_startTransaction_Component2_3'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+#+10 to block phase
+netParams.connParams['Axon_10startTransaction_PLUS'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_PLUS'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_10startTransaction_MINUS'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_MINUS'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_10startTransaction_Component1_0'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_10startTransaction_Component1_1'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_10startTransaction_Component1_2'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_10startTransaction_Component1_3'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_10startTransaction_Component2_0'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_10startTransaction_Component2_1'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_10startTransaction_Component2_2'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_10startTransaction_Component2_3'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 10+exc_delay1,    'synMech': 'inh'} 
+#+20 to block phase
+netParams.connParams['Axon_20startTransaction_PLUS'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_PLUS'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_20startTransaction_MINUS'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_MINUS'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_20startTransaction_Component1_0'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_20startTransaction_Component1_1'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_20startTransaction_Component1_2'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_20startTransaction_Component1_3'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component1_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_20startTransaction_Component2_0'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_20startTransaction_Component2_1'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_20startTransaction_Component2_2'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_20startTransaction_Component2_3'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_GPI'},    'postConds': {'pop': 'START_TRANSACTION_Component2_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': 20+exc_delay1,    'synMech': 'inh'} 
+
+
+
+
+
+#SUMM_MERGE > STC
+netParams.connParams['Axon_astartTransaction_PLUS'] = {     'preConds': {'pop': 'OUTPUT_PLUS'},    'postConds': {'pop': 'START_TRANSACTION_PLUS'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_astartTransaction_MINUS'] = {     'preConds': {'pop': 'OUTPUT_MINUS'},    'postConds': {'pop': 'START_TRANSACTION_MINUS'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_astartTransaction_Component1_0'] = {     'preConds': {'pop': 'MERGE_SUMM_Component1_0'},    'postConds': {'pop': 'START_TRANSACTION_Component1_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_astartTransaction_Component1_1'] = {     'preConds': {'pop': 'MERGE_SUMM_Component1_1'},    'postConds': {'pop': 'START_TRANSACTION_Component1_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_astartTransaction_Component1_2'] = {     'preConds': {'pop': 'MERGE_SUMM_Component1_2'},    'postConds': {'pop': 'START_TRANSACTION_Component1_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_astartTransaction_Component1_3'] = {     'preConds': {'pop': 'MERGE_SUMM_Component1_3'},    'postConds': {'pop': 'START_TRANSACTION_Component1_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_astartTransaction_Component2_0'] = {     'preConds': {'pop': 'OUTPUT_Component2_0'},    'postConds': {'pop': 'START_TRANSACTION_Component2_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_astartTransaction_Component2_1'] = {     'preConds': {'pop': 'OUTPUT_Component2_1'},    'postConds': {'pop': 'START_TRANSACTION_Component2_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_astartTransaction_Component2_2'] = {     'preConds': {'pop': 'OUTPUT_Component2_2'},    'postConds': {'pop': 'START_TRANSACTION_Component2_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_astartTransaction_Component2_3'] = {     'preConds': {'pop': 'OUTPUT_Component2_3'},    'postConds': {'pop': 'START_TRANSACTION_Component2_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+
+
+
+
+
+exc_delay7=50
+
+#STC > 'FINISH_TRANSACTION'
+netParams.connParams['Axon_bstartTransaction_PLUS'] = {     'preConds': {'pop': 'START_TRANSACTION_PLUS'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'} 
+netParams.connParams['Axon_bstartTransaction_MINUS'] = {     'preConds': {'pop': 'START_TRANSACTION_MINUS'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'} 
+netParams.connParams['Axon_bstartTransaction_Component1_0'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_0'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'} 
+netParams.connParams['Axon_bstartTransaction_Component1_1'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_1'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'} 
+netParams.connParams['Axon_bstartTransaction_Component1_2'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_2'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'} 
+netParams.connParams['Axon_bstartTransaction_Component1_3'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_3'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'} 
+netParams.connParams['Axon_bstartTransaction_Component2_0'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_0'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'} 
+netParams.connParams['Axon_bstartTransaction_Component2_1'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_1'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'} 
+netParams.connParams['Axon_bstartTransaction_Component2_2'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_2'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'} 
+netParams.connParams['Axon_bstartTransaction_Component2_3'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_3'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay7,    'synMech': 'exc'}  
+
+
+
+#FT > EMPTY
+netParams.connParams['Axon_bTransaction_CORE27'] = {     'preConds': {'pop': 'FINISH_TRANSACTION'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_bTransaction_CORE28'] = {     'preConds': {'pop': 'FINISH_TRANSACTION'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_bTransaction_CORE29'] = {     'preConds': {'pop': 'FINISH_TRANSACTION'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}  
+netParams.connParams['Axon_bTransaction_CORE30'] = {     'preConds': {'pop': 'FINISH_TRANSACTION'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+
+netParams.connParams['Axon_bbTransaction_CORE27'] = {     'preConds': {'pop': 'FINISH_TRANSACTION'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_bbTransaction_CORE28'] = {     'preConds': {'pop': 'FINISH_TRANSACTION'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_bbTransaction_CORE29'] = {     'preConds': {'pop': 'FINISH_TRANSACTION'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_OPERATOR_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}  
+netParams.connParams['Axon_bbTransaction_CORE30'] = {     'preConds': {'pop': 'FINISH_TRANSACTION'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+
+
+
+
+#STC > CALCULATOR !!!
+netParams.connParams['Axon_cstartTransaction_PLUS'] = {     'preConds': {'pop': 'START_TRANSACTION_PLUS'},    'postConds': {'pop': 'Operator_PLUS'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_MINUS'] = {     'preConds': {'pop': 'START_TRANSACTION_MINUS'},    'postConds': {'pop': 'Operator_MINUS'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_0'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_0'},    'postConds': {'pop': 'Component1_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_1'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_1'},    'postConds': {'pop': 'Component1_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_2'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_2'},    'postConds': {'pop': 'Component1_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_3'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_3'},    'postConds': {'pop': 'Component1_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component2_0'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_0'},    'postConds': {'pop': 'Component2_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component2_1'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_1'},    'postConds': {'pop': 'Component2_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component2_2'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_2'},    'postConds': {'pop': 'Component2_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component2_3'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_3'},    'postConds': {'pop': 'Component2_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}  
+
+#Calculator Oscilator
+netParams.connParams['Axon_cstartTransaction_PLUSosc'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Operator_PLUSosc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_MINUSosc'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Operator_MINUSosc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_0osc'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Component1_0osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_1osc'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Component1_1osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_2osc'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Component1_2osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_3osc'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Component1_3osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component2_0osc'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Component2_0osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component2_1osc'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Component2_1osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'}  
+netParams.connParams['Axon_cstartTransaction_Component2_2osc'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Component2_2osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'}  
+netParams.connParams['Axon_cstartTransaction_Component2_3osc'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Component2_3osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+
+netParams.connParams['Axon_cstartTransaction_PLUSosc2'] = {     'preConds': {'pop': 'Operator_PLUSosc'},    'postConds': {'pop': 'Operator_PLUS'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_MINUSosc2'] = {     'preConds': {'pop': 'Operator_MINUSosc'},    'postConds': {'pop': 'Operator_MINUS'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_0osc2'] = {     'preConds': {'pop': 'Component1_0osc'},    'postConds': {'pop': 'Component1_0'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_1osc2'] = {     'preConds': {'pop': 'Component1_1osc'},    'postConds': {'pop': 'Component1_1'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_2osc2'] = {     'preConds': {'pop': 'Component1_2osc'},    'postConds': {'pop': 'Component1_2'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component1_3osc2'] = {     'preConds': {'pop': 'Component1_3osc'},    'postConds': {'pop': 'Component1_3'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component2_0osc2'] = {     'preConds': {'pop': 'Component2_0osc'},    'postConds': {'pop': 'Component2_0'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'}  
+netParams.connParams['Axon_cstartTransaction_Component2_1osc2'] = {     'preConds': {'pop': 'Component2_1osc'},    'postConds': {'pop': 'Component2_1'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component2_2osc2'] = {     'preConds': {'pop': 'Component2_2osc'},    'postConds': {'pop': 'Component2_2'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_Component2_3osc2'] = {     'preConds': {'pop': 'Component2_3osc'},    'postConds': {'pop': 'Component2_3'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+
+
+#STC > Calculator - kill filter
+netParams.connParams['Axon_cstartTransaction_KILL1'] = {     'preConds': {'pop': 'START_TRANSACTION_PLUS'},    'postConds': {'pop': 'Operator_MINUS'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+#netParams.connParams['Axon_cstartTransaction_KILL2'] = {     'preConds': {'pop': 'START_TRANSACTION_PLUS'},    'postConds': {'pop': 'Operator_MINUSosc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL3'] = {     'preConds': {'pop': 'START_TRANSACTION_MINUS'},    'postConds': {'pop': 'Operator_PLUS'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+#netParams.connParams['Axon_cstartTransaction_KILL4'] = {     'preConds': {'pop': 'START_TRANSACTION_MINUS'},    'postConds': {'pop': 'Operator_PLUSosc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+
+netParams.connParams['Axon_cstartTransaction_KILL5'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_0'},    'postConds': {'pop': 'Component1_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL6'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_0'},    'postConds': {'pop': 'Component1_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL7'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_0'},    'postConds': {'pop': 'Component1_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL8'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_1'},    'postConds': {'pop': 'Component1_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL9'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_1'},    'postConds': {'pop': 'Component1_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL10'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_1'},    'postConds': {'pop': 'Component1_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL11'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_2'},    'postConds': {'pop': 'Component1_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL12'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_2'},    'postConds': {'pop': 'Component1_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL13'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_2'},    'postConds': {'pop': 'Component1_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL14'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_3'},    'postConds': {'pop': 'Component1_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL15'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_3'},    'postConds': {'pop': 'Component1_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL16'] = {     'preConds': {'pop': 'START_TRANSACTION_Component1_3'},    'postConds': {'pop': 'Component1_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+
+netParams.connParams['Axon_cstartTransaction_KILL17'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_0'},    'postConds': {'pop': 'Component2_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL18'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_0'},    'postConds': {'pop': 'Component2_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL19'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_0'},    'postConds': {'pop': 'Component2_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL20'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_1'},    'postConds': {'pop': 'Component2_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL21'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_1'},    'postConds': {'pop': 'Component2_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL22'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_1'},    'postConds': {'pop': 'Component2_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL23'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_2'},    'postConds': {'pop': 'Component2_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL24'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_2'},    'postConds': {'pop': 'Component2_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL25'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_2'},    'postConds': {'pop': 'Component2_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL26'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_3'},    'postConds': {'pop': 'Component2_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL27'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_3'},    'postConds': {'pop': 'Component2_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_KILL28'] = {     'preConds': {'pop': 'START_TRANSACTION_Component2_3'},    'postConds': {'pop': 'Component2_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+
+"""
+
+netParams.connParams['Axon_Transaction_CORE20'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_ONLY_OPERATOR'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+
+
+netParams.connParams['Axon_Transaction_CORE00'] = {     'preConds': {'pop': 'INPUT2_CE'},    'postConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_Transaction_CORE10'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_ONLY_VALUE'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+
+#INPUT2_0,1,2,3 > TRANSACTION_NEURON_ONLY_VALUE_killer inh
+#TRANSACTION_NEURON_EMPTY > TRANSACTION_NEURON_ONLY_VALUE_killer exc
+#TRANSACTION_NEURON_ONLY_VALUE_killer > TRANSACTION_ONLY_VALUE inh
+
+netParams.connParams['Axon_Transaction_CORE11'] = {     'preConds': {'pop': 'INPUT2_CE'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE12'] = {     'preConds': {'pop': 'INPUT2_EQ'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE13'] = {     'preConds': {'pop': 'INPUT2_PLUS'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE14'] = {     'preConds': {'pop': 'INPUT2_MINUS'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_Transaction_CORE15'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+
+netParams.connParams['Axon_Transaction_CORE16'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+
+
+
+
+
 
 netParams.connParams['Axon_Transaction_CORE2b'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_ONLY_OPERATOR_osc'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
 netParams.connParams['Axon_Transaction_CORE2c'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_OPERATOR_osc'},    'postConds': {'pop': 'TRANSACTION_ONLY_OPERATOR_osc2'},    'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
@@ -627,6 +929,106 @@ netParams.connParams['Axon_Transaction_CORE2h'] = {     'preConds': {'pop': 'TRA
 netParams.connParams['Axon_Transaction_CORE2i'] = {     'preConds': {'pop': 'TRANSACTION_ONLY_OPERATOR'},    'postConds': {'pop': 'TRANSACTION_NEURON_COMPLETE_osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
 
 """
+
+"""
+
+
+"""
+#////NO GPI > Output inh
+#//NO will loop Output > Operator_PLUS,MINUS,0123 inh
+# Output > TN_EMPTY exc
+exc_delay8 = 1
+exc_delay9 = 50
+
+"""
+netParams.connParams['Axon_fbstartTransaction_PLUSa'] = {     'preConds': {'pop': 'Output_0'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay8,    'synMech': 'exc'} 
+netParams.connParams['Axon_fbstartTransaction_MINUSb'] = {     'preConds': {'pop': 'Output_1'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay8,    'synMech': 'exc'} 
+netParams.connParams['Axon_fbstartTransaction_Component1_0c'] = {     'preConds': {'pop': 'Output_2'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay8,    'synMech': 'exc'} 
+netParams.connParams['Axon_fbstartTransaction_Component1_1d'] = {     'preConds': {'pop': 'Output_3'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay8,    'synMech': 'exc'} 
+"""
+
+netParams.connParams['Axon_fbstartTransaction_PLUSa'] = {     'preConds': {'pop': 'Output_0'},    'postConds': {'pop': 'Output_0123'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay8,    'synMech': 'exc'} 
+netParams.connParams['Axon_fbstartTransaction_MINUSb'] = {     'preConds': {'pop': 'Output_1'},    'postConds': {'pop': 'Output_0123'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay8,    'synMech': 'exc'} 
+netParams.connParams['Axon_fbstartTransaction_Component1_0c'] = {     'preConds': {'pop': 'Output_2'},    'postConds': {'pop': 'Output_0123'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay8,    'synMech': 'exc'} 
+netParams.connParams['Axon_fbstartTransaction_Component1_1d'] = {     'preConds': {'pop': 'Output_3'},    'postConds': {'pop': 'Output_0123'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay8,    'synMech': 'exc'} 
+
+"""
+netParams.connParams['Axon_fbstartTransaction_PLUSa2'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'FINISH_TRANSACTION'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay8,    'synMech': 'exc'} 
+
+
+
+
+#block input loop
+netParams.connParams['Axon_cstartTransaction_PLUSosca2'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Operator_PLUSosc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_cstartTransaction_MINUSosca2'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Operator_MINUSosc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_Component1_0osca2'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Component1_0osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_cstartTransaction_Component1_1osca2'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Component1_1osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_Component1_2osca2'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Component1_2osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_Component1_3osca2'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Component1_3osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_cstartTransaction_Component2_0osca3'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Component2_0osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_cstartTransaction_Component2_1osca3'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Component2_1osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_cstartTransaction_Component2_2osca3'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Component2_2osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['Axon_cstartTransaction_Component2_3osca3'] = {     'preConds': {'pop': 'Output_0123'},    'postConds': {'pop': 'Component2_3osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+"""
+
+#IF TRANSACTION STARTED > inh Output_osc (once not loop)
+
+netParams.connParams['Axon_clear_calculator_output_0'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'Output_0osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_clear_calculator_output_1'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'Output_1osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_clear_calculator_output_2'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'Output_2osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_clear_calculator_output_3'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_COMPLETE'},    'postConds': {'pop': 'Output_3osc'},     'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+
+
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER1'] = {     'preConds': {'pop': 'Output_0'},    'postConds': {'pop': 'Output_1osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER2'] = {     'preConds': {'pop': 'Output_0'},    'postConds': {'pop': 'Output_2osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER3'] = {     'preConds': {'pop': 'Output_0'},    'postConds': {'pop': 'Output_3osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER4'] = {     'preConds': {'pop': 'Output_1'},    'postConds': {'pop': 'Output_0osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER5'] = {     'preConds': {'pop': 'Output_1'},    'postConds': {'pop': 'Output_2osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER6'] = {     'preConds': {'pop': 'Output_1'},    'postConds': {'pop': 'Output_3osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER7'] = {     'preConds': {'pop': 'Output_2'},    'postConds': {'pop': 'Output_1osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER8'] = {     'preConds': {'pop': 'Output_2'},    'postConds': {'pop': 'Output_0osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER9'] = {     'preConds': {'pop': 'Output_2'},    'postConds': {'pop': 'Output_3osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER10'] = {     'preConds': {'pop': 'Output_3'},    'postConds': {'pop': 'Output_1osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER11'] = {     'preConds': {'pop': 'Output_3'},    'postConds': {'pop': 'Output_2osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0uKILLER12'] = {     'preConds': {'pop': 'Output_3'},    'postConds': {'pop': 'Output_0osc'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}
+
+
+#Output > OutputOSC
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R0e'] = {     'preConds': {'pop': 'Output_0'},    'postConds': {'pop': 'Output_0osc'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R1f'] = {     'preConds': {'pop': 'Output_1'},    'postConds': {'pop': 'Output_1osc'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R2g'] = {     'preConds': {'pop': 'Output_2'},    'postConds': {'pop': 'Output_2osc'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R3h'] = {     'preConds': {'pop': 'Output_3'},    'postConds': {'pop': 'Output_3osc'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R0i'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'Output_0osc2'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R1j'] = {     'preConds': {'pop': 'Output_1osc'},    'postConds': {'pop': 'Output_1osc2'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R2k'] = {     'preConds': {'pop': 'Output_2osc'},    'postConds': {'pop': 'Output_2osc2'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R3l'] = {     'preConds': {'pop': 'Output_30sc'},    'postConds': {'pop': 'Output_3osc2'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R0m'] = {     'preConds': {'pop': 'Output_0osc2'},    'postConds': {'pop': 'Output_0osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R1n'] = {     'preConds': {'pop': 'Output_1osc2'},    'postConds': {'pop': 'Output_1osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R2o'] = {     'preConds': {'pop': 'Output_2osc2'},    'postConds': {'pop': 'Output_2osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R3p'] = {     'preConds': {'pop': 'Output_30sc2'},    'postConds': {'pop': 'Output_3osc'},     'probability': exc_probability5,    'weight': exc_weight,    'delay': exc_delayosc1,    'synMech': 'exc'}
+
+#OutputOSC > SUMM_MERGE
+
+
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R0q'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_0'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay9,    'synMech': 'exc'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R1r'] = {     'preConds': {'pop': 'Output_1osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_1'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay9,    'synMech': 'exc'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R2s'] = {     'preConds': {'pop': 'Output_2osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_2'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay9,    'synMech': 'exc'} 
+netParams.connParams['Axon_cstartTransaction_PLUSosc2R3t'] = {     'preConds': {'pop': 'Output_30sc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_3'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay9,    'synMech': 'exc'} 
+
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL0u'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL1v'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL2w'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL3x'] = {     'preConds': {'pop': 'Output_1osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL4y'] = {     'preConds': {'pop': 'Output_1osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL5z'] = {     'preConds': {'pop': 'Output_1osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL6aa'] = {     'preConds': {'pop': 'Output_2osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL7ab'] = {     'preConds': {'pop': 'Output_2osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL8ac'] = {     'preConds': {'pop': 'Output_2osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL9ad'] = {     'preConds': {'pop': 'Output_3osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL10ae'] = {     'preConds': {'pop': 'Output_3osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
+netParams.connParams['Axon_cstartTransaction_PLUSosc2RKILL11af'] = {     'preConds': {'pop': 'Output_3osc'},    'postConds': {'pop': 'MERGE_SUMM_Component1_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay9,    'synMech': 'inh'}
 
 
 
@@ -776,6 +1178,20 @@ netParams.connParams['Axon_OUTPUT_Component1_33fc'] = {     'preConds': {'pop': 
 
 
 
+netParams.connParams['TR0'] = {     'preConds': {'pop': 'INPUTosc_EQ'},    'postConds': {'pop': 'TOTAL_RESULT_GPI'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['TR1'] = {     'preConds': {'pop': 'INPUTosc_CE'},    'postConds': {'pop': 'TOTAL_RESULT_GPI'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['TR2'] = {     'preConds': {'pop': 'INPUTosc_PLUS'},    'postConds': {'pop': 'TOTAL_RESULT_GPI'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['TR3'] = {     'preConds': {'pop': 'INPUTosc_MINUS'},    'postConds': {'pop': 'TOTAL_RESULT_GPI'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['TR4'] = {     'preConds': {'pop': 'TOTAL_RESULT_GPI'},    'postConds': {'pop': 'TOTAL_RESULT_0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['TR5'] = {     'preConds': {'pop': 'TOTAL_RESULT_GPI'},    'postConds': {'pop': 'TOTAL_RESULT_1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['TR6'] = {     'preConds': {'pop': 'TOTAL_RESULT_GPI'},    'postConds': {'pop': 'TOTAL_RESULT_2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+netParams.connParams['TR7'] = {     'preConds': {'pop': 'TOTAL_RESULT_GPI'},    'postConds': {'pop': 'TOTAL_RESULT_3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'} 
+
+netParams.connParams['TR8'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'TOTAL_RESULT_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['TR9'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'TOTAL_RESULT_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['TRa'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'TOTAL_RESULT_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['TRb'] = {     'preConds': {'pop': 'Output_0osc'},    'postConds': {'pop': 'TOTAL_RESULT_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
 
 
@@ -783,12 +1199,9 @@ netParams.connParams['Axon_OUTPUT_Component1_33fc'] = {     'preConds': {'pop': 
 
 
 
-
-
-
-exc_weight = 0.9
-exc_weight2 = 0.9
-exc_weight3 = 0.9
+#exc_weight = 0.9
+#exc_weight2 = 0.9
+#exc_weight3 = 0.9
 
 exc_delay1 = 3
 exc_delay2 = 4
@@ -807,173 +1220,173 @@ exc_probability3 = 0.1
 #CALCULATION
 
 
-netParams.connParams['1_0+0'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_0+0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_0+0'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_0PLUS0'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0+0'] = {    'preConds': {'pop': 'Output_0PLUS0'},    'postConds': {'pop': 'Output_0'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_0+0'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_0+0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_0+0'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_0PLUS0'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['0+0'] = {    'preConds': {'pop': 'Output_0PLUS0'},    'postConds': {'pop': 'Output_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_0+1'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_0+1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_0+1'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_0PLUS1'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0+1'] = {    'preConds': {'pop': 'Output_0PLUS1'},    'postConds': {'pop': 'Output_1'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_0+1'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_0+1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['PLUS_0+1'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_0PLUS1'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['0+1'] = {    'preConds': {'pop': 'Output_0PLUS1'},    'postConds': {'pop': 'Output_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_0+2'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_0+2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_0+2'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_0PLUS2'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0+2'] = {    'preConds': {'pop': 'Output_0PLUS2'},    'postConds': {'pop': 'Output_2'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_0+2'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_0+2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['PLUS_0+2'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_0PLUS2'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['0+2'] = {    'preConds': {'pop': 'Output_0PLUS2'},    'postConds': {'pop': 'Output_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_0+3'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_0+3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_0+3'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_0PLUS3'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0+3'] = {    'preConds': {'pop': 'Output_0PLUS3'},    'postConds': {'pop': 'Output_3'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-
-netParams.connParams['1_1+0'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_1+0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_1+0'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_1PLUS0'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['1+0'] = {    'preConds': {'pop': 'Output_1PLUS0'},    'postConds': {'pop': 'Output_1'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_1+1'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_1+1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_1+1'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_1PLUS1'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['1+1'] = {    'preConds': {'pop': 'Output_1PLUS1'},    'postConds': {'pop': 'Output_2'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_1+2'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_1+2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_1+2'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_1PLUS2'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['1+2'] = {    'preConds': {'pop': 'Output_1PLUS2'},    'postConds': {'pop': 'Output_3'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_1+3'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_1+3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_1+3'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_1PLUS3'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['1+3'] = {    'preConds': {'pop': 'Output_1PLUS3'},    'postConds': {'pop': 'Output_4'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_0+3'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_0+3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_0+3'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_0PLUS3'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['0+3'] = {    'preConds': {'pop': 'Output_0PLUS3'},    'postConds': {'pop': 'Output_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
 
-netParams.connParams['1_2+0'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_2+0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_2+0'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_2PLUS0'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['2+0'] = {    'preConds': {'pop': 'Output_2PLUS0'},    'postConds': {'pop': 'Output_2'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_1+0'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_1+0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['PLUS_1+0'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_1PLUS0'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['1+0'] = {    'preConds': {'pop': 'Output_1PLUS0'},    'postConds': {'pop': 'Output_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_2+1'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_2+1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_2+1'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_2PLUS1'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['2+1'] = {    'preConds': {'pop': 'Output_2PLUS1'},    'postConds': {'pop': 'Output_3'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_1+1'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_1+1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['PLUS_1+1'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_1PLUS1'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['1+1'] = {    'preConds': {'pop': 'Output_1PLUS1'},    'postConds': {'pop': 'Output_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_2+2'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_2+2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_2+2'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_2PLUS2'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0+2'] = {    'preConds': {'pop': 'Output_2PLUS2'},    'postConds': {'pop': 'Output_4'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_1+2'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_1+2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_1+2'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_1PLUS2'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['1+2'] = {    'preConds': {'pop': 'Output_1PLUS2'},    'postConds': {'pop': 'Output_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_2+3'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_2+3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_2+3'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_2PLUS3'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['2+3'] = {    'preConds': {'pop': 'Output_2PLUS3'},    'postConds': {'pop': 'Output_5'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-
-netParams.connParams['1_3+0'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_3+0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_3+0'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_3PLUS0'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['3+0'] = {    'preConds': {'pop': 'Output_3PLUS0'},    'postConds': {'pop': 'Output_3'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_3+1'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_3+1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_3+1'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_3PLUS1'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['3+1'] = {    'preConds': {'pop': 'Output_3PLUS1'},    'postConds': {'pop': 'Output_4'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_3+2'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_3+2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_3+2'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_3PLUS2'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['3+2'] = {    'preConds': {'pop': 'Output_3PLUS2'},    'postConds': {'pop': 'Output_5'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_3+3'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_3+3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['PLUS_3+3'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_3PLUS3'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['3+3'] = {    'preConds': {'pop': 'Output_3PLUS3'},    'postConds': {'pop': 'Output_6'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_1+3'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_1+3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_1+3'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_1PLUS3'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['1+3'] = {    'preConds': {'pop': 'Output_1PLUS3'},    'postConds': {'pop': 'Output_4'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
 
+netParams.connParams['1_2+0'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_2+0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_2+0'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_2PLUS0'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2+0'] = {    'preConds': {'pop': 'Output_2PLUS0'},    'postConds': {'pop': 'Output_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_0-0'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_0-0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_0-0'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_0MINUS0'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0-0'] = {    'preConds': {'pop': 'Output_0MINUS0'},    'postConds': {'pop': 'Output_0'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_2+1'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_2+1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_2+1'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_2PLUS1'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['2+1'] = {    'preConds': {'pop': 'Output_2PLUS1'},    'postConds': {'pop': 'Output_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_0-1'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_0-1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_0-1'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_0MINUS1'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0-1'] = {    'preConds': {'pop': 'Output_0MINUS1'},    'postConds': {'pop': 'Output_-1'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_2+2'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_2+2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['PLUS_2+2'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_2PLUS2'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2+2'] = {    'preConds': {'pop': 'Output_2PLUS2'},    'postConds': {'pop': 'Output_4'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_0-2'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_0-2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_0-2'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_0MINUS2'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0-2'] = {    'preConds': {'pop': 'Output_0MINUS2'},    'postConds': {'pop': 'Output_-2'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_0-3'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_0-3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_0-3'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_0MINUS3'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0-3'] = {    'preConds': {'pop': 'Output_0MINUS3'},    'postConds': {'pop': 'Output_-3'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-
-netParams.connParams['1_1-0'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_1-0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_1-0'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_1MINUS0'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['1-0'] = {    'preConds': {'pop': 'Output_1MINUS0'},    'postConds': {'pop': 'Output_1'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_1-1'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_1-1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_1-1'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_1MINUS1'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['1-1'] = {    'preConds': {'pop': 'Output_1MINUS1'},    'postConds': {'pop': 'Output_0'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_1-2'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_1-2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_1-2'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_1MINUS2'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['1-2'] = {    'preConds': {'pop': 'Output_1MINUS2'},    'postConds': {'pop': 'Output_-1'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
-
-netParams.connParams['1_1-3'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_1-3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_1-3'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_1MINUS3'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['1-3'] = {    'preConds': {'pop': 'Output_1MINUS3'},    'postConds': {'pop': 'Output_-2'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_2+3'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['2_2+3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_2+3'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_2PLUS3'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['2+3'] = {    'preConds': {'pop': 'Output_2PLUS3'},    'postConds': {'pop': 'Output_5'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
 
-netParams.connParams['1_2-0'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_2-0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_2-0'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_2MINUS0'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['2-0'] = {    'preConds': {'pop': 'Output_2MINUS0'},    'postConds': {'pop': 'Output_2'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_3+0'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_3+0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_3+0'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_3PLUS0'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['3+0'] = {    'preConds': {'pop': 'Output_3PLUS0'},    'postConds': {'pop': 'Output_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_2-1'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_2-1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_2-1'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_2MINUS1'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['2-1'] = {    'preConds': {'pop': 'Output_2MINUS1'},    'postConds': {'pop': 'Output_1'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_3+1'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_3+1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_3+1'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_3PLUS1'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['3+1'] = {    'preConds': {'pop': 'Output_3PLUS1'},    'postConds': {'pop': 'Output_4'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_2-2'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_2-2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_2-2'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_2MINUS2'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['0-2'] = {    'preConds': {'pop': 'Output_2MINUS2'},    'postConds': {'pop': 'Output_0'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_3+2'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_3+2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_3+2'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_3PLUS2'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['3+2'] = {    'preConds': {'pop': 'Output_3PLUS2'},    'postConds': {'pop': 'Output_5'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_2-3'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_2-3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_2-3'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_2MINUS3'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['2-3'] = {    'preConds': {'pop': 'Output_2MINUS3'},    'postConds': {'pop': 'Output_-1'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_3+3'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['2_3+3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['PLUS_3+3'] = {     'preConds': {'pop': 'Operator_PLUS'},     'postConds': {'pop': 'Output_3PLUS3'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['3+3'] = {    'preConds': {'pop': 'Output_3PLUS3'},    'postConds': {'pop': 'Output_6'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
 
-netParams.connParams['1_3-0'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_3-0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_3-0'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_3MINUS0'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['3-0'] = {    'preConds': {'pop': 'Output_3MINUS0'},    'postConds': {'pop': 'Output_3'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
 
-netParams.connParams['1_3-1'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_3-1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_3-1'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_3MINUS1'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['3-1'] = {    'preConds': {'pop': 'Output_3MINUS1'},    'postConds': {'pop': 'Output_2'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_0-0'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['2_0-0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_0-0'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_0MINUS0'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['0-0'] = {    'preConds': {'pop': 'Output_0MINUS0'},    'postConds': {'pop': 'Output_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_3-2'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_3-2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_3-2'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_3MINUS2'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['3-2'] = {    'preConds': {'pop': 'Output_3MINUS2'},    'postConds': {'pop': 'Output_1'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_0-1'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['2_0-1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['MINUS_0-1'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_0MINUS1'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['0-1'] = {    'preConds': {'pop': 'Output_0MINUS1'},    'postConds': {'pop': 'Output_-1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
-netParams.connParams['1_3-3'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability1,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
-netParams.connParams['2_3-3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability2,    'weight': exc_weight2,    'delay': exc_delay2,    'synMech': 'exc'} 
-netParams.connParams['MINUS_3-3'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_3MINUS3'},     'probability': exc_probability3,     'weight': exc_weight3,    'delay': exc_delay3,     'synMech': 'exc'} 
-netParams.connParams['3-3'] = {    'preConds': {'pop': 'Output_3MINUS3'},    'postConds': {'pop': 'Output_0'},    'probability': 1.0,    'weight': exc_weight,    'delay': 5,    'synMech': 'exc'}
+netParams.connParams['1_0-2'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_0-2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_0-2'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_0MINUS2'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['0-2'] = {    'preConds': {'pop': 'Output_0MINUS2'},    'postConds': {'pop': 'Output_-2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_0-3'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_0-3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_0-3'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_0MINUS3'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['0-3'] = {    'preConds': {'pop': 'Output_0MINUS3'},    'postConds': {'pop': 'Output_-3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+
+netParams.connParams['1_1-0'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_1-0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['MINUS_1-0'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_1MINUS0'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['1-0'] = {    'preConds': {'pop': 'Output_1MINUS0'},    'postConds': {'pop': 'Output_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_1-1'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_1-1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_1-1'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_1MINUS1'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['1-1'] = {    'preConds': {'pop': 'Output_1MINUS1'},    'postConds': {'pop': 'Output_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_1-2'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_1-2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['MINUS_1-2'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_1MINUS2'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['1-2'] = {    'preConds': {'pop': 'Output_1MINUS2'},    'postConds': {'pop': 'Output_-1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_1-3'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_1-3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_1-3'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_1MINUS3'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['1-3'] = {    'preConds': {'pop': 'Output_1MINUS3'},    'postConds': {'pop': 'Output_-2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+
+netParams.connParams['1_2-0'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_2-0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['MINUS_2-0'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_2MINUS0'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2-0'] = {    'preConds': {'pop': 'Output_2MINUS0'},    'postConds': {'pop': 'Output_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_2-1'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_2-1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_2-1'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_2MINUS1'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['2-1'] = {    'preConds': {'pop': 'Output_2MINUS1'},    'postConds': {'pop': 'Output_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_2-2'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_2-2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_2-2'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_2MINUS2'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2-2'] = {    'preConds': {'pop': 'Output_2MINUS2'},    'postConds': {'pop': 'Output_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_2-3'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['2_2-3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['MINUS_2-3'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_2MINUS3'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2-3'] = {    'preConds': {'pop': 'Output_2MINUS3'},    'postConds': {'pop': 'Output_-1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+
+netParams.connParams['1_3-0'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_3-0'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_3-0'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_3MINUS0'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['3-0'] = {    'preConds': {'pop': 'Output_3MINUS0'},    'postConds': {'pop': 'Output_3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_3-1'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_3-1'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_3-1'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_3MINUS1'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['3-1'] = {    'preConds': {'pop': 'Output_3MINUS1'},    'postConds': {'pop': 'Output_2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_3-2'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+netParams.connParams['2_3-2'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_3-2'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_3MINUS2'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['3-2'] = {    'preConds': {'pop': 'Output_3MINUS2'},    'postConds': {'pop': 'Output_1'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+
+netParams.connParams['1_3-3'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['2_3-3'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['MINUS_3-3'] = {     'preConds': {'pop': 'Operator_MINUS'},     'postConds': {'pop': 'Output_3MINUS3'},     'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
+netParams.connParams['3-3'] = {    'preConds': {'pop': 'Output_3MINUS3'},    'postConds': {'pop': 'Output_0'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'}
 
 
 
@@ -990,7 +1403,7 @@ inh_delay = 2
 inh_delay2 = 2
 inh_delay3 = 2
 
-inh_weight = 5.9
+#inh_weight = 5.9
 
 
 
@@ -1000,271 +1413,271 @@ inh_weight = 5.9
 
 
 
-netParams.connParams['AxonComponent10_1p0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_1p1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_1p2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_1p3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_2p0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_2p1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_2p2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_2p3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_3p0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_3p1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_3p2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_3p3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
+netParams.connParams['AxonComponent10_1p0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_1p1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_1p2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_1p3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_2p0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_2p1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_2p2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_2p3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_3p0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_3p1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_3p2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_3p3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
 
-netParams.connParams['AxonComponent10_1m0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_1m1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_1m2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_1m3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_2m0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_2m1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_2m2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_2m3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_3m0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_3m1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_3m2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent10_3m3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-
-
-
-
-netParams.connParams['AxonComponent11_0p0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_0p1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_0p2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_0p3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_2p0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_2p1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_2p2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_2p3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_3p0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_3p1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_3p2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_3p3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-
-netParams.connParams['AxonComponent11_0m0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_0m1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_0m2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_0m3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_2m0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_2m1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_2m2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_2m3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_3m0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_3m1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_3m2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent11_3m3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-
-
-
-netParams.connParams['AxonComponent12_1p0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_1p1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_1p2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_1p3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_0p0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_0p1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_0p2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_0p3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_3p0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_3p1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_3p2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_3p3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-
-netParams.connParams['AxonComponent12_1m0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_1m1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_1m2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_1m3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_0m0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_0m1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_0m2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_0m3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_3m0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_3m1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_3m2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent12_3m3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-
-
-
-netParams.connParams['AxonComponent13_1p0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_1p1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_1p2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_1p3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_2p0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_2p1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_2p2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_2p3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_0p0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_0p1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_0p2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_0p3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-
-netParams.connParams['AxonComponent13_1m0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_1m1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_1m2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_1m3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_2m0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_2m1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_2m2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_2m3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_0m0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_0m1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_0m2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
-netParams.connParams['AxonComponent13_0m3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'}
+netParams.connParams['AxonComponent10_1m0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_1m1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_1m2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_1m3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_2m0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_2m1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_2m2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_2m3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_3m0a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_3m1a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_3m2a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent10_3m3a'] = {     'preConds': {'pop': 'Component1_0'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
 
 
 
 
+netParams.connParams['AxonComponent11_0p0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_0p1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_0p2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_0p3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_2p0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_2p1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_2p2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_2p3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_3p0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_3p1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_3p2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_3p3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+netParams.connParams['AxonComponent11_0m0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_0m1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_0m2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_0m3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_2m0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_2m1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_2m2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_2m3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_3m0a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_3m1a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_3m2a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent11_3m3a'] = {     'preConds': {'pop': 'Component1_1'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
 
 
 
-netParams.connParams['AxonComponent20_0p1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_0p2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_0p3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_1p1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_1p2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_1p3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_2p1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_2p2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_2p3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_3p1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_3p2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_3p3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
+netParams.connParams['AxonComponent12_1p0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_1p1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_1p2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_1p3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_0p0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_0p1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_0p2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_0p3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_3p0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_3p1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_3p2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_3p3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
 
-netParams.connParams['AxonComponent20_0m1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_0m2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_0m3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_1m1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_1m2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_1m3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_2m1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_2m2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_2m3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_3m1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_3m2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent20_3m3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-
-
-
-netParams.connParams['AxonComponent21_0p0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_0p2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_0p3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_1p0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_1p2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_1p3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_2p0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_2p2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_2p3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_3p0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_3p2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_3p3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-
-netParams.connParams['AxonComponent21_0m0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_0m2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_0m3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_1m0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_1m2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_1m3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_2m0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_2m2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_2m3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_3m0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_3m2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent21_3m3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
+netParams.connParams['AxonComponent12_1m0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_1m1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_1m2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_1m3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_0m0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_0m1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_0m2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_0m3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_3m0a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_3m1a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_3m2a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent12_3m3a'] = {     'preConds': {'pop': 'Component1_2'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
 
 
 
-netParams.connParams['AxonComponent22_0p1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_0p0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_0p3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_1p1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_1p0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_1p3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_2p1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_2p0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_2p3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_3p1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_3p0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_3p3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
+netParams.connParams['AxonComponent13_1p0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_1p1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_1p2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_1p3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_2p0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_2p1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_2p2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_2p3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_0p0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_0p1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_0p2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_0p3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
 
-netParams.connParams['AxonComponent22_0m1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_0m0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_0m3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_1m1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_1m0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_1m3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_2m1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_2m0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_2m3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_3m1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_3m0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent22_3m3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-
-
-
-netParams.connParams['AxonComponent23_0p1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_0p2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_0p0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_1p1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_1p2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_1p0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_2p1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_2p2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_2p0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_3p1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_3p2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_3p0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-
-netParams.connParams['AxonComponent23_0m1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_0m2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_0m0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_1m1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_1m2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_1m0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_2m1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_2m2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_2m0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_3m1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_3m2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
-netParams.connParams['AxonComponent23_3m0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay2,    'synMech': 'inh'}
+netParams.connParams['AxonComponent13_1m0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_1m1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_1m2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_1m3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_2m0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_2m1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_2m2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_2m3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_0m0a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_0m1a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_0m2a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent13_0m3a'] = {     'preConds': {'pop': 'Component1_3'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
 
 
 
 
 
 
-netParams.connParams['AxonComponentm_1p0a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_1p1a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_1p2a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_1p3a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_2p0a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_2p1a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_2p2a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_2p3a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_0p0a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_0p1a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_0p2a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_0p3a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_3p0a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_3p1a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_3p2a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentm_3p3a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
 
-netParams.connParams['AxonComponentp_1m0a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_1m1a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_1m2a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_1m3a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_2m0a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_2m1a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_2m2a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_2m3a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_0m0a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_0m1a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_0m2a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_0m3a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_3m0a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_3m1a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_3m2a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
-netParams.connParams['AxonComponentp_3m3a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': 1.0,    'weight': inh_weight,    'delay': inh_delay3,    'synMech': 'inh'}
+netParams.connParams['AxonComponent20_0p1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_0p2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_0p3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_1p1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_1p2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_1p3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_2p1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_2p2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_2p3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_3p1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_3p2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_3p3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+netParams.connParams['AxonComponent20_0m1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_0m2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_0m3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_1m1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_1m2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_1m3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_2m1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_2m2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_2m3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_3m1a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_3m2a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent20_3m3a'] = {     'preConds': {'pop': 'Component2_0'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+
+
+netParams.connParams['AxonComponent21_0p0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_0p2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_0p3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_1p0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_1p2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_1p3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_2p0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_2p2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_2p3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_3p0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_3p2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_3p3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+netParams.connParams['AxonComponent21_0m0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_0m2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_0m3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_1m0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_1m2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_1m3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_2m0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_2m2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_2m3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_3m0a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_3m2a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent21_3m3a'] = {     'preConds': {'pop': 'Component2_1'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+
+
+netParams.connParams['AxonComponent22_0p1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_0p0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_0p3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_1p1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_1p0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_1p3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_2p1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_2p0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_2p3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_3p1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_3p0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_3p3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+netParams.connParams['AxonComponent22_0m1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_0m0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_0m3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_1m1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_1m0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_1m3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_2m1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_2m0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_2m3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_3m1a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_3m0a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent22_3m3a'] = {     'preConds': {'pop': 'Component2_2'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+
+
+netParams.connParams['AxonComponent23_0p1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_0p2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_0p0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_1p1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_1p2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_1p0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_2p1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_2p2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_2p0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_3p1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_3p2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_3p0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+netParams.connParams['AxonComponent23_0m1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_0m2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_0m0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_1m1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_1m2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_1m0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_2m1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_2m2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_2m0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_3m1a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_3m2a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponent23_3m0a'] = {     'preConds': {'pop': 'Component2_3'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+
+
+
+
+
+netParams.connParams['AxonComponentm_1p0a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_1PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_1p1a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_1PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_1p2a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_1PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_1p3a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_1PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_2p0a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_2PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_2p1a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_2PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_2p2a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_2PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_2p3a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_2PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_0p0a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_0PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_0p1a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_0PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_0p2a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_0PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_0p3a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_0PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_3p0a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_3PLUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_3p1a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_3PLUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_3p2a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_3PLUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentm_3p3a'] = {     'preConds': {'pop': 'Operator_MINUS'},    'postConds': {'pop': 'Output_3PLUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+
+netParams.connParams['AxonComponentp_1m0a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_1MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_1m1a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_1MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_1m2a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_1MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_1m3a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_1MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_2m0a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_2MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_2m1a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_2MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_2m2a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_2MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_2m3a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_2MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_0m0a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_0MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_0m1a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_0MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_0m2a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_0MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_0m3a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_0MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_3m0a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_3MINUS0'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_3m1a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_3MINUS1'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_3m2a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_3MINUS2'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
+netParams.connParams['AxonComponentp_3m3a'] = {     'preConds': {'pop': 'Operator_PLUS'},    'postConds': {'pop': 'Output_3MINUS3'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': inh_delay,    'synMech': 'inh'} 
 
 
 
@@ -1317,9 +1730,9 @@ netParams.stimSourceParams['bkg_8i'] = {'type': 'NetStim', 'rate': 310, 'noise':
 #netParams.stimTargetParams['bkg->PYR'] = {'source': 'bkg', 'conds': {'cellType': 'PYR'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
 
 
-netParams.stimTargetParams['bkg->PYRplus'] = {'source': 'bkg', 'conds': {'pop': 'Operator_PLUS'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
-netParams.stimTargetParams['bkg->PYR2'] = {'source': 'bkg', 'conds': {'pop': 'Component1_0'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
-netParams.stimTargetParams['bkg->PYR3'] = {'source': 'bkg', 'conds': {'pop': 'Component2_0'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+#netParams.stimTargetParams['bkg->PYRplus'] = {'source': 'bkg', 'conds': {'pop': 'Operator_PLUS'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+#netParams.stimTargetParams['bkg->PYR2'] = {'source': 'bkg', 'conds': {'pop': 'Component1_0'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+#netParams.stimTargetParams['bkg->PYR3'] = {'source': 'bkg', 'conds': {'pop': 'Component2_0'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
 
 
 netParams.stimTargetParams['bkg_1->CE'] = {'source': 'bkg_1', 'conds': {'pop': 'INPUT_CE'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
@@ -1367,7 +1780,7 @@ simConfig.savePickle = False        # Save params, network and sim output to pic
 simConfig.saveJson = True
 
 simConfig.analysis['plotRaster'] = {'saveFig': True}                  # Plot a raster
-simConfig.analysis['plotTraces'] = {'include': [0,55,590,595,600,605,610,615,620,625], 'saveFig': True} # ,65,215,225,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,390,395,400,405,410,415,420,425], 'saveFig': True}  # 0 - PLUS, 2 - Comp 1 0, 6 - Comp 2 0, 
+simConfig.analysis['plotTraces'] = {'include': [0,55,270,275,280,285,290,295,300,305,310,315,320], 'saveFig': True} #590,595,600,605,610,615,620,625,630,635,640,645,650,655,660,665,670,675,680,685,690,695,700,705,710,715,120,725,730,735,740,745,750,755,760,765,770,775], 'saveFig': True} # ,65,215,225,275,280,285,290,295,300,305,310,315,320,325,330,335,340,345,350,355,360,365,370,375,380,385,390,395,400,405,410,415,420,425], 'saveFig': True}  # 0 - PLUS, 2 - Comp 1 0, 6 - Comp 2 0, 
 simConfig.analysis['plot2Dnet'] = {'saveFig': True}                   # plot 2D cell positions and connections
 
 # Create network and run simulation
