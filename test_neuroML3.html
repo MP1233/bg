@@ -60,14 +60,14 @@ Also our network has many loops. it is not yet clear whether these loops occur i
 #TRANSACTION_NEURON_ONLY_VALUE_killer > TRANSACTION_ONLY_VALUE inh<br>
 <br>
 netParams.connParams['Axon_Transaction_CORE11'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
-netParams.connParams['Axon_Transaction_CORE12'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
-netParams.connParams['Axon_Transaction_CORE13'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
-netParams.connParams['Axon_Transaction_CORE14'] = {     'preConds': {'pop': 'INPUT2_0'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
+netParams.connParams['Axon_Transaction_CORE12'] = {     'preConds': {'pop': 'INPUT2_1'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
+netParams.connParams['Axon_Transaction_CORE13'] = {     'preConds': {'pop': 'INPUT2_2'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
+netParams.connParams['Axon_Transaction_CORE14'] = {     'preConds': {'pop': 'INPUT2_3'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
 netParams.connParams['Axon_Transaction_CORE15'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} <br>
 <br>
 netParams.connParams['Axon_Transaction_CORE16'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
 <br>
-we need both condition to be valid to start action. so our first condition excites inhibitory neuron. after 2nd condition activated it inhibits this inhibitory neuron. and action can start<br>
+we need both condition to be valid to start action. so our first condition excites inhibitory neuron. after 2nd condition activated it inhibits this inhibitory neuron. and action can start. This way we utilize BG direct and inderect pathways in our model. After several ... TRANSACTION_NEURON_COMPLETE opens the gate and updated information for comp1 comp2 operator can procede to calculator part <br>
 <br>
 
 <h3>fitting existing cortex neuron models</h3>
