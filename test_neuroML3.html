@@ -12,6 +12,205 @@
 
 
 
+
+
+
+
+<h1>Bio-calculator. Calculation algorythms using neocortex neurons.</h1>
+
+
+ human cortex is 6 layered structure with primary and interneuron types studied. many of such types of neurons are already modelled in neuroML
+ one of examples of tasks that human brain can perform - summing or substracting 2 values. although it is clear that such calculations are more complex and widespread across different areas of the brain, that the purpose of this work is to implement a microcircuit for simple calculations using already existing models of neocortex neurons to see how such microcircuit will appear in 3D. also to adjust such microcircuit to known charateristics of 6 layered structure, such as synapses and cell types density in the layers<br>
+ although non of the microcircuits is non supposed to work as a math calculator, it is quite possible that it can use some of similar algorythms for some of its calculations. the purpose is to approximize how well can such type of algorythm fit the cortex 6 layered structure<br>
+
+also this work can be used as practical experience with different neuroML type simulators. and adjusting synaptic properties task
+
+<br><br>
+current architecture simply activates "summ neuron" when two "value neurons" start firing. however further work planned on context of "+" "-" "1st value" vs "second value" and "=" command. context signals probably be transferred via 1st layer
+<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>(A + B) , (A - B) implementation</h3>
+
+For brevity let A have only n=4 values - 0,1,2,3 and B also have m=4 values - 0,1,2,3. Thus number of neurons needed for this input will be m+n = 8 Simple structure of code for such implementation will look like<br>
+<br>
+if Operation==PLUS {Operation=PLUS}<br>
+if Operation==MINUS {Operation=MINUS}<br>
+#2 neurons<br>
+<br>
+if input1==0 {Component1=0}<br>
+if input1==1 {Component1=1}<br>
+if input1==2 {Component1=2}<br>
+if input1==3 {Component1=3}<br>
+if input2==0 {Component2=0}<br>
+if input2==1 {Component2=1}<br>
+if input2==2 {Component2=2}<br>
+if input2==3 {Component2=3}<br>
+#8 neudons + infinite loop to enhance input signal<br>
+<br>
+if (Component1==0 , Component2==0, Operation==+) {Output = [0+0]}<br>
+if (Component1==0 , Component2==1, Operation==+) {Output = [0+1]}<br>
+if (Component1==0 , Component2==2, Operation==+) {Output = [0+2]}<br>
+if (Component1==0 , Component2==3, Operation==+) {Output = [0+3]}<br>
+if (Component1==1 , Component2==0, Operation==+) {Output = [1+0]}<br>
+<br>
+...<br>
+if (Component1==3 , Component2==3, Operation==-) {Output = [3-3]}<br>
+#32 neurons<br>
+<br>
+<br>
+if Output==[0+0] {Result=0}<br>
+if Output==[0+1] {Result=1}<br>
+if Output==[0+2] {Result=2}<br>
+...<br>
+if Output==[3-3] {Result=0}<br>
+#result space[-3..6] 10 neurons<br>
+<br>
+<br>
+<br>
+<br>
+for + operator we will need space of m*n=16 neurons. also 16 neurons for - operator. alltogether 32 neurons. result of such operation will occupy range [-3..6] 10 neurons. This algorythm can be implemented with excitory neurons (see App1).<br>
+ click on operation_input, input1 & input2 neurons several times to start input firing and see which output neurons will fire<br>
+
+<br>
+
+
+
+
+<br>
+<a href="test_neuroML.html"><img src="Neuroml_img/App1.png" width=800>
+<br>
+App1</a><br><br><br>
+
+
+A<img src="Neuroml_img/tut2_raster_gid.png"><br>B<img src="Neuroml_img/tut2_traces__gid_10_.png"><br>
+Fig 2 Netpyne output for Input: Component1=0, Component2=0, Operation=PLUS. A all neurons, B Output0+0 neuron<br><br><br>
+
+
+
+
+It is possible to see that neuron that gives us correct answer fires the most, however other output neurons also fire. In computer code "if" statement prevents all other conditions. However in our network preventing all other actions is not that trivial. Thus we need to filter incorrect neurons using inhibitory neurons. <br><br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h3>(A + B) , (A - B) implementation + FILTER</h3>
+
+
+
+
+<br><br><br><br>
+Filtering usually is done using feedback and feedforward inhibition. (Fig 3). Feedforward inhibition usually used to enhance simultaneous inputs and filter asynchroneus inputs. Feedback used to select most active networks and suppress other networks. Hence our task will demand feedback inhibiton. Results of such inhibition filter applied can be tested on (App 4)<br><br>
+
+
+<img src="Neuroml_img/feedbackfeedforward.png"><br>
+Fig 3<br><br><br>
+
+
+
+
+<br>
+
+
+<br>
+<a href="test_neuroML2.html"><img src="Neuroml_img/App4.png" width=800 >
+<br>
+App4</a><br><br><br>
+
+
+Such algorythm was applied to NeuroML Netpyne with simplified neurons that have not natural parameters such as 1.0 firing probability. (Fig 5). <a href="Neuroml_img/calculator_filter.py">code /calculator_filter.py</a> <br>
+However this code 1) uses modified feedback filter from App3 instead of classic filter from App4. 2) Based on total synchronistion of neurons spiking 3) Uses ideal neuron models with firing probability 1.0. Whether or not such simplifications are valid should be clear after fitting real neurons into model <br><br>
+<img src="Neuroml_img/tut2_raster_gid_filter.png"><br>
+
+Fig 5<br>Component1_0, Component2_0, Output_0PLUS0, Result_0 neurons show spiking, other neurons are silent<br><br>
+
+
+
+A<img src="Neuroml_img/tut2_traces__gid_11_filter.png"><br>B<img src="Neuroml_img/tut2_traces__gid_12_filter.png"><br>
+Fig6<br> A Comparison of correct answer neuron 0+0 and B incorrect answer neuron 0+1<br><br>
+
+Other more natural way is replace synchronization with bigger populations and probability inhibition between them. Here 5-neurons populations and random input signal implemented  <a href="Neuroml_img/calculator_filter5.py">code /calculator_filter.py</a><br><br>
+<img src="Neuroml_img/tut2_raster_gid_filter5.png"><br>
+
+Fig 7<br>Component1_0, Component2_0, Output_0PLUS0, Result_0 neurons show spiking, other neurons are silent<br><br>
+
+
+A<img src="Neuroml_img/tut2_traces__gid_55_filter5.png"><br>B<img src="Neuroml_img/tut2_traces__gid_65_filter5.png"><br>C<img src="Neuroml_img/tut2_traces__gid_215_filter5.png"><br>D<img src="Neuroml_img/tut2_traces__gid_225_filter5.png"><br>
+Fig8<br> A Comparison of correct answer neuron 0+0 and B incorrect answer neuron 0+1  C Comparison of correct answer neuron Result_0 and D incorrect answer neuron Result_2<br><br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <h3>context implementation. complex equations solutions. for example A+B-C+D=</h3>
 
 Now let's add context. It is possible to enter longer formulas now. for example A+B-C+D=. buttons are similar to calculator. however expression is limited to range [0..3]<br>
@@ -40,7 +239,7 @@ To do some test - press 10 times CE, wait 20 seconds, press 10 times 0, wait 20 
 
 
 <br>
-<canvas id="canvas" width=1800 height=2400></canvas>
+<canvas id="canvas" width=2200 height=2400></canvas>
 <br>
 App4<br><br><br>
 <a href="test_neuroML3.html">PAGE 4</a>
@@ -54,6 +253,9 @@ Lets start with these 4 approximations of 6layers microcircuit and try to fit ou
 
 
 Also our network has many loops. it is not yet clear whether these loops occur in cortex or part of them occupy thalamo-striatal loop. f.e. "TRANSACTION" part that waits for enough conditions to start calculations uses GPI GPE to start action only if both conditions are active. eg second condition while it is false blocks first condition via double inhibition<br>
+netParams.connParams['Axon_Transaction_CORE10'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
+ <br>
+
 <br>
 #INPUT2_0,1,2,3 > TRANSACTION_NEURON_ONLY_VALUE_killer inh<br>
 #TRANSACTION_NEURON_EMPTY > TRANSACTION_NEURON_ONLY_VALUE_killer exc<br>
@@ -65,10 +267,14 @@ netParams.connParams['Axon_Transaction_CORE13'] = {     'preConds': {'pop': 'INP
 netParams.connParams['Axon_Transaction_CORE14'] = {     'preConds': {'pop': 'INPUT2_3'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
 netParams.connParams['Axon_Transaction_CORE15'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} <br>
 <br>
-netParams.connParams['Axon_Transaction_CORE16'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': exc_probability4,    'weight': inh_weight,    'delay': exc_delay1,    'synMech': 'inh'}<br>
+netParams.connParams['Axon_Transaction_CORE16'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE_killer'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': inh_probability4,    'weight': inh_weight,    'delay': inh_delay1,    'synMech': 'inh'}<br>
 <br>
 we need both condition to be valid to start action. so our first condition excites inhibitory neuron. after 2nd condition activated it inhibits this inhibitory neuron. and action can start. This way we utilize BG direct and inderect pathways in our model. After several consequentfiltering actions TRANSACTION_NEURON_COMPLETE opens the gate and updated information for comp1 comp2 operator can procede to calculator part <br>
 <br>
+
+Also feedback from the calculation module needs delay to calculate summ. Model takes advantage of thalamocortical axonal length to provide such delay<br>
+
+
 
 Result - Neuroml Netpyne total model <a href = Neuroml_img/tut2input5.py>code</a>
 CE 0+2-1+2 EQ
@@ -157,23 +363,29 @@ after "=" command > [operation_cell,1st,2nd] activate result cell
 
 <script>
 
+aaaa = 400
 
+GREEN_shiftXY=[aaaa + 600,800]
+GREEN2_shiftXY=[aaaa + 900,820]
+GREEN3_shiftXY=[aaaa + 1070,1380]
+GREEN4_shiftXY=[aaaa + 1300,1800]
 
-GREEN_shiftXY=[600,800]
-GREEN2_shiftXY=[900,820]
-GREEN3_shiftXY=[1070,1380]
-GREEN4_shiftXY=[1300,1800]
-
-GREEN5_shiftXY=[1250,1800]
+GREEN5_shiftXY=[aaaa + 1250,1800]
 
 
 GREEN6_shiftXY=[0,0]
-GREEN7_shiftXY=[200,350]
+GREEN7_shiftXY=[aaaa + 200,350]
 GREEN8_shiftXY=[0,850]
-GREEN9_shiftXY=[200,650]
+GREEN9_shiftXY=[aaaa + 200,650]
 
-GREENa_shiftXY=[1450,1900]
-GREENb_shiftXY=[1550, 2000]
+GREENa_shiftXY=[aaaa + 1450,1900]
+GREENb_shiftXY=[aaaa + 1550, 2000]
+
+STR_shiftXY = [200, 850]
+GPE_shiftXY = [250, 1000]
+STN_shiftXY = [300, 1200]
+GPI_shiftXY = [350, 1400]
+
 
 
 
@@ -522,127 +734,7 @@ Axon_OUTPUT_Component1_3a:{start_node:"OUTPUT_Component1_3", end_node:"MERGE_SUM
 
 
 
-///STEP 2 A = TRANSACTION_NEURON_EMPTY, T_N_ONLYVALUE, T_N_ONLYOPERATOR, T_N_COMPLETE)
 
-/*
-{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+20,GREEN9_shiftXY[1]+20]},
-:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+40,GREEN9_shiftXY[1]+40]},
-:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+60,GREEN9_shiftXY[1]+60]},
-:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+80,GREEN9_shiftXY[1]+80]},
-:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+100,GREEN9_shiftXY[1]+100]},
-:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+120,GREEN9_shiftXY[1]+120]},
-START_TRANSACTION_Component2_0:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+140,GREEN9_shiftXY[1]+140]},
-START_TRANSACTION_Component2_1:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+200,GREEN9_shiftXY[1]+200]},
-START_TRANSACTION_Component2_2:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+260,GREEN9_shiftXY[1]+260]},
-START_TRANSACTION_Component2_3:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+320,GREEN9_shiftXY[1]+320]},
-*/
-
-Axon_Transaction_CORE0:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-
-Axon_Transaction_CORE1:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE2:{start_node:"INPUT2_0", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE3:{start_node:"INPUT2_1", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE4:{start_node:"INPUT2_2", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE5:{start_node:"INPUT2_3", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-
-Axon_Transaction_FILTER1:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER2:{start_node:"INPUT2_0", end_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER3:{start_node:"INPUT2_1", end_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER4:{start_node:"INPUT2_2", end_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER5:{start_node:"INPUT2_3", end_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER6:{start_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-
-Axon_Transaction_FILTER7:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-Axon_Transaction_FILTER8:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-Axon_Transaction_FILTER8:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"GABA", lengthsec:4,power:-20},
-///Axon_Transaction_FILTER9:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-
-/*
-Axon_OUTPUT_Component1_0FWDfilter1:{start_node:"INPUTosc_CE", end_node:"FILTER_OUTPUT_Component1_0_A", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_OUTPUT_Component1_0FWDfilter2:{start_node:"INPUTosc_0", end_node:"FILTER_OUTPUT_Component1_0_A", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_OUTPUT_Component1_0FWDfilter3:{start_node:"FILTER_OUTPUT_Component1_0_A", end_node:"OUTPUT_Component1_0", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-*/
-
-
-Axon_Transaction_CORE6:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE7:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE8:{start_node:"INPUT2_EQ", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE9:{start_node:"INPUT2_PLUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE10:{start_node:"INPUT2_MINUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-
-Axon_Transaction_FILTER11:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER12:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER13:{start_node:"INPUT2_EQ", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER14:{start_node:"INPUT2_PLUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER15:{start_node:"INPUT2_MINUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER16:{start_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-
-Axon_Transaction_FILTER17:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-Axon_Transaction_FILTER18:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-Axon_Transaction_FILTER18a:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"GABA", lengthsec:4,power:-20},
-///Axon_Transaction_FILTER19:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-
-Axon_Transaction_CORE11:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-//Axon_Transaction_CORE12:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE13:{start_node:"INPUT2_EQ", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE14:{start_node:"INPUT2_PLUS", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE15:{start_node:"INPUT2_MINUS", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-
-Axon_Transaction_FILTER21:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER22:{start_node:"INPUT2_0", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER23:{start_node:"INPUT2_1", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER24:{start_node:"INPUT2_2", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER25:{start_node:"INPUT2_3", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER26:{start_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-
-//Axon_Transaction_FILTER27:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-//Axon_Transaction_FILTER28:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-///Axon_Transaction_FILTER29:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-
-Axon_Transaction_CORE16:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE17:{start_node:"INPUT2_0", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE18:{start_node:"INPUT2_1", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE19:{start_node:"INPUT2_2", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE20:{start_node:"INPUT2_3", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-
-Axon_Transaction_FILTER31:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-//Axon_Transaction_FILTER32:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER33:{start_node:"INPUT2_EQ", end_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER34:{start_node:"INPUT2_PLUS", end_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER35:{start_node:"INPUT2_MINUS", end_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_Transaction_FILTER36:{start_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-
-//Axon_Transaction_FILTER37:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-//Axon_Transaction_FILTER38:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-///Axon_Transaction_FILTER39:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-
-Axon_Transaction_CORE21:{start_node:"TRANSACTION_NEURON_COMPLETEO", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE22:{start_node:"TRANSACTION_NEURON_COMPLETEV", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-
-Axon_Transaction_FILTER47:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-Axon_Transaction_FILTER48:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-Axon_Transaction_FILTER49:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
-
-Axon_Transaction_CORE23:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_EMPTY", shape:["loop"], type:"glutamate", lengthsec:1,power:10},
-Axon_Transaction_CORE24:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["loop"], type:"glutamate", lengthsec:1,power:10},
-Axon_Transaction_CORE25:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["loop"], type:"glutamate", lengthsec:1,power:10},
-Axon_Transaction_CORE26:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["loop"], type:"glutamate", lengthsec:1,power:10},
-
-Axon_Transaction_CORE27:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_COMPLETE_GPI", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE28:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETE_GPI", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE29:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETE_GPI", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_Transaction_CORE30:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_COMPLETE_GPI", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-
-Axon_startTransaction_PLUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_PLUS", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-Axon_startTransaction_MINUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_MINUS", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-Axon_startTransaction_Component1_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-Axon_startTransaction_Component1_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-Axon_startTransaction_Component1_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-Axon_startTransaction_Component1_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-Axon_startTransaction_Component2_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-Axon_startTransaction_Component2_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-Axon_startTransaction_Component2_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
-Axon_startTransaction_Component2_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 
 
 
@@ -687,10 +779,10 @@ Axon_SUMM_filter_s:{start_node:"SUMM_FILTER_Component2", end_node:"SUMM_FILTER_E
 Axon_SUMM_filter_t:{start_node:"SUMM_FILTER_Operator", end_node:"SUMM_FILTER_EXC", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_SUMM_filter_u:{start_node:"SUMM_FILTER_TOTAL_INH", end_node:"SUMM_FILTER_TOTAL", shape:["default"], type:"GABA", lengthsec:5,power:-35},
 Axon_SUMM_filter_v:{start_node:"SUMM_FILTER_EXC", end_node:"SUMM_FILTER_TOTAL", shape:["default"], type:"glutamate", lengthsec:5,power:10},
-Axon_SUMM_filter_w:{start_node:"SUMM_FILTER_TOTAL", end_node:"RESULT_0", shape:["default"], type:"GABA", lengthsec:5,power:-40},
+/*Axon_SUMM_filter_w:{start_node:"SUMM_FILTER_TOTAL", end_node:"RESULT_0", shape:["default"], type:"GABA", lengthsec:5,power:-40},
 Axon_SUMM_filter_x:{start_node:"SUMM_FILTER_TOTAL", end_node:"RESULT_1", shape:["default"], type:"GABA", lengthsec:5,power:-40},
 Axon_SUMM_filter_y:{start_node:"SUMM_FILTER_TOTAL", end_node:"RESULT_2", shape:["default"], type:"GABA", lengthsec:5,power:-40},
-Axon_SUMM_filter_z:{start_node:"SUMM_FILTER_TOTAL", end_node:"RESULT_3", shape:["default"], type:"GABA", lengthsec:5,power:-40},
+Axon_SUMM_filter_z:{start_node:"SUMM_FILTER_TOTAL", end_node:"RESULT_3", shape:["default"], type:"GABA", lengthsec:5,power:-40},*/
 
 Axon_SUMM_filter_aa:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"SUMM_FILTER_INH", shape:["default"], type:"glutamate", lengthsec:55,power:10},
 Axon_SUMM_filter_ab:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"SUMM_FILTER_TOTAL_INH", shape:["default"], type:"glutamate", lengthsec:60,power:10},
@@ -790,6 +882,225 @@ Axon_OUTPUT_Component2_2a:{start_node:"OUTPUT_Component2_2", end_node:"Component
 Axon_OUTPUT_Component2_3a:{start_node:"OUTPUT_Component2_3", end_node:"Component2_3", shape:["default"], type:"glutamate", lengthsec:10,power:0},*/
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+Axon_Transaction_CORE0:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+Axon_Transaction_CORE6:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE7:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE8:{start_node:"INPUT2_EQ", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE9:{start_node:"INPUT2_PLUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE10:{start_node:"INPUT2_MINUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+Axon_Transaction_FILTER11:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER12:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER13:{start_node:"INPUT2_EQ", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER14:{start_node:"INPUT2_PLUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER15:{start_node:"INPUT2_MINUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER16:{start_node:"TRANSACTION_NEURON_ONLY_VALUE_FILTER", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+*/
+Axon_New_Transaction_CORE00:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_EMPTY",  shape:["default"],  lengthsec:10,        power:10, type:"glutamate"} ,
+
+
+Axon_New_Transaction_CORE0b:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_EMPTY_osc",  shape:["default"], lengthsec:10,         power:10, type:"glutamate"} ,
+Axon_New_Transaction_CORE0c:{start_node:"TRANSACTION_NEURON_EMPTY_osc", end_node:"TRANSACTION_NEURON_EMPTY_osc", shape:["loop"], lengthsec:1,            power:10, type:"glutamate"} ,
+
+///Axon_Transaction_CORE23:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_EMPTY", shape:["loop"], type:"glutamate", lengthsec:1,power:10},
+
+
+
+///Axon_New_Transaction_CORE0e:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_ONLY_VALUE_osc",  shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+Axon_New_Transaction_CORE0f:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_osc", shape:["default"],  lengthsec:10,         power:-10, type:"GABA"} ,
+Axon_New_Transaction_CORE0g:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_COMPLETEO_osc",  shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+///Axon_New_Transaction_CORE0h:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_COMPLETEV_osc",  shape:["default"], lengthsec:10,         power:-10, type:"GABA"} ,
+Axon_New2_Transaction_CORE0i:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_COMPLETE_osc",  shape:["default"],   lengthsec:10,       power:-10, type:"GABA"},
+
+///Axon_New_Transaction_CORE0i:{start_node:"TRANSACTION_NEURON_COMPLETE_osc", end_node:"TRANSACTION_NEURON_EMPTY",  shape:["default"],   lengthsec:10,       power:-50, type:"GABA"},
+
+
+
+Axon_New_Transaction_CORE10:{start_node:"TRANSACTION_NEURON_EMPTY_osc", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR",   shape:["default"],    lengthsec:10,        power:10, type:"glutamate"} ,
+
+
+
+///#INPUT2_0,1,2,3 > TRANSACTION_NEURON_ONLY_VALUE_killer inh
+///#TRANSACTION_NEURON_EMPTY > TRANSACTION_NEURON_ONLY_VALUE_killer exc
+///#TRANSACTION_NEURON_ONLY_VALUE_killer > TRANSACTION_ONLY_VALUE inh
+///#Axon_Transaction_CORE11:{start_node:"INPUT2_CE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_killer",            power:-10, type:"GABA"}
+Axon_New_Transaction_CORE12:{start_node:"INPUT2_EQ", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_killer",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"},
+Axon_New_Transaction_CORE13:{start_node:"INPUT2_PLUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_killer",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"},
+Axon_New_Transaction_CORE14:{start_node:"INPUT2_MINUS", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_killer",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"},
+Axon_New_Transaction_CORE15:{start_node:"TRANSACTION_NEURON_EMPTY_osc", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_killer", shape:["default"],  lengthsec:4,       power:10, type:"glutamate"} ,
+Axon_New_Transaction_CORE16:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR_killer", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"],  lengthsec:4,       power:-10, type:"GABA"},
+
+Axon_New_Transaction_CORE1b:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_osc",  shape:["default"],  lengthsec:10,          power:10, type:"glutamate"} ,
+Axon_New_Transaction_CORE1c:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR_osc", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_osc", shape:["loop"], lengthsec:1,            power:10, type:"glutamate"} ,
+
+
+Axon_New_Transaction_CORE1e:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_EMPTY_osc",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"} ,
+///Axon_New_Transaction_CORE1f:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_ONLY_VALUE_osc",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"} ,
+Axon_New_Transaction_CORE1g:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETEO_osc",   shape:["default"],  lengthsec:10,         power:-10, type:"GABA"} ,
+///Axon_New_Transaction_CORE1h:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETEV_osc",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"} ,
+Axon_New_Transaction_CORE1i:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETE_osc",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"},
+
+
+
+
+
+
+
+
+
+Axon_New_Transaction_CORE20:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR_osc", end_node:"TRANSACTION_NEURON_COMPLETEO",   shape:["default"],  lengthsec:10,         power:10, type:"glutamate"} ,
+///#INPUT2_0,1,2,3 > TRANSACTION_NEURON_ONLY_VALUE_killer inh
+///#TRANSACTION_NEURON_EMPTY > TRANSACTION_NEURON_ONLY_VALUE_killer exc
+///#TRANSACTION_NEURON_ONLY_VALUE_killer > TRANSACTION_ONLY_VALUE inh
+Axon_New_Transaction_CORE21:{start_node:"INPUT2_0", end_node:"TRANSACTION_NEURON_COMPLETEO_killer", shape:["default"],  lengthsec:10,           power:-10, type:"GABA"},
+Axon_New_Transaction_CORE22:{start_node:"INPUT2_1", end_node:"TRANSACTION_NEURON_COMPLETEO_killer",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"},
+Axon_New_Transaction_CORE23:{start_node:"INPUT2_2", end_node:"TRANSACTION_NEURON_COMPLETEO_killer",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"},
+Axon_New_Transaction_CORE24:{start_node:"INPUT2_3", end_node:"TRANSACTION_NEURON_COMPLETEO_killer",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"},
+Axon_New_Transaction_CORE25:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR_osc", end_node:"TRANSACTION_NEURON_COMPLETEO_killer",       shape:["default"],  lengthsec:4,    power:10, type:"glutamate"} ,
+Axon_New_Transaction_CORE26:{start_node:"TRANSACTION_NEURON_COMPLETEO_killer", end_node:"TRANSACTION_NEURON_COMPLETEO",        shape:["default"],  lengthsec:4,    power:-10, type:"GABA"},
+
+Axon_New_Transaction_CORE27:{start_node:"TRANSACTION_NEURON_COMPLETEO", end_node:"TRANSACTION_NEURON_COMPLETE",    shape:["default"],  lengthsec:10,        power:10, type:"glutamate"} ,
+
+Axon_New_Transaction_CORE2b:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_COMPLETE_osc",  shape:["default"],  lengthsec:10,          power:10, type:"glutamate"} ,
+Axon_New_Transaction_CORE2c:{start_node:"TRANSACTION_NEURON_COMPLETE_osc", end_node:"TRANSACTION_NEURON_COMPLETE_osc",  shape:["loop"],  lengthsec:1,              power:10, type:"glutamate"} ,
+
+Axon_New_Transaction_CORE2e:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_EMPTY_osc",    shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+///Axon_New_Transaction_CORE2f:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_ONLY_VALUE_osc",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"} ,
+Axon_New_Transaction_CORE2g:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_COMPLETEO_osc",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"} ,
+///Axon_New_Transaction_CORE2h:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_COMPLETEV_osc",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"} ,
+Axon_New_Transaction_CORE2i:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR_osc",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"},
+
+
+
+
+
+
+
+
+
+
+Axon_New_Transaction_CORE2e:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_EMPTY",    shape:["default"],  lengthsec:50,        power:10, type:"glutamate"} ,
+
+
+
+
+
+
+
+
+
+
+
+Axon_New_aTransaction_CORE27:{start_node:"TRANSACTION_NEURON_EMPTY_osc", end_node:"TRANSACTION_NEURON_COMPLETE_GPI",     shape:["default"],  lengthsec:10,       power:10, type:"glutamate"} ,
+///Axon_New_aTransaction_CORE28:{start_node:"TRANSACTION_NEURON_ONLY_VALUE_osc", end_node:"TRANSACTION_NEURON_COMPLETE_GPI",     shape:["default"],  lengthsec:10,       power:10, type:"glutamate"} ,
+Axon_New_aTransaction_CORE29:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR_osc", end_node:"TRANSACTION_NEURON_COMPLETE_GPI",   shape:["default"],  lengthsec:10,         power:10, type:"glutamate"} ,
+Axon_New_aTransaction_CORE30:{start_node:"TRANSACTION_NEURON_COMPLETE_osc", end_node:"TRANSACTION_NEURON_COMPLETE_GPI",   shape:["default"],  lengthsec:10,         power:-10, type:"GABA"} ,
+
+Axon_New_startTransaction_PLUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_PLUS",   shape:["default"],  lengthsec:10,         power:-10, type:"GABA"} ,
+Axon_New_startTransaction_MINUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_MINUS",   shape:["default"],  lengthsec:10,         power:-10, type:"GABA"} ,
+Axon_New_startTransaction_Component1_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_0",   shape:["default"],  lengthsec:10,         power:-10, type:"GABA"} ,
+Axon_New_startTransaction_Component1_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_1",   shape:["default"],  lengthsec:10,         power:-10, type:"GABA"} ,
+Axon_New_startTransaction_Component1_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_2",   shape:["default"],  lengthsec:10,         power:-10, type:"GABA"} ,
+Axon_New_startTransaction_Component1_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_3",    shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+Axon_New_startTransaction_Component2_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_0",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"} ,
+Axon_New_startTransaction_Component2_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_1",    shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+Axon_New_startTransaction_Component2_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_2",     shape:["default"],  lengthsec:10,       power:-10, type:"GABA"} ,
+Axon_New_startTransaction_Component2_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_3",     shape:["default"],  lengthsec:10,       power:-10, type:"GABA"} ,
+//#+10 to block phase
+Axon_10startTransaction_PLUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_PLUS",    shape:["default"],  lengthsec:10,    shape:["default"],  lengthsec:20,    power:-10, type:"GABA"} ,
+Axon_10startTransaction_MINUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_MINUS",    shape:["default"],  lengthsec:10,    shape:["default"],  lengthsec:20,    power:-10, type:"GABA"} ,
+Axon_10startTransaction_Component1_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_0",   shape:["default"],  lengthsec:10,      power:-10, type:"GABA"} ,
+Axon_10startTransaction_Component1_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_1",  shape:["default"],  lengthsec:10,          power:-10, type:"GABA"} ,
+Axon_10startTransaction_Component1_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_2",   shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+Axon_10startTransaction_Component1_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_3",  shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+Axon_10startTransaction_Component2_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_0",   shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+Axon_10startTransaction_Component2_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_1",   shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+Axon_10startTransaction_Component2_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_2",   shape:["default"],  lengthsec:10,         power:-10, type:"GABA"} ,
+Axon_10startTransaction_Component2_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_3",   shape:["default"],  lengthsec:10,        power:-10, type:"GABA"} ,
+//#+20 to block phase
+Axon_20startTransaction_PLUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_PLUS",        shape:["default"],  lengthsec:30,    power:-10, type:"GABA"} ,
+Axon_20startTransaction_MINUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_MINUS",        shape:["default"],  lengthsec:30,    power:-10, type:"GABA"} ,
+Axon_20startTransaction_Component1_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_0",  shape:["default"],  lengthsec:30,        power:-10, type:"GABA"} ,
+Axon_20startTransaction_Component1_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_1",   shape:["default"],  lengthsec:30,        power:-10, type:"GABA"} ,
+Axon_20startTransaction_Component1_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_2",   shape:["default"],  lengthsec:30,      power:-10, type:"GABA"} ,
+Axon_20startTransaction_Component1_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_3",   shape:["default"],  lengthsec:30,         power:-10, type:"GABA"} ,
+Axon_20startTransaction_Component2_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_0",   shape:["default"],  lengthsec:30,       power:-10, type:"GABA"} ,
+Axon_20startTransaction_Component2_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_1",   shape:["default"],  lengthsec:30,       power:-10, type:"GABA"} ,
+Axon_20startTransaction_Component2_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_2",  shape:["default"],  lengthsec:30,         power:-10, type:"GABA"} ,
+Axon_20startTransaction_Component2_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_3",  shape:["default"],  lengthsec:30,        power:-10, type:"GABA"} ,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//OPERATOR > START TRANSACTION
+
 Axon_OUTPUT_PLUS:{start_node:"OUTPUT_PLUS", end_node:"START_TRANSACTION_PLUS", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_MINUS:{start_node:"OUTPUT_MINUS", end_node:"START_TRANSACTION_MINUS", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 
@@ -801,14 +1112,14 @@ Axon_OUTPUT_Component1_3aa:{start_node:"MERGE_SUMM_Component1_3", end_node:"STAR
 
 
 
-/*Axon_OUTPUT_Component1_0a:{start_node:"OUTPUT_Component1_0", end_node:"START_TRANSACTION_Component1_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component1_1a:{start_node:"OUTPUT_Component1_1", end_node:"START_TRANSACTION_Component1_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component1_2a:{start_node:"OUTPUT_Component1_2", end_node:"START_TRANSACTION_Component1_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
-Axon_OUTPUT_Component1_3a:{start_node:"OUTPUT_Component1_3", end_node:"START_TRANSACTION_Component1_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},*/
+
 Axon_OUTPUT_Component2_0a:{start_node:"OUTPUT_Component2_0", end_node:"START_TRANSACTION_Component2_0", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_Component2_1a:{start_node:"OUTPUT_Component2_1", end_node:"START_TRANSACTION_Component2_1", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_Component2_2a:{start_node:"OUTPUT_Component2_2", end_node:"START_TRANSACTION_Component2_2", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT_Component2_3a:{start_node:"OUTPUT_Component2_3", end_node:"START_TRANSACTION_Component2_3", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+
+//START TRANSACTION > SUMM MODULE
 
 Axon_OUTPUT2_PLUSa:{start_node:"START_TRANSACTION_PLUS", end_node:"Operator_PLUS", shape:["default"], type:"glutamate", lengthsec:10,power:20},
 Axon_OUTPUT2_MINUSa:{start_node:"START_TRANSACTION_MINUS", end_node:"Operator_MINUS", shape:["default"], type:"glutamate", lengthsec:10,power:20},
@@ -820,6 +1131,96 @@ Axon_OUTPUT2_Component2_0a:{start_node:"START_TRANSACTION_Component2_0", end_nod
 Axon_OUTPUT2_Component2_1a:{start_node:"START_TRANSACTION_Component2_1", end_node:"Component2_1", shape:["default"], type:"glutamate", lengthsec:10,power:20},
 Axon_OUTPUT2_Component2_2a:{start_node:"START_TRANSACTION_Component2_2", end_node:"Component2_2", shape:["default"], type:"glutamate", lengthsec:10,power:20},
 Axon_OUTPUT2_Component2_3a:{start_node:"START_TRANSACTION_Component2_3", end_node:"Component2_3", shape:["default"], type:"glutamate", lengthsec:10,power:20},
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+*/
+
+
+///STEP 2 A = TRANSACTION_NEURON_EMPTY, T_N_ONLYVALUE, T_N_ONLYOPERATOR, T_N_COMPLETE)
+
+/*
+
+Axon_Transaction_FILTER7:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+Axon_Transaction_FILTER8:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+Axon_Transaction_FILTER8:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"GABA", lengthsec:4,power:-20},
+
+
+
+
+
+
+Axon_Transaction_FILTER17:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+Axon_Transaction_FILTER18:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+Axon_Transaction_FILTER18a:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"GABA", lengthsec:4,power:-20},
+
+Axon_Transaction_CORE11:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE13:{start_node:"INPUT2_EQ", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE14:{start_node:"INPUT2_PLUS", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE15:{start_node:"INPUT2_MINUS", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+Axon_Transaction_FILTER21:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER22:{start_node:"INPUT2_0", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER23:{start_node:"INPUT2_1", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER24:{start_node:"INPUT2_2", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER25:{start_node:"INPUT2_3", end_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER26:{start_node:"TRANSACTION_NEURON_COMPLETEV_FILTER", end_node:"TRANSACTION_NEURON_COMPLETEV", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_Transaction_CORE16:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE17:{start_node:"INPUT2_0", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE18:{start_node:"INPUT2_1", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE19:{start_node:"INPUT2_2", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE20:{start_node:"INPUT2_3", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+Axon_Transaction_FILTER31:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER33:{start_node:"INPUT2_EQ", end_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER34:{start_node:"INPUT2_PLUS", end_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER35:{start_node:"INPUT2_MINUS", end_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", shape:["default"], type:"glutamate", lengthsec:5,power:10},
+Axon_Transaction_FILTER36:{start_node:"TRANSACTION_NEURON_COMPLETEO_FILTER", end_node:"TRANSACTION_NEURON_COMPLETEO", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+Axon_Transaction_CORE21:{start_node:"TRANSACTION_NEURON_COMPLETEO", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE22:{start_node:"TRANSACTION_NEURON_COMPLETEV", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+
+Axon_Transaction_FILTER47:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+Axon_Transaction_FILTER48:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+Axon_Transaction_FILTER49:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["default"], type:"GABA", lengthsec:4,power:-10},
+
+
+Axon_Transaction_CORE24:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_ONLY_VALUE", shape:["loop"], type:"glutamate", lengthsec:1,power:10},
+Axon_Transaction_CORE25:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_ONLY_OPERATOR", shape:["loop"], type:"glutamate", lengthsec:1,power:10},
+Axon_Transaction_CORE26:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["loop"], type:"glutamate", lengthsec:1,power:10},
+
+Axon_Transaction_CORE27:{start_node:"TRANSACTION_NEURON_EMPTY", end_node:"TRANSACTION_NEURON_COMPLETE_GPI", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE28:{start_node:"TRANSACTION_NEURON_ONLY_VALUE", end_node:"TRANSACTION_NEURON_COMPLETE_GPI", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE29:{start_node:"TRANSACTION_NEURON_ONLY_OPERATOR", end_node:"TRANSACTION_NEURON_COMPLETE_GPI", shape:["default"], type:"glutamate", lengthsec:10,power:10},
+Axon_Transaction_CORE30:{start_node:"TRANSACTION_NEURON_COMPLETE", end_node:"TRANSACTION_NEURON_COMPLETE_GPI", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+
+Axon_startTransaction_PLUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_PLUS", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_startTransaction_MINUS:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_MINUS", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_startTransaction_Component1_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_startTransaction_Component1_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_startTransaction_Component1_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_startTransaction_Component1_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component1_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_startTransaction_Component2_0:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_0", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_startTransaction_Component2_1:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_1", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_startTransaction_Component2_2:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_2", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+Axon_startTransaction_Component2_3:{start_node:"TRANSACTION_NEURON_COMPLETE_GPI", end_node:"START_TRANSACTION_Component2_3", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+*/
+
+
+/*
 
 Axon_OUTPUT2_PLUSb:{start_node:"START_TRANSACTION_PLUS", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"glutamate", lengthsec:10,power:10},
 Axon_OUTPUT2_MINUSb:{start_node:"START_TRANSACTION_MINUS", end_node:"TRANSACTION_NEURON_EMPTY", shape:["default"], type:"glutamate", lengthsec:10,power:10},
@@ -864,6 +1265,46 @@ Axon_OUTPUT2_Component2_0e:{start_node:"START_TRANSACTION_Component2_0", end_nod
 Axon_OUTPUT2_Component2_1e:{start_node:"START_TRANSACTION_Component2_1", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 Axon_OUTPUT2_Component2_2e:{start_node:"START_TRANSACTION_Component2_2", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"GABA", lengthsec:10,power:-10},
 Axon_OUTPUT2_Component2_3e:{start_node:"START_TRANSACTION_Component2_3", end_node:"TRANSACTION_NEURON_COMPLETE", shape:["default"], type:"GABA", lengthsec:10,power:-10},
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1772,17 +2213,34 @@ OUTPUT_VALUE_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN7_shift
 
 
 
-TRANSACTION_NEURON_EMPTY:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+20,GREEN8_shiftXY[1]+20]},
-TRANSACTION_NEURON_ONLY_VALUE:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+40,GREEN8_shiftXY[1]+40]},
-TRANSACTION_NEURON_ONLY_VALUE_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+60,GREEN8_shiftXY[1]+60]},
-TRANSACTION_NEURON_ONLY_OPERATOR:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+80,GREEN8_shiftXY[1]+80]},
-TRANSACTION_NEURON_ONLY_OPERATOR_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+100,GREEN8_shiftXY[1]+100]},
-TRANSACTION_NEURON_COMPLETEO:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+120,GREEN8_shiftXY[1]+120]},
-TRANSACTION_NEURON_COMPLETEO_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+140,GREEN8_shiftXY[1]+140]},
-TRANSACTION_NEURON_COMPLETEV:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+160,GREEN8_shiftXY[1]+160]},
-TRANSACTION_NEURON_COMPLETEV_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+180,GREEN8_shiftXY[1]+180]},
-TRANSACTION_NEURON_COMPLETE:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+200,GREEN8_shiftXY[1]+200]},
-TRANSACTION_NEURON_COMPLETE_GPI:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+220,GREEN8_shiftXY[1]+220]},
+TRANSACTION_NEURON_EMPTY:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+20,GPI_shiftXY[1]+20]},
+TRANSACTION_NEURON_EMPTY_osc:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+30,GPI_shiftXY[1]+30]},
+///TRANSACTION_NEURON_ONLY_VALUE:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+40,GPI_shiftXY[1]+40]},
+///TRANSACTION_NEURON_ONLY_VALUE_osc:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+50,GPI_shiftXY[1]+50]},
+///TRANSACTION_NEURON_ONLY_VALUE_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+60,GREEN8_shiftXY[1]+60]},
+TRANSACTION_NEURON_ONLY_OPERATOR:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+80,GPI_shiftXY[1]+80]},
+TRANSACTION_NEURON_ONLY_OPERATOR_osc:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+90,GPI_shiftXY[1]+90]},
+///TRANSACTION_NEURON_ONLY_OPERATOR_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+100,GREEN8_shiftXY[1]+100]},
+TRANSACTION_NEURON_COMPLETEO:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+120,GPI_shiftXY[1]+120]},
+TRANSACTION_NEURON_COMPLETEO_osc:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+130,GPI_shiftXY[1]+130]},
+///TRANSACTION_NEURON_COMPLETEO_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+140,GREEN8_shiftXY[1]+140]},
+///TRANSACTION_NEURON_COMPLETEV:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+160,GPI_shiftXY[1]+160]},
+///TRANSACTION_NEURON_COMPLETEV_osc:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+170,GPI_shiftXY[1]+170]},
+///TRANSACTION_NEURON_COMPLETEV_FILTER:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN8_shiftXY[0]+180,GREEN8_shiftXY[1]+180]},
+TRANSACTION_NEURON_COMPLETE:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+200,GPI_shiftXY[1]+200]},
+TRANSACTION_NEURON_COMPLETE_osc:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+200,GPI_shiftXY[1]+200]},
+TRANSACTION_NEURON_COMPLETE_GPI:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GPI_shiftXY[0]+220,GPI_shiftXY[1]+220]},
+TRANSACTION_NEURON_ONLY_OPERATOR_killer:{type:"SOMA", soma_value:5, outputs:[],coordxy:[STN_shiftXY[0]+0,STN_shiftXY[1]+0]},
+TRANSACTION_NEURON_COMPLETEO_killer:{type:"SOMA", soma_value:5, outputs:[],coordxy:[STN_shiftXY[0]+20,STN_shiftXY[1]+20]},
+
+
+
+
+
+
+
+
+
 
 
 START_TRANSACTION_PLUS:{type:"SOMA", soma_value:5, outputs:[],coordxy:[GREEN9_shiftXY[0]+20,GREEN9_shiftXY[1]+20]},
@@ -2033,6 +2491,8 @@ function RedrawNode(eachnode,eachnode_name) {
 ///console.log(eachnode)
 
 if (eachnode.type == "SOMA") {
+    ctx.fillStyle = "#005500"
+    if (eachnode.soma_value < 0) { ctx.fillStyle = "#880000" }
 circle(eachnode.coordxy[0], eachnode.coordxy[1], eachnode.soma_value)
 textshiftx = 0
 if (eachnode.functions) {
@@ -2241,11 +2701,21 @@ ctx.fillText("LAYER 5", GREEN7_shiftXY[0]+10, GREEN7_shiftXY[1]+240);
 ctx.beginPath();
 ctx.fillStyle = "#ffffdd";
 ///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
-ctx.rect(GREEN8_shiftXY[0]+0, GREEN8_shiftXY[1],270, 300);
+ctx.rect(GPI_shiftXY[0]+0, GPI_shiftXY[1],270, 300);
 ctx.fill();
 ctx.font = "25px Arial bold";
 ctx.fillStyle = "#000000" ;
-ctx.fillText("GPE/GPI", GREEN8_shiftXY[0]+10, GREEN8_shiftXY[1]+280);
+ctx.fillText("GPI", GPI_shiftXY[0]+10, GPI_shiftXY[1]+280);
+
+
+ctx.beginPath();
+ctx.fillStyle = "#ffffdd";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(STN_shiftXY[0]-20, STN_shiftXY[1],100, 100);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("STN", STN_shiftXY[0]+10, STN_shiftXY[1]+80);
 
 ctx.beginPath();
 ctx.fillStyle = "#ffdddd";
