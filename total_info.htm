@@ -1,0 +1,1625 @@
+<html>
+
+Select data:
+
+<div>
+  <input type="radio" id="BINZEGGER_DATA" name="drone" value="dewey">
+  <label for="dewey">Benzigger (by number of synapses)</label>
+</div>
+<div>
+  <input type="radio" id="DOUGLAS_DATA" name="drone" value="dewey">
+  <label for="dewey">Douglas (by traffic)</label>
+</div>
+<hr>
+<input type="checkbox" id="SHOW_LAYER_SYNAPSES" value="CE" >Show layer synapses<br>
+<input type="checkbox" id="MULTIPLY_NUM_NEURONS" value="CE" >Multiply by number of neurons<br>
+
+<br>
+<canvas id="canvas" width=1500 height=1500></canvas>
+<br>
+
+
+<script>
+
+    Show_Layer_Sypapses = 0 
+    Multiply_Num_Neurons = 0
+
+aaaa = 0
+
+LAYER1_shiftXY=[aaaa + 100,100]
+LAYER3_shiftXY=[aaaa + 300,300]
+LAYER4_shiftXY=[aaaa + 500,500]
+LAYER5_shiftXY=[aaaa + 700,700]
+LAYER6_shiftXY=[aaaa + 900,900]
+THAL_shiftXY=[aaaa + 1100,1100]
+
+
+
+
+
+
+    funccolors = {appetite:"#00ffff", peptides:"#000000",}
+
+
+
+var filter_inhibition1 = -20 //-12 -11 -10 (20-14) -7 (20 18) -6 (20 16) -5 (20 14) -3 (20 16) -2 (20 18) -1 (20 16) 0 (20 12)
+var filter_excitation1 = 15
+var component1_excitement1 = 10
+var component2_excitement1 = 10
+var PLUS_excitement1 = 10
+var MINUS_excitement1 = 10
+var filter2_excitement1 = 0
+var filter2_inhibition = -0
+
+var feedback_inhibition_time1 = 10
+
+
+var BINZEGGER2 = [
+{from:"sp1",to:"p23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"800",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"b23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"db23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"ss4L23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"p4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"b4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"p5L23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"as",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"11000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"sy",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"1000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"sm1",to:"p23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"b23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"db23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"ss4L23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"p4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"b4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"p5L23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"as",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"8000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"sy",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"1000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+
+{from:"p23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"3500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"axo23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"ss4L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"ss4L4",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p5L56",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p6L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p6L4",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"p6L56",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"ThalXY",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"ThalXY",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"as",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"1500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"as",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"b23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"2000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"ss4L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"ss4L4",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p5L56",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p6L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p6L4",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"p6L56",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"ThalXY",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"ThalXY",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"as",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"as",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"db23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"1200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"ss4L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"p6L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"ThalXY",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"as",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"1500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"db23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"axo23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"1800",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"ss4L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"p6L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"ThalXY",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"axo23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"sm23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"1800",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"b23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"db23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"ss4L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"ss4L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"p4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"b4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"p6L4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"ThalXY",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm23",to:"sy",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"ss4L4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"ss4L4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"p5L56",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"p6L4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"2000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"p6L56",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"ThalXY",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"as",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"1500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L4",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"ss4L23",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"ss4L4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"ss4L4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"p5L56",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"p6L4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"p6L4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"1700",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"p6L56",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"ThalXY",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"ThalXY",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"as",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"1700",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"ss4L23",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"p4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ss4L4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ss4L4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ss4L4",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p5L56",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p5L56",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"b5",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p6L4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p6L4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"1700",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p6L4",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p6L56",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"p6L56",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ThalXY",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ThalXY",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"ThalXY",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"as",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"as",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"1700",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"as",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p4",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"b4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"ss4L4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"ss4L4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"p5L56",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"p6L4",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"p6L4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"1700",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"p6L56",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"ThalXY",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"ThalXY",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"as",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"1700",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b4",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"sm4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"b23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"db23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"ss4L4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"450",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"ss4L23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"b4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"450",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"p5L23",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"p5L56",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"p6L4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"1700",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"p6L56",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"ThalXY",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"as",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"1700",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm4",to:"sy",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+
+{from:"p5L23",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"2000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ss4L4",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ss4L4",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ss4L4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p5L56",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p5L56",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"b5",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p6L56",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"p6L56",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"as",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"as",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"as",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"350",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L23",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"p5L56",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"1000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"2000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ss4L4",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ss4L4",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ss4L4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ss4L4",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p5L56",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p5L56",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p5L56",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b5",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"b5",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p6L56",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p6L56",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"p6L56",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"as",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"5000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"as",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"as",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"as",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"700",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p5L56",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+
+{from:"b5",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"1300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"ss4L4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"350",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"p5L56",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"b5",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"p6L56",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"as",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"b5",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+
+{from:"sm5",to:"p23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"1300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"b23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"db23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"ss4L4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"ss4L23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"p4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"b4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"p5L23",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"350",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"p5L56",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"b5",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"p6L56",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"as",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"300",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm5",to:"sy",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"400",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"p6L4",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"450",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ss4L4",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ss4L4",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"250",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ss4L4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ss4L4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p5L56",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p5L56",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p5L56",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p6L4",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p6L4",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p6L4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p6L4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p6L56",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p6L56",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"p6L56",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"450",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"as",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"as",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"as",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"2000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L4",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"p6L56",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ss4L4",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ss4L4",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ss4L4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ss4L4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p5L56",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p5L56",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p5L56",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b5",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"b5",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p6L4",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p6L4",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p6L4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p6L4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p6L56",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p6L56",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"p6L56",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"800",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"as",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"as",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"as",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"as",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"3000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"p6L56",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"1000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+
+
+
+
+
+
+{from:"sm6",to:"p23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"b23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"db23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"ss4L4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"ss4L23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"b4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L4",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"p5L56",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"p5L23",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"p6L4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"p6L56",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"450",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"as",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"2000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm6",to:"sy",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:"500",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+
+
+
+
+]
+
+
+var BINZEGGER = BINZEGGER2
+
+
+
+
+var DOUGLAS = [
+
+
+{to:"p23",from:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"big",numOfSynapses:"20",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+//{from:"p23",to:"AREA_L3_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"AREA_L3",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+//FEEDFORWARD
+//{from:"p23",to:"AREA_L4_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"AREA_L4",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+//FEEDFORWARD
+{to:"p23",from:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"L5",weight:"big",numOfSynapses:"20",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{to:"p23",from:"p5L56",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"L5",weight:"big",numOfSynapses:"20",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+
+/*
+{from:"L4_PYR",to:"L3_PYR",pattern:"",from_Layer:"L4","synapse_Layer":"",to_Layer:"L3",weight:"big",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+4 spiny neurons do arborize extensively within layer 4, the major projection of layer 4 spiny neurons is to layer 3
+
+{from:"L5A_PYR",to:"L2/3",pattern:"",from_Layer:"L5A","synapse_Layer":"",to_Layer:"L3",weight:"",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"L5_PYR",to:"AREA_L3_PYR",pattern:"",from_Layer:"L5","synapse_Layer":"",to_Layer:"AREA_L3",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+FEEDBACK
+{from:"L5_PYR",to:"L6_PYR",pattern:"",from_Layer:"L5","synapse_Layer":"",to_Layer:"L6",weight:"big",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+L5_PYR > Thal DRIVING INPUT+significant alternative path for inter-areal communication
+
+{from:"L6_PYR",to:"AREA_L3_PYR",pattern:"",from_Layer:"L6","synapse_Layer":"",to_Layer:"AREA_L3",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+FEEDBACK
+{from:"L6_PYR",to:"L4_PYR",pattern:"",from_Layer:"L6","synapse_Layer":"",to_Layer:"L4",weight:"big",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"L6_PYR",to:"L6",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"L6_PYR",to:"Thal",pattern:"",from_Layer:"L6","synapse_Layer":"",to_Layer:"Thal",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"MODULATING",comment:"",author:"Douglas"},
+
+calretinin-positive neurons form synapses mainly with other smooth neurons
+(possibly calbindin-positive neurons) in layer 3, but with pyramidal cells in layer 5
+
+{from:"Thal",to:"L4_PYR",pattern:"",from_Layer:"Thal","synapse_Layer":"",to_Layer:"L4",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+inputs from the thalamus or from inter-areal connections are amplified by recurrent circuits
+
+*/
+
+
+]
+
+
+
+
+var AXONS = {
+
+
+
+
+
+}
+
+var soma_value_k = 3.0
+
+
+
+var NODES2 = {
+Out:{type:"Y", outputs:[]},
+
+
+
+
+
+sp1:{type:"SOMA", soma_value2:0.01*soma_value_k, outputs:[],coordxy:[LAYER1_shiftXY[0]+20,LAYER1_shiftXY[1]+20]},
+sm1:{type:"SOMA", soma_value2:0.4*soma_value_k, outputs:[],coordxy:[LAYER1_shiftXY[0]+40,LAYER1_shiftXY[1]+40]},
+p23:{type:"SOMA", soma_value2:8.2*soma_value_k, outputs:[],coordxy:[LAYER3_shiftXY[0]+20,LAYER3_shiftXY[1]+20]},
+b23:{type:"SOMA", soma_value2:0.9*soma_value_k, outputs:[],coordxy:[LAYER3_shiftXY[0]+40,LAYER3_shiftXY[1]+40]},
+db23:{type:"SOMA", soma_value2:0.5*soma_value_k, outputs:[],coordxy:[LAYER3_shiftXY[0]+60,LAYER3_shiftXY[1]+60]},
+axo23:{type:"SOMA", soma_value2:0.1*soma_value_k, outputs:[],coordxy:[LAYER3_shiftXY[0]+80,LAYER3_shiftXY[1]+80]},
+sm23:{type:"SOMA", soma_value2:0.6*soma_value_k, outputs:[],coordxy:[LAYER3_shiftXY[0]+100,LAYER3_shiftXY[1]+100]},
+ss4L4:{type:"SOMA", soma_value2:3*soma_value_k, outputs:[],coordxy:[LAYER4_shiftXY[0]+20,LAYER4_shiftXY[1]+20]},
+ss4L23:{type:"SOMA", soma_value2:3*soma_value_k, outputs:[],coordxy:[LAYER4_shiftXY[0]+40,LAYER4_shiftXY[1]+40]},
+p4:{type:"SOMA", soma_value2:3*soma_value_k, outputs:[],coordxy:[LAYER4_shiftXY[0]+60,LAYER4_shiftXY[1]+60]},
+b4:{type:"SOMA", soma_value2:2*soma_value_k, outputs:[],coordxy:[LAYER4_shiftXY[0]+80,LAYER4_shiftXY[1]+80]},
+sm4:{type:"SOMA", soma_value2:0.3*soma_value_k, outputs:[],coordxy:[LAYER4_shiftXY[0]+100,LAYER4_shiftXY[1]+100]},
+p5L23:{type:"SOMA", soma_value2:1.5*soma_value_k, outputs:[],coordxy:[LAYER5_shiftXY[0]+20,LAYER5_shiftXY[1]+20]},
+p5L56:{type:"SOMA", soma_value2:0.3*soma_value_k, outputs:[],coordxy:[LAYER5_shiftXY[0]+40,LAYER5_shiftXY[1]+40]},
+b5:{type:"SOMA", soma_value2:0.2*soma_value_k, outputs:[],coordxy:[LAYER5_shiftXY[0]+60,LAYER5_shiftXY[1]+60]},
+sm5:{type:"SOMA", soma_value2:0.2*soma_value_k, outputs:[],coordxy:[LAYER5_shiftXY[0]+80,LAYER5_shiftXY[1]+80]},
+p6L4:{type:"SOMA", soma_value2:4.5*soma_value_k, outputs:[],coordxy:[LAYER6_shiftXY[0]+20,LAYER6_shiftXY[1]+20]},
+p6L56:{type:"SOMA", soma_value2:1.5*soma_value_k, outputs:[],coordxy:[LAYER6_shiftXY[0]+40,LAYER6_shiftXY[1]+40]},
+sm6:{type:"SOMA", soma_value2:1.3*soma_value_k, outputs:[],coordxy:[LAYER6_shiftXY[0]+60,LAYER6_shiftXY[1]+60]},
+ThalXY:{type:"SOMA", soma_value2:0.3*soma_value_k, outputs:[],coordxy:[THAL_shiftXY[0]+20,THAL_shiftXY[1]+20]},
+as:{type:"SOMA", soma_value2:5, outputs:[],coordxy:[THAL_shiftXY[0]+40,THAL_shiftXY[1]+40]},
+sy:{type:"SOMA", soma_value2:5, outputs:[],coordxy:[THAL_shiftXY[0]+60,THAL_shiftXY[1]+60]},
+
+
+
+
+
+}
+
+function CopyArray(_ar)
+{
+    ret = {}
+    for (each in _ar) {ret[each] = _ar[each]}
+    return ret
+    }
+
+var NODES = CopyArray(NODES2)
+
+
+function GetAxonShape(_ThroughLayer, _from, _to, _layer) {
+    if (_ThroughLayer == 0) {
+        if (_from == _to) { return ["loop"] }
+        return ["default"]
+    } else {
+        TO_X = NODES[_to].coordxy[0]
+        if (_layer == "L1") return [[TO_X - 20,LAYER1_shiftXY[1]],[TO_X - 10,LAYER1_shiftXY[1]]]
+            if (_layer == "L3") return [[TO_X - 20,LAYER3_shiftXY[1]],[TO_X - 10,LAYER3_shiftXY[1]]]
+                if (_layer == "L4") return [[TO_X - 20,LAYER4_shiftXY[1]],[TO_X - 10,LAYER4_shiftXY[1]]]
+                    if (_layer == "L5") return [[TO_X - 20,LAYER5_shiftXY[1]],[TO_X - 10,LAYER5_shiftXY[1]]]
+                        if (_layer == "L6") return [[TO_X - 20,LAYER6_shiftXY[1]],[TO_X - 10,LAYER6_shiftXY[1]]]
+    }
+}
+
+function GetAxonType(_from) {
+
+    switch (_from) {
+case "sp1": return "glutamate" ; 
+case "sm1": return "GABA" ; 
+        case "p23": return "glutamate"
+        case "b23": return "GABA"
+        case "db23": return "GABA"
+case "axo23": return "GABA" ; 
+case "sm23": return "GABA" ; 
+        case "ss4L4": return "glutamate"
+        case "ss4L23": return "glutamate"
+        case "p4": return "glutamate"
+        case "b4": return "GABA"
+case "sm4": return "GABA" ; 
+        case "p5L23": return "glutamate"
+        case "p5L56": return "glutamate"
+        case "b5": return "GABA"
+case "sm5": return "GABA" ; 
+        case "p6L4": return "glutamate"
+        case "p6L56": return "glutamate"
+case "sm6": return "GABA" ; 
+        case "ThalXY": return "glutamate"
+    }
+    return ""
+}
+
+
+function GetAxonPower(_MutiplyByNumbers,_power,_num_of_neurons, _k, _axon_power_prev) {
+console.log(_MutiplyByNumbers,_power, _num_of_neurons, _k, 20.0*_power/_k) 
+    if (_MutiplyByNumbers) {
+        return (40.0*_power*_num_of_neurons / _k) + _axon_power_prev
+    } else {
+        return (40.0*_power/_k) + _axon_power_prev
+    }
+}
+
+
+function GetPowerNormalize() {
+    max_power = -999999 ; 
+    for (each in BINZEGGER) {
+        if (Multiply_Num_Neurons) {
+            num_of_neurons = NODES[BINZEGGER[each].to].soma_value2
+            if ((num_of_neurons*parseInt(BINZEGGER[each].numOfSynapses)) > max_power) {max_power = num_of_neurons*parseInt(BINZEGGER[each].numOfSynapses)}
+        } else {
+            if (parseInt(BINZEGGER[each].numOfSynapses) > max_power) {max_power = parseInt(BINZEGGER[each].numOfSynapses)}
+        }
+    }
+console.log(max_power)
+    return max_power
+}
+
+
+function FILL_BINZEGGER() {
+ ///   if ShowLayersSyn == 0 {summ by layers}
+ ///   draw x,y,L
+    NODES = CopyArray(NODES2)
+    AXONS = {}
+    power_normalize = GetPowerNormalize()
+    for (each in BINZEGGER) {
+console.log(BINZEGGER[each])
+        axon_name = "Axon_" + BINZEGGER[each].from + "_" + BINZEGGER[each].to
+        if (Show_Layer_Sypapses) {axon_name = "Axon_" + BINZEGGER[each].from + "_" + BINZEGGER[each].synapse_Layer + "_" + BINZEGGER[each].to}
+        axon_shape = GetAxonShape(Show_Layer_Sypapses, BINZEGGER[each].from, BINZEGGER[each].to, BINZEGGER[each].synapse_Layer)
+        axon_type = GetAxonType(BINZEGGER[each].from)
+
+axon_power_prev = 0
+if (axon_name in AXONS) {axon_power_prev = AXONS[axon_name].power}
+
+        axon_power = GetAxonPower(Multiply_Num_Neurons, BINZEGGER[each].numOfSynapses ,NODES[BINZEGGER[each].to].soma_value2, power_normalize, axon_power_prev)
+        AXONS[axon_name] = {start_node:BINZEGGER[each].to, end_node:BINZEGGER[each].from, shape:axon_shape, type:axon_type, lengthsec:10,power:axon_power} ; 
+    }
+//console.log(AXONS); 
+
+}
+
+
+FILL_BINZEGGER() ; 
+
+
+
+
+
+var currspike_id = 0 ; 
+var MOVINGSPIKES = {} ; 
+var startTime = 0;
+var OnlyOnce = 0 ; 
+
+
+
+
+var x = 100;
+var y = 50;
+var r = 10;
+var duration = 1000; // in ms
+var nextX, nextY;
+
+function GetDistXYZ(currxyz1, currxyz2) {
+    return Math.sqrt(((currxyz1[0]-currxyz2[0])*(currxyz1[0]-currxyz2[0]))+((currxyz1[1]-currxyz2[1])*(currxyz1[1]-currxyz2[1]))) ; 
+}
+
+function GetLayerPointAtLength(_CurrSomaLayer, _LengthAtLayer) {
+///console.log("DDD8", _CurrSomaLayer, _LengthAtLayer)
+    CurrLengthAtLayer = 0
+    ret = [_LengthAtLayer, _LengthAtLayer]
+
+            for (var i = 0 ; i< _CurrSomaLayer.length-1 ; i++) {
+///console.log("DDD7", CurrLengthAtLayer)
+                var currxyz1 = _CurrSomaLayer[i]
+                var currxyz2 = _CurrSomaLayer[i+1]
+                CurrCutDist = GetDistXYZ(currxyz1, currxyz2)
+
+
+
+
+                if (CurrLengthAtLayer + CurrCutDist > _LengthAtLayer) {
+_currproportion = (_LengthAtLayer - CurrLengthAtLayer)/CurrCutDist
+ret = [currxyz1[0]+(_currproportion*(currxyz2[0]-currxyz1[0])), currxyz1[1]+(_currproportion*(currxyz2[1]-currxyz1[1]))] ; 
+                    return ret ; /// currxyz1 ; 
+                }
+                CurrLengthAtLayer = CurrLengthAtLayer + CurrCutDist
+            }
+
+    return ret
+}
+
+function RedrawSpike(eachspike) {
+_currxy = GetLayerPointAtLength(MOVINGSPIKES[eachspike].currentaxon.shape, MOVINGSPIKES[eachspike].curraxonlength*MOVINGSPIKES[eachspike].currentposonaxon/MOVINGSPIKES[eachspike].currentaxon.lengthsec)
+circle(_currxy[0], _currxy[1], 5)
+}
+
+
+
+function GetFunctionColor(_func) {
+    ret = "black"
+
+if (_func in funccolors) {ret = funccolors[_func]}
+    ///else {console.log(_func)
+        ///console.log(a)}
+return ret
+}
+
+
+
+function RedrawNode(eachnode,eachnode_name) {
+///console.log(eachnode)
+
+if (eachnode.type == "SOMA") {
+    ctx.fillStyle = "#005500"
+    if (eachnode.soma_value < 0) { ctx.fillStyle = "#880000" }
+circle(eachnode.coordxy[0], eachnode.coordxy[1], eachnode.soma_value2)
+textshiftx = 0
+if (eachnode.functions) {
+///console.log(eachnode.functions)
+textshiftx = 10*eachnode.functions.length
+for (var i = 0 ; i< eachnode.functions.length ; i++) {
+    ctx.font = "25px Arial bold";
+    ///ctx.color = "#ff0000" ;
+    ctx.fillStyle = GetFunctionColor(eachnode.functions[i]) ; ///"#ff0000"; 
+    ctx.fillText("*", i*10 + 2 + eachnode.coordxy[0], 10 + eachnode.coordxy[1]);
+}
+}
+ctx.font = "10px Arial";
+    ctx.fillStyle = "black"; 
+
+ctx.fillText('    ' + eachnode.soma_value + ' ' + eachnode_name, textshiftx + eachnode.coordxy[0], eachnode.coordxy[1]);
+}} 
+
+
+function RecalculateNode(eachnode) {
+if (eachnode.type == "SOMA") {
+if ((startTime/10 == Math.floor(startTime/10) && (OnlyOnce))) {
+///console.log(startTime, eachnode.soma_value)
+if (eachnode.soma_value > 5) {eachnode.soma_value = eachnode.soma_value - 1}
+if (eachnode.soma_value < 5) {eachnode.soma_value = 1*eachnode.soma_value + 1}
+OnlyOnce = 0 ; 
+}}} 
+ 
+
+
+var CalculationResults = {RESULT_0:0, RESULT_1:0, RESULT_2:0, RESULT_3:0, RESULT_4:0, RESULT_5:0, RESULT_6:0, RESULT_minus1:0, RESULT_minus2:0, RESULT_minus3:0}
+
+function RecalculateSpike(eachspike) {
+    ///console.log(MOVINGSPIKES[eachspike].currentposonaxon) ;
+    MOVINGSPIKES[eachspike].currentposonaxon = MOVINGSPIKES[eachspike].currentposonaxon + 1 ; 
+///console.log(MOVINGSPIKES[eachspike].currentaxon)
+    if (MOVINGSPIKES[eachspike].currentposonaxon > MOVINGSPIKES[eachspike].currentaxon.lengthsec-1) {
+        ///PassFinishNode() ;
+///var NODES = {PurkinjeDendrite:{type:"Y", outputs:["Axon3"]}}
+        curr_end_node = NODES[MOVINGSPIKES[eachspike].currentaxon.end_node]
+        if (curr_end_node.type == "Y") {
+            for (eachoutput in curr_end_node.outputs) {
+///console.log(NODES[MOVINGSPIKES[eachspike].currentaxon.end_node])
+                currspike_id = currspike_id + 1 ; 
+                MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[curr_end_node.outputs[eachoutput]], currentposonaxon:0, currentpower:1, curraxonlength:GetAxonLength(AXONS[curr_end_node.outputs[eachoutput]].shape)}
+            }
+        }
+
+        if (curr_end_node.type == "SOMA") {
+            NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value = NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value + MOVINGSPIKES[eachspike].currentaxon.power ; 
+            ///if (NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value > 15) {NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value = 15}
+////////////////////////////////////////////////////////////////////////////////////////////////            
+/*if (eachspike == "OUTPUT_Component1_0") {console.log(NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value)}
+            if (NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value > 10) {
+                for (eachoutput in curr_end_node.outputs) {
+if ( (MOVINGSPIKES[eachspike].currentaxon.end_node in CalculationResults) == 0) {
+CalculationResults[MOVINGSPIKES[eachspike].currentaxon.end_node] = 0 ; 
+///console.log(MOVINGSPIKES[eachspike].currentaxon.end_node)
+}
+CalculationResults[MOVINGSPIKES[eachspike].currentaxon.end_node] = CalculationResults[MOVINGSPIKES[eachspike].currentaxon.end_node]+1
+
+                    currspike_id = currspike_id + 1 ; 
+                    MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[curr_end_node.outputs[eachoutput]], currentposonaxon:0, currentpower:1, curraxonlength:GetAxonLength(AXONS[curr_end_node.outputs[eachoutput]].shape)}
+
+                }
+                NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value = 5 ; 
+            }
+
+            if (NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value < -21) {NODES[MOVINGSPIKES[eachspike].currentaxon.end_node].soma_value = -21}*/
+/////////////////////////////////////////////////////////////////////////////////////////////
+        }
+        delete  MOVINGSPIKES[eachspike] ; 
+    }
+} 
+
+
+
+
+
+
+
+function FireNewSpikes(_eachnode) {
+if (_eachnode == "OUTPUT_Component1_0") {console.log(NODES[_eachnode].soma_value)}
+///if (_eachnode == "INPUT2_CE") {console.log(NODES[_eachnode].soma_value, NODES[_eachnode])}
+///console.log(_eachnode)
+            if (NODES[_eachnode].soma_value > 10) {
+                for (eachoutput in NODES[_eachnode].outputs) {
+
+///if (_eachnode == "INPUT2_CE") {console.log(eachoutput)}                   
+if ( (_eachnode in CalculationResults) == 0) {
+CalculationResults[_eachnode] = 0 ; 
+///console.log(MOVINGSPIKES[eachspike].currentaxon.end_node)
+}
+CalculationResults[_eachnode] = CalculationResults[_eachnode]+1
+
+                    currspike_id = currspike_id + 1 ; 
+                    MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[NODES[_eachnode].outputs[eachoutput]], currentposonaxon:0, currentpower:1, curraxonlength:GetAxonLength(AXONS[NODES[_eachnode].outputs[eachoutput]].shape)}
+
+                }
+                NODES[_eachnode].soma_value = 5 ; 
+            }
+
+            if (NODES[_eachnode].soma_value < -21) {NODES[_eachnode].soma_value = -21}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+function anim(time) {
+///console.log(MOVINGSPIKES)
+  //if (!startTime) // it's the first frame
+   // startTime = time || performance.now();
+startTime = startTime + 1 ; 
+OnlyOnce = 1 ; 
+clear() ; 
+
+
+
+////////////////////////////////////////////////////////////////////////
+//DRAW LAYERS
+ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.fillStyle = "#ffffdd";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(0, LAYER1_shiftXY[1]-10,1000, 200);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 1", 10, LAYER1_shiftXY[1]+180);
+
+ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.fillStyle = "#ffddff";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(0, LAYER3_shiftXY[1]-10,1000, 200);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 2/3", 10, LAYER3_shiftXY[1]+180);
+
+ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.fillStyle = "#ffdddd";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(0, LAYER4_shiftXY[1]-10,1000, 200);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 4", 10, LAYER4_shiftXY[1]+180);
+
+ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.fillStyle = "#ddffff";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(0, LAYER5_shiftXY[1]-10,1000, 200);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 5", 10, LAYER5_shiftXY[1]+180);
+
+ctx.beginPath();
+ctx.lineWidth = "4";
+ctx.fillStyle = "#ddffdd";
+///ctx.rect(GREENb_shiftXY, GREENb_shiftXY, GREENb_shiftXY+150, GREENb_shiftXY+100);
+ctx.rect(0, LAYER6_shiftXY[1]-10,1000, 200);
+ctx.fill();
+ctx.font = "25px Arial bold";
+ctx.fillStyle = "#000000" ;
+ctx.fillText("LAYER 6", 10, LAYER6_shiftXY[1]+180);
+
+
+////////////////////////////////////////////////////////////////////////////
+
+
+for (eachaxon in AXONS) {
+    drawLine(AXONS[eachaxon])
+}
+for (eachspike in MOVINGSPIKES) {
+
+RedrawSpike(eachspike) ; 
+RecalculateSpike(eachspike) ; 
+
+}
+
+
+
+for (_eachnode in NODES) {
+
+FireNewSpikes(_eachnode)
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+for (eachnode in NODES) {
+
+RedrawNode(NODES[eachnode],eachnode) ; 
+RecalculateNode(NODES[eachnode]) ; 
+
+}
+
+
+///if (MOVINGSPIKES[eachspike].currentaxon.end_node == "RESULT_minus1") {CalculationResults.RESULT_1 = CalculationResults.RESULT_1+1}
+
+i_color = 0
+for (eachcolor in CalculationResults) {
+    i_color = i_color + 1 ; 
+    ctx.fillStyle = funccolors[eachcolor];
+///circle(190, i_color*20, 10)
+    ctx.font = "15px Arial bold";
+    ctx.fillText(eachcolor + ' = ' + CalculationResults[eachcolor], 1050, 0 + i_color*20);
+}
+
+
+
+
+  // deltaTime should be in the range [0 ~ 1]
+  var deltaTime = (time - startTime) / duration;
+  // currentPos = previous position + (difference * deltaTime)
+  //var currentX = x + ((nextX - x) * deltaTime);
+  //var currentY = y + ((nextY - y) * deltaTime);
+
+ // if (deltaTime >= 1) { // this means we ended our animation
+    x = nextX; // reset x variable
+    y = nextY; // reset y variable
+   // startTime = null; // reset startTime
+   /// draw(x, y); // draw the last frame, at required position
+ // } else {
+   /// draw(currentX, currentY);
+setTimeout(function() {
+  //your code to be executed after 1 second
+requestAnimationFrame(anim); // do it again
+}, 500);
+    
+//  }
+}
+/*
+MotorCortex.onclick = e => {
+CreateSpike('AxonMF_1_1')
+CreateSpike('AxonMF_1_2')
+CreateSpike('AxonMF_1_3')
+}
+*/
+// OP's code
+
+
+
+
+function GetInputAxons(_inputtags) {
+console.log(_inputtags)
+foundtagnodes = {}
+    for (eachnode in NODES) {
+///console.log(NODES[eachnode].functions)
+        for (eachinputtag in _inputtags) {
+            for (eachfunction in NODES[eachnode].functions) {
+                if (inputtags[eachinputtag] == NODES[eachnode].functions[eachfunction]) {
+                    foundtagnodes[eachnode] = 1
+///console.log(eachnode, eachinputtag, eachfunction)
+                }
+            }
+        }
+    }
+console.log(foundtagnodes)
+foundtagaxons = {}
+    for (eachaxon in AXONS) {
+
+        for (eachfoundtagnode in foundtagnodes) {
+            if (eachfoundtagnode == AXONS[eachaxon].start_node) {
+///console.log(eachaxon)    
+                    foundtagaxons[eachaxon]     = 1 ; 
+            }
+        }
+    }
+console.log(foundtagaxons)
+return foundtagaxons
+}
+
+
+function ShiftSynapses() {
+    if (Show_Layer_Sypapses) {Show_Layer_Sypapses = 0} else {Show_Layer_Sypapses = 1}
+    FILL_BINZEGGER() ; 
+    FillNodeOutputs();
+}
+
+function ShiftPower() {
+    if (Multiply_Num_Neurons) {Multiply_Num_Neurons = 0} else {Multiply_Num_Neurons = 1}
+    FILL_BINZEGGER() ; 
+    FillNodeOutputs();
+}
+
+function ShiftData(_name) {
+    if (_name == "BENZIGGER") {BINZEGGER = BINZEGGER2}
+        if (_name == "DOUGLAS") {BINZEGGER = DOUGLAS}
+    FILL_BINZEGGER() ; 
+    FillNodeOutputs();
+}
+
+//Axon_INPUT2_CE.onclick = e => {CreateSpike('Axon_INPUT2_CE')}
+SHOW_LAYER_SYNAPSES.onclick = e => {ShiftSynapses()}
+MULTIPLY_NUM_NEURONS.onclick = e => {ShiftPower()}
+BINZEGGER_DATA.onclick = e => {ShiftData("BENZIGGER")}
+DOUGLAS_DATA.onclick = e => {ShiftData("DOUGLAS")}
+
+
+
+
+
+
+
+
+
+/*
+
+Axon_INPUT2_CE:{start_node:"INPUT_CE", end_node:"INPUT2_CE", shape:[], type:"glutamate", lengthsec:10,power:10},
+Axon_INPUT2_EQ:{start_node:"INPUT_EQ", end_node:"INPUT2_EQ", shape:[], type:"glutamate", lengthsec:10,power:10},
+Axon_INPUT2_PLUS:{start_node:"INPUT_PLUS", end_node:"INPUT2_PLUS", shape:[], type:"glutamate", lengthsec:10,power:10},
+Axon_INPUT2_MINUS:{start_node:"INPUT_MINUS", end_node:"INPUT2_MINUS", shape:[], type:"glutamate", lengthsec:10,power:10},
+Axon_INPUT2_0:{start_node:"INPUT_0", end_node:"INPUT2_0", shape:[], type:"glutamate", lengthsec:10,power:10},
+Axon_INPUT2_1:{start_node:"INPUT_1", end_node:"INPUT2_1", shape:[], type:"glutamate", lengthsec:10,power:10},
+Axon_INPUT2_2:{start_node:"INPUT_2", end_node:"INPUT2_2", shape:[], type:"glutamate", lengthsec:10,power:10},
+Axon_INPUT2_3:{start_node:"INPUT_3", end_node:"INPUT2_3", shape:[], type:"glutamate", lengthsec:10,power:10},
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+
+
+
+
+/*
+function draw(x, y) {
+  clear(WIDTH, HEIGHT);
+  ctx.fillStyle = "purple";
+  circle(x, y, r);
+}
+
+draw(x, y);
+*/
+
+///////////////////////////////////////////////
+function circle(x, y, r) {
+  ctx.beginPath();
+  ctx.arc(x, y, Math.abs(r), 0, Math.PI * 2, true);
+  ctx.fill();
+}
+var WIDTH = 2200;
+var HEIGHT = 1700;
+function clear() {
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+}
+
+
+
+function GetAxonLength(_CurrSomaLayer) {
+///console.log(_CurrSomaLayer)
+    CurrLengthAtLayer = 0
+            for (var i = 0 ; i< _CurrSomaLayer.length-1 ; i++) {
+                var currxyz1 = _CurrSomaLayer[i]
+                var currxyz2 = _CurrSomaLayer[i+1]
+                CurrCutDist = GetDistXYZ(currxyz1, currxyz2)
+                CurrLengthAtLayer = CurrLengthAtLayer + CurrCutDist
+            }
+
+    return CurrLengthAtLayer
+}
+
+
+
+function CreateSpike(_axon_id) {
+console.log(_axon_id, AXONS[_axon_id])
+currspike_id = currspike_id + 1 ; 
+MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[_axon_id], currentposonaxon:0, currentpower:1, curraxonlength:GetAxonLength(AXONS[_axon_id].shape)}
+}
+
+
+
+function drawLine(_shape) {
+    ///console.log("AAA", NODES[_shape.start_node].coordxy, NODES[_shape.end_node].coordxy)
+ctx.beginPath();
+///ctx.moveTo(NODES[_shape.start_node].coordxy[0], NODES[_shape.start_node].coordxy[1]);
+///console.log(_shape)
+ctx.moveTo(_shape.shape[0][0], _shape.shape[0][1]);
+_color = '#555555'
+if (_shape.type == "GABA") {_color = '#ff0000'}
+if (_shape.type == "glutamate") {_color = '#00ff00'}
+if (_shape.type == "GABA_glycine") {_color = '#ff0099'}
+for (i = 1; i < _shape.shape.length; i++) { 
+ctx.lineTo(_shape.shape[i][0], _shape.shape[i][1]);
+}
+///ctx.lineTo(NODES[_shape.end_node].coordxy[0], NODES[_shape.end_node].coordxy[1]);
+      ctx.lineWidth = Math.abs(_shape.power*0.5)+1;
+      ctx.strokeStyle = _color;
+ctx.stroke();
+
+
+ctx.beginPath();
+ctx.moveTo(_shape.arrow[0][0], _shape.arrow[0][1]);
+ctx.lineTo(_shape.arrow[1][0], _shape.arrow[1][1]);
+ctx.lineTo(_shape.arrow[2][0], _shape.arrow[2][1]);
+      ctx.lineWidth = Math.abs(_shape.power)+1;
+      ///console.log(ctx.lineWidth)
+      ctx.strokeStyle = _color;
+ctx.stroke();
+}
+
+
+//for (eachaxon in AXONS) {
+//  drawLine(AXONS[eachaxon])
+//}
+
+
+
+
+function FillNodeOutputs() {
+///TODO add arrows 
+    for (each in AXONS) {
+       /// console.log(AXONS[each].start_node)
+///console.log(NODES[AXONS[each].start_node].outputs, AXONS[each].end_node)
+        NODES[AXONS[each].start_node].outputs.push(each) ; ///AXONS[each].end_node) ;
+
+if (AXONS[each].shape[0] == "default") {
+
+///console.log("gggggggggggggggggg",NODES[AXONS[each].start_node].coordxy,NODES[AXONS[each].end_node].coordxy)
+    if (NODES[AXONS[each].start_node].coordxy[1] < NODES[AXONS[each].end_node].coordxy[1]) {
+
+        _dx = 10
+        if (NODES[AXONS[each].end_node].coordxy[0] < NODES[AXONS[each].start_node].coordxy[0]) {_dx = -10}
+
+        AXONS[each].shape=[
+[NODES[AXONS[each].end_node].coordxy[0]-_dx,NODES[AXONS[each].start_node].coordxy[1]],
+[NODES[AXONS[each].end_node].coordxy[0],NODES[AXONS[each].start_node].coordxy[1]+10]
+]
+    } else {
+        _dx = 10
+        if (NODES[AXONS[each].end_node].coordxy[0] < NODES[AXONS[each].start_node].coordxy[0]) {_dx = -10}
+
+        AXONS[each].shape=[
+[NODES[AXONS[each].end_node].coordxy[0]-_dx,NODES[AXONS[each].start_node].coordxy[1]],
+[NODES[AXONS[each].end_node].coordxy[0],NODES[AXONS[each].start_node].coordxy[1] - 10]
+]
+
+
+    }
+///console.log("gggggggggggggggggg222",AXONS[each].shape)
+}
+
+
+
+
+
+
+
+
+if (AXONS[each].shape[0] == "loop") {
+
+        AXONS[each].shape=[
+[NODES[AXONS[each].end_node].coordxy[0] + 10,NODES[AXONS[each].start_node].coordxy[1] - 10],
+[NODES[AXONS[each].end_node].coordxy[0] + 10,NODES[AXONS[each].start_node].coordxy[1] - 30],
+[NODES[AXONS[each].end_node].coordxy[0] + 0,NODES[AXONS[each].start_node].coordxy[1] - 40],
+[NODES[AXONS[each].end_node].coordxy[0] - 10,NODES[AXONS[each].start_node].coordxy[1] - 30],
+[NODES[AXONS[each].end_node].coordxy[0] - 10,NODES[AXONS[each].start_node].coordxy[1] - 10],
+]
+
+}
+
+
+
+
+
+
+
+
+        AXONS[each].shape.unshift(NODES[AXONS[each].start_node].coordxy)
+        AXONS[each].shape.push(NODES[AXONS[each].end_node].coordxy)
+
+///console.log("gggggggg3333333333333333",AXONS[each].shape)
+
+
+arrow1 = AXONS[each].shape[AXONS[each].shape.length-1]
+_r = 10
+arrowangle = Math.atan2(AXONS[each].shape[AXONS[each].shape.length-1][0]-AXONS[each].shape[AXONS[each].shape.length-2][0], AXONS[each].shape[AXONS[each].shape.length-1][1] - AXONS[each].shape[AXONS[each].shape.length-2][1])
+///console.log(arrowangle)
+
+arrow0 = [arrow1[0]-_r*Math.sin(arrowangle-0.2), arrow1[1]-_r*Math.cos(arrowangle-0.2)] 
+
+arrow2 = [arrow1[0]-_r*Math.sin(arrowangle+0.2), arrow1[1]-_r*Math.cos(arrowangle+0.2)] 
+
+        AXONS[each].arrow=[arrow0,arrow1,arrow2]
+    }
+console.log(AXONS)
+}
+
+
+
+
+
+FillNodeOutputs();
+  anim();
+
+</script>
+<style>
+#canvas {
+  border: 1px solid black;
+}
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[
+{from:"",to:"",pattern:"burst",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+
+
+
+
+extensive  recurrent connections between layer 2 and 3 pyramidal cells
+
+{from:"L3_PYR",to:"L3_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"big",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"L3_PYR",to:"AREA_L3_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"AREA_L3",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+FEEDFORWARD
+{from:"L3_PYR",to:"AREA_L4_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"AREA_L4",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+FEEDFORWARD
+{from:"L3_PYR",to:"L5_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"L5",weight:"big",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"L3_PYR",to:"L5A_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"L5",weight:"big",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+
+
+{from:"L4_PYR",to:"L3_PYR",pattern:"",from_Layer:"L4","synapse_Layer":"",to_Layer:"L3",weight:"big",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+4 spiny neurons do arborize extensively within layer 4, the major projection of layer 4 spiny neurons is to layer 3
+
+{from:"L5A_PYR",to:"L2/3",pattern:"",from_Layer:"L5A","synapse_Layer":"",to_Layer:"L3",weight:"",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"L5_PYR",to:"AREA_L3_PYR",pattern:"",from_Layer:"L5","synapse_Layer":"",to_Layer:"AREA_L3",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+FEEDBACK
+{from:"L5_PYR",to:"L6_PYR",pattern:"",from_Layer:"L5","synapse_Layer":"",to_Layer:"L6",weight:"big",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+L5_PYR > Thal DRIVING INPUT+significant alternative path for inter-areal communication
+
+{from:"L6_PYR",to:"AREA_L3_PYR",pattern:"",from_Layer:"L6","synapse_Layer":"",to_Layer:"AREA_L3",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+FEEDBACK
+{from:"L6_PYR",to:"L4_PYR",pattern:"",from_Layer:"L6","synapse_Layer":"",to_Layer:"L4",weight:"big",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"L6_PYR",to:"L6",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"L6_PYR",to:"Thal",pattern:"",from_Layer:"L6","synapse_Layer":"",to_Layer:"Thal",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"MODULATING",comment:"",author:"Douglas"},
+
+calretinin-positive neurons form synapses mainly with other smooth neurons
+(possibly calbindin-positive neurons) in layer 3, but with pyramidal cells in layer 5
+
+{from:"Thal",to:"L4_PYR",pattern:"",from_Layer:"Thal","synapse_Layer":"",to_Layer:"L4",weight:"low",numOfSynapses:"",probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+inputs from the thalamus or from inter-areal connections are amplified by recurrent circuits
+
+]
+
+
+
+0%–20%
+of the synapses found in any neocortical area in all species examined are the sym-
+metric variety formed by GABAergic boutons
+
+spines (the main site of asymmetric synapses)
+aspiny, nonpyramidal, inhibitory, GABAergic, or inter-neurons
+
+
+
+TRY by number of axon and dendrite synapses by layers -> calculate strength of connections between layers
+(possible - add number of sym assym sinapses by layers as a parameter)
+
+Browser of networks by different articles + overlay. publish in calculator research
+
+Simple model of cortical processing incorporating the principal features of cortical
+circuits. A patch of superficial pyramidal neurons receive feedforward input from subcor-
+tical, inter-areal, and intra-areal excitatory sources. They also receive recurrent input from
+other local superficial and deep pyramidal cells. These inputs are processed by dendrites of
+the superficial pyramidal neurons (upper gray rectangles, layer 2/3) whose signal transfer
+properties are adjusted dynamically by the pattern of vertical smooth cell inputs (oblique
+dark gray arrows). The outputs of the superficial pyramids participate in a selection network
+(e.g., soft winner-take-all mechanism) mediated by the horizontal smooth cells (upper hori-
+zontal dark gray line). These outputs of the superficial pyramids adjust the pattern of vertical
+smooth cell activation. In this way, the superficial layer neurons within and between patches,
+and within and between areas, cooperate to resolve a consistent interpretation. The layer 5
+pyramids (lower gray rectangles) have a similar soft selection configuration (lower dark gray
+line) to process local superficial signals and decide on the output to motor structures.
+
+The superficial layers are organized to distribute and explore possible interpretations, whereas the deeper layers are organized to exploit the evolving interpretations.
+Feedback 5>3 not needed because = explorative processing in the superficial layers is constrained via the recurrent projection from other layer 5 pyramidal cells to conform to the output that has already been decided
+Possibly feedback 5>3 can oscillate input 4>3
+Possible feedback that calculation completed + intermediate summ result = These layer 5 pyramidal cells are also the origin of the feedback projections to the superficial layers of other cortical areas
+
+MODEL:
+
+1,2,3,+,- > L2/3 (if from lower area) or Thal > L4 * recurrent aplify > L2/3
+L2/3P = 0+0 0+1 ....
+L2/3Basket = common filter for winner
+L2/3P > L5
+L5P -3 -2 ... 5 6
+L5B = common filter winner on L5>L6
+L5P+L5BVertical > L2/3P = what feedback? context? only if signal was noisy
+L6 output RESULT
+
+
+Sub area > make tonic input from Thal. output = winners number(0 1 2 3) and operator (- +)
+
+
+
+
+
+
+
+
+
+Applying the simplification that synapses between different cell types are made in proportion to the
+boutons and dendrites that those cell types contribute to the neuropil in a given layer, we were able to estimate the probable source and number
+of synapses made between neurons in the six layers
+
+
+///collect all connection data + theoretical functions
+
+
+
+
+////BINZEGGER 2004
+
+sp1 = 0.01*1000000
+sm1 = 0.4*1000000
+p2/3 = 8.2*1000000
+b2/3 = 0.9*1000000
+db2/3 = 0.5*1000000
+axo2/3 = 0.1*1000000
+sm2/3 = 0.6*1000000
+ss4(L4) = 3*1000000
+ss4(L2/3) = 3*1000000
+p4 = 3*1000000
+b4 = 2*1000000
+sm4 = 0.3*1000000
+p5(L2/3) = 1.5*1000000
+p5(L5/6) = 0.3*1000000
+b5 = 0.2*1000000
+sm5 = 0.2*1000000
+p6(L4) = 4.5*1000000
+p6(L5/6) = 1.5*1000000
+sm6 = 1.3*1000000
+ThalXY = 0.3*1000000
+
+
+
+{from:"sp1",to:"p23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"800",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"b23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"db23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"ss4L23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"p4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"b4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"p5L23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"as",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"11000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sp1",to:"sy",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"1000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+{from:"sm1",to:"p23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"600",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"b23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"150",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"db23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"200",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"ss4L23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"p4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"b4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"p5L23",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"as",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"8000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+{from:"sm1",to:"sy",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"1000",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+
+{from:"p23",to:"b4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
+
+
+
+</html>
