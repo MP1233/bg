@@ -4,15 +4,15 @@ Select data:
 
 <div>
   <input type="radio" id="BINZEGGER_DATA" name="drone" value="dewey">
-  <label for="dewey">Benzigger (by number of synapses)</label>
+  <label for="dewey">Benzigger 2004 (by number of synapses)</label>
 </div>
 <div>
   <input type="radio" id="DOUGLAS_DATA" name="drone" value="dewey">
-  <label for="dewey">Douglas (by traffic)</label>
+  <label for="dewey">Douglas, Martin 2004 (by traffic)</label>
 </div>
 <div>
-  <input type="radio" id="_DATA" name="drone" value="dewey">
-  <label for="dewey"> (by electrophysyology. click on input buttons to simulte spike times)</label>
+  <input type="radio" id="THOMSON_DATA" name="drone" value="dewey">
+  <label for="dewey">Thomson, Lamy 2007 (by electrophysyology. click on input buttons to simulte spike times)</label>
 </div>
 <hr>
 <input type="checkbox" id="SHOW_LAYER_SYNAPSES" value="CE" >Show layer synapses<br>
@@ -643,42 +643,60 @@ var DOUGLAS = [
 
 
 {from:"p23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
-{from:"p23",to:"AREA_L3_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"AREA_L3",weight:"1",numOfSynapses:1,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p23",to:"AREA_L3_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"AREA_L3",weight:"1",numOfSynapses:1,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 //FEEDFORWARD
-{from:"p23",to:"AREA_L4_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"AREA_L4",weight:"1",numOfSynapses:1,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p23",to:"AREA_L4_PYR",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"AREA_L4",weight:"1",numOfSynapses:1,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 //FEEDFORWARD
-{from:"p23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"L5",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
-{from:"p23",to:"p5L56",pattern:"",from_Layer:"L3","synapse_Layer":"",to_Layer:"L5",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p23",to:"p5L23",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"L5",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p23",to:"p5L56",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"L5",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 
 
-{from:"p4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"",to_Layer:"L3",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p4",to:"p23",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 //4 spiny neurons do arborize extensively within layer 4, the major projection of layer 4 spiny neurons is to layer 3
-{from:"p4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"",to_Layer:"L3",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p4",to:"p4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 
-{from:"p5L23",to:"p23",pattern:"",from_Layer:"L5A","synapse_Layer":"",to_Layer:"L3",weight:"",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
-{from:"p5L23",to:"AREA_L3_PYR",pattern:"",from_Layer:"L5","synapse_Layer":"",to_Layer:"AREA_L3",weight:"low",numOfSynapses:1,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p5L23",to:"p23",pattern:"",from_Layer:"L5A","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p5L23",to:"AREA_L3_PYR",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"AREA_L3",weight:"low",numOfSynapses:1,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 //FEEDBACK
-{from:"p5L56",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"",to_Layer:"L6",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
-{from:"p5L56",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"",to_Layer:"L6",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p5L56",to:"p6L4",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"L6",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p5L56",to:"ThalXY",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L6",weight:"big",numOfSynapses:5,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 //L5_PYR > Thal DRIVING INPUT+significant alternative path for inter-areal communication
 
 
-{from:"p6L4",to:"AREA_L3_PYR",pattern:"",from_Layer:"L6","synapse_Layer":"",to_Layer:"AREA_L3",weight:"low",numOfSynapses:1,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p6L4",to:"AREA_L3_PYR",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"AREA_L3",weight:"low",numOfSynapses:1,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 //FEEDBACK
-{from:"p6L4",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"",to_Layer:"L4",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"p6L4",to:"p4",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 {from:"p6L56",to:"p6L56",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:10,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
-{from:"p6L4",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"",to_Layer:"Thal",weight:"low",numOfSynapses:1,probabilty:"",latency:"",purpose:"MODULATING",comment:"",author:"Douglas"},
+{from:"p6L4",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"low",numOfSynapses:1,probabilty:"",latency:"",purpose:"MODULATING",comment:"",author:"Douglas"},
 
 //calretinin-positive neurons form synapses mainly with other smooth neurons
 //(possibly calbindin-positive neurons) in layer 3, but with pyramidal cells in layer 5
 
-{from:"ThalXY",to:"p4",pattern:"",from_Layer:"Thal","synapse_Layer":"",to_Layer:"L4",weight:"low",numOfSynapses:5,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+{from:"ThalXY",to:"p4",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"low",numOfSynapses:5,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
 //inputs from the thalamus or from inter-areal connections are amplified by recurrent circuits
 
 
 
 
 ]
+
+
+
+
+
+
+var THOMSON = [
+
+
+{from:"p23",to:"p23",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"big",numOfSynapses:20,probabilty:"",latency:"",purpose:"",comment:"",author:"Douglas"},
+
+
+
+
+]
+
+
+
 
 
 
@@ -1231,6 +1249,7 @@ function ShiftPower(_action) {
 function ShiftData(_name) {
     if (_name == "BENZIGGER") {BINZEGGER = BINZEGGER2}
         if (_name == "DOUGLAS") {BINZEGGER = DOUGLAS}
+            if (_name == "THOMSON") {BINZEGGER = THOMSON}
     FILL_BINZEGGER() ; 
     FillNodeOutputs();
 }
@@ -1242,6 +1261,7 @@ MULTIPLY_NUM_POST_NEURONS.onclick = e => {ShiftPower("Post_Multiply")}
 DIVIDE_NUM_POST_NEURONS.onclick = e => {ShiftPower("Post_Divide")}
 BINZEGGER_DATA.onclick = e => {ShiftData("BENZIGGER")}
 DOUGLAS_DATA.onclick = e => {ShiftData("DOUGLAS")}
+THOMSON_DATA.onclick = e => {ShiftData("THOMSON")}
 
 
 
