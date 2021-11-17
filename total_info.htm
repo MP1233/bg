@@ -1163,20 +1163,33 @@ if (_name == "L6 SOM") {return "sm6"}
 
 
     if (_name == "L6P_1") {return "p6L4"}    
-    if (_name == "L6P_2") {return "p6L56"}  
+    if (_name == "L6P_2") {return "p6L56"} 
+    //sm6 
     if (_name == "L6P_3") {return "p6L56"}  
     if (_name == "L6P_4") {return "p6L56"}  
-    if (_name == "L6P_5") {return "p6L56"}  
+    if (_name == "L6P_5") {return "STEL6"}  
     if (_name == "L6P_6") {return "p6L56"} 
 
     if (_name == "L4P_6_1") {return "ss4L4"} 
-        if (_name == "L4P_6_2") {return "ss4L23"} 
-            if (_name == "L4P_6_3") {return "p4"} 
+    if (_name == "L4P_6_2") {return "p4"} 
+    if (_name == "L4P_6_3") {return "ss4L23"} 
+    if (_name == "L6P_5_3") {return  "p5L56"}
+    if (_name == "L6P_5_4") {return  "p5L23"}
+
+    if (_name == "L6P_6_1") {return "p6L4"} 
+    if (_name == "L6P_6_2") {return "p6L56"} 
+    if (_name == "L6P_6_3") {return "p6L56"}    
+
+    if (_name == "L6P_6_4") {return "p6L56"}    
+    if (_name == "L6P_6_5") {return "p6L4"}    
+    if (_name == "L6P_6_6") {return "p6L56"}  
+    if (_name == "L6P_6_7") {return "p6L56"} 
+    if (_name == "L6P_6_8") {return "p6L56"}
 
 
-         if (_name == "L6P_6_1") {return "p6L4"} 
-        if (_name == "L6P_6_2") {return "p6L56"} 
-            if (_name == "L6P_6_3") {return "p6L56"}            
+
+
+
 
     if (_name == "ThalCore") {return "ThalXY"}  
     if (_name == "ThalMatrix") {return "ThalXY"}    
@@ -1199,6 +1212,11 @@ function FILL_BINZEGGER() {
         post_neuron = BINZEGGER[each].to
 
 //NUMBER OF POWER BEFORE GROUPPING
+        pre_power = 0
+        post_power = 0
+        if (pre_neuron in NODES) { pre_power = NODES[pre_neuron].soma_value2 }
+        if (post_neuron in NODES) { post_power = NODES[post_neuron].soma_value2 }
+        console.log("AAA", pre_power, post_power)
                 ///axon_power = GetAxonPower(BINZEGGER[each].numOfSynapses ,NODES[pre_neuron].soma_value2, NODES[post_neuron].soma_value2, power_normalize, axon_power_prev)
 
         if (Group_Neurons) {
@@ -1218,12 +1236,12 @@ function FILL_BINZEGGER() {
 
         axon_power_prev = 0
         if (axon_name in AXONS) {axon_power_prev = AXONS[axon_name].power}
-        axon_power = GetAxonPower(BINZEGGER[each].numOfSynapses ,NODES[pre_neuron].soma_value2, NODES[post_neuron].soma_value2, power_normalize, axon_power_prev)
+        axon_power = GetAxonPower(BINZEGGER[each].numOfSynapses ,pre_power, post_power, power_normalize, axon_power_prev)
         AXONS[axon_name] = {start_node:pre_neuron, end_node:post_neuron, shape:axon_shape, type:axon_type, lengthsec:10,power:axon_power} ; 
     }
 //console.log(AXONS); 
     power_normalize = GetPowerNormalize()
-    for (each in AXONS) {        AXONS[each].power = AXONS[each].power*power_normalize}
+    for (each in AXONS) {        AXONS[each].power = 0.1 + AXONS[each].power*power_normalize}
 
 }
 
@@ -1241,6 +1259,11 @@ function FILL_THOMSON() {
     for (each in BINZEGGER) {
         pre_neuron = BINZEGGER[each].from
         post_neuron = BINZEGGER[each].to
+        pre_power = 0
+        post_power = 0
+        if (pre_neuron in NODES) { pre_power = NODES[pre_neuron].soma_value2 }
+        if (post_neuron in NODES) { post_power = NODES[post_neuron].soma_value2 }
+
         pre_neuron = GetNeuronName(pre_neuron)
         post_neuron = GetNeuronName(post_neuron)
         if (Group_Neurons) {
@@ -1259,11 +1282,11 @@ function FILL_THOMSON() {
 axon_power_prev = 0
 if (axon_name in AXONS) {axon_power_prev = AXONS[axon_name].power}
 
-        axon_power = 0.1 + GetAxonPower(BINZEGGER[each].numOfSynapses ,NODES[pre_neuron].soma_value2, NODES[post_neuron].soma_value2, power_normalize, axon_power_prev)
+        axon_power = GetAxonPower(BINZEGGER[each].numOfSynapses ,pre_power, post_power, power_normalize, axon_power_prev)
         AXONS[axon_name] = {start_node:pre_neuron, end_node:post_neuron, shape:axon_shape, type:axon_type, lengthsec:10,power:axon_power} ; 
     }
     power_normalize = GetPowerNormalize()
-    for (each in AXONS) {        AXONS[each].power = AXONS[each].power*power_normalize}
+    for (each in AXONS) {        AXONS[each].power = 0.1 + AXONS[each].power*power_normalize}
 //console.log(AXONS); 
 
 }
