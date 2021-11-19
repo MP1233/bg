@@ -28,7 +28,8 @@ Select data:
 <br>
 <canvas id="canvas" width=1500 height=1500></canvas>
 <br>
-
+descriptions sometimes are used instead of numbers because qualitative description may better describe functional importance
+"D" may mean that signal transmited by single spike (not tonic)
 
 <script>
 
@@ -692,7 +693,7 @@ var DOUGLAS = [
 
 
 
-
+//L5P = [‘ìntrinsically burst firing’’ (IB) and ‘‘regular spiking’’ (RS) cell]
 
 var THOMSON_TABLE = [
 
@@ -1020,7 +1021,7 @@ var THOMSON = [
 {from:"ANOTHER_AREA",to:"LL6I_5_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"ThalCore",to:"LL6I_5_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"ThalMatrix",to:"LL6I_5_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
-{from:"Claustrum",to:"LL6I_54_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"Claustrum",to:"LL6I_5_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 
 
 
@@ -1257,9 +1258,14 @@ var THOMSON = [
 
 
 ]
-
-
-
+/*
+Fast Spiking = radially somata, dend [Many PV basket, also VIP/CCK basket / L M S]
+Bitufted = large [SOM]
+Bitufted fusiform bipolar = small
+Martinotti = extend up to L1
+Double_Boquet = >-o-<
+multipolar burs firing interneuron = only in L1/2
+*/
 
 
 
@@ -1464,13 +1470,16 @@ function GroupNeurons(_name) {
 function GetNeuronName(_name) {
     var ret = "as"
     if (_name in NODES) {return _name}
+
+    if (_name == "L3,4,5 FSmp") {return "b23"} 
+    if (_name == "L3,4,5 P") {return "p23"} 
+
+    if (_name == "L4 all types") {return "p4"} 
+
     if (_name == "L3P") {return "p23"}
         if (_name == "L3 bc") {return "b23"}
-            if (_name == "L3 mp FS") {return "db23"} 
-                if (_name == "L3,4,5 FSmp") {return "db23"} 
+            if (_name == "L3 mp FS") {return "b23"} //mp multipolar
 
-if (_name == "L3,4,5 P") {return "p23"} 
-if (_name == "L4 all types") {return "p4"} 
 
     if (_name == "L4 FS") {return "b4"}
                 if (_name == "L4P") {return "p4"}
@@ -1489,8 +1498,11 @@ if (_name == "L4 nbc PV 52%") {return "b4"}
 if (_name == "L4 PV mp") {return "b4"} 
 if (_name == "L4 bit Adapt") {return "b4"} 
 if (_name == "L4 bpc") {return "b4"} 
+    if (_name == "L4ss") {return "b4"} 
+        if (_name == "deep L4 P L4ss") {return "ss4L4"} 
+
 if (_name == "L5P small Ad") {return "sm5"} 
-if (_name == "L4ss") {return "b4"} 
+
 
     if (_name == "L5P") {return "p5L23"}
 
@@ -1504,8 +1516,9 @@ if (_name == "L5 M") {return "sm5"}
 if (_name == "L5 LTS") {return "sm5"} 
 if (_name == "L5 bit LTS") {return "sm5"} 
 if (_name == "L5 mp FS") {return "sm5"} 
+
 if (_name == "L6 CCP CTP") {return "p6L56"} 
-if (_name == "deep L4 P L4ss") {return "ss4L4"} 
+
 if (_name == "L5P small") {return "sm5"} 
 if (_name == "L6 mp PV") {return "sm6"} 
 if (_name == "L6 SOM") {return "sm6"} 
@@ -1514,6 +1527,7 @@ if (_name == "L6 SOM") {return "sm6"}
 
     if (_name == "L6 CCP") {return "p6L4"}
         if (_name == "L6 CTP") {return "p6L4"}
+            
     if (_name == "FS") {return "sy"}  
     if (_name == "FS/Ad") {return "sy"}     
 
@@ -1533,16 +1547,16 @@ if (_name == "L6 SOM") {return "sm6"}
     if (_name == "L6P_5_4") {return  "p5L23"}
     if (_name == "L6P_6_1") {return "p6L4"} 
     if (_name == "L6P_6_2") {return "p6L56"} 
-    if (_name == "L6P_6_3") {return "p6L56"}    
-    if (_name == "L6P_6_4") {return "p6L56"}    
-    if (_name == "L6P_6_5") {return "p6L4"}    
-    if (_name == "L6P_6_6") {return "p6L56"}  
+    if (_name == "L6P_6_3") {return "p6L56"}  // CC Pyr  
+    if (_name == "L6P_6_4") {return "p6L56"}  // short upright  
+    if (_name == "L6P_6_5") {return "p6L4"}  // inverted & bipolar  
+    if (_name == "L6P_6_6") {return "p6L56"}   // claustrum projecting
     if (_name == "L6P_6_7") {return "p6L56"} 
     if (_name == "L6P_6_8") {return "p6L56"}
 
 
-    if (_name == "L5P_1") {return "p5L56"}
-    if (_name == "L5P_2") {return "p5L23"}
+    if (_name == "L5P_1") {return "p5L56"} // ‘ìntrinsically burst firing’’ (IB)
+    if (_name == "L5P_2") {return "p5L23"} // ‘‘regular spiking’’ (RS) cell
     if (_name == "L5P_3_3") {return "p23"}
     if (_name == "L5P_5_2") {return "p5L56"}
     if (_name == "L5P_5_4") {return "p5L23"}
@@ -1559,6 +1573,107 @@ if (_name == "L6 SOM") {return "sm6"}
 
     if (_name == "L3P_1") {return "p23"}
     if (_name == "L3P_5_1") {return "p5L56"}
+
+
+
+
+
+
+
+/*
+Fast Spiking = radially somata, dend [Many PV basket, also VIP/CCK basket / L M S]
+Bitufted = large [SOM]
+Bitufted fusiform bipolar = small
+Martinotti = extend up to L1
+Double_Boquet = >-o-<
+multipolar burs firing interneuron = only in L1/2
+*/
+
+
+    if (_name == "LLLL3I_1") {return "sm23"} // multipolar burs firing interneuron 
+    if (_name == "LLLL3I_2") {return "sm23"} // BFB S
+    if (_name == "LLLL3I_3") {return "db23"} // DB
+    if (_name == "LLLL3I_4") {return "sm23"} // BFB S
+    if (_name == "LLLL3I_5") {return "sm23"} // Martinotti
+    if (_name == "LLLL4I_1") {return "sm4"} // DB
+    if (_name == "LLLL4I_2") {return "sm4"} // SOM
+    if (_name == "LLLL4I_3") {return "sm4"} // Martinotti
+    if (_name == "LLLL4I_4") {return "sm5"} // BFB S
+    if (_name == "LLLL5I_1") {return "sm5"} // Martinotti
+    if (_name == "LLLL5I_2") {return "sm5"} // SOM
+    if (_name == "LLLL6I_1") {return "sm6"} // SOM 
+    if (_name == "LLLL6I_2") {return "sm6"} // Martinotti
+
+
+
+    if (_name == "LLL3I_1") {return "b23"} // FS L
+    if (_name == "LLL3I_2") {return "b23"} // FS S
+    if (_name == "LLL3I_3") {return "b23"} // FS S
+    if (_name == "LLL4I_1") {return "b4"} // FS S
+    if (_name == "LLL4I_2") {return "b4"} // FS M
+    if (_name == "LLL4I_3") {return "b4"} // FS M
+    if (_name == "LLL4I_4") {return "b4"} // FS L
+    if (_name == "LLL5I_1") {return "b5"} // FS S
+    if (_name == "LLL5I_2") {return "b5"} // FS L
+    if (_name == "LLL5I_3") {return "b5"} // FS S
+    if (_name == "LLL5I_4") {return "b5"} // FS M
+    if (_name == "LLL6I_1") {return "sm6"} // FS M
+    if (_name == "LLL6I_2") {return "sm6"} // FS L
+
+
+
+
+    if (_name == "LL3I_1_1") {return "b23"} // FS S
+    if (_name == "LL3I_1_2") {return "sm23"} // SOM
+    if (_name == "LL3I_1_3") {return "db23"} // DB
+    if (_name == "LL3I_1_4") {return "b23"} // FS M
+    if (_name == "LL3I_1_5") {return "b23"} // FS L 
+    if (_name == "LL3I_2_1") {return "b23"} // FS M
+    if (_name == "LL3I_2_2") {return "b23"} // FS S
+    if (_name == "LL3I_2_3") {return "sm23"} // SOM
+    if (_name == "LL3I_2_4") {return "b23"} // FS S
+    if (_name == "LL3I_2_5") {return "db23"} // DB
+    if (_name == "LL3I_3_1") {return "b23"} // FS S
+    if (_name == "LL3I_3_2") {return "b23"} // FS L
+
+    if (_name == "LL4I_1_1") {return "b4"} // FS S
+    if (_name == "LL4I_1_2") {return "sm4"} // DB
+    if (_name == "LL4I_1_3") {return "sm4"} // SOM
+    if (_name == "LL4I_1_4") {return "b4"} // FS L
+    if (_name == "LL4I_2_1") {return "sm4"} // SOM
+    if (_name == "LL4I_2_2") {return "b4"} // FS M
+    if (_name == "LL4I_2_3") {return "b4"} // FS L
+    if (_name == "LL4I_2_4") {return "b4"} // FS S
+    if (_name == "LL4I_4_1") {return "b4"} // FS L
+
+    if (_name == "LL5I_2_1") {return "b5"} // FS L
+    if (_name == "LL5I_3_1") {return "sm5"} // SOM
+    if (_name == "LL5I_3_2") {return "sm5"} // SOM
+    if (_name == "LL5I_3_3") {return "b5"} // FS L
+    if (_name == "LL5I_3_4") {return "b5"} // FS S
+    if (_name == "LL5I_5_1") {return "sm5"} // SOM
+    if (_name == "LL5I_5_2") {return "b5"} // FS S
+    if (_name == "LL5I_5_3") {return "b5"} // FS L
+
+    if (_name == "LL6I_4_1") {return "sm6"} // FS L
+    if (_name == "LL6I_4_2") {return "sm6"} // SOM
+    if (_name == "LL6I_5_1") {return "sm6"} // FS L
+    if (_name == "LL6I_5_2") {return "sm6"} // SOM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     if (_name == "ThalCore") {return "ThalXY"}  
