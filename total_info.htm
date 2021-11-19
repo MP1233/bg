@@ -20,9 +20,9 @@ Select data:
 </div>
 <hr>
 <input type="checkbox" id="SHOW_LAYER_SYNAPSES" value="CE" >Show layer synapses<br>
-<input type="checkbox" id="MULTIPLY_NUM_PRE_NEURONS" value="CE" >Multiply by number of presynaptic neurons<br>
+<input type="checkbox" id="MULTIPLY_NUM_PRE_NEURONS" value="CE" >Multiply by number of presynaptic neurons (s*M = how many synapses neuron receive from layer)<br>
 <input type="checkbox" id="MULTIPLY_NUM_POST_NEURONS" value="CE" >Multiply by number of postsynaptic neurons (s*M*N = total synapses)<br>
-<input type="checkbox" id="DIVIDE_NUM_POST_NEURONS" value="CE" >Divide by number of postsynaptic neurons (s*M/N = signal ratio)<br>
+<input type="checkbox" id="DIVIDE_NUM_POST_NEURONS" value="CE" >Divide by number of postsynaptic neurons <br>
 <input type="checkbox" id="GROUP_NEURONS" value="CE" checked>Group neurons by layers<br>
 
 <br>
@@ -829,9 +829,9 @@ var THOMSON = [
 {from:"ANOTHER_AREA",to:"L6P_6",pattern:"",from_Layer:"AREA","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 
 {from:"L6P_1",to:"ThalCore",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:3*1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
-{from:"L6P_1",to:"L4P_6_1",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
-{from:"L6P_1",to:"L4P_6_2",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
-{from:"L6P_1",to:"L4P_6_3",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6P_1",to:"L6P_4_1",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6P_1",to:"L6P_4_2",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6P_1",to:"L6P_4_3",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L6P_1",to:"L6P_6_1",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L6P_1",to:"L6P_6_1",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L6",weight:"",numOfSynapses:3*10,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L6P_1",to:"L6P_6_2",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:3*10,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
@@ -897,6 +897,362 @@ var THOMSON = [
 {from:"L6P_6",to:"L6P_5_4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:2*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 //{from:"L6P_6",to:"ANOTHER_AREA",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"AREA",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L6P_6",to:"Claustrum",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"Thal",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+{from:"ThalCore",to:"L5P_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L5",weight:"",numOfSynapses:5,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"L5P_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L1",to_Layer:"L5",weight:"",numOfSynapses:5,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"L5P_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:4,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"L5P_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:4,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"L5P_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"L5P_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L5",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"L5P_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"L5P_1",to:"L5P_5_2",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_1",to:"L5P_6_1",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:1*12,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_1",to:"ThalXY",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_1",to:"Spine",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"Thal",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"L5P_2",to:"L5P_5_2",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L4",weight:"",numOfSynapses:3*4,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"L5P_5_2",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"L5P_5_4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:3*2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"L5P_5_4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"L5P_3_3",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:3*9,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"L5P_6_1",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:1*12,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"ANOTHER_AREA",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"AREA",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+{from:"ThalMatrix",to:"L4P_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"L4P_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ThalCore",to:"L4P_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L4",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"L4P_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"L4P_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"L4P_1",to:"L4P_4_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_1",to:"L4P_4_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_1",to:"L4P_3_1",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:2*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_1",to:"L4P_3_2",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:2*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"L4P_2",to:"L4P_4_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:5*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_2",to:"L4P_4_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:5*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_2",to:"L4P_3_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:2*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_2",to:"L4P_3_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L3",weight:"",numOfSynapses:2*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_2",to:"L4P_6_1",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L6",weight:"",numOfSynapses:1*2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_2",to:"L4P_6_1",pattern:"",from_Layer:"L4","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+{from:"ThalMatrix",to:"L3P_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:4,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"L3P_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:4,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"L3P_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:9,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"L3P_1",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L4",weight:"",numOfSynapses:4*9,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"L4P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1*1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"L3P_5_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1*4,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"L3P_5_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:4*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"ANOTHER_AREA",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"AREA",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+
+
+
+
+{from:"ANOTHER_AREA",to:"LL3I_1_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL3I_1_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL3I_1_3",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL3I_1_4",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL3I_1_5",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL3I_2_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL3I_2_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL3I_2_3",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL3I_2_4",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL3I_2_5",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL3I_3_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL3I_3_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL4I_1_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL4I_1_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL4I_1_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL4I_1_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL4I_1_3",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL4I_1_3",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL4I_1_4",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL4I_1_4",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL4I_2_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL4I_2_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL4I_2_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL4I_2_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL4I_2_3",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL4I_2_3",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL4I_2_4",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL4I_2_4",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL4I_4_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL4I_4_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL5I_2_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL5I_3_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL5I_3_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL5I_3_3",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL5I_3_4",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL5I_5_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL5I_5_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL5I_5_3",pattern:"",from_Layer:"AREA","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL6I_4_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalCore",to:"LL6I_4_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL6I_4_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"Claustrum",to:"LL6I_4_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL6I_4_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalCore",to:"LL6I_4_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL6I_4_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"Claustrum",to:"LL6I_4_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"ANOTHER_AREA",to:"LL6I_4_1",pattern:"",from_Layer:"AREA","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalCore",to:"LL6I_4_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL6I_4_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"Claustrum",to:"LL6I_4_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ANOTHER_AREA",to:"LL6I_5_2",pattern:"",from_Layer:"AREA","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalCore",to:"LL6I_5_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalMatrix",to:"LL6I_5_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"Claustrum",to:"LL6I_54_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+
+{from:"L4P_1",to:"LL3I_1_5",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:2*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_1",to:"LL4I_1_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:2*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_1",to:"LL4I_1_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:2*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_1",to:"LL4I_1_3",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:2*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_1",to:"LL4I_1_4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:2*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"L4P_2",to:"LL3I_1_5",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:1*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_2",to:"LL4I_1_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:4*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_2",to:"LL4I_1_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:4*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_2",to:"LL4I_1_3",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:4*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4P_2",to:"LL4I_1_4",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:4*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+{from:"L3P_1",to:"LL3I_2_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:4*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"LL3I_2_5",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:4*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"LL3I_2_3",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:4*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"LL3I_2_4",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:4*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"LL3I_2_5",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:4*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"LL4I_2_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"LL4I_2_2",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"LL4I_2_3",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"LL4I_2_4",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3P_1",to:"LL5I_2_1",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+{from:"L5P_1",to:"LL5I_3_1",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:2*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"L5P_2",to:"LL3I_3_1",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"LL3I_3_2",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"LL5I_3_2",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"LL5I_3_3",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5P_2",to:"LL5I_3_4",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+{from:"L6P_1",to:"LL4I_4_1",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6P_1",to:"LL6I_4_1",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6P_1",to:"LL6I_4_2",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+{from:"L6P_2",to:"LL6I_4_1",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:3*8,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6P_2",to:"LL6I_4_2",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+
+
+
+
+//to somas
+//soma3 = L3P_1
+{from:"LLL3I_1",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL3I_2",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL3I_3",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_3",to:"L3P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL5I_2",to:"L3P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"L3",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//soma4 = L4P_1, L4P_2
+{from:"LLL4I_1",to:"L4P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_2",to:"L4P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:40,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_3",to:"L4P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:40,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_4",to:"L4P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL5I_1",to:"L4P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL5I_3",to:"L4P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L4P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_1",to:"L4P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_2",to:"L4P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:40,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_3",to:"L4P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:40,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_4",to:"L4P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL5I_1",to:"L4P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL5I_3",to:"L4P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L4P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//soma5 = L5P_1, L5P_2
+{from:"LLL3I_1",to:"L5P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_4",to:"L5P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL5I_2",to:"L5P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL5I_4",to:"L5P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L5P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL3I_1",to:"L5P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_4",to:"L5P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL5I_2",to:"L5P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL5I_4",to:"L5P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L5P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//soma6 = L6P_1, L6P_2,3 4 5 6
+{from:"LLL4I_4",to:"L6P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_1",to:"L6P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L6P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_4",to:"L6P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_1",to:"L6P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L6P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_4",to:"L6P_3",pattern:"",from_Layer:"L4","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_1",to:"L6P_3",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L6P_3",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_4",to:"L6P_4",pattern:"",from_Layer:"L4","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_1",to:"L6P_4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L6P_4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_4",to:"L6P_5",pattern:"",from_Layer:"L4","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_1",to:"L6P_5",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L6P_5",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL4I_4",to:"L6P_6",pattern:"",from_Layer:"L4","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_1",to:"L6P_6",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLL6I_2",to:"L6P_6",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+
+
+//to dend
+//dend1 = L4P_2, L3P_1, L5P_1, L6P_6
+{from:"LLLL3I_5",to:"L4P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L4P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L4P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L4P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_5",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L3P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L3P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L3P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_5",to:"L5P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L5P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L5P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L5P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_5",to:"L6P_6",pattern:"",from_Layer:"L3","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L6P_6",pattern:"",from_Layer:"L4","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L6P_6",pattern:"",from_Layer:"L5","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_6",pattern:"",from_Layer:"L6","synapse_Layer":"L1",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//dend3 = L3P_1, L5P_2
+{from:"LLLL3I_1",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_2",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_4",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_5",to:"L3P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L3P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L3P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L3P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L3P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_1",to:"L5P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_2",to:"L5P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L5P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_4",to:"L5P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_5",to:"L5P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L5P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L5P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L5P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L5P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L3",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//dend4 = L4P_1, L4P_2, L5P_1, L6P_1
+{from:"LLLL3I_2",to:"L4P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L4P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_4",to:"L4P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_1",to:"L4P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L4P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L4P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_4",to:"L4P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L4P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L4P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L4P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_2",to:"L4P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L4P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_4",to:"L4P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_1",to:"L4P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L4P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L4P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_4",to:"L4P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L4P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L4P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L4P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_2",to:"L5P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L5P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_4",to:"L5P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_1",to:"L5P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L5P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L5P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_4",to:"L5P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L5P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L5P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L5P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_2",to:"L6P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L6P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_4",to:"L6P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_1",to:"L6P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L6P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_3",to:"L6P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_4",to:"L6P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L6P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//dend5= L5P_1, L5P_2, L6P_2, L6P_3, L6P_5, L6P_6
+{from:"LLLL3I_3",to:"L5P_1",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L5P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L5P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L5P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L5P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L5P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L5P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L5P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L5P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L5P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L6P_2",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L6P_2",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L6P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L6P_3",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L6P_3",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L6P_3",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_3",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_3",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L6P_5",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L6P_5",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L6P_5",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_5",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_5",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL3I_3",to:"L6P_6",pattern:"",from_Layer:"L3","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:20,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL4I_2",to:"L6P_6",pattern:"",from_Layer:"L4","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_1",to:"L6P_6",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_6",pattern:"",from_Layer:"L5","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_6",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"",weight:"",numOfSynapses:60,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//dend6= L6P_1, L6P_2, L6P_3, L6P_4, L6P_5, L6P_6
+{from:"LLLL5I_2",to:"L6P_1",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_1",to:"L6P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_1",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_2",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_1",to:"L6P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_2",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_3",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_1",to:"L6P_3",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_3",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_4",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_1",to:"L6P_4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_4",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_5",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_1",to:"L6P_5",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_5",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL5I_2",to:"L6P_6",pattern:"",from_Layer:"L5","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:50,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_1",to:"L6P_6",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:100,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"LLLL6I_2",to:"L6P_6",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"",weight:"",numOfSynapses:30,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 
 
 
@@ -966,6 +1322,7 @@ ThalXY:{type:"SOMA", soma_value:0, soma_value2:0.3*soma_value_k, outputs:[],coor
 as:{type:"SOMA", soma_value:0, soma_value2:5, outputs:[],coordxy:[THAL_shiftXY[0]+40,THAL_shiftXY[1]+40]},
 sy:{type:"SOMA", soma_value:0, soma_value2:5, outputs:[],coordxy:[THAL_shiftXY[0]+60,THAL_shiftXY[1]+60]},
 Claustrum:{type:"SOMA", soma_value:0, soma_value2:5, outputs:[],coordxy:[THAL_shiftXY[0]+80,THAL_shiftXY[1]+80]},
+Spine:{type:"SOMA", soma_value:0, soma_value2:5, outputs:[],coordxy:[THAL_shiftXY[0]+100,THAL_shiftXY[1]+100]},
 
 AREA_L3_PYR:{type:"SOMA", soma_value:0, soma_value2:8.2*soma_value_k, outputs:[],coordxy:[ANOTHER_AREA_shiftXY[0]+20,ANOTHER_AREA_shiftXY[1]+20]},
 AREA_L4_PYR:{type:"SOMA", soma_value:0, soma_value2:3*soma_value_k, outputs:[],coordxy:[ANOTHER_AREA_shiftXY[0]+40,ANOTHER_AREA_shiftXY[1]+40]},
@@ -1169,17 +1526,14 @@ if (_name == "L6 SOM") {return "sm6"}
     if (_name == "L6P_4") {return "p6L56"}  
     if (_name == "L6P_5") {return "STEL6"}  
     if (_name == "L6P_6") {return "p6L56"} 
-
-    if (_name == "L4P_6_1") {return "ss4L4"} 
-    if (_name == "L4P_6_2") {return "p4"} 
-    if (_name == "L4P_6_3") {return "ss4L23"} 
+    if (_name == "L6P_4_1") {return "ss4L4"} 
+    if (_name == "L6P_4_2") {return "p4"} 
+    if (_name == "L6P_4_3") {return "ss4L23"} 
     if (_name == "L6P_5_3") {return  "p5L56"}
     if (_name == "L6P_5_4") {return  "p5L23"}
-
     if (_name == "L6P_6_1") {return "p6L4"} 
     if (_name == "L6P_6_2") {return "p6L56"} 
     if (_name == "L6P_6_3") {return "p6L56"}    
-
     if (_name == "L6P_6_4") {return "p6L56"}    
     if (_name == "L6P_6_5") {return "p6L4"}    
     if (_name == "L6P_6_6") {return "p6L56"}  
@@ -1187,8 +1541,24 @@ if (_name == "L6 SOM") {return "sm6"}
     if (_name == "L6P_6_8") {return "p6L56"}
 
 
+    if (_name == "L5P_1") {return "p5L56"}
+    if (_name == "L5P_2") {return "p5L23"}
+    if (_name == "L5P_3_3") {return "p23"}
+    if (_name == "L5P_5_2") {return "p5L56"}
+    if (_name == "L5P_5_4") {return "p5L23"}
+    if (_name == "L5P_6_1") {return "p6L56"}  
 
 
+    if (_name == "L4P_1") {return "ss4L4"}
+    if (_name == "L4P_2") {return "p4"}
+    if (_name == "L4P_3_1") {return "p23"}
+    if (_name == "L4P_3_2") {return "p23"}
+    if (_name == "L4P_4_1") {return "p4"}
+    if (_name == "L4P_4_2") {return "ss4L4"}
+    if (_name == "L4P_6_1") {return "p5L56"}
+
+    if (_name == "L3P_1") {return "p23"}
+    if (_name == "L3P_5_1") {return "p5L56"}
 
 
     if (_name == "ThalCore") {return "ThalXY"}  
@@ -1216,9 +1586,11 @@ function FILL_BINZEGGER() {
         post_power = 0
         if (pre_neuron in NODES) { pre_power = NODES[pre_neuron].soma_value2 }
         if (post_neuron in NODES) { post_power = NODES[post_neuron].soma_value2 }
-        console.log("AAA", pre_power, post_power)
                 ///axon_power = GetAxonPower(BINZEGGER[each].numOfSynapses ,NODES[pre_neuron].soma_value2, NODES[post_neuron].soma_value2, power_normalize, axon_power_prev)
-
+//////////////////////////            
+        pre_neuron = GetNeuronName(pre_neuron)
+        post_neuron = GetNeuronName(post_neuron)
+/////////////////////////////
         if (Group_Neurons) {
             pre_neuron = GroupNeurons(pre_neuron)
             post_neuron = GroupNeurons(post_neuron)
@@ -1228,7 +1600,7 @@ function FILL_BINZEGGER() {
 ///console.log(BINZEGGER[each])
         axon_name = "Axon_" + pre_neuron + "_" + post_neuron
         //console.log(Group_Neurons)
-        
+  ///if (Group_Neurons) {axon_name = GroupNeurons(axon_name)}       
         
         if (Show_Layer_Sypapses) {axon_name = "Axon_" + pre_neuron + "_" + BINZEGGER[each].synapse_Layer + "_" + post_neuron}
         axon_shape = GetAxonShape(Show_Layer_Sypapses, pre_neuron, post_neuron, BINZEGGER[each].synapse_Layer)
@@ -1242,7 +1614,7 @@ function FILL_BINZEGGER() {
 //console.log(AXONS); 
     power_normalize = GetPowerNormalize()
     for (each in AXONS) {        AXONS[each].power = 0.1 + AXONS[each].power*power_normalize}
-
+console.log("AAA", AXONS); 
 }
 
 
@@ -1287,7 +1659,7 @@ if (axon_name in AXONS) {axon_power_prev = AXONS[axon_name].power}
     }
     power_normalize = GetPowerNormalize()
     for (each in AXONS) {        AXONS[each].power = 0.1 + AXONS[each].power*power_normalize}
-//console.log(AXONS); 
+
 
 }
 
@@ -1699,12 +2071,12 @@ function ShiftData(_name) {
     if (_name == "THOMSON") {
         BINZEGGER = THOMSON
         k_power = 20.0
-        FILL_THOMSON() ; 
+        FILL_BINZEGGER() ; ///THOMSON() ; 
     }
     if (_name == "THOMSON_TABLE") {
         BINZEGGER = THOMSON_TABLE
         k_power = 20.0
-        FILL_THOMSON() ; 
+        FILL_BINZEGGER() ; ///THOMSON() ; 
     }
     FillNodeOutputs();
 }
@@ -1847,9 +2219,12 @@ ctx.stroke();
 
 function FillNodeOutputs() {
 ///TODO add arrows 
+///console.log("CCC", AXONS)
     for (each in AXONS) {
        /// console.log(AXONS[each].start_node)
 ///console.log(NODES[AXONS[each].start_node].outputs, AXONS[each].end_node)
+        if (!((AXONS[each].start_node) in NODES)) {  NODES[AXONS[each].start_node] = {"outputs":[], "coordxy":[0,0]} }
+        if (!((AXONS[each].end_node) in NODES)) {  NODES[AXONS[each].end_node] = {"outputs":[], "coordxy":[0,0]} }
         NODES[AXONS[each].start_node].outputs.push(each) ; ///AXONS[each].end_node) ;
 
 if (AXONS[each].shape[0] == "default") {
