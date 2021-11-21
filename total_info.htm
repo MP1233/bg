@@ -4,7 +4,7 @@ Select data:
 
 <div>
   <input type="radio" id="BINZEGGER_DATA" name="drone" value="dewey">
-  <label for="dewey">Benzigger 2004 (by number of synapses)</label>
+  <label for="dewey">Binzegger 2004 (by number of synapses)</label>
 </div>
 <div>
   <input type="radio" id="DOUGLAS_DATA" name="drone" value="dewey">
@@ -17,6 +17,10 @@ Select data:
 <div>
   <input type="radio" id="THOMSON_TABLE_DATA" name="drone" value="dewey">
   <label for="dewey">Thomson [Table], Lamy 2007 (by electrophysyology. click on input buttons to simulte spike times)</label>
+</div>
+<div>
+  <input type="radio" id="THOMSON_MERCER_DATA" name="drone" value="dewey">
+  <label for="dewey">Mercer Thomson 2017 </label>
 </div>
 <hr>
 <input type="checkbox" id="SHOW_LAYER_SYNAPSES" value="CE" >Show layer synapses<br>
@@ -958,7 +962,7 @@ var THOMSON = [
 {from:"L5P_2",to:"L5P_5_2",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L5P_2",to:"L5P_5_4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:3*2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L5P_2",to:"L5P_5_4",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L5",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
-{from:"L5P_2",to:"L5P_3_3",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:3*9,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//{from:"L5P_2",to:"L5P_3_3",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"L3",weight:"",numOfSynapses:3*9,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L5P_2",to:"L5P_6_1",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L5",weight:"",numOfSynapses:1*12,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L5P_2",to:"ANOTHER_AREA",pattern:"",from_Layer:"L6","synapse_Layer":"L5",to_Layer:"AREA",weight:"",numOfSynapses:1,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 
@@ -995,8 +999,9 @@ var THOMSON = [
 {from:"L3P_1",to:"L3P_5_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L4",weight:"",numOfSynapses:1*4,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L3P_1",to:"L3P_5_1",pattern:"",from_Layer:"L3","synapse_Layer":"L4",to_Layer:"L5",weight:"",numOfSynapses:4*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
 {from:"L3P_1",to:"ANOTHER_AREA",pattern:"",from_Layer:"L3","synapse_Layer":"L3",to_Layer:"AREA",weight:"",numOfSynapses:3*6,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
-
-
+//The highest ‘‘hit rate’’ reported is for the descending connections from layer 3 pyramidal cells to large layer 5, IB pyramids which can be higher than 1:2 if the two apical dendrites
+//In contrast the probability of a layer 3 pyramid innervating a small adapting pyramid in layer 5 is very low
+//It is here that the differences between the hit rates found with paired recordings and those predicted from bouton and target densities (Binzegger et al., 2004) differ most strikingly and demonstrate most clearly the level of selectivity in the connections
 
 
 
@@ -1303,6 +1308,82 @@ var THOMSON = [
 
 
 ]
+
+
+
+var MERCER_THOMSON = [
+
+
+{from:"ThalCore",to:"L6PYR_CT_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalXY",to:"L6PYR_CT_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//p6L4 Modest Accommodation and Adaptation. Almost tonic discharge in response to maintained depolarization
+{from:"L6PYR_CT_1",to:"ThalCore",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_CT_1",to:"L6GABA_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_CT_1",to:"L5GABA_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_CT_1",to:"L4GABA_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//p6L5 Facilitating EPSPs to all targets Modest Accommodation and Adaptation. Almost tonic discharge in response to maintained depolarization.
+{from:"ANOTHER_AREA",to:"L6PYR_CT_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_CT_2",to:"ThalXY",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_CT_2",to:"L5GABA_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_CT_2",to:"L6GABA_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//p6L56 latexin. depressing EPSPs Rapidly and powerfully adapting. Spike inactivation can be “rescued” with ramp-shaped current
+{from:"ANOTHER_AREA",to:"L6PYR_CC",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_CC",to:"L6PYR_CT_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_CC",to:"L6PYR_CT_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//p6Claus. Near tonic firing depressing EPSPs
+{from:"L6PYR_Claus",to:"Claustrum",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_Claus",to:"L5PYR_BF",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_Claus",to:"L5PYR_CT",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_Claus",to:"L5PYR_CC",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_Claus",to:"L6PYR_CT_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_Claus",to:"L6PYR_CT_2",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_Claus",to:"L6PYR_CC",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//Depressing EPSPs to most targets Intrinsic burst-firing superimposed on a depolarizing envelope. Resting Potential in vitro near firing threshold.
+{from:"ANOTHER_AREA",to:"L5PYR_BF",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"ThalXY",to:"L5PYR_BF",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"Spine",to:"L5PYR_BF",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3PYR",to:"L5PYR_BF",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5PYR_BF",to:"L5PYR_BF",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5PYR_CT",to:"L5PYR_BF",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5PYR_CC",to:"L5PYR_BF",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5PYR_BF",to:"ThalXY",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5PYR_BF",to:"Spine",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//Depressing EPSPs Adapting and accommodating firing pattern
+{from:"ThalXY",to:"L5PYR_CT",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L5PYR_CT",to:"ThalXY",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//depressing EPSPs Radidly adapting and accommodating firing pattern
+{from:"L5PYR_CC",to:"ANOTHER_AREA",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//L4 pyramidal cells predominantly innervating L4 cells. Brief, depressing EPSPs Rapidly adapting and accommodating
+//From local L4 cells (28% of input), 
+{from:"L4PYR_L3",to:"L4PYR_L4",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4PYR_L4",to:"L4PYR_L4",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//6% from thalamus
+{from:"ThalXY",to:"L4PYR_L4",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+// 45% from L6 corticothalamic
+{from:"L6PYR_CT_1",to:"L4PYR_L4",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L6PYR_CT_2",to:"L4PYR_L4",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+// Almost none from L3.
+//{from:"L3PYR_",to:"L4PYR_L4",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4PYR_L4",to:"L4PYR_L4",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4PYR_L4",to:"L4PYR_L3",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4PYR_L4",to:"L4STEL",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//L4 pyramidal cells preferentially innervating L3 cells. Brief, depressing EPSPs Brief, short interspike interval spike train followed by brief afterdepolartization, slow hyperpolarization then tonic firing
+{from:"L4PYR_L3",to:"L3PYR",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L4PYR_L3",to:"L3GABA_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+//L4 Spiny stellate cells
+//L3 pyramidal cells. Very negative resting potentials −80mV (in vitro). “Typical” adapting/accommodating pyramidal cell
+{from:"ThalXY",to:"L3PYR",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3PYR",to:"L3PYR",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3PYR",to:"L3GABA_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3PYR",to:"L5PYR_BF",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3PYR",to:"L4GABA_1",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+{from:"L3PYR",to:"ANOTHER_AREA",pattern:"",from_Layer:"Thal","synapse_Layer":"L1",to_Layer:"L6",weight:"",numOfSynapses:2,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+]
+
+
+
+
 /*
 Fast Spiking = radially somata, dend [Many PV basket, also VIP/CCK basket / L M S]
 Bitufted = large [SOM]
@@ -1642,7 +1723,7 @@ Martinotti = extend up to L1 //positive for SOM and negative for PV and VIP
 Double_Boquet = >-o-< SOM (+VIP/CCK)
 multipolar burs firing interneuron = only in L1/2 //Dendrite-preferring Multipolar Burst Firing interneurones
 LTS (low threshold spiking, putative somatostatin- or SOM-containing) //SOM-containing, LTS bitufted // layers 5 and 6 and were calbindin- (and sometimes NPY-) positive, Martinotti-like, cells // layer 4, LTS cells with spindle-shaped somata receive little if any
-direct thalamocortical input
+direct thalamocortical input // fast spiking (FS) or LTS
 Fast spiking [bipolar cells, small basket cells, VIP and CCK]
 basket (and chandelier) cells are multipolar //PV- and CRF- containing chandelier cells FS
 Bitufted dendrite-preferring SOM-containing interneurones
@@ -1726,6 +1807,28 @@ wiring diagram
 
 
 
+
+
+
+
+
+
+
+    if (_name == "L6PYR_CT_1") {return "p6L4"} 
+    if (_name == "L6PYR_CT_2") {return "p6L56"} 
+    if (_name == "L6GABA_1") {return "sm6"} 
+    if (_name == "L5GABA_1") {return "sm5"} 
+    if (_name == "L4GABA_1") {return "sm4"} 
+    if (_name == "L6PYR_CC") {return "p6L56"} 
+    if (_name == "L6PYR_Claus") {return "p6L56"} 
+    if (_name == "L5PYR_BF") {return "p5L56"} 
+    if (_name == "L5PYR_CT") {return "p5L23"} 
+    if (_name == "L5PYR_CC") {return "p5L23"} 
+    if (_name == "L4PYR_L3") {return "p4"} 
+    if (_name == "L4PYR_L4") {return "p4"} 
+    if (_name == "L4STEL") {return "ss4L4"} 
+    if (_name == "L3PYR") {return "p23"} 
+    if (_name == "L3GABA_1") {return "sm23"} 
 
 
 
@@ -2330,6 +2433,11 @@ function ShiftData(_name) {
         k_power = 20.0
         FILL_BINZEGGER() ; ///THOMSON() ; 
     }
+    if (_name == "THOMSON_MERCER") {
+        BINZEGGER = MERCER_THOMSON
+        k_power = 20.0
+        FILL_BINZEGGER() ; ///THOMSON() ; 
+    }
     FillNodeOutputs();
 }
 
@@ -2345,6 +2453,7 @@ BINZEGGER_DATA.onclick = e => {ShiftData("BENZIGGER")}
 DOUGLAS_DATA.onclick = e => {ShiftData("DOUGLAS")}
 THOMSON_DATA.onclick = e => {ShiftData("THOMSON")}
 THOMSON_TABLE_DATA.onclick = e => {ShiftData("THOMSON_TABLE")}
+THOMSON_MERCER_DATA.onclick = e => {ShiftData("THOMSON_MERCER")}
 
 Axon_INPUT_THAL.onclick = e => {CreateSpike('Axon_ThalXY_PYR4')}
 
