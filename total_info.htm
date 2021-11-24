@@ -68,6 +68,7 @@ many models do not provide numbers. So they cannot be compared directly. For num
 aaaa = 0
 
 LAYER1_shiftXY=[aaaa + 100,100]
+LAYER2_shiftXY=[aaaa + 200,200]
 LAYER3_shiftXY=[aaaa + 300,300]
 LAYER4_shiftXY=[aaaa + 500,500]
 LAYER5_shiftXY=[aaaa + 700,700]
@@ -1602,6 +1603,25 @@ ANOTHER_AREA_LOWER_ORDER:{type:"SOMA", soma_value:0, soma_value2:1*soma_value_k,
 //TODO no stell 3 5 6, int > int_fast, int_dend
 }
 
+
+
+var SOMA_VALUE_PATCH = {
+    L2py : 34 + 1074 + 725,
+    L3py : 52 + 1501 + 1028 + 67,
+    L4sp : 413 + 1024 + 248,
+    L4ss : 113 + 2336 + 4,
+    L4py : 517,
+    L5st : 1446,
+    L5tt : 1106,
+    L6cc : 719 + 648,
+    L6ct : 260 + 3711,
+    L6inv : 12 + 778,
+}
+
+
+
+
+
 function CopyArray(_ar)
 {
     ret = {}
@@ -1619,6 +1639,7 @@ function GetAxonShape(_ThroughLayer, _from, _to, _layer) {
     } else {
         TO_X = NODES[_to].coordxy[0]
         if (_layer == "L1") return [[TO_X - 20,LAYER1_shiftXY[1]],[TO_X - 10,LAYER1_shiftXY[1]]]
+                    if (_layer == "L2") return [[TO_X - 20,LAYER2_shiftXY[1]],[TO_X - 10,LAYER2_shiftXY[1]]]
             if (_layer == "L3") return [[TO_X - 20,LAYER3_shiftXY[1]],[TO_X - 10,LAYER3_shiftXY[1]]]
                 if (_layer == "L4") return [[TO_X - 20,LAYER4_shiftXY[1]],[TO_X - 10,LAYER4_shiftXY[1]]]
                     if (_layer == "L5") return [[TO_X - 20,LAYER5_shiftXY[1]],[TO_X - 10,LAYER5_shiftXY[1]]]
@@ -2050,7 +2071,7 @@ function FILL_BINZEGGER() {
 
     NODES = CopyArray(NODES2)
     AXONS = {}
-AXONS['Axon_ThalXY_PYR4'] = {start_node:'ThalXY', end_node:'PYR4', shape:['default'], type:'glutamate', lengthsec:10,power:10} ;     
+AXONS['Axon_ThalXY_PYR4'] = {start_node:'ThalXY', end_node:'PYR4', shape:['default'], type:'glutamate', lengthsec:10,power:0.1} ;     
     power_normalize = 1///GetPowerNormalize()
 
 ///  
@@ -2061,6 +2082,11 @@ AXONS['Axon_ThalXY_PYR4'] = {start_node:'ThalXY', end_node:'PYR4', shape:['defau
 //NUMBER OF POWER BEFORE GROUPPING
         pre_power = 0
         post_power = 0
+
+///SOMA_VALUE_PATCH
+        if (pre_neuron in SOMA_VALUE_PATCH) { pre_power = SOMA_VALUE_PATCH[pre_neuron] }
+        if (post_neuron in SOMA_VALUE_PATCH) { post_power = SOMA_VALUE_PATCH[post_neuron] }
+        
         if (pre_neuron in NODES) { pre_power = NODES[pre_neuron].soma_value2 }
         if (post_neuron in NODES) { post_power = NODES[post_neuron].soma_value2 }
                 ///axon_power = GetAxonPower(BINZEGGER[each].numOfSynapses ,NODES[pre_neuron].soma_value2, NODES[post_neuron].soma_value2, power_normalize, axon_power_prev)
@@ -2081,18 +2107,20 @@ AXONS['Axon_ThalXY_PYR4'] = {start_node:'ThalXY', end_node:'PYR4', shape:['defau
   ///if (Group_Neurons) {axon_name = GroupNeurons(axon_name)}       
         
         if (Show_Layer_Sypapses) {axon_name = "Axon_" + pre_neuron + "_" + BINZEGGER[each].synapse_Layer + "_" + post_neuron}
+///console.log("EEE", Show_Layer_Sypapses, pre_neuron, post_neuron, BINZEGGER[each].synapse_Layer, GetAxonShape(Show_Layer_Sypapses, pre_neuron, post_neuron, BINZEGGER[each].synapse_Layer))
         axon_shape = GetAxonShape(Show_Layer_Sypapses, pre_neuron, post_neuron, BINZEGGER[each].synapse_Layer)
         axon_type = GetAxonType(pre_neuron)
 
         axon_power_prev = 0
         if (axon_name in AXONS) {axon_power_prev = AXONS[axon_name].power}
         axon_power = GetAxonPower(BINZEGGER[each].numOfSynapses ,pre_power, post_power, power_normalize, axon_power_prev)
+///console.log("CCC cannot group if subtype has no number of neurons", axon_power, pre_neuron, post_neuron, BINZEGGER[each].numOfSynapses ,pre_power, post_power, power_normalize, axon_power_prev)
         axon_lengthsec = GetLatency(BINZEGGER[each].from, BINZEGGER[each].to)
         AXONS[axon_name] = {start_node:pre_neuron, end_node:post_neuron, shape:axon_shape, type:axon_type, lengthsec:axon_lengthsec,power:axon_power} ; 
 
 
     }
-//console.log(AXONS); 
+///console.log("BBB", AXONS); 
     if (Percent_Pre_Neurons) {
         TOTAL_PRE_SYNAPSES = {}
         for (each in AXONS) {
@@ -2769,7 +2797,7 @@ function FillNodeOutputs() {
         if (!((AXONS[each].start_node) in NODES)) {  NODES[AXONS[each].start_node] = {"outputs":[], "coordxy":[0,0]} }
         if (!((AXONS[each].end_node) in NODES)) {  NODES[AXONS[each].end_node] = {"outputs":[], "coordxy":[0,0]} }
         NODES[AXONS[each].start_node].outputs.push(each) ; ///AXONS[each].end_node) ;
-
+///console.log("DDD",each,AXONS[each])
 if (AXONS[each].shape[0] == "default") {
 
 ///console.log("gggggggggggggggggg",NODES[AXONS[each].start_node].coordxy,NODES[AXONS[each].end_node].coordxy)
