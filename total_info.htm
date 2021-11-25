@@ -1,5 +1,5 @@
 <html>
-
+<h1><font color=red>under construction</font></h1>
 Select data:
 
 <table><tr><td>
@@ -2798,31 +2798,31 @@ function FillNodeOutputs() {
         if (!((AXONS[each].end_node) in NODES)) {  NODES[AXONS[each].end_node] = {"outputs":[], "coordxy":[0,0]} }
         NODES[AXONS[each].start_node].outputs.push(each) ; ///AXONS[each].end_node) ;
 ///console.log("DDD",each,AXONS[each])
-if (AXONS[each].shape[0] == "default") {
+        if (AXONS[each].shape[0] == "default") {
 
 ///console.log("gggggggggggggggggg",NODES[AXONS[each].start_node].coordxy,NODES[AXONS[each].end_node].coordxy)
-    if (NODES[AXONS[each].start_node].coordxy[1] < NODES[AXONS[each].end_node].coordxy[1]) {
+            if (NODES[AXONS[each].start_node].coordxy[1] < NODES[AXONS[each].end_node].coordxy[1]) {
 
-        _dx = 10
-        if (NODES[AXONS[each].end_node].coordxy[0] < NODES[AXONS[each].start_node].coordxy[0]) {_dx = -10}
+                _dx = 10
+                if (NODES[AXONS[each].end_node].coordxy[0] < NODES[AXONS[each].start_node].coordxy[0]) {_dx = -10}
 
-        AXONS[each].shape=[
+                AXONS[each].shape=[
 [NODES[AXONS[each].end_node].coordxy[0]-_dx,NODES[AXONS[each].start_node].coordxy[1]],
 [NODES[AXONS[each].end_node].coordxy[0],NODES[AXONS[each].start_node].coordxy[1]+10]
 ]
-    } else {
-        _dx = 10
-        if (NODES[AXONS[each].end_node].coordxy[0] < NODES[AXONS[each].start_node].coordxy[0]) {_dx = -10}
+            } else {
+                _dx = 10
+                if (NODES[AXONS[each].end_node].coordxy[0] < NODES[AXONS[each].start_node].coordxy[0]) {_dx = -10}
 
-        AXONS[each].shape=[
+                AXONS[each].shape=[
 [NODES[AXONS[each].end_node].coordxy[0]-_dx,NODES[AXONS[each].start_node].coordxy[1]],
 [NODES[AXONS[each].end_node].coordxy[0],NODES[AXONS[each].start_node].coordxy[1] - 10]
 ]
 
 
-    }
+            }
 ///console.log("gggggggggggggggggg222",AXONS[each].shape)
-}
+        }
 
 
 
@@ -2834,11 +2834,17 @@ if (AXONS[each].shape[0] == "default") {
 if (AXONS[each].shape[0] == "loop") {
 
         AXONS[each].shape=[
-[NODES[AXONS[each].end_node].coordxy[0] + 10,NODES[AXONS[each].start_node].coordxy[1] - 10],
-[NODES[AXONS[each].end_node].coordxy[0] + 10,NODES[AXONS[each].start_node].coordxy[1] - 30],
-[NODES[AXONS[each].end_node].coordxy[0] + 0,NODES[AXONS[each].start_node].coordxy[1] - 40],
-[NODES[AXONS[each].end_node].coordxy[0] - 10,NODES[AXONS[each].start_node].coordxy[1] - 30],
-[NODES[AXONS[each].end_node].coordxy[0] - 10,NODES[AXONS[each].start_node].coordxy[1] - 10],
+[NODES[AXONS[each].end_node].coordxy[0] + 10,NODES[AXONS[each].start_node].coordxy[1] - 20],
+[NODES[AXONS[each].end_node].coordxy[0] + 13,NODES[AXONS[each].start_node].coordxy[1] - 30],
+[NODES[AXONS[each].end_node].coordxy[0] + 13,NODES[AXONS[each].start_node].coordxy[1] - 50],
+[NODES[AXONS[each].end_node].coordxy[0] + 10,NODES[AXONS[each].start_node].coordxy[1] - 55],
+[NODES[AXONS[each].end_node].coordxy[0] + 7,NODES[AXONS[each].start_node].coordxy[1] - 60],
+[NODES[AXONS[each].end_node].coordxy[0] + 0,NODES[AXONS[each].start_node].coordxy[1] - 63],
+[NODES[AXONS[each].end_node].coordxy[0] - 7,NODES[AXONS[each].start_node].coordxy[1] - 60],
+[NODES[AXONS[each].end_node].coordxy[0] - 10,NODES[AXONS[each].start_node].coordxy[1] - 55],
+[NODES[AXONS[each].end_node].coordxy[0] - 13,NODES[AXONS[each].start_node].coordxy[1] - 50],
+[NODES[AXONS[each].end_node].coordxy[0] - 13,NODES[AXONS[each].start_node].coordxy[1] - 30],
+[NODES[AXONS[each].end_node].coordxy[0] - 10,NODES[AXONS[each].start_node].coordxy[1] - 20],
 ]
 
 }
@@ -2851,7 +2857,11 @@ if (AXONS[each].shape[0] == "loop") {
 
 
         AXONS[each].shape.unshift(NODES[AXONS[each].start_node].coordxy)
-        AXONS[each].shape.push(NODES[AXONS[each].end_node].coordxy)
+        var lastcoordxy = []
+        lastcoordxy[0] = NODES[AXONS[each].end_node].coordxy[0]
+        lastcoordxy[1] = NODES[AXONS[each].end_node].coordxy[1] - NODES[AXONS[each].end_node].soma_value2
+        if (NODES[AXONS[each].end_node].coordxy[1] < NODES[AXONS[each].start_node].coordxy[1]) {lastcoordxy[1] = NODES[AXONS[each].end_node].coordxy[1] + NODES[AXONS[each].end_node].soma_value2}
+        AXONS[each].shape.push(lastcoordxy)
 
 ///console.log("gggggggg3333333333333333",AXONS[each].shape)
 
