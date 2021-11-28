@@ -2058,18 +2058,27 @@ console.log(_name)
 
 function FindSynonyms(_syn) {
     var ret = [_syn]
-    if (_syn == "b23") {ret = ["b23", "L3 bc", "L3 mp FS"]}
     if (_syn == "p23") {ret = ["p23", "L3P"]}
+    if (_syn == "PYR23") {ret = ["PYR23", "p23", "L3P"]}
+    if (_syn == "b23") {ret = ["b23", "L3 bc", "L3 mp FS"]}
     if (_syn == "db23") {ret = ["db23", "sm23"]}
     if (_syn == "axo23") {ret = ["axo23", "L3 mp FS", "mp, FS"]} 
+    if (_syn == "INT23") {ret = ["INT23", "b23", "L3 bc", "L3 mp FS", "db23", "sm23", "mp, FS", "L3 mp FS"]}
         ///basket (and chandelier) cells are multipolar //PV- and CRF- containing chandelier cells FS
     if (_syn == "ss4L4") {ret = ["ss4L4", "L4P", "L4E"]} 
     if (_syn == "ss4L23") {ret = ["ss4L23", "L4P", "L4E"]} 
     if (_syn == "p4") {ret = ["p4", "L4P", "L4E"]} 
-    if (_syn == "p5L23") {ret = ["p5L23", "L5 CCP", "L5P"]} 
-    if (_syn == "p5L56") {ret = ["p5L56", "L5 CCP", "L5P"]} 
+    if (_syn == "PYR4") {ret = ["PYR4", "ss4L4", "L4P", "L4E", "ss4L23", "L4 all types", "p4"]}
+    if (_syn == "STEL4") {ret = ["STEL4", "ss4L4", "L4P", "L4E", "ss4L23", "L4 all types", "p4"]}
+    if (_syn == "INT4") {ret = ["INT4", "sm4", "b4", "L4 all types"]}
+    if (_syn == "p5L23") {ret = ["p5L23", "L5 CCP", "L5P", "L5 Ad Small", "L5P small Ad"]} 
+    if (_syn == "p5L56") {ret = ["p5L56", "L5 CCP", "L5P", "L5 Ad Small", "L5P small Ad"]} 
+    if (_syn == "PYR5") {ret = ["PYR5", "p5L23", "p5L56", "L5 CCP", "L5P", "L5 Ad Small", "L5P small Ad"]}
+    if (_syn == "INT5") {ret = ["INT5", "L5 FS", "L5 I", "L5P", "L5 M"]}
     if (_syn == "p6L4") {ret = ["p6L4", "L6 CCP", "L6P"]} 
     if (_syn == "p6L56") {ret = ["p6L56", "L6 CCP", "L6P"]} 
+    if (_syn == "PYR6") {ret = ["PYR6", "p6L4", "p6L56", "L6 CCP", "L6P"]} 
+    if (_syn == "INT6") {ret = ["INT6", "L6 SOM", "L6 mp PV"]} 
         if (_syn == "as") {ret = ["as", "mp, FS", "nbc"]} 
 
     return ret
