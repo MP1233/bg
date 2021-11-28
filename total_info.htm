@@ -39,6 +39,7 @@ Select data:
 <input type="checkbox" id="DIVIDE_NUM_POST_NEURONS" value="CE" >Divide by number of postsynaptic neurons <br>
 <input type="checkbox" id="PERCENT_PRE_NEURONS" value="CE" >Replace with % of pre- synapses
 <input type="checkbox" id="PERCENT_POST_NEURONS" value="CE" >Replace with % of post- synapses<br>
+<input type="checkbox" id="TOTAL_RECURRENT_INPUT" value="CE" >Total recurrent input (how input to nuron type influences whole circuit in 1 sec)<br>
 
 <input type="checkbox" id="GROUP_NEURONS" value="CE" checked>Group neurons by layers<br>
 </td></tr></table>
@@ -1896,6 +1897,26 @@ basket (and chandelier) cells are multipolar //PV- and CRF- containing chandelie
 Bitufted dendrite-preferring SOM-containing interneurones
 VIP containing interneurones, are the major thalamo-recipient class in layer 4
 wiring diagram
+
+pyramidal cells through the
+excitation of GABAergic interneurons that express the vasoactive
+intestinal peptide (VIP). VIP+ interneurons strongly, and
+with high probability, inhibit somatostatin (SST)-positive
+interneurons, which themselves inhibit pyramidal cells
+
+Terminals from PV neurons target
+the perisomatic region of PCs and are thought to play an
+important role in generating gamma oscillations (Gonzalez-
+Burgos et al., 2015). Terminals from a subset of CB neurons
+target dendritic compartments of PCs and of other GABAergic,
+non-CB neuron subtypes (Lewis et al., 2002). Thus, PV and
+CB neurons provide different strategies for regulating neuronal
+input-output transformations within cortical circuits as well as
+feedforward or feedback inhibition within and between cortical
+layers. Terminals from CR neurons mainly target GABAergic
+neurons and mediate disinhibitory control of PC
+
+
 */
 
 
@@ -2071,7 +2092,7 @@ function FILL_BINZEGGER() {
 
     NODES = CopyArray(NODES2)
     AXONS = {}
-AXONS['Axon_ThalXY_PYR4'] = {start_node:'ThalXY', end_node:'PYR4', shape:['default'], type:'glutamate', lengthsec:10,power:0.1} ;     
+AXONS['Axon_ThalXY_PYR4'] = {start_node:'ThalXY', end_node:'PYR4', shape:['default'], type:'glutamate', lengthsec:10,power:10} ;     
     power_normalize = 1///GetPowerNormalize()
 
 ///  
@@ -3083,5 +3104,150 @@ ThalXY = 0.3*1000000
 {from:"p23",to:"b4",pattern:"",from_Layer:"L1","synapse_Layer":"L1",to_Layer:"L3",weight:"",numOfSynapses:"100",probabilty:"",latency:"",purpose:"",comment:"",author:"Binzegger"},
 
 how to make it more useful and balance numbers
+
+
+
+
+
+Layer 1: Cross-modality modulation is achieved through
+layer L1 cell-mediated inhibitory and disinhibitory circuits
+(Ibrahim et al., 2016). Neurons in layer L1 form ‘‘canonical
+neuronal circuits’’ to control information processes in both
+supra- and infra-granular cortical layers (Lee et al., 2015).
+Projections of neurons to layer L1 from all cortical inputs
+has been shown to make a significant contribution to the
+integration process throughout the neocortex (Mitchell and
+Cauller, 2001).
+Layer 2/3: This layer provides the integration of perceptual
+stimuli by inter-areal bottom up connections and the integration
+of perception with action by trans-laminar connections and
+top-down cortico-subcortical connections (Opris et al., 2011,
+2012a,b, 2013).
+Layer 3: This layer provides inter-hemispheric callosal
+connections (Georgopoulos, 2015).
+Layer 4: The primary visual cortex receives orientation- and
+direction-tuned inputs from thalamus in layer 4 (Sun et al.,
+2016).
+Layer 5: Pyramidal neurons in this layer integrate inputs from
+many sources and distribute outputs to cortical and subcortical
+structures (Kim et al., 2015). Cortical-subcortical neurons project
+to subcortical structures in the thalamo-cortical loop, integrate
+information and generate responses more relevant to movement
+control, while cortico-cortical neurons are more important in
+visual perception.
+Layer 6: This layer projects to the thalamus
+
+
+
+
+
+THE CORTICO-THALAMIC-CORTICAL
+PATHWAY
+In parallel with the cortical hierarchy within which areas
+communicate directly with each other, an additional, commonly
+observed mode of cortico-cortical communication is via a
+transthalamic route in which a higher-order thalamic nucleus
+relays information from one cortical area to another (reviewed
+in Sherman, 2017). In such a cortico-thalamic-cortical pathway,
+cortical layer 5 pyramidal cells from one area project their axons
+to the thalamus where they provide ‘‘driver’’ inputs (strong
+inputs that activate ionotropic glutamate receptors on proximal
+dendrites; Sherman and Guillery, 1998) to thalamic relay cells,
+which themselves project to another cortical area. These driver
+inputs are in contrast to ‘‘modulator’’ glutamatergic inputs,
+which have distinct synaptic properties and are thought to
+modulate the responses to driver glutamatergic inputs, much like
+the actions of ‘‘classic’’ neuromodulators such as acetylcholine
+and serotonin (Sherman and Guillery, 1996, 1998, 2011). In the
+visual system, the pulvinar is a higher-order thalamic nuclei
+that receives inputs from, and sends afferents to, a number of
+visual cortical areas, and is therefore a key hub for visual cortico-
+cortical communication (Sherman and Guillery, 1996; Grieve
+et al., 2000; Shipp, 2003). In the mouse, the lateral posterior
+nucleus (LP; the rodent analog of the pulvinar), likely mediates
+transthalamic cortico-cortical information flow, receiving inputs
+from layers 5 and 6 of V1 and transmitting signals to (as well as
+receiving signals from) higher visual areas (Oh et al., 2014; Tohmi
+et al., 2014; Roth et al., 2016). LP also projects diffusely to layer
+1 of V1 providing locomotion-related information (Roth et al.,
+2016).
+Results from a number of studies indicate that the axons
+of cortical layer 5 neurons, in addition to providing input
+to the thalamus, branch out to innervate other parts of the
+brain including midbrain and pontine areas (Deschênes et al.,
+1994; Bourassa and Deschênes, 1995; Bourassa et al., 1995;
+Kita and Kita, 2012; Sherman, 2017). This suggests that an
+identical message, originating in a single axon, is transmitted
+to a number of different structures that underlie both sensory
+and motor functions. It has been proposed, therefore, that a
+crucial function of layer 5 pyramidal neurons that underlie visual
+cortico-thalamic-cortical communication, but which also branch
+their axons to other motor structures, is to generate the efference
+copy, a type of neuronal message that helps an animal perceive
+the environment as being stable even while it moves around in it
+
+
+In circuits
+dominated by strong recurrent, excitatory connections that
+amplify weak, e.g., thalamocortical, inputs (Douglas et al., 1995;
+Lien and Scanziani, 2013), the feedback inhibitory motif has been
+proposed to non-linearly modulate cortical gain by silencing
+individual pyramidal cells, thus transiently reconfiguring local
+excitatory circuits by selectively eliminating the excitatory
+components of a winner-take-all network (Douglas and Martin,
+2009
+
+(10% of neurons responsible for approximately 50% of all
+recorded spikes, and 50% of neurons contributing to less than 3%
+of spikes), with the largest proportion of silent neurons in layer
+2/3 (O’Connor et al., 2010). The median firing rates of neurons
+recorded in this study were highest in layers 4 and 5, and lowest
+in layers 2/3 and 6. higher level of
+inhibitory drive to superficial pyramidal neurons compared to
+those in the deep layers.
+Layer 2/3 consists of networks characterized by strong
+recurrent excitatory connections, which have been implicated in
+selectively amplifying salient inputs [in my case - INPUT0i <> INPUT0j, INPUT1i <> INPUT1j etc]
+
+feedforward pathways utilize the higher frequency
+gamma oscillations (40–90 Hz superficial layers), while feedback pathways
+use slower (7–17 Hz deeper layers) oscillations
+
+stimulation of the apical dendrite,
+either antidromically or synaptically, can result in a spatially
+restricted influx of calcium and the generation of calcium-
+dependent regenerative potentials (‘‘Ca 2+ spikes’’) in the apical
+dendrite (Amitai et al., 1993; Yuste et al., 1994; Schiller et al.,
+1997; Larkum and Zhu, 2002). The triggering of Ca 2+ spikes
+provides for a putative mechanism through which coincident
+or strong synaptic inputs to the apical dendrite can result in
+long-lasting, high frequency bursts of sodium action potentials
+n the soma and axon (Larkum and Zhu, 2002; Williams
+and Stuart, 2002), which is dependent on backpropagation of
+the somatic action potential into the apical dendrite
+
+The excitation of apical
+dendrites in layer 1 as a way to amplify excitatory inputs to
+proximal dendrites, through the generation of Ca 2+ spikes, may
+be a general mechanism employed in the cortex
+
+
+Terminals from PV neurons target
+the perisomatic region of PCs and are thought to play an
+important role in generating gamma oscillations (Gonzalez-
+Burgos et al., 2015). Terminals from a subset of CB neurons
+target dendritic compartments of PCs and of other GABAergic,
+non-CB neuron subtypes (Lewis et al., 2002). Thus, PV and
+CB neurons provide different strategies for regulating neuronal
+input-output transformations within cortical circuits as well as
+feedforward or feedback inhibition within and between cortical
+layers. Terminals from CR neurons mainly target GABAergic
+neurons and mediate disinhibitory control of PC
+50% of the terminals were PV+, ∼31% CB+ and ∼19% CR
+
+neuronal circuits to
+employ sparse coding in a large number of small neurons, and for this information to be
+integrated by a smaller number of large densely-coding cells that broadcast the results of local
+computations to distant structures
 
 </html>
