@@ -2061,6 +2061,17 @@ function FindSynonyms(_syn) {
     if (_syn == "b23") {ret = ["b23", "L3 bc", "L3 mp FS"]}
     if (_syn == "p23") {ret = ["p23", "L3P"]}
     if (_syn == "db23") {ret = ["db23", "sm23"]}
+    if (_syn == "axo23") {ret = ["axo23", "L3 mp FS", "mp, FS"]} 
+        ///basket (and chandelier) cells are multipolar //PV- and CRF- containing chandelier cells FS
+    if (_syn == "ss4L4") {ret = ["ss4L4", "L4P", "L4E"]} 
+    if (_syn == "ss4L23") {ret = ["ss4L23", "L4P", "L4E"]} 
+    if (_syn == "p4") {ret = ["p4", "L4P", "L4E"]} 
+    if (_syn == "p5L23") {ret = ["p5L23", "L5 CCP", "L5P"]} 
+    if (_syn == "p5L56") {ret = ["p5L56", "L5 CCP", "L5P"]} 
+    if (_syn == "p6L4") {ret = ["p6L4", "L6 CCP", "L6P"]} 
+    if (_syn == "p6L56") {ret = ["p6L56", "L6 CCP", "L6P"]} 
+        if (_syn == "as") {ret = ["as", "mp, FS", "nbc"]} 
+
     return ret
 }
 
@@ -2068,9 +2079,9 @@ function GetLatency(_from, _to) {
     var ret = 10
     _from_synonyms = FindSynonyms(_from)
     _to_synonyms = FindSynonyms(_to)
-    for (each_from in _from_synonyms) {
-        for (each_to in _to_synonyms) {
-            for (each_data in THOMSON_TABLE) {
+    for (var each_from in _from_synonyms) {
+        for (var each_to in _to_synonyms) {
+            for (var each_data in THOMSON_TABLE) {
 ///console.log(_from_synonyms, _to_synonyms, _from_synonyms[each_from], THOMSON_TABLE[each_data].from, _to_synonyms[each_to], THOMSON_TABLE[each_data].to, THOMSON_TABLE[each_data].latency)
                 if ((_from_synonyms[each_from] == THOMSON_TABLE[each_data].from) && (_to_synonyms[each_to] == THOMSON_TABLE[each_data].to) && (THOMSON_TABLE[each_data].latency > 0 )) {
                     return THOMSON_TABLE[each_data].latency
@@ -2080,7 +2091,7 @@ function GetLatency(_from, _to) {
     }
 //{from:"L5P",to:"L5 FS",pattern:"",from_Layer:"L6","synapse_Layer":"L6",to_Layer:"L6",weight:"",numOfSynapses:0.1,probabilty:"",latency:0.6,amplitude:2.1,purpose:"D",comment:"Layer 5 pyramid to FS, multipolar, PV+ve interneurones",author:"Thomson"},
 
-console.log("missing latency: ", _from, _to)
+console.log("missing latency: |"+ _from+ "|"+_to+ "|")
     return ret
 }
 
@@ -2164,7 +2175,10 @@ AXONS['Axon_ThalXY_PYR4'] = {start_node:'ThalXY', end_node:'PYR4', shape:['defau
         return 0
     }
     power_normalize = GetPowerNormalize()
-    for (each in AXONS) {        AXONS[each].power = 0.1 + AXONS[each].power*power_normalize}
+    for (each in AXONS) { 
+           AXONS[each].power = 0.1 + AXONS[each].power*power_normalize
+           if (AXONS[each].type == "GABA") {AXONS[each].power = -AXONS[each].power}
+       }
     return 0
 console.log("AAA", AXONS); 
 }
