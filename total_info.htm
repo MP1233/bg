@@ -39,7 +39,7 @@ Select data:
 <input type="checkbox" id="DIVIDE_NUM_POST_NEURONS" value="CE" >Divide by number of postsynaptic neurons <br>
 <input type="checkbox" id="PERCENT_PRE_NEURONS" value="CE" >Replace with % of pre- synapses
 <input type="checkbox" id="PERCENT_POST_NEURONS" value="CE" >Replace with % of post- synapses<br>
-<input type="checkbox" id="TOTAL_RECURRENT_INPUT" value="CE" >Total recurrent input (how input to nuron type influences whole circuit in 1 sec)<br>
+<input type="button" id="TOTAL_RECURRENT_INPUT" value="REC" >Total recurrent input (how input to nuron type influences whole circuit in 1 sec Monte-Carlo)<br>
 
 <input type="checkbox" id="GROUP_NEURONS" value="CE" checked>Group neurons by layers<br>
 </td></tr></table>
@@ -62,6 +62,7 @@ many models do not provide numbers. So they cannot be compared directly. For num
     var Group_Neurons = 1
     var Percent_Pre_Neurons = 0
     var Percent_Post_Neurons = 0
+    var Shift_Recurrent = 0
 
 
 
@@ -2315,7 +2316,7 @@ OnlyOnce = 0 ;
  
 
 
-var CalculationResults = {RESULT_0:0, RESULT_1:0, RESULT_2:0, RESULT_3:0, RESULT_4:0, RESULT_5:0, RESULT_6:0, RESULT_minus1:0, RESULT_minus2:0, RESULT_minus3:0}
+var CalculationResults = {PYR23:0 }
 
 function RecalculateSpike(eachspike) {
     ///console.log(MOVINGSPIKES[eachspike].currentposonaxon) ;
@@ -2620,6 +2621,59 @@ function ShiftPower(_action) {
 }
 
 
+function FILL_RECURRENT() {
+    var _connected_nodes = {}
+    for (var each in AXONS) {
+        if (!(AXONS[each].start_node in _connected_nodes)) {_connected_nodes[AXONS[each].start_node] = {} } 
+        _connected_nodes[AXONS[each].end_node] = {} /// {ax:each}
+    }
+console.log("RECURRENT", _connected_nodes)
+    //FOR EACH PYR INH 2-6 {
+    for (var each in _connected_nodes) {
+        for (var i=0; i<200; i++) {
+///console.log("OOO", _connected_nodes[each].ax)
+            ///CreateSpike(_connected_nodes[each].ax)///('Axon_ThalXY_PYR4')
+            NODES[each].soma_value = NODES[each].soma_value + 5
+            for (eachspike in MOVINGSPIKES) {
+                //RedrawSpike(eachspike) ; 
+                RecalculateSpike(eachspike) ; 
+            }
+            for (_eachnode in NODES) { FireNewSpikes(_eachnode) }
+            for (eachnode in NODES) {
+                //RedrawNode(NODES[eachnode],eachnode) ; 
+                RecalculateNode(NODES[eachnode]) ; 
+            }
+        }
+        for (var eachcalcresult in CalculationResults)
+        _connected_nodes[each][eachcalcresult] = CalculationResults[eachcalcresult]
+        MOVINGSPIKES = {}
+    }
+console.log("NNN", NODES, CalculationResults, _connected_nodes)
+    BINZEGGER = []
+    for (var each_from in _connected_nodes) {
+        for (var each_to in _connected_nodes[each_from]) {
+            BINZEGGER.push({from:each_from,to:each_to,pattern:"",from_Layer:"","synapse_Layer":"",to_Layer:"",weight:"",numOfSynapses:_connected_nodes[each_from][each_to],probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"",author:""},
+)
+        }
+    }
+///{from:"LLLL4I_4",to:"L6P_1",pattern:"",from_Layer:"L4","synapse_Layer":"L4",to_Layer:"",weight:"",numOfSynapses:80,probabilty:"",latency:0,amplitude:0,purpose:"D",comment:"Multipolar, PV&#x02009;+&#x02009;ve and fast spiking cells to layer 3 pyramids",author:"Thomson"},
+
+}
+
+function ShiftRecurrentInput() {
+
+        /*if (Shift_Recurrent) {
+            Shift_Recurrent = 0
+            FILL_BINZEGGER() ; 
+            FillNodeOutputs();
+        } else {*/
+            Shift_Recurrent = 1
+
+            FILL_RECURRENT() ;
+            FILL_BINZEGGER() ;  
+            FillNodeOutputs();
+        ///}
+}
 
 
 
@@ -2673,6 +2727,7 @@ MULTIPLY_NUM_POST_NEURONS.onclick = e => {ShiftPower("Post_Multiply")}
 DIVIDE_NUM_POST_NEURONS.onclick = e => {ShiftPower("Post_Divide")}
 PERCENT_PRE_NEURONS.onclick = e => {ShiftPower("PrePercent")}
 PERCENT_POST_NEURONS.onclick = e => {ShiftPower("PostPercent")}
+TOTAL_RECURRENT_INPUT.onclick = e => {ShiftRecurrentInput()}
 GROUP_NEURONS.onclick = e => {ShiftGroup()}
 BINZEGGER_DATA.onclick = e => {ShiftData("BENZIGGER")}
 DOUGLAS_DATA.onclick = e => {ShiftData("DOUGLAS")}
@@ -2765,7 +2820,7 @@ function GetAxonLength(_CurrSomaLayer) {
 
 
 function CreateSpike(_axon_id) {
-console.log(_axon_id, AXONS[_axon_id])
+///console.log(_axon_id, AXONS[_axon_id])
 currspike_id = currspike_id + 1 ; 
 MOVINGSPIKES[currspike_id] = {currentaxon:AXONS[_axon_id], currentposonaxon:0, currentpower:1, curraxonlength:GetAxonLength(AXONS[_axon_id].shape)}
 }
@@ -3249,5 +3304,9 @@ neuronal circuits to
 employ sparse coding in a large number of small neurons, and for this information to be
 integrated by a smaller number of large densely-coding cells that broadcast the results of local
 computations to distant structures
+
+in L2/3 of
+mouse visual cortex, that neurons tuned to the same orientation are more likely to excite
+each other 12 . Our data suggest that such a rule may also apply in L4
 
 </html>
