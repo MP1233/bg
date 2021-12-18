@@ -1,6 +1,9 @@
 from netpyne import specs, sim
 import os
 
+SAVE_CPU = 2.0
+#57853.87 s
+#Total time = 15802.92 s
 
 # template.hoc replace $1 > 1
 #morphology.hoc add load_file("import3d.hoc")
@@ -43,8 +46,26 @@ PYRcell['secs']['soma'] = {'geom': {}, 'mechs': {}}  # soma params dict
 PYRcell['secs']['soma']['geom'] = {'diam': 18.8, 'L': 18.8, 'Ra': 123.0}  # soma geometry
 PYRcell['secs']['soma']['mechs']['hh'] = {'gnabar': 0.12, 'gkbar': 0.036, 'gl': 0.003, 'el': -70}  # soma hh mechanism
 netParams.cellParams['PYR'] = PYRcell
-netParams.popParams['TOTAL_INPUT'] = {'cellType': 'PYR', 'numCells': 50}
+netParams.popParams['OPERATOR_PLUS'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['OPERATOR_MINUS'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['COMPONENT1_0'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['COMPONENT1_1'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['COMPONENT1_2'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['COMPONENT1_3'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['COMPONENT2_0'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['COMPONENT2_1'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['COMPONENT2_2'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['COMPONENT2_3'] = {'cellType': 'PYR', 'numCells': 17}
 
+netParams.popParams['fOPERATOR_PLUS'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['fCOMPONENT1_1'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['fCOMPONENT2_2'] = {'cellType': 'PYR', 'numCells': 17}
+"""
+netParams.popParams['BLOCK300'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['BLOCK700'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['BLOCK900'] = {'cellType': 'PYR', 'numCells': 17}
+netParams.popParams['BLOCK1100'] = {'cellType': 'PYR', 'numCells': 17}
+"""
 
 
 
@@ -65,15 +86,52 @@ cellRule = netParams.importCellParams(
         fileName='L23_PC_cADpyr229_2/template.hoc',
         cellName='cADpyr229_L23_PC_8ef1aa6602', #'cADpyr230_L4_SP_6fe41ae9cd', #'bAC217_L4_BP_d04c4872bd',
         importSynMechs=True)
+"""
+netParams.popParams['0PLUS0_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['0PLUS1_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+"""
+netParams.popParams['0PLUS2_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+"""
+netParams.popParams['0PLUS3_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['1PLUS0_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['1PLUS1_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+"""
+netParams.popParams['1PLUS2_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+"""
+netParams.popParams['1PLUS3_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
 
-netParams.popParams['test1'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': 61}
-netParams.popParams['test1a'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': 61}
-netParams.popParams['test1b'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': 5}
-netParams.popParams['test1c'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': 5}
-netParams.popParams['test1d'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': 5}
-netParams.popParams['test1e'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': 5}
-netParams.popParams['test1f'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': 5}
-netParams.popParams['test1g'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': 5}
+netParams.popParams['2PLUS0_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['2PLUS1_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['2PLUS2_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['2PLUS3_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['3PLUS0_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+
+netParams.popParams['3PLUS1_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+
+netParams.popParams['3PLUS2_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+
+netParams.popParams['3PLUS3_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+"""
+netParams.popParams['0MINUS0_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+"""
+netParams.popParams['0MINUS1_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['0MINUS2_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['0MINUS3_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['1MINUS0_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['1MINUS1_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['1MINUS2_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['1MINUS3_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['2MINUS0_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['2MINUS1_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['2MINUS2_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['2MINUS3_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['3MINUS0_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+"""
+netParams.popParams['3MINUS1_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+"""
+netParams.popParams['3MINUS2_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+netParams.popParams['3MINUS3_L23_PC'] = {'cellType': 'L23_PC_HH3D_hoc', 'numCells': int(61/SAVE_CPU)}
+"""
 
 
 
@@ -83,7 +141,7 @@ cellRule = netParams.importCellParams(
         cellName='bNAC219_L23_LBC_fe2122c75c', #'cADpyr230_L4_SP_6fe41ae9cd', #'bAC217_L4_BP_d04c4872bd',
         importSynMechs=True)
 
-netParams.popParams['test2'] = {'cellType': 'L23_LBC_HH3D_hoc', 'numCells': 1}
+netParams.popParams['FILTER_L23_LBC'] = {'cellType': 'L23_LBC_HH3D_hoc', 'numCells': 20}
 """
 cellRule = netParams.importCellParams(
         label='STELL_HH3D_hoc',
@@ -171,35 +229,279 @@ Added excitatory synapse 77 originating from cell 633 of m-type L23_PC on apical
 #netParams.connParams['AxonComponentm_2e'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 1,    'weight': 0.5,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_935'} 
 #netParams.connParams['AxonComponentm_2f'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 1,    'weight': 0.5,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_930'} 
 
-total_input_weight = 0.25 # 0.5
+total_input_weight = 0.31 #0.31 best #0.30-0.35 if partial match doesn't disappear - use L23_LBC # 0.35 ideal for both! #0.5 BOTH OSC! 2nd too early #0.25 OSC! #0.35 EQ! #0.25 very good # 0.5
+
+def InputNeuronsLayer23(_Neuron1, _Neuron2) : 
 
 
-netParams.connParams['AxonComponentm_21e'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_885'} 
-netParams.connParams['AxonComponentm_22f'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_884'} 
-netParams.connParams['AxonComponentm_23e'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_939'} 
-netParams.connParams['AxonComponentm_24f'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_975'} 
-netParams.connParams['AxonComponentm_25e'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_985'} 
-netParams.connParams['AxonComponentm_26f'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_937'} 
-netParams.connParams['AxonComponentm_27e'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_947'} 
-netParams.connParams['AxonComponentm_28f'] = {     'preConds': {'pop': 'TOTAL_INPUT'},    'postConds': {'pop': 'test1'},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_892'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_1'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_885'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_2'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_884'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_3'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_939'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_4'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_975'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_5'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_985'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_6'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_937'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_7'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_947'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_8'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.25,    'weight': total_input_weight,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_892'} 
+
+def NeuronsLayer23PCTOLayer23LBC(_Neuron1, _Neuron2) : 
+#totnum of syn = 2.8(L23PC>L23PC)*0.3k_Num to GABA(L23PC>) = 0.9
+        L23PC_L23LBC_weight = 1.0
+        L23PC_L23LBC_delay = 0.5
+
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_1'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_68'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_2'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_147'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_3'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_46'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_4'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_250'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_5'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_47'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_6'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_40'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_7'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_39'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_8'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_38'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_9'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_406'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_10'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.09,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'bNAC219_L23_LBC_fe2122c75c_ProbAMPANMDA_EMS_454'} 
+
+
+
+NeuronsLayer23PCTOLayer23LBC('0PLUS0_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('0PLUS1_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('0PLUS2_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('0PLUS3_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('1PLUS0_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('1PLUS1_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('1PLUS2_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('1PLUS3_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('2PLUS0_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('2PLUS1_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('2PLUS2_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('2PLUS3_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('3PLUS0_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('3PLUS1_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('3PLUS2_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('3PLUS3_L23_PC', 'FILTER_L23_LBC')
+
+NeuronsLayer23PCTOLayer23LBC('0MINUS0_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('0MINUS1_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('0MINUS2_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('0MINUS3_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('1MINUS0_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('1MINUS1_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('1MINUS2_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('1MINUS3_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('2MINUS0_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('2MINUS1_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('2MINUS2_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('2MINUS3_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('3MINUS0_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('3MINUS1_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('3MINUS2_L23_PC', 'FILTER_L23_LBC')
+NeuronsLayer23PCTOLayer23LBC('3MINUS3_L23_PC', 'FILTER_L23_LBC')
+
+
+
+def NeuronsLayer23LBCTOLayer23LPC(_Neuron1, _Neuron2) : 
+#totnum of syn = 2.8(L23PC>L23PC)*0.3k_Num to GABA(L23PC>) = 0.9
+        L23PC_L23LBC_weight = 100.0 #35.0
+        L23PC_L23LBC_delay = 0.5 #30
+
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_1'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_873'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_2'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_1288'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_3'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_1162'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_4'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_847'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_5'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_569'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_6'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_588'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_7'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_587'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_8'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_586'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_9'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_597'} 
+        netParams.connParams['Axon_' + _Neuron1 + '_' + _Neuron2 + '_10'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 0.19,    'weight': L23PC_L23LBC_weight,    'delay': L23PC_L23LBC_delay,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbGABAAB_EMS_596'} 
+
+
+
+
+
+
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '0PLUS0_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '0PLUS1_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '0PLUS2_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '0PLUS3_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '1PLUS0_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '1PLUS1_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '1PLUS2_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '1PLUS3_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '2PLUS0_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '2PLUS1_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '2PLUS2_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '2PLUS3_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '3PLUS0_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '3PLUS1_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '3PLUS2_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '3PLUS3_L23_PC')
+
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '0MINUS0_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '0MINUS1_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '0MINUS2_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '0MINUS3_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '1MINUS0_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '1MINUS1_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '1MINUS2_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '1MINUS3_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '2MINUS0_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '2MINUS1_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '2MINUS2_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '2MINUS3_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '3MINUS0_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '3MINUS1_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '3MINUS2_L23_PC')
+NeuronsLayer23LBCTOLayer23LPC('FILTER_L23_LBC', '3MINUS3_L23_PC')
+
 
 
 
 """
-Added excitatory synapse 1009 originating from cell 8010 of m-type L4_PC on apical section 0(0.576000) and dep 659.000000 use 0.485674 
-Added excitatory synapse 1010 originating from cell 8010 of m-type L4_PC on apical section 0(0.928000) and dep 673.000000 use 0.502659 
 
-Added excitatory synapse 1012 originating from cell 8090 of m-type L4_PC on apical section 3(0.355000) and dep 662.000000 use 0.489975 
-Added excitatory synapse 1013 originating from cell 8090 of m-type L4_PC on apical section 4(0.469000) and dep 672.000000 use 0.500821
-
-Added excitatory synapse 1101 originating from cell 10042 of m-type L4_PC on apical section 5(0.397000) and dep 667.000000 use 0.495599 
-
-Added excitatory synapse 1112 originating from cell 11190 of m-type L4_PC on apical section 3(0.334000) and dep 667.000000 use 0.495175 
-Added excitatory synapse 1113 originating from cell 11190 of m-type L4_PC on apical section 3(0.752000) and dep 674.000000 use 0.503335 
-
-Added excitatory synapse 1208 originating from cell 16881 of m-type L5_TTPC2 on apical section 1(0.181000) and dep 677.000000 use 0.507507 
 """
+#netParams.popParams['fOPERATOR_PLUS'] = {'cellType': 'PYR', 'numCells': 17}
+InputNeuronsLayer23('fOPERATOR_PLUS', '0PLUS0_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '0PLUS1_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '0PLUS2_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '0PLUS3_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '1PLUS0_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '1PLUS1_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '1PLUS2_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '1PLUS3_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '2PLUS0_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '2PLUS1_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '2PLUS2_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '2PLUS3_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '3PLUS0_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '3PLUS1_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '3PLUS2_L23_PC')
+InputNeuronsLayer23('fOPERATOR_PLUS', '3PLUS3_L23_PC')
 
+#netParams.popParams['fCOMPONENT1_1'] = {'cellType': 'PYR', 'numCells': 17}
+InputNeuronsLayer23('fCOMPONENT1_1', '1PLUS0_L23_PC')
+InputNeuronsLayer23('fCOMPONENT1_1', '1PLUS1_L23_PC')
+InputNeuronsLayer23('fCOMPONENT1_1', '1PLUS2_L23_PC')
+InputNeuronsLayer23('fCOMPONENT1_1', '1PLUS3_L23_PC')
+InputNeuronsLayer23('fCOMPONENT1_1', '1MINUS0_L23_PC')
+InputNeuronsLayer23('fCOMPONENT1_1', '1MINUS1_L23_PC')
+InputNeuronsLayer23('fCOMPONENT1_1', '1MINUS2_L23_PC')
+InputNeuronsLayer23('fCOMPONENT1_1', '1MINUS3_L23_PC')
+
+#netParams.popParams['fCOMPONENT2_2'] = {'cellType': 'PYR', 'numCells': 17}
+InputNeuronsLayer23('fCOMPONENT2_2', '0PLUS2_L23_PC')
+InputNeuronsLayer23('fCOMPONENT2_2', '1PLUS2_L23_PC')
+InputNeuronsLayer23('fCOMPONENT2_2', '2PLUS2_L23_PC')
+InputNeuronsLayer23('fCOMPONENT2_2', '3PLUS2_L23_PC')
+InputNeuronsLayer23('fCOMPONENT2_2', '0MINUS2_L23_PC')
+InputNeuronsLayer23('fCOMPONENT2_2', '1MINUS2_L23_PC')
+InputNeuronsLayer23('fCOMPONENT2_2', '2MINUS2_L23_PC')
+InputNeuronsLayer23('fCOMPONENT2_2', '3MINUS2_L23_PC')
+
+
+
+InputNeuronsLayer23('OPERATOR_PLUS', '0PLUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT1_0', '0PLUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT2_0', '0PLUS0_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '0PLUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT1_0', '0PLUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT2_1', '0PLUS1_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '0PLUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT1_0', '0PLUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT2_2', '0PLUS2_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '0PLUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT1_0', '0PLUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT2_3', '0PLUS3_L23_PC')
+
+InputNeuronsLayer23('OPERATOR_PLUS', '1PLUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT1_1', '1PLUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT2_0', '1PLUS0_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '1PLUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT1_1', '1PLUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT2_1', '1PLUS1_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '1PLUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT1_1', '1PLUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT2_2', '1PLUS2_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '1PLUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT1_1', '1PLUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT2_3', '1PLUS3_L23_PC')
+
+InputNeuronsLayer23('OPERATOR_PLUS', '2PLUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT1_2', '2PLUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT2_0', '2PLUS0_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '2PLUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT1_2', '2PLUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT2_1', '2PLUS1_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '2PLUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT1_2', '2PLUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT2_2', '2PLUS2_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '2PLUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT1_2', '2PLUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT2_3', '2PLUS3_L23_PC')
+
+InputNeuronsLayer23('OPERATOR_PLUS', '3PLUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT1_3', '3PLUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT2_0', '3PLUS0_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '3PLUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT1_3', '3PLUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT2_1', '3PLUS1_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '3PLUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT1_3', '3PLUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT2_2', '3PLUS2_L23_PC')
+InputNeuronsLayer23('OPERATOR_PLUS', '3PLUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT1_3', '3PLUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT2_3', '3PLUS3_L23_PC')
+
+
+InputNeuronsLayer23('OPERATOR_MINUS', '0MINUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT1_0', '0MINUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT2_0', '0MINUS0_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '0MINUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT1_0', '0MINUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT2_1', '0MINUS1_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '0MINUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT1_0', '0MINUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT2_2', '0MINUS2_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '0MINUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT1_0', '0MINUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT2_3', '0MINUS3_L23_PC')
+
+InputNeuronsLayer23('OPERATOR_MINUS', '1MINUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT1_1', '1MINUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT2_0', '1MINUS0_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '1MINUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT1_1', '1MINUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT2_1', '1MINUS1_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '1MINUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT1_1', '1MINUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT2_2', '1MINUS2_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '1MINUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT1_1', '1MINUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT2_3', '1MINUS3_L23_PC')
+
+InputNeuronsLayer23('OPERATOR_MINUS', '2MINUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT1_2', '2MINUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT2_0', '2MINUS0_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '2MINUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT1_2', '2MINUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT2_1', '2MINUS1_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '2MINUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT1_2', '2MINUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT2_2', '2MINUS2_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '2MINUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT1_2', '2MINUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT2_3', '2MINUS3_L23_PC')
+
+InputNeuronsLayer23('OPERATOR_MINUS', '3MINUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT1_3', '3MINUS0_L23_PC')
+InputNeuronsLayer23('COMPONENT2_0', '3MINUS0_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '3MINUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT1_3', '3MINUS1_L23_PC')
+InputNeuronsLayer23('COMPONENT2_1', '3MINUS1_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '3MINUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT1_3', '3MINUS2_L23_PC')
+InputNeuronsLayer23('COMPONENT2_2', '3MINUS2_L23_PC')
+InputNeuronsLayer23('OPERATOR_MINUS', '3MINUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT1_3', '3MINUS3_L23_PC')
+InputNeuronsLayer23('COMPONENT2_3', '3MINUS3_L23_PC')
 
 
 
@@ -257,151 +559,144 @@ L2/3: 28 ± 1 Hz, L5: 38 ± 2 Hz; L6: 51 ± 3 Hz, n = 8
 #add noise
 
 #w 1 d 70
-weight_k = 1.5
+#w 1.5 d 120
+#w 3.9 d 100
+#w 25 d 30
+weight_k = 25*SAVE_CPU #25! #10.0 #7.9 #2.9 #1.9
 prob_k = 0.24/15.6
-delay_k = 120.0
+delay_k = 30.0 #30 #100.0
 
-#netParams.connParams['AxonComponentm_1p0a'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6,    'weight': 1.9*weight_k,    'delay': 1.3,    'synMech': ['cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063',
-#'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748']} 
-"""netParams.connParams['AxonComponentm_1'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'} 
-netParams.connParams['AxonComponentm_1a'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195'} 
-netParams.connParams['AxonComponentm_1b'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.5,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063'} 
 
-netParams.connParams['AxonComponentm_1e'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574'} 
-netParams.connParams['AxonComponentm_1f'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.4,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581'} 
-netParams.connParams['AxonComponentm_1g'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.5,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748'} 
-
-"""
 #MUST BE 12 syn * prob 0.24
 
-netParams.connParams['AxonComponentm_3'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'} 
-netParams.connParams['AxonComponentm_3a'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195'} 
-netParams.connParams['AxonComponentm_3b'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063'} 
 
-netParams.connParams['AxonComponentm_3e'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574'} 
-netParams.connParams['AxonComponentm_3f'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581'} 
-netParams.connParams['AxonComponentm_3g'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748'} 
-
-
-
-netParams.connParams['AxonComponentm_3h'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_483'} 
-netParams.connParams['AxonComponentm_3i'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_503'} 
-netParams.connParams['AxonComponentm_3j'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_502'} 
-
-netParams.connParams['AxonComponentm_3k'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_501'} 
-netParams.connParams['AxonComponentm_3l'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_370'} 
-netParams.connParams['AxonComponentm_3m'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_571'} 
-
-"""
-
-
-
-
-
-
-
-
-
-
-netParams.connParams['AxonComponentm_a3'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 11.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_483'} 
-netParams.connParams['AxonComponentm_a3a'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 10.0*delay_k,   'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_503'} 
-netParams.connParams['AxonComponentm_a3b'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 9.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_502'} 
-
-netParams.connParams['AxonComponentm_a3e'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 8.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_501'} 
-netParams.connParams['AxonComponentm_a3f'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 7.0*delay_k,    'synMech':  'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_370'} 
-netParams.connParams['AxonComponentm_a3g'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 6.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_571'} 
-
-
-
-
-netParams.connParams['AxonComponentm_a3h'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 5.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'} 
-netParams.connParams['AxonComponentm_a3i'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 4.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195'} 
-netParams.connParams['AxonComponentm_a3j'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 3.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063'} 
-
-netParams.connParams['AxonComponentm_a3k'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 2.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574'} 
-netParams.connParams['AxonComponentm_a3l'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581'} 
-netParams.connParams['AxonComponentm_a3m'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748'} 
-"""
 
 #//////////////////////////////////////////
 
+def JoinNeuronsLayer23(_Neuron1, _Neuron2) : 
 
-netParams.connParams['AxonComponentm_4'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'} 
-netParams.connParams['AxonComponentm_4a'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195'} 
-netParams.connParams['AxonComponentm_4b'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_1'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_2'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_3'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063'} 
 
-netParams.connParams['AxonComponentm_4e'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574'} 
-netParams.connParams['AxonComponentm_4f'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581'} 
-netParams.connParams['AxonComponentm_4g'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748'} 
-
-
-
-netParams.connParams['AxonComponentm_4h'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_483'} 
-netParams.connParams['AxonComponentm_4i'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_503'} 
-netParams.connParams['AxonComponentm_4j'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_502'} 
-
-netParams.connParams['AxonComponentm_4k'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_501'} 
-netParams.connParams['AxonComponentm_4l'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_370'} 
-netParams.connParams['AxonComponentm_4m'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_571'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_4'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_5'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_6'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748'} 
 
 
 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_7'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_483'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_8'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_503'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_9'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_502'} 
+
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_10'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_501'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_11'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_370'} 
+        netParams.connParams['Axon_'+_Neuron1+'_'+ _Neuron2 + '_12'] = {     'preConds': {'pop': _Neuron1},    'postConds': {'pop': _Neuron2},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_571'} 
+
+
+
+JoinNeuronsLayer23('0PLUS0_L23_PC', '0PLUS0_L23_PC')
+JoinNeuronsLayer23('0PLUS1_L23_PC', '0PLUS1_L23_PC')
+JoinNeuronsLayer23('0PLUS2_L23_PC', '0PLUS2_L23_PC')
+JoinNeuronsLayer23('0PLUS3_L23_PC', '0PLUS3_L23_PC')
+JoinNeuronsLayer23('1PLUS0_L23_PC', '1PLUS0_L23_PC')
+JoinNeuronsLayer23('1PLUS1_L23_PC', '1PLUS1_L23_PC')
+JoinNeuronsLayer23('1PLUS2_L23_PC', '1PLUS2_L23_PC')
+JoinNeuronsLayer23('1PLUS3_L23_PC', '1PLUS3_L23_PC')
+JoinNeuronsLayer23('2PLUS0_L23_PC', '2PLUS0_L23_PC')
+JoinNeuronsLayer23('2PLUS1_L23_PC', '2PLUS1_L23_PC')
+JoinNeuronsLayer23('2PLUS2_L23_PC', '2PLUS2_L23_PC')
+JoinNeuronsLayer23('2PLUS3_L23_PC', '2PLUS3_L23_PC')
+JoinNeuronsLayer23('3PLUS0_L23_PC', '3PLUS0_L23_PC')
+JoinNeuronsLayer23('3PLUS1_L23_PC', '3PLUS1_L23_PC')
+JoinNeuronsLayer23('3PLUS2_L23_PC', '3PLUS2_L23_PC')
+JoinNeuronsLayer23('3PLUS3_L23_PC', '3PLUS3_L23_PC')
+
+JoinNeuronsLayer23('0MINUS0_L23_PC', '0MINUS0_L23_PC')
+JoinNeuronsLayer23('0MINUS1_L23_PC', '0MINUS1_L23_PC')
+JoinNeuronsLayer23('0MINUS2_L23_PC', '0MINUS2_L23_PC')
+JoinNeuronsLayer23('0MINUS3_L23_PC', '0MINUS3_L23_PC')
+JoinNeuronsLayer23('1MINUS0_L23_PC', '1MINUS0_L23_PC')
+JoinNeuronsLayer23('1MINUS1_L23_PC', '1MINUS1_L23_PC')
+JoinNeuronsLayer23('1MINUS2_L23_PC', '1MINUS2_L23_PC')
+JoinNeuronsLayer23('1MINUS3_L23_PC', '1MINUS3_L23_PC')
+JoinNeuronsLayer23('2MINUS0_L23_PC', '2MINUS0_L23_PC')
+JoinNeuronsLayer23('2MINUS1_L23_PC', '2MINUS1_L23_PC')
+JoinNeuronsLayer23('2MINUS2_L23_PC', '2MINUS2_L23_PC')
+JoinNeuronsLayer23('2MINUS3_L23_PC', '2MINUS3_L23_PC')
+JoinNeuronsLayer23('3MINUS0_L23_PC', '3MINUS0_L23_PC')
+JoinNeuronsLayer23('3MINUS1_L23_PC', '3MINUS1_L23_PC')
+JoinNeuronsLayer23('3MINUS2_L23_PC', '3MINUS2_L23_PC')
+JoinNeuronsLayer23('3MINUS3_L23_PC', '3MINUS3_L23_PC')
 
 
 
 
-"""
 
 
-netParams.connParams['AxonComponentm_a4'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 11.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_483'} 
-netParams.connParams['AxonComponentm_a4a'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 10.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_503'} 
-netParams.connParams['AxonComponentm_a4b'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 9.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_502'} 
-
-netParams.connParams['AxonComponentm_a4e'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 8.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_501'} 
-netParams.connParams['AxonComponentm_a4f'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 7.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_370'} 
-netParams.connParams['AxonComponentm_a4g'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 6.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_571'} 
-
-
-
-netParams.connParams['AxonComponentm_a4h'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 5.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'} 
-netParams.connParams['AxonComponentm_a4i'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 4.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195'} 
-netParams.connParams['AxonComponentm_a4j'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 3.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063'} 
-
-netParams.connParams['AxonComponentm_a4k'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 2.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574'} 
-netParams.connParams['AxonComponentm_a4l'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 1.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581'} 
-netParams.connParams['AxonComponentm_a4m'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 15.6*prob_k,    'weight': 1.9*weight_k,    'delay': 1.3 + 0.0*delay_k,    'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748'} 
-
-"""
-
-
-netParams.connParams['AxonComponentm_1c'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1a'},    'probability': 56,    'weight': 1.9*weight_k,    'delay': 1.3,    'synMech': ['cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748']} 
-#netParams.connParams['AxonComponentm_1p0c'] = {     'preConds': {'pop': 'test1'},    'postConds': {'pop': 'test1'},    'probability': 5.6,    'weight': 1.9,    'delay': 1.3,    'synMech': 'exc'} 
-
-
-
-netParams.connParams['AxonComponentm_1d'] = {     'preConds': {'pop': 'test1a'},    'postConds': {'pop': 'test1'},    'probability': 56,    'weight': 1.9*weight_k,    'delay': 1.3,    'synMech': ['cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581','cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748']} 
-
-
+netParams.connParams['Axon_PLUS_BLOCK300'] = {     'preConds': {'pop':'BLOCK300'},    'postConds': {'pop':'OPERATOR_PLUS'},    'probability': 1,    'weight': 5.1, 'delay': 3, 'synMech': 'inh'} 
+netParams.connParams['Axon_PLUS_BLOCK900'] = {     'preConds': {'pop':'BLOCK900'},    'postConds': {'pop':'BLOCK300'},    'probability': 1,    'weight': 5.1, 'delay': 3, 'synMech': 'inh'} 
+netParams.connParams['Axon_PLUS_BLOCK1100'] = {     'preConds': {'pop':'BLOCK1100'},    'postConds': {'pop':'BLOCK900'},    'probability': 1,    'weight': 5.1, 'delay': 3, 'synMech': 'inh'} 
 
 
 
 
 netParams.stimSourceParams['bkg_1'] = {'type': 'NetStim', 'rate': 30, 'noise': 0.5, 'start': 100, 'duration': 200}
 netParams.stimSourceParams['bkg_1i'] = {'type': 'NetStim', 'rate': 310, 'noise': 0.5, 'start': 300, 'duration': 200}
+#netParams.stimSourceParams['bkg_1pl'] = {'type': 'NetStim', 'rate': 30, 'noise': 0.5, 'start': 100, 'duration': 200}
+#netParams.stimSourceParams['bkg_1ipl'] = {'type': 'NetStim', 'rate': 310, 'noise': 0.5, 'start': 300, 'duration': 200}
 
-netParams.stimTargetParams['bkg_1->CE3'] = {'source': 'bkg_1', 'conds': {'pop': 'test1'}, 'weight': 0.01, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'}
-netParams.stimTargetParams['bkg_1->CE2'] = {'source': 'bkg_1', 'conds': {'pop': 'TOTAL_INPUT'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
-netParams.stimTargetParams['bkg_1i>CE'] = {'source': 'bkg_1i', 'conds': {'pop': 'TOTAL_INPUT'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
+netParams.stimSourceParams['bkg_11'] = {'type': 'NetStim', 'rate': 30, 'noise': 0.5, 'start': 500, 'duration': 200}
+netParams.stimSourceParams['bkg_11i'] = {'type': 'NetStim', 'rate': 310, 'noise': 0.5, 'start': 700, 'duration': 200}
+
+netParams.stimSourceParams['bkg_111'] = {'type': 'NetStim', 'rate': 30, 'noise': 0.5, 'start': 900, 'duration': 200}
+netParams.stimSourceParams['bkg_111i'] = {'type': 'NetStim', 'rate': 310, 'noise': 0.5, 'start': 1100, 'duration': 200}
+###############################
+#netParams.stimTargetParams['bkg_1->PLUSUnblock'] = {'source': 'bkg_111', 'conds': {'pop': 'bkg_1ipl'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+#netParams.stimTargetParams['bkg_1->PLUSUnblockUnblock'] = {'source': 'bkg_111i', 'conds': {'pop': 'bkg_111'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+
+
+###############################
+
+#netParams.stimSourceParams['bkg_111ii'] = {'type': 'NetStim', 'rate': 310, 'noise': 0.5, 'start': 1100, 'duration': 200}
+#netParams.stimSourceParams['bkg_111iii'] = {'type': 'NetStim', 'rate': 310, 'noise': 0.5, 'start': 1100, 'duration': 200}
+
+netParams.stimTargetParams['bkg_i>BLOCK300'] = {'source': 'bkg_1i', 'conds': {'pop': 'BLOCK300'}, 'weight': 1.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_i>BLOCK700'] = {'source': 'bkg_11i', 'conds': {'pop': 'BLOCK700'}, 'weight': 1.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_i>BLOCK900'] = {'source': 'bkg_111', 'conds': {'pop': 'BLOCK900'}, 'weight': 1.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_i>BLOCK1100'] = {'source': 'bkg_111i', 'conds': {'pop': 'BLOCK1100'}, 'weight': 1.01, 'delay': 5, 'synMech': 'exc'}
+
+
+netParams.stimTargetParams['bkg_1->CE3'] = {'source': 'bkg_1', 'conds': {'pop': '0PLUS2_L23_PC'}, 'weight': 0.01, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'}
+netParams.stimTargetParams['bkg_1->CE3a'] = {'source': 'bkg_1', 'conds': {'pop': '3PLUS1_L23_PC'}, 'weight': 0.01, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'}
+netParams.stimTargetParams['bkg_1->CE3aa'] = {'source': 'bkg_1', 'conds': {'pop': '3PLUS3_L23_PC'}, 'weight': 0.01, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'}
+
+#0+2
+netParams.stimTargetParams['bkg_1->PLUS'] = {'source': 'bkg_1', 'conds': {'pop': 'OPERATOR_PLUS'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_1i>PLUS'] = {'source': 'bkg_1i', 'conds': {'pop': 'OPERATOR_PLUS'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
+netParams.stimTargetParams['bkg_1->COMPONENT1_0'] = {'source': 'bkg_1', 'conds': {'pop': 'COMPONENT1_0'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_1i>COMPONENT1_0'] = {'source': 'bkg_1i', 'conds': {'pop': 'COMPONENT1_0'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
+netParams.stimTargetParams['bkg_1->COMPONENT2_2'] = {'source': 'bkg_1', 'conds': {'pop': 'COMPONENT2_2'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_1i>COMPONENT2_2'] = {'source': 'bkg_1i', 'conds': {'pop': 'COMPONENT2_2'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
+
+#3-1
+netParams.stimTargetParams['bkg_11->MINUS'] = {'source': 'bkg_11', 'conds': {'pop': 'OPERATOR_MINUS'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_11i>MINUS'] = {'source': 'bkg_11i', 'conds': {'pop': 'OPERATOR_MINUS'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
+netParams.stimTargetParams['bkg_11->COMPONENT1_3'] = {'source': 'bkg_11', 'conds': {'pop': 'COMPONENT1_3'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_11i>COMPONENT1_3'] = {'source': 'bkg_11i', 'conds': {'pop': 'COMPONENT1_3'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
+netParams.stimTargetParams['bkg_11->COMPONENT2_1'] = {'source': 'bkg_11', 'conds': {'pop': 'COMPONENT2_1'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_11i>COMPONENT2_1'] = {'source': 'bkg_11i', 'conds': {'pop': 'COMPONENT2_1'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
+
+#1+2
+netParams.stimTargetParams['bkg_111->PLUS'] = {'source': 'bkg_111', 'conds': {'pop': 'fOPERATOR_PLUS'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_111i>PLUS'] = {'source': 'bkg_111i', 'conds': {'pop': 'fOPERATOR_PLUS'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
+netParams.stimTargetParams['bkg_111->COMPONENT1_1'] = {'source': 'bkg_111', 'conds': {'pop': 'fCOMPONENT1_1'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_111i>COMPONENT1_1'] = {'source': 'bkg_111i', 'conds': {'pop': 'fCOMPONENT1_1'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
+netParams.stimTargetParams['bkg_111->COMPONENT2_2'] = {'source': 'bkg_111', 'conds': {'pop': 'fCOMPONENT2_2'}, 'weight': 0.01, 'delay': 5, 'synMech': 'exc'}
+netParams.stimTargetParams['bkg_111i>COMPONENT2_2'] = {'source': 'bkg_111i', 'conds': {'pop': 'fCOMPONENT2_2'}, 'weight': 5.1, 'delay': 3, 'synMech': 'inh'}
 
 #netParams.stimTargetParams['bkg_1->CE4'] = {'source': 'bkg_1', 'conds': {'pop': 'test1b'}, 'weight': 0.1, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'}
 
-netParams.stimTargetParams['bkg_1->CE4b'] = {'source': 'bkg_1', 'conds': {'pop': 'test1b'}, 'weight': 500, 'delay': 5,  'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_851'} 
-netParams.stimTargetParams['bkg_1->CE4c'] = {'source': 'bkg_1', 'conds': {'pop': 'test1c'}, 'weight': 500, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1195'} 
-netParams.stimTargetParams['bkg_1->CE4d'] = {'source': 'bkg_1', 'conds': {'pop': 'test1d'}, 'weight': 500, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_1063'} 
-
-netParams.stimTargetParams['bkg_1->CE4e'] = {'source': 'bkg_1', 'conds': {'pop': 'test1e'}, 'weight': 500, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_574'} 
-netParams.stimTargetParams['bkg_1->CE4f'] = {'source': 'bkg_1', 'conds': {'pop': 'test1f'}, 'weight': 500, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_581'} 
-netParams.stimTargetParams['bkg_1->CE4g'] = {'source': 'bkg_1', 'conds': {'pop': 'test1g'}, 'weight': 500, 'delay': 5, 'synMech': 'cADpyr229_L23_PC_8ef1aa6602_ProbAMPANMDA_EMS_748'} 
 
 
 
