@@ -27,29 +27,26 @@
 also this work can be used as practical experience with different neuroML, hoc, py type simulators (NEURON & NetPyne). most attention is done to adjusting synaptic mechanisms and HH parameters task
 
 <br><br>
-In the first part "SUMM BLOCK" is provided with architecture that simply activates "summ RESULT neuron" when two value neurons "COMPONENT1 & 2" start firing. Also optimal filter mechanism is selected at this step. In the second part "CONTEXT BLOCK" is added to the scheme. This context block processes input from user and sends it to "SUMM BLOCK". 2 blocks are connected via BG and thalamus part. Their addition allows to process more complex formulas such as A + B - C + D =. User input is similar to standart calculator interface. Third part replaces logical scheme with "ball & stick neurons" in netpyne simulation software and further with real neocortex neuron models from EPFL data. Classical neocortex layer networks are used to transform logical schemes onto neocortex 3D volume. Fourth chapter compares synapse and cell locations densities with statistics from neocortex
+In the first part "SUMM BLOCK" is provided with architecture that simply activates "summ RESULT neuron" when two value neurons "COMPONENT1 & 2" start firing. Also optimal filter mechanism is selected at this step. In the second part "CONTEXT BLOCK" is added to the scheme. This context block processes input from user and sends it to "SUMM BLOCK". 2 blocks are connected via BG and thalamus part. Their addition allows to process more complex formulas such as A + B - C + D =. User input is similar to standart calculator interface. Third part replaces logical scheme with "ball & stick neurons" in netpyne simulation software and further with real neocortex neuron models from EPFL data. Classical neocortex layer networks are used to transform logical schemes onto neocortex 3D volume. Different data input will be tested from pulse to tonic input. Fourth chapter compares synapse and cell locations densities with statistics from neocortex
 <br><br>
+Further research is planned for a number of different logical computing tasks to compare which of them best fit cortex layers framework
 
 
 
 
 
-
-
-
-
-
-
+data collected from different sources - total_info.htm
 
 
 
 <h3>(A + B) , (A - B) implementation</h3>
 
+This segment take as an input Component1, Component2, Operator [+, -] and calculates the output result.<br>
 For brevity let A have only n=4 values - 0,1,2,3 and B also have m=4 values - 0,1,2,3. Thus number of neurons needed for this input will be m+n = 8 Simple structure of code for such implementation will look like<br>
 <br>
 if Operation==PLUS {Operation=PLUS}<br>
 if Operation==MINUS {Operation=MINUS}<br>
-#2 neurons<br>
+<i>#2 neurons total</i><br>
 <br>
 if input1==0 {Component1=0}<br>
 if input1==1 {Component1=1}<br>
@@ -59,7 +56,7 @@ if input2==0 {Component2=0}<br>
 if input2==1 {Component2=1}<br>
 if input2==2 {Component2=2}<br>
 if input2==3 {Component2=3}<br>
-#8 neudons + infinite loop to enhance input signal<br>
+<i>#8 neurons total + infinite loop to enhance input signal</i><br>
 <br>
 if (Component1==0 , Component2==0, Operation==+) {Output = [0+0]}<br>
 if (Component1==0 , Component2==1, Operation==+) {Output = [0+1]}<br>
@@ -69,7 +66,7 @@ if (Component1==1 , Component2==0, Operation==+) {Output = [1+0]}<br>
 <br>
 ...<br>
 if (Component1==3 , Component2==3, Operation==-) {Output = [3-3]}<br>
-#32 neurons<br>
+<i>#32 neurons total</i><br>
 <br>
 <br>
 if Output==[0+0] {Result=0}<br>
@@ -77,7 +74,7 @@ if Output==[0+1] {Result=1}<br>
 if Output==[0+2] {Result=2}<br>
 ...<br>
 if Output==[3-3] {Result=0}<br>
-#result space[-3..6] 10 neurons<br>
+<i>#result space[-3..6] 10 neurons total</i><br>
 <br>
 <br>
 <br>
@@ -91,7 +88,7 @@ for + operator we will need space of m*n=16 neurons. also 16 neurons for - opera
 
 
 <br>
-<a href="test_neuroML.html"><img src="Neuroml_img/App1.png" width=800>
+<a href="test_neuroML.html"><img src="Neuroml_img/App1.png" width=1200>
 <br>
 App1</a><br><br><br>
 
@@ -168,7 +165,7 @@ Fig 5<br>Component1_0, Component2_0, Output_0PLUS0, Result_0 neurons show spikin
 
 
 
-A<img src="Neuroml_img/tut2_traces__gid_11_filter.png"><br>B<img src="Neuroml_img/tut2_traces__gid_12_filter.png"><br>
+A<img src="Neuroml_img/tut2_traces__gid_11_filter.png" width=400>B<img src="Neuroml_img/tut2_traces__gid_12_filter.png" width=400><br>
 Fig6<br> A Comparison of correct answer neuron 0+0 and B incorrect answer neuron 0+1<br><br>
 
 Other more natural way is replace synchronization with bigger populations and probability inhibition between them. Here 5-neurons populations and random input signal implemented  <a href="Neuroml_img/calculator_filter5.py">code /calculator_filter.py</a><br><br>
@@ -177,7 +174,7 @@ Other more natural way is replace synchronization with bigger populations and pr
 Fig 7<br>Component1_0, Component2_0, Output_0PLUS0, Result_0 neurons show spiking, other neurons are silent<br><br>
 
 
-A<img src="Neuroml_img/tut2_traces__gid_55_filter5.png"><br>B<img src="Neuroml_img/tut2_traces__gid_65_filter5.png"><br>C<img src="Neuroml_img/tut2_traces__gid_215_filter5.png"><br>D<img src="Neuroml_img/tut2_traces__gid_225_filter5.png"><br>
+A<img src="Neuroml_img/tut2_traces__gid_55_filter5.png" width=400>B<img src="Neuroml_img/tut2_traces__gid_65_filter5.png" width=400>C<img src="Neuroml_img/tut2_traces__gid_215_filter5.png" width=400>>D<img src="Neuroml_img/tut2_traces__gid_225_filter5.png" width=400><br>
 Fig8<br> A Comparison of correct answer neuron 0+0 and B incorrect answer neuron 0+1  C Comparison of correct answer neuron Result_0 and D incorrect answer neuron Result_2<br><br>
 
 
@@ -215,13 +212,8 @@ Fig8<br> A Comparison of correct answer neuron 0+0 and B incorrect answer neuron
 <h3>context implementation. complex equations solutions. for example A+B-C+D=</h3>
 
 Now let's add context. It is possible to enter longer formulas now. for example A+B-C+D=. buttons are similar to calculator. however expression is limited to range [0..3]<br>
-Also when we want to start action, we use feedforward inhibition, assuming that start signal is when more than 1 spike comes to neuron. for our plus/minus module we could also implement feedforward inhibition, assuming start signal is 3 signals to neuron simultaneously
-Also compared to App2 Feedback algorythm was modified. However real parameters of  neurons may determine which algorythm better fits the system
-Since this is just illustration diagram, neuron params and time sync not done. This will be done in real neurons model for netpyne
 
 
-Now we have microcircuits that are connectec with other microcircuits by forward and feecback inter-microcircuits connections (also see Fig). 1st microcircuit summs or minus components. 2nd microcircuit processes input signals. 3rd transaction microcircuit waits while information input is complete and the time is right to commit the transaction
-Microcircuits in addition to direct connections also connected via the relay mechanism, which better suits thalamus
 
 
 To do some test - press 10 times CE, wait 20 seconds, press 10 times 0, wait 20 seconds, press 10 times +, wait 1 second, press 10 times 2, press 10 times -, wait 1 second, press 10 times 1, etc (this network is a draft diagram and might perform incorrect. it is done only for testing purposes. paarameters should be aligned into real neurons model. probably vast amount of neurons will be involved into error handling actions, rather than in primary calculations)
@@ -243,17 +235,22 @@ To do some test - press 10 times CE, wait 20 seconds, press 10 times 0, wait 20 
 <canvas id="canvas" width=2200 height=2400></canvas>
 <br>
 App4<br><br><br>
-<a href="test_neuroML3.html">PAGE 4</a>
-<h3>fitting 6 layers</h3>
+Now we have microcircuits that are connected with other microcircuits by forward and feecback inter-microcircuits connections (also see Fig). 1st microcircuit summs or minus components. 2nd microcircuit processes input signals. 3rd transaction microcircuit waits while information input is complete and the time is right to commit the transaction
+Microcircuits in addition to direct connections also connected via the relay mechanism, which better suits thalamus.<br>
+We have modules that process and store data [context block, summ block]. And we have modules that process external commands and coordinate data modules<br><br>
 
-Lets start with these 4 approximations of 6layers microcircuit and try to fit our network to this scheme. layer4 input+ amplification. Layer 3+2 processing. (Fig) Ascending / descending (Fig)<br><br>
-<img src="Neuroml_img/layers1.png"><br><br>
-<img src="Neuroml_img/layers2.png"><br><br>
-<img src="Neuroml_img/layers3.png"><br><br>
-<img src="Neuroml_img/layers4.png"><br><br>
+This is done via infinite cortico-thalamo-cortical loop. SUMM BLOCK: summ components are kept in Layer2/3 memory via recurrent loop. current summ result is kept in Layer5 via recurrent loop and avaits for command from thalamus. CONTEXT BLOCK: keeps last user input via Layer4 recurrent loop. When the user adds new operation and component to the input formula - thalamus opens the block and inputs to SUMM BLOCK previous result from the SUMM BLOCK and user input from CONTEXT BLOCK. SUMM BLOCK recalculates its result and waits for new Thalamus unblock<br> 
+This SUMM BLOCK+INPUT > SUMM BLOCK loop continues until user presses "=" button<br><br>
+
+Some optional algorythms tested here: <br>
+1 when we want to start action, we use feedforward inhibition, assuming that start signal is when more than 1 spike comes to neuron. for our plus/minus module we could also implement feedforward inhibition, assuming start signal is 3 signals to neuron simultaneously. (This is done to block the action when insufficient number of conditions == True and proceed the action only when all conditions == True)
+Also compared to App2 Feedback algorythm was modified with the latter. However real parameters of  neurons may determine which algorythm better fits the system
+Since this is just illustration diagram, neuron params and time sync not done. This will be done in real neurons model for netpyne<br><br>
 
 
-Also our network has many loops. it is not yet clear whether these loops occur in cortex or part of them occupy thalamo-striatal loop. f.e. "TRANSACTION" part that waits for enough conditions to start calculations uses GPI GPE to start action only if both conditions are active. eg second condition while it is false blocks first condition via double inhibition<br>
+
+
+2 Network has many loops. it is not yet clear whether these loops occur in cortex or part of them occupy thalamo-striatal loop. f.e. "TRANSACTION" part that waits for enough conditions to start calculations uses GPI GPE to start action only if both conditions are active. eg second condition while it is false blocks first condition via double inhibition<br>
 netParams.connParams['Axon_Transaction_CORE10'] = {     'preConds': {'pop': 'TRANSACTION_NEURON_EMPTY_osc'},    'postConds': {'pop': 'TRANSACTION_NEURON_ONLY_VALUE'},    'probability': exc_probability4,    'weight': exc_weight,    'delay': exc_delay1,    'synMech': 'exc'} 
  <br>
 
@@ -292,6 +289,156 @@ D<img src="Neuroml_img/Intermediate_Calculation_3.png"><br><br>
 E<img src="Neuroml_img/TOTAL_RESULT_3.png"><br><br>
 Fig Neurons that fire when current total intermediate summ is A 0, B 1, C 2, D 3, E -Final result 3 neuron  <br><br>
 
+
+
+
+<h3>fitting 6 layers</h3>
+
+Lets start with these 4 approximations of 6layers microcircuit and try to fit our network to this scheme. layer4 input+ amplification. Layer 3+2 processing. (Fig) Ascending / descending (Fig). Some of the essential theory data for layers are in the following figures:<br><br>
+<img src="Neuroml_img/layers1.png"><br><br>
+<img src="Neuroml_img/layers2.png"><br><br>
+<img src="Neuroml_img/layers3.png"><br><br>
+<img src="Neuroml_img/layers4.png"><br><br>
+
+some of these and other data were collected here<br>
+<a href=total_info.htm>total_info.htm</a><br><br>
+
+
+
+
+
+
+Our initial model for "SUMM" block will be
+
+Functional pipeline:
+
+<i>Layer 4 receives input from ThalCore and amplifies it [none for our model]</i>
+Layer 3 context input from higher order cortex [0 1 2 3 + -] ThalMatrix [start command] <i>and layer 4 [none]</i>
+Layer 3 function extrapolate [all possible combinations 0+0 ... 3-3] and winner takes all inh filter [L2/3P = 0+0 0+1 .... ; L2/3Basket = common filter for winner]
+Layer 3 output layer 5
+Layer 5 input from layer 3 context from higher area [none] context from ThalMatrix [green light to transfer summ result]
+Layer 5 function wait for green light to proceed output [-3 ... 6] //Burst firing via activation of Ca 2+ action potential in the apical tufts of the pyramidal cells
+Layer 5 output a) higher cortex [-3 .. 6] b) to Layer x6x 5B [calculation finished] c) to spine [final result action]<i>[none: L5P+L5BVertical > L2/3P = what feedback? context? only if signal was noisy]</i>
+*Problem for higher cortex output: L5 projects to L5syn, but we need L3syn. But such link can only be L5 > L5B > Thal > L1syn > L2/3 {L2/3 of S1 > L2/3 of S2 or directly to L2/3 of S2}. Or some axon long range CC projections (but they are contralateral). Or subset of L6B neurons send also axons to layer 1 (Mitchell and Cauller, 2001) ; Or L5B > MatrixThal > ThalCore > L4 > L2/3 (Theyel et al.,2010) suggesting a corticothalamocortical pathway via layer 5B from S1 cortex to higher-order sensory cortices such as the S2 cortex ; Axons from the primary whisker motor cortex (M1) arborized densely in L1, and more diffusely in L5 and L6 ; 
+Layer 5A recurrent excitation slender-tufted (L5A) [5A waits, 5B transmits signals when 5A+Thal actiated]
+Layer 5B>6A or 5B output ThalMatrix [calculation finished]
+<i>Layer6 none [modulation of Thal ascending sensory impulse to L4] [none for our model]</i>
+<i>Layer6 none [feedforward via Thal to other cortex areas] [none for our model]</i>
+
+
+
+
+
+
+
+Also estimate proportion of inhibitory neurons. and test which scheme best applies to competitor wins scheme: 1 population AExc has its own population AInh which blocks all others populations Bexc Cexc Dexc ... vs 2 populations Aexc Bexc Cexc Dexc ... have common population IInh which blocks all Aexc Bexc Cexc Dexc.... ("competition through shared inhibition") 
+ "competition through shared inhibition" model is preferred by several reasons 1) number of inhibitory interneurons should be at most in range 10-20%. this model will lower number of interneurons 2) model is well implemented in many simulations 3) in-vivo we don't need extra presumption that precise neuron microcircuits resemble computer code, so we prefer to be as abstract as possible
+  Also when we activate components such as 1 2 3 + - etc - should we activate all neuron populations that represent them, or should we activate only some of them with further activation of whole population by the Hopfield network. Adjusting population sizes both competitive and Hopfield models could be implemented for the same populations
+
+how working memory is implemented into loops - asynchronic tonic or oscilations? also what types of cells involved?
+
+to control signal start several options are possible 1) signal is active + but blocked by inhibitory modulation - 2) signal is balanced between inh exc subpopulations and 0, starts when excitory signal from thalamus arrives
+
+
+
+
+
+
+
+Morphology specs:
+
+Feedback from M1 targeted the tuft branches in L1, above the input from L2/3
+Input from recurrent L2/3→L3 axons was mostly in the upper basal dendrites and the apical oblique dendrites
+
+to get connection statistics EPFL NMC JSON data were used
+
+Physiology:
+
+activation of L2/3 pyramidal neurons (Adesnik
+and Scanziani, 2010) generated rhythmic oscillation in the activ-
+ity of L2/3 and L5 excitatory (and inhibitory) neurons in the
+gamma frequency range (∼40 Hz)
+
+neuron code - ? closest to [True,False] Yes or No signal. Might be not feasable for actual pyramid neurons coding. implemented with firing rate/time of first signal. should be replaced
+
+also model may require some background or noise input
+
+to calculate neuron models with morphology might be too complicated task. so the approach will be to maximize synaptic inputs by its parameters, use step current to find optimal total input. and to fit inhibitory output to balance competiting populations
+
+also recreating real oscillation populations would require CPU. so instead minimal oscilating population was modelled. experimental connection parameters were changed
+
+/*
+first try http://www.netpyne.org/reference.html#network-parameters
+synsPerConn = 3
+netParams.connParams['S->M'] = {    #  S -> M
+        'preConds': {'pop': 'S'},
+        'postConds': {'pop': 'M'},
+        'sec': 'dend',                  # target postsyn section
+        'synMech': ['AMPA', 'NMDA'], #'AMPA',              # target synaptic mechanism
+        'synsPerConn': 3, 
+        'weight': 0.01,                 # synaptic weight
+        'delay': 5,                     # transmission delay (ms)
+        'probability': 0.5,
+    'loc': [[0.1, 0.5, 0.7], [0.3, 0.4, 0.5]]}   
+then try to replace hoc syn params to json params for connection type. eg create new synapses (with g tau etc)
+
+CHECK HOW SYNAPSES ARE CONNECTED
+
+netpyne.analysis.plotShape(includePre=['all'], includePost=['all'], showSyns=False, showElectrodes=False, synStyle='.', synSize=3, dist=0.6, elev=90, azim=- 90, cvar=None, cvals=None, clim=None, iv=False, ivprops=None, includeAxon=True, bkgColor=None, axis='auto', axisLabels=False, figSize=(10, 8), fontSize=12, saveData=None, dpi=300, saveFig=None, showFig=True, **kwargs)
+
+CHECK SYSTEM PARAMS from total_html
+
+
+FOR AXON ROUTES SEE FELDMEYER
+To connect Layers via Thalamus Feldmeyer 2012 diagrams were used. total_info.htm
+
+1,2,3,+,- > L2/3 (if from lower area) or Thal > L4 * recurrent aplify > L2/3
+L2/3P = 0+0 0+1 ....
+L2/3Basket = common filter for winner
+L2/3P > L5
+L5P -3 -2 ... 5 6
+L5B = common filter winner on L5>L6
+L5P+L5BVertical > L2/3P = what feedback? context? only if signal was noisy
+L6 output RESULT
+
+Feldmeyer - intercortical pathways by layers and synapses
+output between intercortical areas {L3P through L3syn L5syn} {L5P L5syn} (if no need to block) 
+output through Thal through L1syn (if need to block)
+input L6P see Feldmeyer (not used) output L6 to thal
+
+
+
+
+*/
+
+our neocortex circuit model will be with some elements of programming language block-scheme and electronic circuits diagram. in some cases number of synapses or statistics data will play a key role in modelling. while in some cases logical flow of information will take precedent
+
+to fit this hypothesis-driven model to data, many parameters do not match the data. for example oscillations L23 at 28Hz matched but mechanism for this isn't ovious since L23PC>L23PC latency is only 1.3. if this oscillation is implemented via 30 consequent neuron populations - this increases 30 times nember of neurons. and if column has 3000 L23_PC neurons - than it can support only 2-3 competiting oscillating subpopulations. 
+
+synaptic contacts on spines or dendritic shafts?
+
+in L3 and
+additional features, like direction in V1, computed there
+
+thalamocortical input to L4 must be 6% of synapses, however this should drive input (together with cortico-cortical feedforward input which has stronger synapses) 
+L 2/3 SOM cells may play a role in surround suppression (as might PV cells…)
+
+or some off-topic research, for example calculate energy consumption of synapses and try to minimize it in the model (or fit it to BOLD signal fMRI statistics). Or even compile computer code into seqeunces of neurons microcircuits
+
+
+INH: PYR > PV+ > PYR , DISINH: PYR > VIP+ > (SST) > PYR. (SST and/or VIP are in Layer1)
+
+
+
+
+
+
+
+
+
+
+
+
 <h3>fitting existing cortex neuron models</h3>
 
 at this stage lets take existing neuroML models of cortex neurons and synapses and reimplement our model replacing model neurons with real ones<br><br>
@@ -310,6 +457,42 @@ at the beginning or "=" command input of input_number_cell 0..9 oscillates 1st_c
 after"-" or "+" command input of input_number_cell 0..9 oscillates 2nd_component_cell 0..9. operation_cell +..- also oscilates
 after "=" command > [operation_cell,1st,2nd] activate result cell
 
+
+
+
+quotes:
+https://www.nature.com/articles/s42003-020-0947-8.pdf
+ In contrast, gap junctionally connected low-threshold spiking (LTS) inhibitory interneurons in neocortex form a network
+capable of generating outputs at alpha–theta frequency
+
+alpha rhythms arise from layer 4 pyramidal neurons in a
+recurrently connected local network under conditions of
+enhanced NMDA receptor-mediated activity and reduced AMPA
+receptor traffic
+
+via NMDA spiking
+in dendrites on reduction of slow synaptic inhibition
+dynamically filters layer 4 stellate
+neuron outputs, occluding them from influencing local downstream within-column neocortical targets. {Many Stellate cells are GABAergic}
+
+Alpha rhythms manifest as ‘rebound’ following gamma
+rhythms
+
+
+!!!Alpha rhythms arise from L4 pyramidal dendritic bursting!!!
+
+
+
+
+
+Thorpe argues that the brain
+does not have time to evaluate more than one spike from each neuron per processing step.
+Therefore the first spike should contain most of the relevant information
+
+
+Our model uses TONIC spiking model. Maybe it should use FIRST SPIKE ONLY? and instead of loop oscillations some neurons should start firing only after internal reference signal
+These oscillations could serve as an internal reference
+signal
 
 
 
@@ -2640,7 +2823,7 @@ ctx.rect(GREEN4_shiftXY[0], GREEN4_shiftXY[1],260, 260);
 ctx.fill();
 ctx.font = "25px Arial bold";
 ctx.fillStyle = "#000000" ;
-ctx.fillText("LAYER 3", GREEN4_shiftXY[0]+0, GREEN4_shiftXY[1]+250);
+ctx.fillText("LAYER 5", GREEN4_shiftXY[0]+0, GREEN4_shiftXY[1]+250);
 
 ctx.beginPath();
 ctx.lineWidth = "4";
