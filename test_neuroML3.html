@@ -29,7 +29,8 @@ also this work can be used as practical experience with different neuroML, hoc, 
 <br><br>
 In the first part "SUMM BLOCK" is provided with architecture that simply activates "summ RESULT neuron" when two value neurons "COMPONENT1 & 2" start firing. Also optimal filter mechanism is selected at this step. In the second part "CONTEXT BLOCK" is added to the scheme. This context block processes input from user and sends it to "SUMM BLOCK". 2 blocks are connected via BG and thalamus part. Their addition allows to process more complex formulas such as A + B - C + D =. User input is similar to standart calculator interface. Third part replaces logical scheme with "ball & stick neurons" in netpyne simulation software and further with real neocortex neuron models from EPFL data. Classical neocortex layer networks are used to transform logical schemes onto neocortex 3D volume. Different data input will be tested from pulse to tonic input. Fourth chapter compares synapse and cell locations densities with statistics from neocortex
 <br><br>
-Further research is planned for a number of different logical computing tasks to compare which of them best fit cortex layers framework
+Further research is planned for a number of different logical computing tasks to compare which of them best fit cortex layers framework.
+Some off-topic research is possible, for example calculate energy consumption of synapses and try to minimize it in the model (or fit it to BOLD signal fMRI statistics). Or even compile computer code into seqeunces of neurons microcircuits
 
 
 
@@ -308,65 +309,73 @@ some of these and other data were collected here<br>
 
 
 
-Our initial model for "SUMM" block will be
+Initial model for "SUMM" block will be<br><br>
 
-Functional pipeline:
+<b>Functional pipeline:</b><br><br>
 
-<i>Layer 4 receives input from ThalCore and amplifies it [none for our model]</i>
-Layer 3 context input from higher order cortex [0 1 2 3 + -] ThalMatrix [start command] <i>and layer 4 [none]</i>
-Layer 3 function extrapolate [all possible combinations 0+0 ... 3-3] and winner takes all inh filter [L2/3P = 0+0 0+1 .... ; L2/3Basket = common filter for winner]
-Layer 3 output layer 5
-Layer 5 input from layer 3 context from higher area [none] context from ThalMatrix [green light to transfer summ result]
-Layer 5 function wait for green light to proceed output [-3 ... 6] //Burst firing via activation of Ca 2+ action potential in the apical tufts of the pyramidal cells
-Layer 5 output a) higher cortex [-3 .. 6] b) to Layer x6x 5B [calculation finished] c) to spine [final result action]<i>[none: L5P+L5BVertical > L2/3P = what feedback? context? only if signal was noisy]</i>
-*Problem for higher cortex output: L5 projects to L5syn, but we need L3syn. But such link can only be L5 > L5B > Thal > L1syn > L2/3 {L2/3 of S1 > L2/3 of S2 or directly to L2/3 of S2}. Or some axon long range CC projections (but they are contralateral). Or subset of L6B neurons send also axons to layer 1 (Mitchell and Cauller, 2001) ; Or L5B > MatrixThal > ThalCore > L4 > L2/3 (Theyel et al.,2010) suggesting a corticothalamocortical pathway via layer 5B from S1 cortex to higher-order sensory cortices such as the S2 cortex ; Axons from the primary whisker motor cortex (M1) arborized densely in L1, and more diffusely in L5 and L6 ; 
-Layer 5A recurrent excitation slender-tufted (L5A) [5A waits, 5B transmits signals when 5A+Thal actiated]
-Layer 5B>6A or 5B output ThalMatrix [calculation finished]
-<i>Layer6 none [modulation of Thal ascending sensory impulse to L4] [none for our model]</i>
-<i>Layer6 none [feedforward via Thal to other cortex areas] [none for our model]</i>
-
-
+<i>Layer 4 receives input from ThalCore and amplifies it [none for our model]</i><br>
+Layer 3 context input from higher order cortex [0 1 2 3 + -] ThalMatrix [start command] <i>and layer 4 [none]</i><br>
+Layer 3 function extrapolate [all possible combinations 0+0 ... 3-3] and winner takes all inh filter [L2/3P = 0+0 0+1 .... ; L2/3Basket = common filter for winner]<br>
+Layer 3 output layer 5<br>
+Layer 5 input from layer 3, <i>context from higher area [none]</i> context from ThalMatrix [green light to transfer summ result]<br>
+Layer 5 function transform all possible combinations 0+0 ... 3-3 to -3 ... 6. Wait for green light to proceed output [-3 ... 6] //Burst firing via activation of Ca 2+ action potential in the apical tufts of the pyramidal cells<br>
+Layer 5 output a) higher cortex [-3 .. 6] (CONTEXT BLOCK) b) to Layer x6x 5B [calculation finished] c) to spine [final result action]<i>[none: L5P+L5BVertical > L2/3P = what feedback? context? only if signal was noisy]</i><br>
+*Problem for higher cortex output: L5 projects to L5syn, but we need L3syn. But such link can only be L5 > L5B > Thal > L1syn > L2/3 {L2/3 of S1 > L2/3 of S2 or directly to L2/3 of S2}. Or some axon long range CC projections (but they are contralateral). Or subset of L6B neurons send also axons to layer 1 (Mitchell and Cauller, 2001) ; Or L5B > MatrixThal > ThalCore > L4 > L2/3 (Theyel et al.,2010) suggesting a corticothalamocortical pathway via layer 5B from S1 cortex to higher-order sensory cortices such as the S2 cortex ; Axons from the primary whisker motor cortex (M1) arborized densely in L1, and more diffusely in L5 and L6 ; <br>
+Layer 5A recurrent excitation slender-tufted (L5A) [5A waits, 5B transmits signals when 5A+Thal actiated]<br>
+Layer 5B>6A or 5B output ThalMatrix [calculation finished]<br>
+<i>Layer6 none [modulation of Thal ascending sensory impulse to L4] [none for our model]</i><br>
+<i>Layer6 none [feedforward via Thal to other cortex areas] [none for our model]</i><br><br>
 
 
 
 
 
-Also estimate proportion of inhibitory neurons. and test which scheme best applies to competitor wins scheme: 1 population AExc has its own population AInh which blocks all others populations Bexc Cexc Dexc ... vs 2 populations Aexc Bexc Cexc Dexc ... have common population IInh which blocks all Aexc Bexc Cexc Dexc.... ("competition through shared inhibition") 
- "competition through shared inhibition" model is preferred by several reasons 1) number of inhibitory interneurons should be at most in range 10-20%. this model will lower number of interneurons 2) model is well implemented in many simulations 3) in-vivo we don't need extra presumption that precise neuron microcircuits resemble computer code, so we prefer to be as abstract as possible
+
+<i>
+*Also estimate proportion of inhibitory neurons. and test which scheme best applies to competitor wins scheme: 1 population AExc has its own population AInh which blocks all others populations Bexc Cexc Dexc ... vs 2 populations Aexc Bexc Cexc Dexc ... have common population IInh which blocks all Aexc Bexc Cexc Dexc.... ("competition through shared inhibition") <br>
+ "competition through shared inhibition" model is preferred by several reasons 1) number of inhibitory interneurons should be at most in range 10-20%. this model will reduce number of interneurons 2) model is well implemented in many simulations 3) in-vivo we don't need extra presumption that precise neuron microcircuits resemble computer code, so we prefer to be as abstract as possible.<br>
   Also when we activate components such as 1 2 3 + - etc - should we activate all neuron populations that represent them, or should we activate only some of them with further activation of whole population by the Hopfield network. Adjusting population sizes both competitive and Hopfield models could be implemented for the same populations
 
-how working memory is implemented into loops - asynchronic tonic or oscilations? also what types of cells involved?
+how working memory is implemented into loops - asynchronic tonic or oscilations? also what types of cells involved?<br><br>
 
-to control signal start several options are possible 1) signal is active + but blocked by inhibitory modulation - 2) signal is balanced between inh exc subpopulations and 0, starts when excitory signal from thalamus arrives
-
-
+to control signal start several options are possible 1) signal is active + but blocked by inhibitory modulation - 2) signal is balanced between inh exc subpopulations and 0, starts when excitory signal from thalamus arrives<br><br></i>
 
 
 
 
 
-Morphology specs:
 
-Feedback from M1 targeted the tuft branches in L1, above the input from L2/3
-Input from recurrent L2/3→L3 axons was mostly in the upper basal dendrites and the apical oblique dendrites
 
-to get connection statistics EPFL NMC JSON data were used
+<b>Morphology specs:</b><br><br>
 
-Physiology:
+EPFL data for L23_PC, L23LBC, L5_PC, L5_BC neurons will be used. Different types of interneurons replaced with 1 most abundant type<br>
+to get connection statistics EPFL NMC JSON data were used<br>
+No data about gap junctions, plasticity etc<br>
+Feedback from M1 targeted the tuft branches in L1, above the input from L2/3<br>
+Input from recurrent L2/3→L3 axons was mostly in the upper basal dendrites and the apical oblique dendrites<br>
+communication between areas:<br>
+output between intercortical areas {L3P through L3syn L5syn} {L5P L5syn} (if no need to block) <br>
+output through Thal through L1syn (if need to block)<br><br>
+
+
+<br>
+
+<b>Physiology:</b><br><br>
 
 activation of L2/3 pyramidal neurons (Adesnik
 and Scanziani, 2010) generated rhythmic oscillation in the activ-
 ity of L2/3 and L5 excitatory (and inhibitory) neurons in the
-gamma frequency range (∼40 Hz)
+gamma frequency range (∼40 Hz)<br>
 
-neuron code - ? closest to [True,False] Yes or No signal. Might be not feasable for actual pyramid neurons coding. implemented with firing rate/time of first signal. should be replaced
+neuron code - ? currently closest to [True,False] Yes or No signal. Might be not feasable for actual pyramid neurons coding. implemented with firing rate/time of first signal. should be replaced<br>
 
-also model may require some background or noise input
+also model may require some background or noise input<br>
 
-to calculate neuron models with morphology might be too complicated task. so the approach will be to maximize synaptic inputs by its parameters, use step current to find optimal total input. and to fit inhibitory output to balance competiting populations
+to calculate neuron models with morphology might be too complicated task. so the approach will be to maximize synaptic inputs by its parameters, use step current to find optimal total input. and to fit inhibitory output to balance competiting populations<br>
 
-also recreating real oscillation populations would require CPU. so instead minimal oscilating population was modelled. experimental connection parameters were changed
+also recreating real oscillation populations would require CPU. so instead minimal oscilating population was modelled. experimental connection parameters were changed<br><br>
 
+<!--
 /*
 first try http://www.netpyne.org/reference.html#network-parameters
 synsPerConn = 3
@@ -410,23 +419,17 @@ input L6P see Feldmeyer (not used) output L6 to thal
 
 
 */
-
-our neocortex circuit model will be with some elements of programming language block-scheme and electronic circuits diagram. in some cases number of synapses or statistics data will play a key role in modelling. while in some cases logical flow of information will take precedent
-
-to fit this hypothesis-driven model to data, many parameters do not match the data. for example oscillations L23 at 28Hz matched but mechanism for this isn't ovious since L23PC>L23PC latency is only 1.3. if this oscillation is implemented via 30 consequent neuron populations - this increases 30 times nember of neurons. and if column has 3000 L23_PC neurons - than it can support only 2-3 competiting oscillating subpopulations. 
-
-synaptic contacts on spines or dendritic shafts?
-
-in L3 and
-additional features, like direction in V1, computed there
-
-thalamocortical input to L4 must be 6% of synapses, however this should drive input (together with cortico-cortical feedforward input which has stronger synapses) 
-L 2/3 SOM cells may play a role in surround suppression (as might PV cells…)
-
-or some off-topic research, for example calculate energy consumption of synapses and try to minimize it in the model (or fit it to BOLD signal fMRI statistics). Or even compile computer code into seqeunces of neurons microcircuits
+-->
 
 
-INH: PYR > PV+ > PYR , DISINH: PYR > VIP+ > (SST) > PYR. (SST and/or VIP are in Layer1)
+
+<b>General:</b><br><br>
+
+The neocortex circuit model will be with some elements of programming language block-scheme and electronic circuits diagram. in some cases number of synapses or statistics data will play a key role in modelling. while in some cases logical flow of information will take precedent
+
+
+
+
 
 
 
@@ -445,11 +448,40 @@ at this stage lets take existing neuroML models of cortex neurons and synapses a
 some information about neuron types location and other characteristics can be found on these Figs<br><br>
 
 <img src="Neuroml_img/neuron_types_exc.png"><br><br>
-<img src="Neuroml_img/neuron_types_exc2.png"><br><br>
+<!--<img src="Neuroml_img/neuron_types_exc2.png"><br><br>-->
 <img src="Neuroml_img/neurons_density_exc.png"><br><br>
 
+EPFL data for L23_PC, L23LBC, L5_PC, L5_BC neurons will be used. Different types of interneurons replaced with 1 most abundant type<br>
+Parameters fitted manually (not using formulas to estimate, machine learning etc)
 
+<b>Result:</b><br><br>
+
+<img src="Neuroml_img/3D_shapes.png"><br><br>
+<img src="Neuroml_img/traces.png"><br><br>
+here we can see extrapolation in layer 2/3, populations competition and correct result output from layer 5 ...<br>
+
+to fit this hypothesis-driven model to data, many parameters do not match the data. for example oscillations L23 at 28Hz matched but mechanism for this isn't ovious since L23PC>L23PC latency is only 1.3. if this oscillation is implemented via 30 consequent neuron populations - this increases 30 times nember of neurons. and if column has 3000 L23_PC neurons - than it can support only 2-3 competiting oscillating subpopulations. <br>
+
+<h1><font color=red>under construction</font></h1>
+<!--
 also we should use these formulas or machine learning / plasticity to fit best coefficients .....................
+
+
+synaptic contacts on spines or dendritic shafts?
+
+in L3 and
+additional features, like direction in V1, computed there
+
+thalamocortical input to L4 must be 6% of synapses, however this should drive input (together with cortico-cortical feedforward input which has stronger synapses) 
+L 2/3 SOM cells may play a role in surround suppression (as might PV cells…)
+
+
+
+
+INH: PYR > PV+ > PYR , DISINH: PYR > VIP+ > (SST) > PYR. (SST and/or VIP are in Layer1)
+
+
+
 
 for our simulator best excitement between populations is when popnumbe*weight*probability = 0.1. best connected and distributed when probability=1 popnumber we use 5. so weight should be 0.02
 
@@ -494,7 +526,7 @@ Our model uses TONIC spiking model. Maybe it should use FIRST SPIKE ONLY? and in
 These oscillations could serve as an internal reference
 signal
 
-
+-->
 
 
 
