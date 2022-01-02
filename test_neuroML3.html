@@ -446,6 +446,7 @@ The neocortex circuit model will be with some elements of programming language b
 
 at this stage lets take existing neuroML models of cortex neurons and synapses and reimplement our model replacing model neurons with real ones<br><br>
 some information about neuron types location and other characteristics can be found on these Figs<br><br>
+REPLACE WITH EPFL TYPES FIG
 
 <img src="Neuroml_img/neuron_types_exc.png"><br><br>
 <!--<img src="Neuroml_img/neuron_types_exc2.png"><br><br>-->
@@ -454,13 +455,13 @@ some information about neuron types location and other characteristics can be fo
 EPFL data for L23_PC, L23LBC, L5_PC, L5_BC neurons will be used. Different types of interneurons replaced with 1 most abundant type<br>
 Parameters fitted manually (not using formulas to estimate, machine learning etc)
 
-<b>Result:</b><br><br>
+<h2>Result:</h2><br><br>
 
-<img src="Neuroml_img/3D_shapes.png"><br><br>
+<img src="Neuroml_img/3D_shapes.png" width=1200><br><br>
 <img src="Neuroml_img/traces.png"><br><br>
 here we can see extrapolation in layer 2/3, populations competition and correct result output from layer 5 ...<br>
 
-to fit this hypothesis-driven model to data, many parameters do not match the data. for example oscillations L23 at 28Hz matched but mechanism for this isn't ovious since L23PC>L23PC latency is only 1.3. if this oscillation is implemented via 30 consequent neuron populations - this increases 30 times nember of neurons. and if column has 3000 L23_PC neurons - than it can support only 2-3 competiting oscillating subpopulations. <br>
+to fit this hypothesis-driven model to data, many parameters do not match the data. for example oscillations L23 at 28Hz matched but mechanism for this isn't ovious since L23PC>L23PC latency is only 1.3. if this oscillation is implemented via 30 consequent neuron populations - this increases 30 times nember of neurons. and if column has 3000 L23_PC neurons - than it can support only 2-3 competiting oscillating subpopulations. Also fitting parameters shows that probably oscillation would be easier implimented in some other layers (f.e. L4 via dendrites Ca bursting)<br>
 
 <h1><font color=red>under construction</font></h1>
 <!--
