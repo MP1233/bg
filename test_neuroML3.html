@@ -463,6 +463,11 @@ here we can see extrapolation in layer 2/3, populations competition and correct 
 
 to fit this hypothesis-driven model to data, many parameters do not match the data. for example oscillations L23 at 28Hz matched but mechanism for this isn't ovious since L23PC>L23PC latency is only 1.3. if this oscillation is implemented via 30 consequent neuron populations - this increases 30 times nember of neurons. and if column has 3000 L23_PC neurons - than it can support only 2-3 competiting oscillating subpopulations. Also fitting parameters shows that probably oscillation would be easier implimented in some other layers (f.e. L4 via dendrites Ca bursting)<br>
 
+<img src="Neuroml_img/tut2_traces__gid_303_reverse.png" width=1200><br><br>
+
+Maybe the problem is that L23 PC neuron is adapting and V is not creating spike as a reaction on EPSPs but rather reaches reversal potential. In that case competitive "winner takes all" mechanism between populations with LBC interneurons would rather stimulate APs (by moving V lower from reversed potential with each IPSP and thus facilitating neuron to fire more after EPSPs). Hence the "winner" population will actually be blocked and loser populations will be activated. So probably inhibition should be shunting or some other type of L23 PC (non-adapting) neuron should be used. Also adding more background noise could atenuate L23 PC adapting properties.
+ Other possibility is to try decrease EPSPs and always let L23 PC hyperpolarize at least to -60v. Rare spike input is one of the options (which is consistent with the low number of driving input synapses on layers 4 and 2/3)
+
 <h1><font color=red>under construction</font></h1>
 <!--
 also we should use these formulas or machine learning / plasticity to fit best coefficients .....................
