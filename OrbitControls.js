@@ -16,8 +16,8 @@ import {
 	TOUCH,
 	Vector2,
 	Vector3
-} from "three.module.js";
-///} from "../../../build/three.module.js";
+} ///from "three.module.js";
+} from "./three.module.js";
 
 
 // This set of controls performs orbiting, dollying (zooming), and panning.
