@@ -5428,7 +5428,23 @@ function SelectLines(_year) {
 
 function CreateInterpolation(_line_cut) {
 	var ret = []
-	for (var each in _line_cut.coord) {ret.push([0.00006,0.00004])}
+	var xy_prev = _line_cut.coord[0]
+	var xy_curr = _line_cut.coord[0]
+	var xy_next = _line_cut.coord[1]
+
+	var dxy = [0.00006,0.00004]
+	//var first_elem_dxdy = _line_cut[0]
+	for (var each in _line_cut.coord) {
+		///console.log(each)
+		dxy = [ 0.5*(xy_prev[0] + xy_next[0]) - xy_curr[0] , 0.5*(xy_prev[1] + xy_next[1]) - xy_curr[1] ]
+		///console.log(dxy)
+		if ((xy_prev[0] == xy_curr[0]) && (xy_prev[1] == xy_curr[1])) {
+			dxy= [xy_next[1] - xy_curr[1], xy_next[0] - xy_curr[0] ]
+		}
+		var len_dxy = Math.sqrt(dxy[0]*dxy[0] + dxy[1]*dxy[1])
+		ret.push([0.00006*dxy[0]/len_dxy ,-0.00004*dxy[1]/len_dxy])
+	}
+	console.log(ret)
 return ret
 }
 
