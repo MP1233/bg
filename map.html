@@ -188,6 +188,11 @@
 
 //2015
 
+
+//? 1 - alpes loop > XXX
+//5 - florissant loop
+
+
 //S - 2011 Pre Lauret
 //S- 11 décembre 2016 : La ligne 42 voit son trajet modifié et reprend le tronçon de la ligne S (parcours raccourci à Croisée de Confignon) entre Lully et Croisée de Confignon. La desserte de Sézenove est reprise par la ligne 47.
 
@@ -5990,7 +5995,7 @@ function CreateInterpolation(_line_cut) {
 		var len_dxy = Math.sqrt(dxy[0]*dxy[0] + dxy[1]*dxy[1])
 		ret.push([0.00006*dxy[0]/len_dxy ,-0.00004*dxy[1]/len_dxy])
 	}
-	console.log(ret)
+	///console.log(ret)
 return ret
 }
 
@@ -6075,7 +6080,7 @@ function DrawLine(_line) {
 		///console.log(kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by))
 		text_counter = text_counter + 1
 
-if (Zoom == 2) {
+/*if (Zoom == 2) {
 		if (text_counter == 5) {
 			text_counter = 0
 			ctx.fillStyle = _line.color
@@ -6093,7 +6098,7 @@ ctx.fillText(_line.name, kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by)+10)
 			ctx.fillStyle = "#FFFFFF"
 			ctx.font = "bold 10pt Courier";
 ctx.fillText(_line.name, kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by)+10);
-		}
+		}*/
 	}
 //ctx.fill();
 	ctx.lineWidth = 6
@@ -6127,12 +6132,81 @@ ctx.fillText(_line.name, kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by)+10)
 	}
 	ctx.stroke();
 
+
+
+
+
+
+
+
+
+
+
+
 }
+
+
+
+//////////////////////
+function DrawLabels(_line) {
+	linexy = FormLine(_line)
+var text_counter = 0
+	for (each in linexy) {
+
+
+		//ctx.lineTo(kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by))
+		///console.log(kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by))
+		text_counter = text_counter + 1
+
+if (Zoom == 2) {
+		if (text_counter == 5) {
+			text_counter = 0
+			ctx.fillStyle = _line.color
+			ctx.fillRect(kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by), 15,10);
+			ctx.fillStyle = "#FFFFFF"
+			ctx.font = "bold 10pt Courier";
+ctx.fillText(_line.name, kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by)+10);
+		}
+}
+
+		if (text_counter == 20) {
+			text_counter = 0
+			ctx.fillStyle = _line.color
+			ctx.fillRect(kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by), 15,10);
+			ctx.fillStyle = "#FFFFFF"
+			ctx.font = "bold 10pt Courier";
+ctx.fillText(_line.name, kx*(linexy[each][0] + bx),ky*(linexy[each][1] + by)+10);
+ctx.fillStyle = "#000000"
+//ctx.fillText(_line.name, kx*(linexy[each][0] + bx)+2,ky*(linexy[each][1] + by)+10);
+		}
+	}
+
+}
+/////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function DrawLines(_current_lines) {
 	ctx.clearRect(0, 0, ctx_width, ctx_height);
 	for (each in _current_lines) {DrawLine(_current_lines[each])}
+		for (each in _current_lines) {DrawLabels(_current_lines[each])}
 }
 
 
