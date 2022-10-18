@@ -18,6 +18,11 @@
 <div id="myMap"><canvas id="myCanvas" width="3500" height="2150" style="background-image: url('bg3000.jpg');"></canvas></div>
 
 
+<button onclick="SelectAll()">SelectAll</button>
+<button onclick="ClearAll()">ClearAll</button>
+<div id="myspan2"> hereismytext </div>
+
+
 <script>
 
 	//1922
@@ -6777,6 +6782,87 @@ var Zoom = 1
 
 
 
+	var SelectedLines = {}
+
+
+function CheckLine(_line){
+console.log(_line)
+if (SelectedLines[_line] == 1) {SelectedLines[_line] = 0}
+	else {SelectedLines[_line] = 1}
+console.log(SelectedLines)
+	CURRENT_LINES = SelectLines(year)
+	ResetInterpolation(LINE_CUTS)
+	
+	DrawLines(CURRENT_LINES)
+
+}
+
+
+
+
+
+function ClearAll(){
+
+for (each in SelectedLines) {
+	SelectedLines[each] = 0
+document.getElementById('Selected_' + each).checked = 0
+}
+
+console.log(SelectedLines)
+	CURRENT_LINES = SelectLines(year)
+	ResetInterpolation(LINE_CUTS)
+	
+	DrawLines(CURRENT_LINES)
+
+}
+
+
+
+
+
+function SelectAll(){
+
+for (each in SelectedLines) {
+	SelectedLines[each] = 1
+document.getElementById('Selected_' + each).checked = 1
+}
+
+console.log(SelectedLines)
+	CURRENT_LINES = SelectLines(year)
+	ResetInterpolation(LINE_CUTS)
+	
+	DrawLines(CURRENT_LINES)
+
+}
+
+
+
+
+
+
+	function CreateSelectedLines () {
+		for (each in TRAM_LINES) {
+		SelectedLines[TRAM_LINES[each].name] = 1	
+		}
+
+var line_selection = '<div>'
+for (each in SelectedLines) {  	 
+	each_quot = "'" + each + "'" ; 
+	line_selection = line_selection + '<input type="checkbox" id="Selected_'+each+'" checked=1 onclick="CheckLine('+each_quot+')"><label for="vehicle1"> '+each+'</label>' }
+line_selection = line_selection + '</diz>'
+
+
+
+
+
+document.getElementById('myspan2').innerHTML = line_selection
+
+
+	}
+
+CreateSelectedLines ()
+
+console.log(SelectedLines)
 
 
 var year_selection = '<select name="cars" id="years">'
@@ -6799,7 +6885,7 @@ var ctx_height = 2150
 function SelectLines(_year) {
 	var ret = []
 	for (each in TRAM_LINES) {
-		if ((TRAM_LINES[each].year_beg < 1*_year+1) && (TRAM_LINES[each].year_end > 1*_year-1)) 
+		if ((TRAM_LINES[each].year_beg < 1*_year+1) && (TRAM_LINES[each].year_end > 1*_year-1) && (SelectedLines[TRAM_LINES[each].name])) 
 			{ret.push(TRAM_LINES[each])}
 	}
 
