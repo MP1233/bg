@@ -11,6 +11,7 @@
 <button onclick="ZoomLevel(0)">Zoom Region</button>
 <button onclick="ZoomLevel(1)">Zoom City</button>
 <button onclick="ZoomLevel(2)">Zoom Center</button>
+<button onclick="Play(year)">Play</button>
 
 <br>
 
@@ -6401,6 +6402,7 @@ var Zoom = 1
 
 	var text_counter = 0
 
+	var IsPlaying = -1
 
 
 
@@ -6676,7 +6678,7 @@ function ResetInterpolation(_line_cuts) {
 
 
 
-CURRENT_LINES = SelectLines(1969)
+CURRENT_LINES = SelectLines(year)
 ResetInterpolation(LINE_CUTS)
 DrawLines(CURRENT_LINES)
 
@@ -6748,6 +6750,41 @@ document.getElementById('myCanvas').style.backgroundImage="url(region3000.jpg)";
 //console.log(CURRENT_LINES)
 
 }
+
+
+
+function PlayLoop(_year) {
+	///IsPlaying = IsPlaying*-1
+	if (IsPlaying == 1) {
+
+console.log(_year, IsPlaying)
+var curr_year = _year + 1
+if (curr_year > 2022) {curr_year = 1862}
+
+
+	CURRENT_LINES = SelectLines(curr_year)
+	ResetInterpolation(LINE_CUTS)
+	
+	DrawLines(CURRENT_LINES)
+
+
+setTimeout(function() {PlayLoop(curr_year)}, 1000);
+///break
+
+}
+}
+
+function Play(_year) {
+	IsPlaying = IsPlaying*-1
+	//if (IsPlaying == 1) {
+//console.log(_year, IsPlaying)
+PlayLoop(_year) ; 
+
+}
+
+
+
+
 
 
 </script>
