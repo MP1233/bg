@@ -8895,7 +8895,7 @@ TIMETABLES = [
 
 {id:"43_b", trip:"43_b", departure:5*60+26},
 {id:"43_b", trip:"43_b", departure:5*60+56},
-{id:"43_b", trip:"43_b", departure:6*60+26},
+//{id:"43_b", trip:"43_b", departure:6*60+26},
 {id:"43_b", trip:"43_b", departure:6*60+55},
 {id:"43_b", trip:"43_b", departure:7*60+25},
 {id:"43_b", trip:"43_b", departure:7*60+55},
@@ -9671,6 +9671,7 @@ function animateBuses(_prm) {
 		}
 	}
 	for (each in ANIMATED_BUSES) {
+		///console.log(timer)//ANIMATED_BUSES[each],
 		curr_trip_time = ANIMATED_BUSES[each].seq.length
 		ANIMATED_BUSES[each].trip_timer = ANIMATED_BUSES[each].trip_timer + 1
 		if (ANIMATED_BUSES[each].trip_timer > curr_trip_time) {
