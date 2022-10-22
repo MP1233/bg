@@ -1317,7 +1317,7 @@ TRAM_LINES =
 {name:"43",type:"bus",color:"#89CBBE",year_beg:2004,year_end:2014, seq:["43_1","43_13","43_14","43_15","43_13","43_2","43_3","43_4","43_5","43_6","43_7","43_8","43_9","43_10","2_57","43_16","43_17","43_18","43_19","43_22","43_21","43_21","43_22","43_20","4_59","4_60","4_61","4_62","4_63","D_10","D_9",]},
 
 
-{name:"43",id:"43_a",type:"bus",color:"#89CBBE",year_beg:2015,year_end:2022, seq:["43_3","43_4","43_5","43_6","43_7","43_8","43_9","43_10","2_57","43_16","43_17","43_18","43_19","43_22","43_21","43_21","43_22","43_20","4_59","4_60","4_61","4_62","4_63","D_10","D_9","D_8","D_7","46_18","46_17","46_16","46_15","46_14","46_13","46_12",
+{name:"43",id:"43_b",type:"bus",color:"#89CBBE",year_beg:2015,year_end:2022, seq:["43_3","43_4","43_5","43_6","43_7","43_8","43_9","43_10","2_57","43_16","43_17","43_18","43_19","43_22","43_21","43_21","43_22","43_20","4_59","4_60","4_61","4_62","4_63","D_10","D_9","D_8","D_7","46_18","46_17","46_16","46_15","46_14","46_13","46_12",
 ],beg_time:0, end_time:35},
 
 
@@ -8895,7 +8895,7 @@ TIMETABLES = [
 
 {id:"43_b", trip:"43_b", departure:5*60+26},
 {id:"43_b", trip:"43_b", departure:5*60+56},
-//{id:"43_b", trip:"43_b", departure:6*60+26},
+{id:"43_b", trip:"43_b", departure:6*60+26},
 {id:"43_b", trip:"43_b", departure:6*60+55},
 {id:"43_b", trip:"43_b", departure:7*60+25},
 {id:"43_b", trip:"43_b", departure:7*60+55},
@@ -9655,6 +9655,7 @@ function animateBuses(_prm) {
 			
 			//ANIMATED_BUSES.push({name:CURRENT_LINES[each].name, trip_timer:0, seq:FormLine(CURRENT_LINES[each]), color:CURRENT_LINES[each].color})
 			var curr_route = {}
+
 			for (var each_route in CURRENT_LINES) {
 				//console.log(CURRENT_LINES[each_route], TIMETABLES[each].trip)
 				if (CURRENT_LINES[each_route].id == TIMETABLES[each].trip) {
@@ -9670,8 +9671,9 @@ function animateBuses(_prm) {
 
 		}
 	}
+	console.log(timer, ANIMATED_BUSES.length)//ANIMATED_BUSES[each],
 	for (each in ANIMATED_BUSES) {
-		///console.log(timer)//ANIMATED_BUSES[each],
+		
 		curr_trip_time = ANIMATED_BUSES[each].seq.length
 		ANIMATED_BUSES[each].trip_timer = ANIMATED_BUSES[each].trip_timer + 1
 		if (ANIMATED_BUSES[each].trip_timer > curr_trip_time) {
