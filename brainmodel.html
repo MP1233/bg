@@ -7850,8 +7850,14 @@ NumOfCellsForUpdate = 2*NumOfCellsProcessed
 
 					}
 				}
+var occupied_rois = {}
+
+
 				for (var eachneurongroup in NEURONS3D) {
 						var curr_neuron_group = NEURONS3D[eachneurongroup]
+						var curr_xyz_id = curr_neuron_group[0]+'_'+curr_neuron_group[1]+'_'+curr_neuron_group[2]
+						if (!(curr_xyz_id in occupied_rois)) {occupied_rois[curr_xyz_id] = 0}
+						occupied_rois[curr_xyz_id] = occupied_rois[curr_xyz_id] + 1
 						var curr_xyz_shift = 0
 						var curr_color = 0xffffff
 						if (NEURONS3D[eachneurongroup][4] == 'exc') {curr_color = 0x00ff00}
@@ -7865,7 +7871,7 @@ NumOfCellsForUpdate = 2*NumOfCellsProcessed
 						}
 						const material = new THREE.PointsMaterial({ size: 0.6*Math.log(curr_neuron_group[5]), color: curr_color });
 						const points = [];
-						points.push(new THREE.Vector3(-curr_neuron_group[0]*0.06 + 270 + curr_xyz_shift, curr_neuron_group[2]*0.01, curr_neuron_group[1]*0.01));
+						points.push(new THREE.Vector3(-curr_neuron_group[0]*0.06 + 270 + curr_xyz_shift + 0.3*occupied_rois[curr_xyz_id], curr_neuron_group[2]*0.01, curr_neuron_group[1]*0.01));
 
 						const geometry = new THREE.BufferGeometry().setFromPoints(points);
 						const line = new THREE.Points(geometry, material);
