@@ -160,12 +160,12 @@ TRAM_LINES =
 
 
 
-{name:"2",type:"tram",color:"#ed1c24",year_beg:2018,year_end:2022, seq:["1_1","1_2","1_3","1_4","1_5","1_6","1_7","1_8","1_9","1_10","1_11","1_12","1_13","1_14","1_15","1_16","1_17","1_18","1_19","1_20","1_21","1_22","1_23","1_24","1_25","1_26","1_27","1_28","1_29","1_30","1_31","1_32","1_33","2_27","2_28","2_29","2_30","2_31","2_32","2_33","1_69","1_70","1_71","1_72","1_73","1_74","1_75","1_76","1_77","1_78","1_79","1_80","1_81","1_82","1_83","1_84","1_85","1_86","1_87","1_88","1_89","1_90","1_91","1_92","1_93","1_94","1_95","1_96","1_97","1_151","1_152","1_153","1_154","1_155","1_156","1_157","1_158","1_159","1_160","1_161","1_162","1_163","1_164","1_165","1_166","1_167","1_168","1_169","1_170","1_171","1_172","1_173","1_174","1_175","1_176","1_177","1_178","1_179","1_180","1_181","1_182","1_183","1_184","1_185","1_186","1_187","1_188","1_189","1_190",
-"1_191","1_192","1_193","1_194","1_195","1_196","1_197","1_198","1_199","1_200","1_201","1_202",]},
+{name:"2",id:"2_a",type:"tram",color:"#ed1c24",year_beg:2018,year_end:2022, seq:["1_1","1_2","1_3","1_4","1_5","1_6","1_7","1_8","1_9","1_10","1_11","1_12","1_13","1_14","1_15","1_16","1_17","1_18","1_19","1_20","1_21","1_22","1_23","1_24","1_25","1_26","1_27","1_28","1_29","1_30","1_31","1_32","1_33","2_27","2_28","2_29","2_30","2_31","2_32","2_33","1_69","1_70","1_71","1_72","1_73","1_74","1_75","1_76","1_77","1_78","1_79","1_80","1_81","1_82","1_83","1_84","1_85","1_86","1_87","1_88","1_89","1_90","1_91","1_92","1_93","1_94","1_95","1_96","1_97","1_151","1_152","1_153","1_154","1_155","1_156","1_157","1_158","1_159","1_160","1_161","1_162","1_163","1_164","1_165","1_166","1_167","1_168","1_169","1_170","1_171","1_172","1_173","1_174","1_175","1_176","1_177","1_178","1_179","1_180","1_181","1_182","1_183","1_184","1_185","1_186","1_187","1_188","1_189","1_190",
+"1_191","1_192","1_193","1_194","1_195","1_196","1_197","1_198","1_199","1_200","1_201","1_202",],beg_time:0, end_time:37},
 
 
-
-
+/*
+{name:"12",id:"12_a",type:"tram",color:"#F5A300",year_beg:2022,year_end:2022, interval:10, length:50, seq:["12_39","12_38","12_37","12_36","12_35","11_39","11_40","11_41","11_42","11_43","11_44","11_45","11_46","11_47","11_48","11_49","11_50","11_51","11_52","11_53","5_25","12_34","12_33","12_32","12_31","12_30","1_62","1_61","2_40","2_41","2_42","2_43","2_44","2_45","2_46","2_47","3_18","12_29","12_28","12_27","12_26","12_25","12_24","12_23","12_22","12_21","12_20","12_19","12_18","12_17","12_16","12_15","12_14","12_13","12_12","12_11","12_10","12_9","12_8","12_7","12_6","12_5","12_4","12_3","12_2","12_1","12_96","12_95","12_94","12_93","12_92","13_9",],beg_time:0, end_time:38},*/
 
 
 {name:"2el",type:"tram",color:"#ed1c24",year_beg:1894,year_end:1898, seq:[
@@ -20517,19 +20517,35 @@ TRIPS = {
 
 
 
+TIMETABLES2 = [
+{id:"2_a", trip:"2_a", is_reverse:1, departure:["5:00","5:15","5:30","5:45","5:53","6:00","6:08","6:15","6:23","6:30","6:37","6:43","6:51","6:58","7:06","7:13","7:21","7:28","7:36","7:43","7:51","7:58","8:06","8:13","8:21","8:28","8:36","8:43","8:51","8:58","9:06","9:13","9:21","9:28","9:36","9:43","9:51","9:58",]},
+{id:"2_b", trip:"2_a", is_reverse:0, departure:["5:17","5:32","5:47","6:00","6:08","6:15","6:23","6:30","6:37","6:45","6:51","6:58","7:06","7:13","7:21","7:28","7:36","7:43","7:51","7:58","8:06","8:13","8:21","8:29","8:36","8:43","8:51","8:58","9:06","9:13","9:21","9:28","9:36","9:43","9:51","9:58",]},
+]
 
 
-TIMETABLES = [
 
 
 
-{id:"1_a", trip:"1_a", departure:5*60+7},
+
+
+
+var TIMETABLES = [
+
+
+
+/*{id:"2_a", trip:"2_a", departure:5*60+7},*/
 
 
 ]
 
 
-
+for (each in TIMETABLES2) {
+	curr_trip = TIMETABLES2[each]
+	for (eacheach in curr_trip.departure) {
+		ss = curr_trip.departure[eacheach].split(':')
+		var curr_el = {id:curr_trip.id, trip:curr_trip.trip, is_reverse:curr_trip.is_reverse, departure:ss[0]*60+1*ss[1]}
+		TIMETABLES.push(curr_el)}
+}
 
 
 
@@ -20572,7 +20588,7 @@ console.log(SelectedLines)
 
 function ClearAll(){
 
-for (each in SelectedLines) {
+for (var each in SelectedLines) {
 	SelectedLines[each] = 0
 document.getElementById('Selected_' + each).checked = 0
 }
@@ -20591,7 +20607,7 @@ console.log(SelectedLines)
 
 function SelectAll(){
 
-for (each in SelectedLines) {
+for (var each in SelectedLines) {
 	SelectedLines[each] = 1
 document.getElementById('Selected_' + each).checked = 1
 }
@@ -20610,12 +20626,12 @@ console.log(SelectedLines)
 
 
 	function CreateSelectedLines () {
-		for (each in TRAM_LINES) {
+		for (var each in TRAM_LINES) {
 		SelectedLines[TRAM_LINES[each].name] = 1	
 		}
 
 var line_selection = '<div>'
-for (each in SelectedLines) {  	 
+for (var each in SelectedLines) {  	 
 	each_quot = "'" + each + "'" ; 
 	line_selection = line_selection + '<input type="checkbox" id="Selected_'+each+'" checked=1 onclick="CheckLine('+each_quot+')"><label for="vehicle1"> '+each+'</label>' }
 line_selection = line_selection + '</diz>'
@@ -20653,7 +20669,7 @@ var ctx_height = 2150
 
 function SelectLines(_year) {
 	var ret = []
-	for (each in TRAM_LINES) {
+	for (var each in TRAM_LINES) {
 		if ((TRAM_LINES[each].year_beg < 1*_year+1) && (TRAM_LINES[each].year_end > 1*_year-1) && (SelectedLines[TRAM_LINES[each].name])) 
 			{
 ///console.log(TRAM_LINES[each])
@@ -20716,7 +20732,7 @@ function FindCutDirection(_curr_coord, _curr_cut) {
 function FormLine(_line) {
 	var curr_coord = InitCurrCoord(_line.seq[0],_line.seq[1])
 	var ret = [] ///[[0,0],[0,100],[200,200]]
-	for (each in _line.seq) {
+	for (var each in _line.seq) {
 		//console.log(_line.seq[each], LINE_CUTS[_line.seq[each]])
 		//console.log(LINE_CUTS[_line.seq[each]].interpolation.interpolation_vectors)
 		if (!(_line.seq[each] in LINE_CUTS)) { console.log(_line.seq[each]) }
@@ -20788,7 +20804,7 @@ if (_dist1l2l < _dist1l2f) {_dist1l2 = _dist1l2l}
 function FormLine2(_line) {
 	var curr_coord = InitCurrCoord(_line.seq[0],_line.seq[1])
 	var ret = [] ///[[0,0],[0,100],[200,200]]
-	for (each in _line.seq) {
+	for (var each in _line.seq) {
 		if (LINE_CUTS[_line.seq[each]].interpolation.interpolation_vectors == 0) {
 			LINE_CUTS[_line.seq[each]].interpolation.interpolation_vectors = CreateInterpolation(LINE_CUTS[_line.seq[each]])
 			///console.log("AAA",LINE_CUTS[_line.seq[each]])
@@ -21204,7 +21220,11 @@ function animateBuses(_prm) {
 
 			}
 			//console.log("CCC", curr_route)
+			if (TIMETABLES[each].is_reverse) {
+			ANIMATED_BUSES.push({name:curr_route.name, trip_timer:0, seq:curr_route.trip_seq_r, color:curr_route.color, type:curr_route.type})
+			} else {
 			ANIMATED_BUSES.push({name:curr_route.name, trip_timer:0, seq:curr_route.trip_seq, color:curr_route.color, type:curr_route.type})
+			}
 
 		}
 	}
@@ -21290,6 +21310,7 @@ return ret
 
 function CreateTripSeq(_full_line,_time_length,_xy1,_xy2) {
 	var line_cut_between_stops = _full_line
+
 	var line_cut_between_stops_length = GetLineLength(line_cut_between_stops)
 	var ret = []
 	for (let i = 0; i < _time_length*10; i++) {
@@ -21301,6 +21322,15 @@ return ret
 
 
 
+function ReverseTripSeq (_seq) {
+	//console.log(_seq)
+	var ret = []
+	var _len = _seq.length
+	for (let i = 0; i < _len; i++) {
+		ret.push(_seq[_len - 1 - i])
+	}
+	return ret
+}
 
 
 
@@ -21308,13 +21338,19 @@ return ret
 ///////////////////////
 CURRENT_LINES = SelectLines(year)
 for (var each in CURRENT_LINES) {
+	//console.log("FFF1",each,CURRENT_LINES[each],trptime)
 	if (("end_time" in CURRENT_LINES[each]) && ("beg_time" in CURRENT_LINES[each])) {
 		var trptime = 1.0*CURRENT_LINES[each].end_time - 1.0*CURRENT_LINES[each].beg_time
 		///console.log("BBB", CURRENT_LINES[each], trptime)
 		var frstelem = CURRENT_LINES[each].seq[0] ; 
 		var lstelem = CURRENT_LINES[each].seq[CURRENT_LINES[each].seq.length-1]
 		///console.log("BBB1",trptime,,CURRENT_LINES[each].seq[CURRENT_LINES[each].seq.length-1])
+		//console.log("FFF3",each,CURRENT_LINES[each],trptime)
+		if (trptime > 0) {
 		CURRENT_LINES[each].trip_seq = CreateTripSeq(FormLine2(CURRENT_LINES[each]),trptime,frstelem,lstelem)
+		//console.log("FFF2",each,CURRENT_LINES[each],trptime)
+		CURRENT_LINES[each].trip_seq_r = ReverseTripSeq(CURRENT_LINES[each].trip_seq)
+		}
 	}
 }
 
