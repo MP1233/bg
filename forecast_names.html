@@ -2176,11 +2176,27 @@ function GetPlyROIName(_listROI) {
 }
 
 function GetPlyGroupNames(_listROI) {
-	return [] 
+	var ret = {}
+	for (var eachgroup in ROI_PLY_IDS) {
+		for (var eachplyid in ROI_PLY_IDS[eachgroup][4]) {
+			if (ROI_PLY_IDS[eachgroup][4][eachplyid] == _listROI) {ret[ROI_PLY_IDS[eachgroup][0]] = 1}
+		}
+	}
+	return ret 
+}
+
+function GetPlyGroupRow(_listROI) {
+	var ret = 'n/a'
+	for (var eachgroup in ROIS) {
+if (ROIS[eachgroup][0] == _listROI) {return eachgroup}
+	}
+	return ret
 }
 
 function GetPlyGroupRows(_listROI) {
-	return [] 
+	var ret = []
+	for (var eachgroup in _listROI) {ret.push(GetPlyGroupRow(eachgroup))}
+	return ret
 }
 
 
@@ -2191,23 +2207,61 @@ function GetPlyROIInfo(_listROI) {
 }
 
 
+
+function CreateTableMatrix(_listROI) {
+	var ret = []
+	for (var eachi in _listROI) {
+		var reti = []
+		for (var eachj in _listROI) { 
+			var curr_summ = 0
+			///////////////////////////////////////
+			for (var eachgroupi in _listROI[eachi]["WmatrixGroupRows"]) {
+				for (var eachgroupj in _listROI[eachj]["WmatrixGroupRows"]) {
+					curr_summ = curr_summ + CONNECTIVITYR[_listROI[eachi]["WmatrixGroupRows"][eachgroupi]][_listROI[eachj]["WmatrixGroupRows"][eachgroupj]]
+			}}
+			////////////////////////////////////
+			reti.push({"connection_strength":curr_summ})
+		}
+		ret.push(reti)
+	}
+	console.log(ret)
+	return ret
+}
+
+
+
 function GetPlyInfo(_listROI) {
 var ret = []
 for (var each in _listROI) {
 	ret.push(GetPlyROIInfo(_listROI[each]))
 }
+console.log(ret)
+
 return ret
 }
+
+
+
+
+
+
+
 
 
 function CreateROITable2(_item) {
 
 var _listROI = _item.split(',')
 var _listROIplynames = GetPlyInfo(_listROI)
+var _TableInfoMatrix = CreateTableMatrix(_listROIplynames)
 console.log(_item, _listROI)
 var TABLE_TEXT = '<table border = 1px solid black;><tr><td></td>'
 for (var each in _listROIplynames) {TABLE_TEXT = TABLE_TEXT + '<td>'+_listROIplynames[each]["id"]+_listROIplynames[each]["name"]+'</td>'}
-for (var each in _listROIplynames) {TABLE_TEXT = TABLE_TEXT + '<tr><td>'+_listROIplynames[each]["id"]+_listROIplynames[each]["name"]+'</td></tr>'}
+for (var each in _listROIplynames) {
+
+	TABLE_TEXT = TABLE_TEXT + '<tr><td>'+_listROIplynames[each]["id"]+_listROIplynames[each]["name"]+'</td>'
+	for (var eachi in _listROIplynames) {TABLE_TEXT = TABLE_TEXT + '<td>'+_TableInfoMatrix[each][eachi]["connection_strength"]+'</td>'}
+	TABLE_TEXT = TABLE_TEXT + '</tr>'}
+
 TABLE_TEXT = TABLE_TEXT + '</table>'
 document.getElementById('myspan3').innerHTML = TABLE_TEXT;
 }
